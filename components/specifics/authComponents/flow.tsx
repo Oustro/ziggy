@@ -21,10 +21,6 @@ export default function Flow({ authType } : { authType: number}) {
     {
       authType: 2,
       content: <Confirm />
-    },
-    {
-      authType: 3,
-      content: <></>
     }
   ]
   return (

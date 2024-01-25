@@ -16,8 +16,11 @@ export default function SignupForm({ setView } : { setView: Function }) {
   const [name, setName] = useState<string>("")
   const [email, setEmail] = useState<string>("")
 
+  const [error, setError] = useState<string>("")
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setError("")
 
     const registerChecksResponse = await fetch('/api/auth/check', {
       method: 'POST',
@@ -31,11 +34,11 @@ export default function SignupForm({ setView } : { setView: Function }) {
     })
 
     if (registerChecksResponse.status === 403) {
-      return alert("You are already registered!")
+      return setError("This email already has a Ziggy account, please login.")
     }
 
     if (registerChecksResponse.status === 500) {
-      return alert("An error occurred. Please try again later.")
+      return setError("An error occurred. Please try again later.")
     }
 
     await signIn('email', {
@@ -49,7 +52,7 @@ export default function SignupForm({ setView } : { setView: Function }) {
 
   return (
     <main>
-      <p className="mt-6 text-slate-800">Create your free Ziggy account, no credit card required.</p>
+      <p className="mt-6 text-slate-600">Create your free Ziggy account, no credit card required.</p>
       <div className="w-full sm:w-[40%] mx-auto mt-8">
         <form onSubmit={handleSubmit}>
           <div className="text-left font-medium text-sm pb-1">
@@ -89,7 +92,8 @@ export default function SignupForm({ setView } : { setView: Function }) {
           </button>
         </div>
       </div>
-      <p className="mt-12 text-slate-800 text-xs">By continuing, you agree to the <Link className="underline" href="/info/legal">Terms of Service and Privacy Policy.</Link></p>
+      <p className="mt-4 text-sm text-red-500">{error}</p>
+      <p className="mt-12 text-slate-600 text-xs">By continuing, you agree to the <Link className="underline" href="/info/legal">Terms of Service and Privacy Policy.</Link></p>
     </main>
   )
 }

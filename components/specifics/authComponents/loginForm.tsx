@@ -21,7 +21,7 @@ export default function LoginForm({ setView } : { setView: Function }) {
 
   return (
     <main>
-      <p className="text-slate-800 mt-6">Welcome back, we're glad you're here.</p>
+      <p className="text-slate-600 mt-6">Welcome back, we're glad you're here.</p>
       <div className="w-full sm:w-[40%] mx-auto mt-8">
         <form onSubmit={handleSubmit}>
           <div className="text-left font-medium text-sm pb-1">
@@ -47,7 +47,7 @@ export default function LoginForm({ setView } : { setView: Function }) {
           </button>
         </div>
       </div>
-      <p className="mt-12 text-slate-800 text-xs">Don't have a Ziggy account? <Link className="underline" href="/register/signup">Create one.</Link></p>
+      <p className="mt-12 text-slate-600 text-xs">Don't have a Ziggy account? <Link className="underline" href="/register/signup">Create one.</Link></p>
     </main>
   )
 }
