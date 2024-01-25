@@ -103,6 +103,7 @@ export default function SignupForm({ setView } : { setView: Function }) {
       </div>
       <p className="mt-4 text-sm text-red-500">{error}</p>
       <p className="mt-12 text-slate-600 text-xs">By continuing, you agree to the <Link className="underline" href="/info/legal">Terms of Service and Privacy Policy.</Link></p>
+      <p className="mt-4 text-slate-600 text-xs">Already have a Ziggy account? <Link className="underline" href="/register/login">Login.</Link></p>
     </main>
   )
 }

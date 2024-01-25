@@ -2,6 +2,8 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/utils/auth"
 import { redirect } from "next/navigation"
 
+import DashboardNav from "@/components/specifics/navbars/dashboardNav";
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -15,7 +17,10 @@ export default async function RootLayout({
   
   return (
     <main>
-      {children}
+      <div className="flex">
+        <DashboardNav />
+        {children}
+      </div>
     </main>
   )
 }
