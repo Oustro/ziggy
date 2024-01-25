@@ -17,10 +17,12 @@ export default function SignupForm({ setView } : { setView: Function }) {
   const [email, setEmail] = useState<string>("")
 
   const [error, setError] = useState<string>("")
+  const [loading, setLoading] = useState<boolean>(false)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError("")
+    setLoading(true)
 
     const registerChecksResponse = await fetch('/api/auth/check', {
       method: 'POST',
@@ -48,6 +50,7 @@ export default function SignupForm({ setView } : { setView: Function }) {
     })
 
     setView(2)
+    setLoading(false)
   }
 
   return (
@@ -75,19 +78,25 @@ export default function SignupForm({ setView } : { setView: Function }) {
           onChange={(e) => setEmail(e.target.value)}
           required
           />
-          <button className="w-full mt-6" type="submit">
+          <button disabled={loading} className="w-full mt-6" type="submit">
             <BlackButton>Continue</BlackButton>
           </button>
         </form>
         <div className="mt-8 pt-6 border-t">
-          <button className="w-full" onClick={() => signIn('google', {
-            callbackUrl: `${window.location.origin}/dashboard`
-          })}>
+          <button disabled={loading} className="w-full" onClick={() => {
+            setLoading(true)
+            signIn('google', {
+              callbackUrl: `${window.location.origin}/dashboard`
+            })
+          }}>
             <WhiteButton><p className="flex items-center gap-2 justify-center"><FcGoogle />Continue with Google</p></WhiteButton>
           </button>
-          <button className="w-full mt-6" onClick={() => signIn('github', {
-            callbackUrl: `${window.location.origin}/dashboard`
-          })}>
+          <button disabled={loading} className="w-full mt-6" onClick={() => {
+            setLoading(true)
+            signIn('github', {
+              callbackUrl: `${window.location.origin}/dashboard`
+            })
+          }}>
           <WhiteButton><p className="flex items-center gap-2 justify-center"><FaGithub />Continue with GitHub</p></WhiteButton>
           </button>
         </div>
