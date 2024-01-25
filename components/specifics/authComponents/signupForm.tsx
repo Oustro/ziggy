@@ -19,10 +19,30 @@ export default function SignupForm({ setView } : { setView: Function }) {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
-    // const signInResponse = await signIn('email', {
-    //   email: email,
-    //   callbackUrl: `${window.location.origin}/dashboard`
-    // })
+    const registerChecksResponse = await fetch('/api/auth/check', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 
+        email: email.trim(),
+        name: name.trim()
+      })
+    })
+
+    if (registerChecksResponse.status === 403) {
+      return alert("You are already registered!")
+    }
+
+    if (registerChecksResponse.status === 500) {
+      return alert("An error occurred. Please try again later.")
+    }
+
+    await signIn('email', {
+      email: email,
+      callbackUrl: `${window.location.origin}/dashboard`,
+      redirect: false
+    })
 
     setView(2)
   }

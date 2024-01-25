@@ -8,6 +8,8 @@ import Github from "next-auth/providers/github"
 import Google from "next-auth/providers/google"
 import EmailProvider from "next-auth/providers/email"
 
+import { Redis } from '@upstash/redis'
+
 export const authOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
@@ -30,5 +32,48 @@ export const authOptions = {
       },
       from: process.env.EMAIL_FROM
     })
-  ]
+  ],
+  callbacks: {
+    async session({ session }) {
+      const sessionUser = await prisma.userInfo.findUnique({
+        where: {
+          email: session.user?.email || ""
+        }
+      })
+
+      return {
+        name: sessionUser?.name || null,
+        email: session?.user?.email || null,
+        ...session
+      }
+    }
+  },
+  events: {
+    async signIn({ user, account, isNewUser }) { 
+      if (isNewUser) {
+        let uname = ""
+
+        if (account?.provider === "email") {
+          const redis = new Redis({
+            url: process.env.UPSTASH_URL || '',
+            token: process.env.UPSTASH_TOKEN || '',
+          })
+          
+          const cacheResponse = await redis.get(user.email || "")
+          uname = (cacheResponse as { name: string })?.name || ""
+
+        }
+        else {
+          uname = user.name || ""
+        }
+
+        await prisma.userInfo.create({
+          data: {
+            name: uname,
+            email: user.email,
+          }
+        })
+      }
+    },
+  }
 } satisfies NextAuthOptions
