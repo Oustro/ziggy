@@ -7,8 +7,10 @@ export default function RootLayout({
 }>) {
   return (
     <main>
-      <HomeNav />
-      {children}
+      <div className="mb-16">
+        <HomeNav />
+        {children}
+      </div>
     </main>
   )
 }

@@ -5,7 +5,7 @@ import { Fragment, useState } from 'react'
 
 import BlackButton from "@/components/generics/blackButton"
 
-export default function Settings({ children } : { children: React.ReactNode }) {
+export default function UserSettings({ children } : { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {

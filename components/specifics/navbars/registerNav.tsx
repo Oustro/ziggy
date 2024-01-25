@@ -8,8 +8,8 @@ export default function RegisterNav() {
         <Image
         src="/ziggy-logo.svg"
         alt="Logo"
-        width={42}
-        height={42}
+        width={40}
+        height={40}
         />
         <h4 className="text-lg font-semibold">Ziggy</h4>
       </Link>
