@@ -3,5 +3,5 @@ export default function Blog() {
     <main>
       Blog
     </main>
-  );
+  )
 }

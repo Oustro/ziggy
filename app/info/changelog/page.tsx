@@ -3,5 +3,5 @@ export default function Changelog() {
     <main>
       Changelog
     </main>
-  );
+  )
 }

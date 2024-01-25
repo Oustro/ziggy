@@ -10,5 +10,5 @@ export default function RootLayout({
       <HomeNav />
       {children}
     </main>
-  );
+  )
 }

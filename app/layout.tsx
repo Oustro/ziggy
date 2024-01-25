@@ -18,5 +18,5 @@ export default function RootLayout({
     <html lang="en">
       <body className={`mb-16 ${inter.className}`}>{children}</body>
     </html>
-  );
+  )
 }

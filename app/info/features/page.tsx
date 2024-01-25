@@ -3,5 +3,5 @@ export default function Features() {
     <main>
       Features
     </main>
-  );
+  )
 }

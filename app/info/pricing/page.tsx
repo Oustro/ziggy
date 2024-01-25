@@ -3,5 +3,5 @@ export default function Pricing() {
     <main>
       Pricing
     </main>
-  );
+  )
 }

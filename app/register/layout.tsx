@@ -10,5 +10,5 @@ export default function RootLayout({
       <RegisterNav />
       {children}
     </main>
-  );
+  )
 }
