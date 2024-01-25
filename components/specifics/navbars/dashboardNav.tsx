@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/utils/auth"
 
 import HoverWords from "@/components/generics/hoverWords"
+import Settings from "@/components/specifics/settings"
 
 import { IoSettingsOutline, IoFlashOutline, IoChatboxEllipsesOutline, IoHelpOutline } from "react-icons/io5";
 
@@ -33,7 +34,7 @@ export default async function DashboardNav() {
           <Link target="_blank" href="https://www.github.com/oustro/ziggy/issues">
             <HoverWords><span className="flex items-center gap-3"><IoHelpOutline /> Help</span></HoverWords>
           </Link>
-          <HoverWords><span className="flex items-center gap-3"><IoSettingsOutline /> Settings</span></HoverWords>
+          <Settings><HoverWords><span className="flex items-center gap-3"><IoSettingsOutline /> Settings</span></HoverWords></Settings>
         </div>
       </div>
       <div className="flex bottom-8 border-t absolute items-center gap-3 mt-4 w-full pt-4 px-6 overflow-hidden">
