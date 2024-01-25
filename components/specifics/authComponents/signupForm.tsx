@@ -97,7 +97,7 @@ export default function SignupForm({ setView } : { setView: Function }) {
               callbackUrl: `${window.location.origin}/dashboard`
             })
           }}>
-          <WhiteButton><p className="flex items-center gap-2 justify-center"><FaGithub />Continue with GitHub</p></WhiteButton>
+            <WhiteButton><p className="flex items-center gap-2 justify-center"><FaGithub />Continue with GitHub</p></WhiteButton>
           </button>
         </div>
       </div>
