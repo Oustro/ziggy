@@ -1,4 +1,6 @@
-import LoginForm from "@/components/specifics/loginForm";
+import LoginForm from "@/components/specifics/loginForm"
+
+import Link from "next/link"
 
 export default function Login() {
   return (
@@ -9,6 +11,7 @@ export default function Login() {
         <div className="mt-8">
           <LoginForm />
         </div>
+        <p className="mt-12 text-slate-800 text-xs">Don't have a Ziggy account? <Link className="underline" href="/register/signup">Create one.</Link></p>
       </div>
     </main>
   )

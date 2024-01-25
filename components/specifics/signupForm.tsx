@@ -5,6 +5,9 @@ import { useState } from "react"
 import BlackButton from "@/components/generics/blackButton"
 import WhiteButton from "@/components/generics/whiteButton"
 
+import { FcGoogle } from "react-icons/fc"
+import { FaGithub } from "react-icons/fa"
+
 export default function SignupForm() {
   const [name, setName] = useState<string>("")
   const [email, setEmail] = useState<string>("")
@@ -39,10 +42,10 @@ export default function SignupForm() {
         </form>
         <div className="mt-8 pt-6 border-t">
           <button className="w-full">
-            <WhiteButton>Continue with Google</WhiteButton>
+            <WhiteButton><p className="flex items-center gap-2 justify-center"><FcGoogle />Continue with Google</p></WhiteButton>
           </button>
           <button className="w-full mt-6">
-            <WhiteButton>Continue with Github</WhiteButton>
+          <WhiteButton><p className="flex items-center gap-2 justify-center"><FaGithub />Continue with GitHub</p></WhiteButton>
           </button>
         </div>
       </div>

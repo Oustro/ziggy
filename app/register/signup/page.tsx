@@ -1,4 +1,6 @@
-import SignupForm from "@/components/specifics/signupForm";
+import SignupForm from "@/components/specifics/signupForm"
+
+import Link from "next/link"
 
 export default function Signup() {
   return (
@@ -9,6 +11,7 @@ export default function Signup() {
         <div className="mt-8">
           <SignupForm />
         </div>
+        <p className="mt-12 text-slate-800 text-xs">By continuing, you agree to the <Link className="underline" href="/info/legal">Terms of Service and Privacy Policy.</Link></p>
       </div>
     </main>
   )
