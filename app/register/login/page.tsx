@@ -5,7 +5,7 @@ import Link from "next/link"
 export default function Login() {
   return (
     <main>
-      <div className="text-center mt-36">
+      <div className="text-center mt-24 px-6">
         <h1 className="text-4xl sm:text-5xl font-semibold">Login to Ziggy</h1>
         <p className="mt-6 text-slate-800">Welcome back, we're glad you're here.</p>
         <div className="mt-8">

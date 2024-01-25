@@ -13,7 +13,7 @@ export default function LoginForm() {
 
   return (
     <main>
-      <div className="w-full sm:w-[40%] mx-auto px-6">
+      <div className="w-full sm:w-[40%] mx-auto">
         <form>
           <div className="text-left font-medium text-sm pb-1">
             <label><span className="text-red-600">*</span> Email</label>
@@ -25,7 +25,7 @@ export default function LoginForm() {
           onChange={(e) => setEmail(e.target.value)}
           required
           />
-          <button className="w-full mt-10" type="submit">
+          <button className="w-full mt-6" type="submit">
             <BlackButton>Continue</BlackButton>
           </button>
         </form>
