@@ -8,6 +8,8 @@ import WhiteButton from "@/components/generics/whiteButton"
 import { FcGoogle } from "react-icons/fc"
 import { FaGithub } from "react-icons/fa"
 
+import { signIn } from "next-auth/react"
+
 export default function SignupForm() {
   const [name, setName] = useState<string>("")
   const [email, setEmail] = useState<string>("")
@@ -41,10 +43,14 @@ export default function SignupForm() {
           </button>
         </form>
         <div className="mt-8 pt-6 border-t">
-          <button className="w-full">
+          <button className="w-full" onClick={() => signIn('google', {
+            callbackUrl: `${window.location.origin}/dashboard`
+          })}>
             <WhiteButton><p className="flex items-center gap-2 justify-center"><FcGoogle />Continue with Google</p></WhiteButton>
           </button>
-          <button className="w-full mt-6">
+          <button className="w-full mt-6" onClick={() => signIn('github', {
+            callbackUrl: `${window.location.origin}/dashboard`
+          })}>
           <WhiteButton><p className="flex items-center gap-2 justify-center"><FaGithub />Continue with GitHub</p></WhiteButton>
           </button>
         </div>

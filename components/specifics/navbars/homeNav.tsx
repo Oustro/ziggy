@@ -4,9 +4,14 @@ import Link from "next/link"
 import HoverWords from "@/components/generics/hoverWords"
 import BlackButton from "@/components/generics/blackButton"
 
-import { VscLinkExternal } from "react-icons/vsc";
+import { VscLinkExternal } from "react-icons/vsc"
 
-export default function HomeNav() {
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/utils/auth"
+
+export default async function HomeNav() {
+  const session = await getServerSession(authOptions)
+
   return (
     <nav className="sticky text-sm top-0 z-50 w-full backdrop-blur from-white-50 h-16 border-b px-6 flex items-center justify-between">
       <div className="flex items-center gap-8">
@@ -38,12 +43,20 @@ export default function HomeNav() {
         </div>
       </div>
       <div className="flex items-center gap-6">
-        <Link href="/register/login">
-          <HoverWords>Login</HoverWords>
-        </Link>
-        <Link href="/register/signup">
-          <BlackButton>Try Ziggy for Free</BlackButton>
-        </Link>
+        {session ? (
+          <Link href="/dashboard">
+            <BlackButton>Dashboard</BlackButton>
+          </Link>
+        ) : (
+          <>
+            <Link href="/register/login">
+              <HoverWords>Login</HoverWords>
+            </Link>
+            <Link href="/register/signup">
+              <BlackButton>Try Ziggy for Free</BlackButton>
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   )

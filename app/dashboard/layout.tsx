@@ -1,5 +1,3 @@
-import RegisterNav from "@/components/specifics/navbars/registerNav"
-
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/utils/auth"
 import { redirect } from "next/navigation"
@@ -11,13 +9,12 @@ export default async function RootLayout({
 }>) {
   const session = await getServerSession(authOptions)
 
-  if (session) {
-    redirect("/dashboard")
+  if (!session) {
+    redirect("/register/login")
   }
-
+  
   return (
     <main>
-      <RegisterNav />
       {children}
     </main>
   )
