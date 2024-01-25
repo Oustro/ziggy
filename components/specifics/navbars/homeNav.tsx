@@ -4,9 +4,11 @@ import Link from "next/link"
 import HoverWords from "@/components/generics/hoverWords"
 import BlackButton from "@/components/generics/blackButton"
 
+import { VscLinkExternal } from "react-icons/vsc";
+
 export default function HomeNav() {
   return (
-    <nav className="sticky text-sm top-0 z-50 w-full backdrop-blur from-white-50 h-16 border-b text-xl px-4 flex items-center justify-between">
+    <nav className="sticky text-sm top-0 z-50 w-full backdrop-blur from-white-50 h-16 border-b px-6 flex items-center justify-between">
       <div className="flex items-center gap-8">
         <Link className="flex items-center gap-1" href="/">
           <Image
@@ -21,17 +23,17 @@ export default function HomeNav() {
           <Link href="/info/features">
               <HoverWords>Features</HoverWords>
           </Link>
-          <Link href="/info/features">
+          <Link href="/info/blog">
               <HoverWords>Blog</HoverWords>
           </Link>
-          <Link href="/info/features">
+          <Link href="/info/changelog">
               <HoverWords>Changelog</HoverWords>
           </Link>
-          <Link href="/info/features">
+          <Link href="/info/pricing">
               <HoverWords>Pricing</HoverWords>
           </Link>
-          <Link href="/info/features">
-              <HoverWords>GitHub</HoverWords>
+          <Link target="_blank" href="https://www.github.com/oustro/ziggy">
+            <HoverWords><span className="flex items-center gap-1">GitHub <VscLinkExternal /></span></HoverWords>
           </Link>
         </div>
       </div>

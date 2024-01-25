@@ -1,12 +1,14 @@
 import HomeNav from "@/components/specifics/navbars/homeNav";
 
-export default function Home() {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <main>
       <HomeNav />
-      <div className="h-96 w-full">
-        <h1>Home</h1>
-      </div>
+      {children}
     </main>
   );
 }
