@@ -1,4 +1,4 @@
-import LogoutButton from "@/components/specifics/logoutButton"
+import LogoutButton from "@/components/specifics/authComponents/logoutButton"
 
 export default function Dashboard() {
   return (
