@@ -19,7 +19,9 @@ export default async function RootLayout({
     <main>
       <div className="flex">
         <DashboardNav />
-        {children}
+        <div className="w-full">
+          {children}
+        </div>
       </div>
     </main>
   )

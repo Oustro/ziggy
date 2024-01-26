@@ -46,7 +46,7 @@ export default async function DashboardNav() {
             <HoverWords><span className="flex items-center gap-3"><IoHelpOutline /> Help</span></HoverWords>
           </Link>
           <UserSettings><HoverWords><span className="flex items-center gap-3"><IoSettingsOutline /> Settings</span></HoverWords></UserSettings>
-          <div className="mt-4 bg-red-400 rounded">
+          <div className="mt-4">
             <LogoutButton />
           </div>
         </div>

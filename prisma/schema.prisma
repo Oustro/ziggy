@@ -59,6 +59,34 @@ model UserInfo {
   id        String   @id @default(cuid())
   name      String?
   email     String?  @unique
+  teams     Team[]   @relation("UserTeams")
+}
+
+model Team {
+  id      String   @id @default(cuid())
+  name    String
+  plan    Int
+  users   UserInfo[] @relation("UserTeams")
+  folders Folder[]
+}
+
+model Folder {
+  id      String    @id @default(cuid())
+  name    String
+  teamId  String    @map("team_id")
+  team    Team      @relation(fields: [teamId], references: [id])
+  interviews Interview[]
+}
+
+model Interview {
+  id        String   @id @default(cuid())
+  name      String
+  responses Int
+  namespace String  @unique
+  collect   Boolean
+  guide     String
+  folderId  String   @map("folder_id")
+  folder    Folder   @relation(fields: [folderId], references: [id])
 }
 
 
