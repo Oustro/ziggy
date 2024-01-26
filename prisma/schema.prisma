@@ -59,22 +59,25 @@ model UserInfo {
   id        String   @id @default(cuid())
   name      String?
   email     String?  @unique
-  teams     Team[]   @relation("UserTeams")
+  teams     Team[]
 }
 
 model Team {
-  id      String   @id @default(cuid())
-  name    String
-  plan    Int
-  users   UserInfo[] @relation("UserTeams")
-  folders Folder[]
+  id             String   @id @default(cuid())
+  name           String
+  plan           Int
+  interviewer    String
+  context        String
+  members        UserInfo[]
+  folders        Folder[]
+  createdAt      DateTime @default(now())
 }
 
 model Folder {
   id      String    @id @default(cuid())
   name    String
-  teamId  String    @map("team_id")
   team    Team      @relation(fields: [teamId], references: [id])
+  teamId  String
   interviews Interview[]
 }
 
@@ -85,8 +88,8 @@ model Interview {
   namespace String  @unique
   collect   Boolean
   guide     String
-  folderId  String   @map("folder_id")
-  folder    Folder   @relation(fields: [folderId], references: [id])
+  folder    Folder  @relation(fields: [folderId], references: [id])
+  folderId  String
 }
 
 

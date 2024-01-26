@@ -14,7 +14,7 @@ export default async function DashboardNav() {
   const session = await getServerSession(authOptions)
 
   return (
-    <nav className="fixed top-0 left-0 w-[250px] h-screen relative border-r border-b px-6">
+    <nav className="sticky top-0 left-0 w-[250px] h-screen relative border-r px-6">
       <Link className="flex h-16 items-center gap-1" href="/dashboard">
         <Image
         src="/ziggy-logo.svg"

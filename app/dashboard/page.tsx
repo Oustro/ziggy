@@ -1,12 +1,8 @@
-import HomeNav from "@/components/specifics/navbars/homeNav"
-
 export default async function Dashboard() {
 
   return (
     <main>
-      <div className="bg-red-400">
-        <h1>Dashboard</h1>
-      </div>
+      <h1 className="text-4xl font-semibold mt-16 ml-12">Current Teams</h1>
     </main>
   )
 }
