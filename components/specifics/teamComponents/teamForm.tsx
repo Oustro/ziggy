@@ -29,7 +29,7 @@ export default function TeamForm() {
       <form className="mt-8 grid gap-12 text-sm font-medium">
         <div>
           <label><span className="text-red-600">*</span> Team name</label>
-          <p className="text-xs text-slate-600 mt-1">This is the name of your team.</p>
+          <p className="text-xs text-slate-600 mt-1 font-normal">This is the name of your team.</p>
           <input
           type="text"
           className="p-2 w-96 mt-4 rounded border-b border-slate-300 text-base focus:outline-none"
@@ -40,7 +40,7 @@ export default function TeamForm() {
         </div>
         <div>
           <label><span className="text-red-600">*</span> Interviewer name</label>
-          <p className="text-xs text-slate-600 mt-1">Customize the name the Al takes when conducting interviews.</p>
+          <p className="text-xs text-slate-600 mt-1 font-normal">Customize the name the Al takes when conducting interviews.</p>
           <input
           type="text"
           className="p-2 w-96 mt-4 rounded border-b border-slate-300 text-base focus:outline-none"
@@ -51,28 +51,28 @@ export default function TeamForm() {
         </div>
         <div>
           <label><span className="text-red-600">*</span> Team context</label>
-          <p className="text-xs text-slate-600 mt-1">Providing context about your team allows Ziggy to tailor interviews to suit your exact requirements and needs.</p>
+          <p className="text-xs text-slate-600 mt-1 font-normal">Providing context about your team allows Ziggy to tailor interviews to suit your exact requirements and needs.</p>
           <textarea
           className="p-2 w-[50%] mt-4 rounded resize-y border-b border-slate-300 text-base focus:outline-none"
           placeholder="Enter context for this team..."
-          maxLength={40}
           rows={4}
           required
           />
         </div>
         <div>
           <label><span className="text-red-600">*</span> Choose team plan.</label>
-          <Link target="_blank" href="/info/pricing"><p className="text-xs text-slate-600 mt-1 underline">Learn more about pricing plans and features here.</p></Link>
+          <Link target="_blank" href="/info/pricing"><p className="text-xs font-normal text-slate-600 mt-1 underline">Learn more about pricing plans and features here.</p></Link>
           {pricingPlans.map((plan) => (
             <div key={plan.symbol} className="flex items-center gap-4 mt-3">
               <input
               type="radio"
               className="w-4 h-4"
-              name="pricingPlan"
+              id={plan.symbol.toString()}
+              name="pricingPlan"          
               value={plan.symbol}
               required
               />
-              <p className="text-slate-600">{plan.title}</p>
+              <label htmlFor={plan.symbol.toString()} className="text-slate-600">{plan.title}</label>
             </div>
           ))}
         </div>
