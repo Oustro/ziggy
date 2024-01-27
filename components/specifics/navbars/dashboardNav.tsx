@@ -5,10 +5,12 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/utils/auth"
 
 import HoverWords from "@/components/generics/hoverWords"
+import HoverIcon from "@/components/generics/hoverIcon"
+
 import UserSettings from "@/components/specifics/settingComponents/userSettings"
 import LogoutButton from "@/components/specifics/authComponents/logoutButton"
 
-import { IoSettingsOutline, IoFlashOutline, IoChatboxEllipsesOutline, IoHelpOutline } from "react-icons/io5";
+import { IoSettingsOutline, IoFlashOutline, IoChatboxEllipsesOutline, IoHelpOutline, IoAdd } from "react-icons/io5";
 
 export default async function DashboardNav() {
   const session = await getServerSession(authOptions)
@@ -24,8 +26,11 @@ export default async function DashboardNav() {
         />
         <h4 className="text-lg font-semibold">Ziggy</h4>
       </Link>
-      <div className="mt-16">
-        <p className="text-sm font-medium border-b pb-2">Teams</p>
+      <div className="mt-16 flex items-center border-b pb-1 justify-between">
+        <p className="text-sm font-medium">Team</p>
+        <Link href="/dashboard/create">
+          <HoverIcon><IoAdd /></HoverIcon>
+        </Link>
       </div>
       <div className="bottom-8 absolute">
         <div className="flex items-center gap-3 mt-12 w-full overflow-hidden">

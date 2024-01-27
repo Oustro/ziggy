@@ -5,7 +5,7 @@ import Link from "next/link"
 import BlackButton from "@/components/generics/blackButton"
 import HoverWords from "@/components/generics/hoverWords"
 
-export default function TeamForm() {
+export default function TeamForm({ teamInfo, setTeamInfo } : { teamInfo : { name: string, interviewerName: string, context: string, plan: number }, setTeamInfo: Function }) {
 
   const pricingPlans = [
     {
@@ -22,19 +22,33 @@ export default function TeamForm() {
     },
   ]
 
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+
+    console.log(teamInfo)
+
+    // create team with memebers being the current user.
+    // grab the team id
+    // send depending on the plan, send payment page
+    // send to invite
+    // back to dashboard
+  }
+
   return (
     <main>
       <h1 className="text-5xl mt-4 font-semibold">Create a Team</h1>
       <p className="text-slate-600 mt-6 w-[90%]">Teams are an important part of Ziggy. They provide context about your business or organzation to Ziggy for interviews. With more information, Ziggy is able to provide interviewees a better experience overall.</p>
-      <form className="mt-8 grid gap-12 text-sm font-medium">
+      <form className="mt-8 grid gap-12 text-sm font-medium" onSubmit={handleSubmit}>
         <div>
           <label><span className="text-red-600">*</span> Team name</label>
           <p className="text-xs text-slate-600 mt-1 font-normal">This is the name of your team.</p>
           <input
           type="text"
-          className="p-2 w-96 mt-4 rounded border-b border-slate-300 text-base focus:outline-none"
+          className="w-96 mt-4 border-b pb-2 text-base focus:outline-none"
           placeholder="Enter your team name..."
           maxLength={40}
+          value={teamInfo.name}
+          onChange={(e) => setTeamInfo({...teamInfo, name: e.target.value})}
           required
           />
         </div>
@@ -43,9 +57,11 @@ export default function TeamForm() {
           <p className="text-xs text-slate-600 mt-1 font-normal">Customize the name the Al takes when conducting interviews.</p>
           <input
           type="text"
-          className="p-2 w-96 mt-4 rounded border-b border-slate-300 text-base focus:outline-none"
+          className="w-96 mt-4 border-b pb-2 text-base focus:outline-none"
           placeholder="Enter the interviewer's name..."
           maxLength={40}
+          value={teamInfo.interviewerName}
+          onChange={(e) => setTeamInfo({...teamInfo, interviewerName: e.target.value})}
           required
           />
         </div>
@@ -53,9 +69,11 @@ export default function TeamForm() {
           <label><span className="text-red-600">*</span> Team context</label>
           <p className="text-xs text-slate-600 mt-1 font-normal">Providing context about your team allows Ziggy to tailor interviews to suit your exact requirements and needs.</p>
           <textarea
-          className="p-2 w-[50%] mt-4 rounded resize-y border-b border-slate-300 text-base focus:outline-none"
+          className="w-[50%] mt-4 resize-y text-base focus:outline-none"
           placeholder="Enter context for this team..."
           rows={4}
+          value={teamInfo.context}
+          onChange={(e) => setTeamInfo({...teamInfo, context: e.target.value})}
           required
           />
         </div>
@@ -68,6 +86,7 @@ export default function TeamForm() {
               type="radio"
               className="w-4 h-4"
               id={plan.symbol.toString()}
+              onClick={() => setTeamInfo({...teamInfo, plan: plan.symbol})}
               name="pricingPlan"          
               value={plan.symbol}
               required
@@ -76,9 +95,9 @@ export default function TeamForm() {
             </div>
           ))}
         </div>
-        <div className="flex gap-4 mt-12 items-center">
+        <div className="flex gap-4 items-center">
           <button type="submit">
-            <BlackButton>Create team</BlackButton>
+            <BlackButton>Continue</BlackButton>
           </button>
           <Link href="/dashboard">
               <HoverWords>Cancel</HoverWords>
