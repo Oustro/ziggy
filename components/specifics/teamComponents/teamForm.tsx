@@ -69,7 +69,7 @@ export default function TeamForm({ teamInfo, setTeamInfo } : { teamInfo : { name
           <label><span className="text-red-600">*</span> Team context</label>
           <p className="text-xs text-slate-600 mt-1 font-normal">Providing context about your team allows Ziggy to tailor interviews to suit your exact requirements and needs.</p>
           <textarea
-          className="w-[50%] mt-4 resize-y text-base focus:outline-none"
+          className="w-[50%] mt-4 resize-y border-b pb-2 text-base focus:outline-none"
           placeholder="Enter context for this team..."
           rows={4}
           value={teamInfo.context}
