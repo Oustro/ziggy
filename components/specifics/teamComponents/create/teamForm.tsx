@@ -5,22 +5,7 @@ import Link from "next/link"
 import BlackButton from "@/components/generics/blackButton"
 import HoverWords from "@/components/generics/hoverWords"
 
-export default function TeamForm({ teamInfo, setTeamInfo } : { teamInfo : { name: string, interviewerName: string, context: string, plan: number }, setTeamInfo: Function }) {
-
-  const pricingPlans = [
-    {
-      symbol: 2,
-      title: "2 week Pro team trial",
-    },
-    {
-      symbol: 1,
-      title: "Upgrade to Pro team",
-    },
-    {
-      symbol: 0,
-      title: "Continue with free team",
-    },
-  ]
+export default function TeamForm({ teamInfo, setTeamInfo, setView } : { teamInfo : { name: string, interviewerName: string, context: string, plan: number }, setTeamInfo: Function, setView: Function }) {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -32,11 +17,12 @@ export default function TeamForm({ teamInfo, setTeamInfo } : { teamInfo : { name
     // send depending on the plan, send payment page
     // send to invite
     // back to dashboard
+    setView(1)
   }
 
   return (
     <main>
-      <h1 className="text-5xl mt-4 font-semibold">Create a Team</h1>
+      <h1 className="text-4xl mt-4 font-semibold">Create a Team</h1>
       <p className="text-slate-600 mt-6 w-[90%]">Teams are an important part of Ziggy. They provide context about your business or organzation to Ziggy for interviews. With more information, Ziggy is able to provide interviewees a better experience overall.</p>
       <form className="mt-8 grid gap-12 text-sm font-medium" onSubmit={handleSubmit}>
         <div>
@@ -76,24 +62,6 @@ export default function TeamForm({ teamInfo, setTeamInfo } : { teamInfo : { name
           onChange={(e) => setTeamInfo({...teamInfo, context: e.target.value})}
           required
           />
-        </div>
-        <div>
-          <label><span className="text-red-600">*</span> Choose team plan.</label>
-          <Link target="_blank" href="/info/pricing"><p className="text-xs font-normal text-slate-600 mt-1 underline">Learn more about pricing plans and features here.</p></Link>
-          {pricingPlans.map((plan) => (
-            <div key={plan.symbol} className="flex items-center gap-4 mt-3">
-              <input
-              type="radio"
-              className="w-4 h-4"
-              id={plan.symbol.toString()}
-              onClick={() => setTeamInfo({...teamInfo, plan: plan.symbol})}
-              name="pricingPlan"          
-              value={plan.symbol}
-              required
-              />
-              <label htmlFor={plan.symbol.toString()} className="text-slate-600">{plan.title}</label>
-            </div>
-          ))}
         </div>
         <div className="flex gap-4 items-center">
           <button type="submit">

@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 
-import TeamForm from "@/components/specifics/teamComponents/teamForm"
+import TeamForm from "@/components/specifics/teamComponents/create/teamForm"
+import SelectPlan from "@/components/specifics/teamComponents/create/selectPlan"
 
 export default function Flow({ userInfo } : { userInfo: any }) {
   const [teamInfo, setTeamInfo] = useState({
@@ -16,7 +17,10 @@ export default function Flow({ userInfo } : { userInfo: any }) {
 
   const views = [
     {
-      content: <TeamForm teamInfo={teamInfo} setTeamInfo={setTeamInfo} />
+      content: <TeamForm teamInfo={teamInfo} setTeamInfo={setTeamInfo} setView={setView} />
+    },
+    {
+      content: <SelectPlan teamInfo={teamInfo} setTeamInfo={setTeamInfo} setView={setView} />
     },
   ]
 
