@@ -45,6 +45,7 @@ export const authOptions = {
       return {
         name: sessionUser?.name || null,
         email: session?.user?.email || null,
+        customerId: sessionUser?.stripeID || null,
         ...session
       }
     }

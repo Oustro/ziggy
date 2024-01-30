@@ -7,7 +7,7 @@ import Badge from "@/components/generics/badge"
 
 import { FaCheck } from "react-icons/fa";
 
-export default function SelectPlan({ teamInfo, setTeamInfo, setView, customerId } : { teamInfo : { name: string, interviewerName: string, context: string }, setTeamInfo: Function, setView: Function, customerId: string }) {
+export default function SelectPlan({ teamid, customerId } : { teamid: string, customerId: string }) {
 
   const plans = [
     {
@@ -37,7 +37,7 @@ export default function SelectPlan({ teamInfo, setTeamInfo, setView, customerId 
   ]
   return (
     <main>
-      <h1 className="text-4xl mt-4 font-semibold">Select a Plan</h1>
+      <h1 className="text-4xl mt-4 font-semibold">Select a Plan {teamid} {customerId}</h1>
       <p className="text-slate-600 mt-6 w-[90%]">Learn more and compare Ziggy's pricing plans and features <Link target="_blank" href="/info/pricing" className="underline">here.</Link></p>
       <div className="flex gap-12 mt-16">
         {plans.map((plan, index) => (

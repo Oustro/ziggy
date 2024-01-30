@@ -12,14 +12,16 @@ export default function Flow({ userInfo } : { userInfo: any }) {
     context: "",
   })
 
+  const [teamId, setTeamId] = useState<string>("")
+
   const [view, setView] = useState<number>(0)
 
   const views = [
     {
-      content: <TeamForm teamInfo={teamInfo} setTeamInfo={setTeamInfo} setView={setView} />
+      content: <TeamForm teamInfo={teamInfo} setTeamInfo={setTeamInfo} setView={setView} setTeamId={setTeamId} customerId={userInfo.customerId} />
     },
     {
-      content: <SelectPlan teamInfo={teamInfo} setTeamInfo={setTeamInfo} setView={setView} customerId={userInfo.customerId} />
+      content: <SelectPlan teamid={teamId} customerId={userInfo.customerId} />
     },
   ]
 
