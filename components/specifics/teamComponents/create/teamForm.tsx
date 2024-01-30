@@ -5,7 +5,7 @@ import Link from "next/link"
 import BlackButton from "@/components/generics/blackButton"
 import HoverWords from "@/components/generics/hoverWords"
 
-export default function TeamForm({ teamInfo, setTeamInfo, setView } : { teamInfo : { name: string, interviewerName: string, context: string, plan: number }, setTeamInfo: Function, setView: Function }) {
+export default function TeamForm({ teamInfo, setTeamInfo, setView } : { teamInfo : { name: string, interviewerName: string, context: string }, setTeamInfo: Function, setView: Function }) {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()

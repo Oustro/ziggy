@@ -10,7 +10,6 @@ export default function Flow({ userInfo } : { userInfo: any }) {
     name: "",
     interviewerName: "",
     context: "",
-    plan: 0
   })
 
   const [view, setView] = useState<number>(0)
@@ -20,7 +19,7 @@ export default function Flow({ userInfo } : { userInfo: any }) {
       content: <TeamForm teamInfo={teamInfo} setTeamInfo={setTeamInfo} setView={setView} />
     },
     {
-      content: <SelectPlan teamInfo={teamInfo} setTeamInfo={setTeamInfo} setView={setView} />
+      content: <SelectPlan teamInfo={teamInfo} setTeamInfo={setTeamInfo} setView={setView} customerId={userInfo.customerId} />
     },
   ]
 

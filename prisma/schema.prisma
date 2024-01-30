@@ -59,6 +59,7 @@ model UserInfo {
   id        String   @id @default(cuid())
   name      String?
   email     String?  @unique
+  stripeID  String?  @unique
   teams     Team[]
 }
 
