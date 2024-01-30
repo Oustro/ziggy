@@ -14,6 +14,9 @@ export async function POST(request: NextRequest) {
       }],
       customer: upgradeInfo.customerId,
       mode: 'subscription',
+      metadata : {
+        teamId: upgradeInfo.teamId
+      },
       success_url: upgradeInfo.location+"/dashboard?team="+upgradeInfo.teamId,
       cancel_url: upgradeInfo.location+"/dashboard?team="+upgradeInfo.teamId,
       allow_promotion_codes: true
