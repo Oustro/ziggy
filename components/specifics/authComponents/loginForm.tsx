@@ -23,7 +23,7 @@ export default function LoginForm({ setView } : { setView: Function }) {
     setError("")
     setLoading(true)
 
-    const registerChecksResponse = await fetch('/api/auth/check', {
+    const responseRegisterChecks = await fetch('/api/auth/check', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -33,11 +33,11 @@ export default function LoginForm({ setView } : { setView: Function }) {
       })
     })
 
-    if (registerChecksResponse.status === 500) {
+    if (responseRegisterChecks.status === 500) {
       return setError("An error occurred. Please try again later.")
     }
     
-    if (registerChecksResponse.status === 403) {
+    if (responseRegisterChecks.status === 403) {
       await signIn('email', {
         email: email,
         callbackUrl: `${window.location.origin}/dashboard`,

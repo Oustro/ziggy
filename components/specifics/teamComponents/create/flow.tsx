@@ -21,7 +21,7 @@ export default function Flow({ userInfo } : { userInfo: any }) {
       content: <TeamForm teamInfo={teamInfo} setTeamInfo={setTeamInfo} setView={setView} setTeamId={setTeamId} customerId={userInfo.customerId} />
     },
     {
-      content: <SelectPlan teamid={teamId} customerId={userInfo.customerId} />
+      content: <SelectPlan teamId={teamId} customerId={userInfo.customerId} />
     },
   ]
 

@@ -24,7 +24,7 @@ export default function SignupForm({ setView } : { setView: Function }) {
     setError("")
     setLoading(true)
 
-    const registerChecksResponse = await fetch('/api/auth/check', {
+    const responseRegisterChecks = await fetch('/api/auth/check', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -35,11 +35,11 @@ export default function SignupForm({ setView } : { setView: Function }) {
       })
     })
 
-    if (registerChecksResponse.status === 403) {
+    if (responseRegisterChecks.status === 403) {
       return setError("This email already has a Ziggy account, please login.")
     }
 
-    if (registerChecksResponse.status === 500) {
+    if (responseRegisterChecks.status === 500) {
       return setError("An error occurred. Please try again later.")
     }
 

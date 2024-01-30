@@ -3,12 +3,15 @@
 import Link from "next/link"
 
 import BlackButton from "@/components/generics/blackButton"
+import HoverWords from "@/components/generics/hoverWords"
 import Badge from "@/components/generics/badge"
+
+import { useRouter } from "next/navigation";
 
 import { FaCheck } from "react-icons/fa";
 
-export default function SelectPlan({ teamid, customerId } : { teamid: string, customerId: string }) {
-
+export default function SelectPlan({ teamId, customerId } : { teamId: string, customerId: string }) {
+  const router = useRouter()
   const plans = [
     {
       title: "Free Plan",
@@ -20,7 +23,7 @@ export default function SelectPlan({ teamid, customerId } : { teamid: string, cu
         "50 questions / interview",
         "1 team member",
       ],
-      action: <Link href="/dashboard"><BlackButton>Continue with Free Plan</BlackButton></Link>
+      action: <Link href={`/dashboard?team=${teamId}`}><BlackButton>Continue with Free Plan</BlackButton></Link>
     },
     {
       title: "Ziggy Pro Plan",
@@ -32,12 +35,30 @@ export default function SelectPlan({ teamid, customerId } : { teamid: string, cu
         "500 questions / interview",
         "10 team member",
       ],
-      action: <Link href="/dashboard"><BlackButton>Continue with Ziggy Pro Plan</BlackButton></Link>
+      action: <button className="w-full" onClick={handleSubmit}><BlackButton>Continue with Ziggy Pro Plan</BlackButton></button>
     },
   ]
+
+  async function handleSubmit() {
+    const responseBillingUpgrade = await fetch('/api/billing/upgrade', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ 
+        teamId: teamId,
+        customerId: customerId,
+        location: window.location.origin
+      })
+    })
+
+    const data = await responseBillingUpgrade.json()
+    return router.push(data.sessionUrl)
+  } 
+
   return (
     <main>
-      <h1 className="text-4xl mt-4 font-semibold">Select a Plan {teamid} {customerId}</h1>
+      <h1 className="text-4xl mt-4 font-semibold">Select a Plan</h1>
       <p className="text-slate-600 mt-6 w-[90%]">Learn more and compare Ziggy's pricing plans and features <Link target="_blank" href="/info/pricing" className="underline">here.</Link></p>
       <div className="flex gap-12 mt-16">
         {plans.map((plan, index) => (
@@ -58,7 +79,13 @@ export default function SelectPlan({ teamid, customerId } : { teamid: string, cu
           </div>
         ))}
       </div>
-      <p className="text-slate-600 text-xs underline mt-24 text-center"><Link href="mailto:sales@useziggy.com">Looking for enterprise? Contact us</Link></p>
+      <div className="text-sm mt-12 text-center font-medium">
+        <Link href="mailto:sales@useziggy.com">
+          <HoverWords>
+            Looking for enterprise? Contact us
+          </HoverWords>
+        </Link>
+      </div>
     </main>
   )
 }
