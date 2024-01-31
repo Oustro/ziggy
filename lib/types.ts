@@ -18,4 +18,12 @@ export interface teamSavedInfo {
   context: string,
   stripeID: string,
   createdAt: Date
+  members: Array<userSavedInfo>
+}
+
+export interface userSavedInfo {
+  id: string,
+  name: string,
+  email: string,
+  stripeID: string
 }

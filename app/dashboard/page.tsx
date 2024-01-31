@@ -1,4 +1,4 @@
-import TeamCards from "@/components/specifics/teamComponents/teamCards"
+import TeamCards from "@/components/specifics/teamComponents/cards/teamCards"
 
 export default async function Dashboard() {
 
