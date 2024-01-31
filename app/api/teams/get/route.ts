@@ -13,8 +13,18 @@ export async function GET(request: NextRequest) {
   }
 
   try {
+
+    const teams = await prisma.team.findMany({
+      where: {
+        members: {
+          some: {
+            email: session.email
+          }
+        }
+      }
+    })
   
-    return NextResponse.json({ "message": "success" }, { status: 200 })
+    return NextResponse.json({ "message": "success", teams: teams }, { status: 200 })
   } catch (error) {
     console.log(error)
     return NextResponse.json({ "message": "error" }, { status: 500 })

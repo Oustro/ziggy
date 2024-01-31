@@ -9,3 +9,13 @@ export interface teamInfo {
   interviewerName: string
   context: string
 }
+
+export interface teamSavedInfo {
+  id: string,
+  name: string,
+  plan: number,
+  interviewer: string,
+  context: string,
+  stripeID: string,
+  createdAt: Date
+}
