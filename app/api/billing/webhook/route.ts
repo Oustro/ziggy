@@ -13,30 +13,18 @@ export async function POST(request: NextRequest) {
     const event = stripe.webhooks.constructEvent(payload, sig, endpointSecret)
 
     if (event.type === 'customer.subscription.created') {
+      const subscriptionId = event.data.object.id
       const teamId = event.data.object.metadata.teamId
+      
       await prisma.team.update({
         where: {
           id: teamId
         },
         data: {
-          plan: 1
+          plan: 1,
+          stripeID: subscriptionId
         }
       })
-    }
-    else if (event.type === 'customer.subscription.deleted') {
-      const teamId = event.data.object.metadata.teamId
-      await prisma.team.update({
-        where: {
-          id: teamId
-        },
-        data: {
-          plan: 0
-        }
-      })
-    }
-    else if (event.type === 'customer.subscription.paused') {
-      const session = event.data.object
-      console.log(session)
     }
 
   return NextResponse.json({ "message": "success" }, { status: 200 })

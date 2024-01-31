@@ -70,6 +70,7 @@ model Team {
   interviewer    String
   context        String
   members        UserInfo[]
+  stripeID       String?  @unique
   folders        Folder[]
   createdAt      DateTime @default(now())
 }
