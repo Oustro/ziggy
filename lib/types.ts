@@ -8,5 +8,4 @@ export interface teamInfo {
   name: string
   interviewerName: string
   context: string
-  creator: string
 }

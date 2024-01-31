@@ -2,7 +2,17 @@ import { NextResponse, NextRequest } from 'next/server'
 import prisma from '@/utils/db'
 import { teamInfo } from '@/lib/types'
 
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/utils/auth'
+
 export async function POST(request: NextRequest) {
+
+  const session = await getServerSession({ req: request, ...authOptions })
+  
+  if (!session) {
+    return NextResponse.json({ "message": "not authenicated" }, { status: 401 })
+  }
+
   const teamInfo = await request.json() as teamInfo
 
   try {
@@ -14,7 +24,7 @@ export async function POST(request: NextRequest) {
         plan: 0,
         members: {
           connect : {
-            stripeID: teamInfo.creator
+            stripeID: session.customerId as string
           }
         }
       }

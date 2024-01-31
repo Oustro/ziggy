@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 
 import { FaCheck } from "react-icons/fa";
 
-export default function SelectPlan({ teamId, customerId } : { teamId: string, customerId: string }) {
+export default function SelectPlan({ teamId } : { teamId: string }) {
   const router = useRouter()
   const plans = [
     {
@@ -47,7 +47,6 @@ export default function SelectPlan({ teamId, customerId } : { teamId: string, cu
       },
       body: JSON.stringify({ 
         teamId: teamId,
-        customerId: customerId,
         location: window.location.origin
       })
     })

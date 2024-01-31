@@ -5,7 +5,7 @@ import { useState } from "react"
 import TeamForm from "@/components/specifics/teamComponents/create/teamForm"
 import SelectPlan from "@/components/specifics/teamComponents/create/selectPlan"
 
-export default function Flow({ userInfo } : { userInfo: any }) {
+export default function Flow() {
   const [teamInfo, setTeamInfo] = useState({
     name: "",
     interviewerName: "",
@@ -18,10 +18,10 @@ export default function Flow({ userInfo } : { userInfo: any }) {
 
   const views = [
     {
-      content: <TeamForm teamInfo={teamInfo} setTeamInfo={setTeamInfo} setView={setView} setTeamId={setTeamId} customerId={userInfo.customerId} />
+      content: <TeamForm teamInfo={teamInfo} setTeamInfo={setTeamInfo} setView={setView} setTeamId={setTeamId} />
     },
     {
-      content: <SelectPlan teamId={teamId} customerId={userInfo.customerId} />
+      content: <SelectPlan teamId={teamId} />
     },
   ]
 

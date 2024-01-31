@@ -7,7 +7,7 @@ import { useState } from "react"
 import BlackButton from "@/components/generics/blackButton"
 import HoverWords from "@/components/generics/hoverWords"
 
-export default function TeamForm({ teamInfo, setTeamInfo, setView, setTeamId, customerId } : { teamInfo : { name: string, interviewerName: string, context: string }, setTeamInfo: Function, setView: Function, setTeamId: Function, customerId: string }) {
+export default function TeamForm({ teamInfo, setTeamInfo, setView, setTeamId } : { teamInfo : { name: string, interviewerName: string, context: string }, setTeamInfo: Function, setView: Function, setTeamId: Function }) {
   const [error, setError] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
 
@@ -23,7 +23,6 @@ export default function TeamForm({ teamInfo, setTeamInfo, setView, setTeamId, cu
         name: teamInfo.name,
         interviewerName: teamInfo.interviewerName,
         context: teamInfo.context,
-        creator: customerId
       })
     })
 
