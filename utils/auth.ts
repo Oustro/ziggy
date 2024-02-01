@@ -8,6 +8,7 @@ import Github from "next-auth/providers/github"
 import Google from "next-auth/providers/google"
 import EmailProvider from "next-auth/providers/email"
 
+import Stripe from "stripe"
 import { Redis } from '@upstash/redis'
 
 export const authOptions = {
@@ -44,6 +45,7 @@ export const authOptions = {
       return {
         name: sessionUser?.name || null,
         email: session?.user?.email || null,
+        customerId: sessionUser?.stripeID || null,
         ...session
       }
     }
@@ -67,10 +69,17 @@ export const authOptions = {
           uname = user.name || ""
         }
 
+        const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string)
+
+        const customer = await stripe.customers.create({
+          email: user.email || "",
+        })
+
         await prisma.userInfo.create({
           data: {
             name: uname,
             email: user.email,
+            stripeID: customer.id
           }
         })
       }

@@ -2,22 +2,40 @@
 
 import Link from "next/link"
 
+import { useState } from "react"
+
 import BlackButton from "@/components/generics/blackButton"
 import HoverWords from "@/components/generics/hoverWords"
 
-export default function TeamForm({ teamInfo, setTeamInfo, setView } : { teamInfo : { name: string, interviewerName: string, context: string, plan: number }, setTeamInfo: Function, setView: Function }) {
+export default function TeamForm({ teamInfo, setTeamInfo, setView, setTeamId } : { teamInfo : { name: string, interviewerName: string, context: string }, setTeamInfo: Function, setView: Function, setTeamId: Function }) {
+  const [error, setError] = useState<string>("")
+  const [loading, setLoading] = useState<boolean>(false)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
-    console.log(teamInfo)
+    setLoading(true)
+    setError("")
 
-    // create team with memebers being the current user.
-    // grab the team id
-    // send depending on the plan, send payment page
-    // send to invite
-    // back to dashboard
-    setView(1)
+    const responseTeamCreate = await fetch("/api/teams/create", {
+      method: "POST",
+      body: JSON.stringify({
+        name: teamInfo.name,
+        interviewerName: teamInfo.interviewerName,
+        context: teamInfo.context,
+      })
+    })
+
+    if (responseTeamCreate.ok) {
+      const teamId = await responseTeamCreate.json()
+
+      setTeamId(teamId.teamId)
+      setLoading(false)
+      return setView(1)
+    }
+
+    setLoading(false)
+    return setError("An error occurred. Please try again later.")
   }
 
   return (
@@ -64,7 +82,7 @@ export default function TeamForm({ teamInfo, setTeamInfo, setView } : { teamInfo
           />
         </div>
         <div className="flex gap-4 items-center">
-          <button type="submit">
+          <button type="submit" disabled={loading}>
             <BlackButton>Continue</BlackButton>
           </button>
           <Link href="/dashboard">
@@ -72,6 +90,7 @@ export default function TeamForm({ teamInfo, setTeamInfo, setView } : { teamInfo
           </Link>
         </div>
       </form>
+      <p className="mt-4 text-sm text-red-500">{error}</p>
     </main>
   )
 }

@@ -59,6 +59,7 @@ model UserInfo {
   id        String   @id @default(cuid())
   name      String?
   email     String?  @unique
+  stripeID  String?  @unique
   teams     Team[]
 }
 
@@ -69,6 +70,7 @@ model Team {
   interviewer    String
   context        String
   members        UserInfo[]
+  stripeID       String?  @unique
   folders        Folder[]
   createdAt      DateTime @default(now())
 }

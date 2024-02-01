@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     })
 
     if (validEmail) {
-      return NextResponse.json({ "message": "error" }, { status: 403 })
+      return NextResponse.json({ "message": "Email Exists" }, { status: 403 })
     }
 
     const redis = new Redis({
