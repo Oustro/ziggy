@@ -54,20 +54,18 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
   } 
 
   async function handleDowngrade() {
-    const responseBillingUpgrade = await fetch('/api/billing/downgrade', {
-      method: "POST",
+    await fetch('/api/billing/downgrade', {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ 
         teamId: team.id,
-        location: window.location.origin
+        subscription: team.stripeID,
       })
     })
 
-    if (responseBillingUpgrade.ok) {
-      return router.refresh()
-    }
+    return setRefreshKey((prevKey: number) => prevKey + 1)
   } 
 
   return (
