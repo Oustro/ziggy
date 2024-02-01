@@ -30,7 +30,7 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
       view: 0
     },
     {
-      name: 'General',
+      name: 'Update Info',
       component: <GeneralSettings team={team} setRefreshKey={setRefreshKey} />,
       view: 1
     },

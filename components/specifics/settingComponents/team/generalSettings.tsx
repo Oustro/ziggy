@@ -43,13 +43,12 @@ export default function GeneralSettings({ team, setRefreshKey } : { team: teamSa
 
   return (
     <main>
-      <p className="text-slate-600">Update any information so Ziggy can best reflect and represent your team.</p>
-      <form className="grid gap-12 text-sm font-medium mt-8" onSubmit={handleSubmit}>
+      <form className="grid gap-12 font-medium" onSubmit={handleSubmit}>
         <div>
-          <label><span className="text-red-600">*</span> Team name</label>
+          <p className="font-medium"><span className="text-red-600">*</span> Team Name</p>
           <input
           type="text"
-          className="w-full mt-4 border-b pb-2 text-base focus:outline-none"
+          className="w-full text-sm mt-4 border-b pb-2 focus:outline-none"
           placeholder="Enter your team name..."
           maxLength={40}
           value={teamInfo.name}
@@ -58,10 +57,10 @@ export default function GeneralSettings({ team, setRefreshKey } : { team: teamSa
           />
         </div>
         <div>
-          <label><span className="text-red-600">*</span> Interviewer name</label>
+          <p className="font-medium"><span className="text-red-600">*</span> Interviewer Name</p>
           <input
           type="text"
-          className="w-full mt-4 border-b pb-2 text-base focus:outline-none"
+          className="w-full mt-4 border-b pb-2 text-sm focus:outline-none"
           placeholder="Enter the interviewer's name..."
           maxLength={40}
           value={teamInfo.interviewerName}
@@ -70,9 +69,9 @@ export default function GeneralSettings({ team, setRefreshKey } : { team: teamSa
           />
         </div>
         <div>
-          <label><span className="text-red-600">*</span> Team context</label>
+        <p className="font-medium"><span className="text-red-600">*</span> Team Context</p>
           <textarea
-          className="w-full mt-4 resize-y border-b pb-2 text-base focus:outline-none"
+          className="w-full mt-4 resize-y border-b pb-2 text-sm focus:outline-none"
           placeholder="Enter context for this team..."
           rows={4}
           value={teamInfo.context}
@@ -80,11 +79,9 @@ export default function GeneralSettings({ team, setRefreshKey } : { team: teamSa
           required
           />
         </div>
-        <div className="flex justify-end gap-4 items-center">
-          <button type="submit" disabled={loading}>
-            <BlackButton>Update</BlackButton>
-          </button>
-        </div>
+        <button type="submit" disabled={loading}>
+          <BlackButton>Update</BlackButton>
+        </button>
       </form>
       <p className="mt-4 text-sm text-red-500">{error}</p>
     </main>
