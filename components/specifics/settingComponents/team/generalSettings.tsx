@@ -6,7 +6,7 @@ import { teamSavedInfo } from "@/lib/types"
 
 import BlackButton from "@/components/generics/blackButton"
 
-export default function GeneralSettings({ team } : { team: teamSavedInfo }) {
+export default function GeneralSettings({ team, setRefreshKey } : { team: teamSavedInfo, setRefreshKey: Function}) {
 
   const [teamInfo, setTeamInfo] = useState({
     name: team.name,
@@ -37,6 +37,7 @@ export default function GeneralSettings({ team } : { team: teamSavedInfo }) {
       return setError("An error occurred. Please try again later.")
     }
 
+    setRefreshKey((prevKey: number) => prevKey + 1)
     setLoading(false)
   }
 

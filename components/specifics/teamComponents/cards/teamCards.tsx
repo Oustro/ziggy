@@ -15,6 +15,7 @@ export default function TeamCards() {
 
   const [teams, setTeams] = useState([] as teamSavedInfo[])
   const [loading, setLoading] = useState(true)
+  const [refreshKey, setRefreshKey] = useState(0)
   
   async function fetchTeams() {
     const responseTeamsGet = await fetch("/api/teams/get")
@@ -32,7 +33,7 @@ export default function TeamCards() {
   useEffect(() => {
     fetchTeams()
 
-  }, [])
+  }, [refreshKey])
 
   return (
     <main className="px-12 mt-8 mb-16 grid grid-cols-3 gap-6">
@@ -40,7 +41,7 @@ export default function TeamCards() {
         new Array(9)).fill(0).map((_, i) => 
         <LoadingCard key={i} />
       ) : (teams.map((team) => (
-        <Card team={team} key={team.id} open={team.id === searchParams.get("team") ? true : false} />
+        <Card team={team} key={team.id} open={team.id === searchParams.get("team") ? true : false} setRefreshKey={setRefreshKey} />
       )))}
     </main>
   )

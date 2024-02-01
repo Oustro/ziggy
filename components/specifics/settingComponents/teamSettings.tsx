@@ -7,7 +7,7 @@ import { teamSavedInfo } from "@/lib/types"
 
 import GeneralSettings from '@/components/specifics/settingComponents/team/generalSettings'
 
-export default function TeamSettings({ children, initOpen, team } : { children: React.ReactNode, initOpen: boolean, team: teamSavedInfo }) {
+export default function TeamSettings({ children, initOpen, team, setRefreshKey } : { children: React.ReactNode, initOpen: boolean, team: teamSavedInfo, setRefreshKey: Function }) {
   const [isOpen, setIsOpen] = useState(initOpen)
 
   function closeModal() {
@@ -64,7 +64,7 @@ export default function TeamSettings({ children, initOpen, team } : { children: 
                       <p>General</p>
                       <p>Billing</p>
                     </div>
-                    <GeneralSettings team={team} />
+                    <GeneralSettings team={team} setRefreshKey={setRefreshKey} />
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
