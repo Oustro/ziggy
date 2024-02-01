@@ -11,18 +11,22 @@ import BlackButton from "@/components/generics/blackButton"
 
 export default function MemberSettings({ team, setRefreshKey } : { team: teamSavedInfo, setRefreshKey: Function}) {
   const [inviteID, setInviteID] = useState<string>(team.inviteID)
+  const [loading, setLoading] = useState<boolean>(false)
 
   function copyLink() {
     navigator.clipboard.writeText(`${window.location.origin}/invite/${team.inviteID}`)
   }
 
-  async function rollInvite(e : React.FormEvent<HTMLFormElement>) {
+  async function rollInvite(e : React.FormEvent<HTMLFormElement>) {    
     e.preventDefault()
+
+    setLoading(true)
+
     const responseTeamRollInviteID = await fetch('/api/teams/roll/inviteID', {
       method: "PUT",
       body: JSON.stringify({
         teamID: team.id,
-        inviteID: team.inviteID
+        inviteID: inviteID
       })
     })
 
@@ -31,7 +35,8 @@ export default function MemberSettings({ team, setRefreshKey } : { team: teamSav
     }
     
     const data = await responseTeamRollInviteID.json()
-    return setInviteID(data.inviteID)
+    setInviteID(data.inviteID)
+    return setLoading(false)
   }
 
   return (
@@ -43,7 +48,7 @@ export default function MemberSettings({ team, setRefreshKey } : { team: teamSav
           <FaCopy />
           <p>{window.location.origin}/invite/{inviteID}</p>
         </button>
-        <button className="text-sm" type="submit">
+        <button className="text-sm" type="submit" disabled={loading}>
           <BlackButton><CgRedo className="mx-auto"/></BlackButton>
         </button>
       </form>
@@ -56,7 +61,7 @@ export default function MemberSettings({ team, setRefreshKey } : { team: teamSav
         placeholder="Enter an email address..."
         required
         />
-        <button className="w-[15%] text-xs" type="submit">
+        <button className="w-[15%] text-xs" type="submit" disabled={loading}>
           <BlackButton>Send</BlackButton>
         </button>
       </form>
