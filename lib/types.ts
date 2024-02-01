@@ -1,8 +1,7 @@
 export interface userInfo {
   name: string
   email: string
-  customerId: string,
-  color: string
+  customerId: string
 }
 
 export interface teamInfo {
@@ -27,7 +26,6 @@ export interface userSavedInfo {
   id: string,
   name: string,
   email: string,
-  color: string,
   stripeID: string
 }
 

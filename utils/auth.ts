@@ -48,7 +48,6 @@ export const authOptions = {
         name: sessionUser?.name || null,
         email: session?.user?.email || null,
         customerId: sessionUser?.stripeID || null,
-        color: sessionUser?.color || null,
         ...session
       }
     }
@@ -82,7 +81,6 @@ export const authOptions = {
           data: {
             name: uname,
             email: user.email,
-            color: generateTailwindGradient(),
             stripeID: customer.id
           }
         })

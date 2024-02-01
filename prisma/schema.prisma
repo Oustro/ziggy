@@ -60,7 +60,6 @@ model UserInfo {
   name      String?
   email     String?  @unique
   stripeID  String?  @unique
-  color     String?
   teams     Team[]
 }
 

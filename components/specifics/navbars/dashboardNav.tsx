@@ -6,6 +6,7 @@ import { authOptions } from "@/utils/auth"
 
 import HoverWords from "@/components/generics/hoverWords"
 import HoverIcon from "@/components/generics/hoverIcon"
+import Profile from "@/components/generics/profile"
 
 import UserSettings from "@/components/specifics/settingComponents/userSettings"
 import LogoutButton from "@/components/specifics/authComponents/logoutButton"
@@ -34,7 +35,7 @@ export default async function DashboardNav() {
       </div>
       <div className="bottom-8 absolute right-0 left-0 px-4">
         <div className="flex items-center gap-3">
-          {session?.color && <div className={`bg-gradient-to-r ${session.color} rounded-full h-8 w-8`}></div>}
+          <Profile color={true} />
           <div className="flex-1 min-w-0">
             <h2 className="font-medium truncate">{session?.name}</h2>
             <p className="text-xs text-slate-600 truncate">{session?.email}</p>

@@ -8,6 +8,7 @@ import { FaCopy } from "react-icons/fa"
 import { CgRedo } from "react-icons/cg";
 
 import BlackButton from "@/components/generics/blackButton"
+import Profile from "@/components/generics/profile"
 
 export default function MemberSettings({ team, setRefreshKey } : { team: teamSavedInfo, setRefreshKey: Function}) {
   const [inviteID, setInviteID] = useState<string>(team.inviteID)
@@ -85,7 +86,7 @@ export default function MemberSettings({ team, setRefreshKey } : { team: teamSav
       {team.members.map((member, index) => (
         <div key={index} className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            {member.color && <div className={`bg-gradient-to-r ${member.color} rounded-full h-8 w-8`}></div>}
+            <Profile color={false} />
             <div>
               <p className="text-sm font-medium">{member.name}</p>
               <p className="text-xs">{member.email}</p>
