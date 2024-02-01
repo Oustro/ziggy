@@ -42,8 +42,9 @@ export default function GeneralSettings({ team, setRefreshKey } : { team: teamSa
   }
 
   return (
-    <main className="w-full px-8">
-      <form className="grid gap-12 text-sm font-medium" onSubmit={handleSubmit}>
+    <main>
+      <p className="text-slate-600">Update any information so Ziggy can best reflect and represent your team.</p>
+      <form className="grid gap-12 text-sm font-medium mt-8" onSubmit={handleSubmit}>
         <div>
           <label><span className="text-red-600">*</span> Team name</label>
           <input

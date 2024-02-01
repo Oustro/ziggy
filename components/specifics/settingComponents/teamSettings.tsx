@@ -6,9 +6,14 @@ import { Fragment, useState } from 'react'
 import { teamSavedInfo } from "@/lib/types"
 
 import GeneralSettings from '@/components/specifics/settingComponents/team/generalSettings'
+import BillingSettings from '@/components/specifics/settingComponents/team/billingSettings'
+import MemberSettings from '@/components/specifics/settingComponents/team/memberSettings'
+
+import HoverWords from '@/components/generics/hoverWords'
 
 export default function TeamSettings({ children, initOpen, team, setRefreshKey } : { children: React.ReactNode, initOpen: boolean, team: teamSavedInfo, setRefreshKey: Function }) {
   const [isOpen, setIsOpen] = useState(initOpen)
+  const [view, setView] = useState(1)
 
   function closeModal() {
     setIsOpen(false)
@@ -18,6 +23,23 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
     setIsOpen(true)
   }
 
+  const menu = [
+    {
+      name: 'Team',
+      component: <MemberSettings team={team} setRefreshKey={setRefreshKey} />,
+      view: 0
+    },
+    {
+      name: 'General',
+      component: <GeneralSettings team={team} setRefreshKey={setRefreshKey} />,
+      view: 1
+    },
+    {
+      name: 'Billing',
+      component: <BillingSettings team={team} setRefreshKey={setRefreshKey} />,
+      view: 2
+    }
+  ]
   
 
   return (
@@ -51,20 +73,24 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="transform overflow-hidden rounded w-[40%] bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="transform overflow-scroll rounded w-[60%] h-[30rem] bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
-                  as="h3"
+                  as="h1"
                   className="text-3xl font-medium"
                   >
                     Settings
                   </Dialog.Title>
-                  <div className="mt-8 flex w-full">
-                    <div className='w-[20%]'>
-                      <p>Team</p>
-                      <p>General</p>
-                      <p>Billing</p>
+                  <div className='flex mt-8'>
+                    <div className='sticky top-0 h-24 w-[30%]'>
+                      {menu.map((item, index) => (
+                        <div key={index}>
+                          <button key={index} onClick={() => setView(index)} className='mb-3'><HoverWords>{item.name}</HoverWords></button>
+                        </div>
+                      ))}
                     </div>
-                    <GeneralSettings team={team} setRefreshKey={setRefreshKey} />
+                    <div className='w-full'>
+                      {menu[view].component}
+                    </div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

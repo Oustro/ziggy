@@ -2,11 +2,14 @@ import { teamSavedInfo } from "@/lib/types"
 
 import BlackButton from "@/components/generics/blackButton"
 
-export default function GeneralSettings({ team } : { team: teamSavedInfo }) {
+export default function MemberSettings({ team, setRefreshKey } : { team: teamSavedInfo, setRefreshKey: Function}) {
 
   return (
-    <main className="w-full bg-green-400">
-      <p className="text-xl font-medium">{team.name}</p>
+    <main>
+      <div>
+        <h1>Billing</h1>
+        <p>Coming soon...</p>
+      </div>
     </main>
   )
 }
