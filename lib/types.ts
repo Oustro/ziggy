@@ -27,3 +27,10 @@ export interface userSavedInfo {
   email: string,
   stripeID: string
 }
+
+export interface teamUpdateInfo {
+  id: string,
+  name: string,
+  interviewerName: string,
+  context: string
+}

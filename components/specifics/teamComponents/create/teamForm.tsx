@@ -27,15 +27,14 @@ export default function TeamForm({ teamInfo, setTeamInfo, setView, setTeamId } :
     })
 
     if (responseTeamCreate.ok) {
-      const teamId = await responseTeamCreate.json()
-
-      setTeamId(teamId.teamId)
       setLoading(false)
-      return setView(1)
+      return setError("An error occurred. Please try again later.")
     }
 
+    const teamId = await responseTeamCreate.json()
+    setTeamId(teamId.teamId)
     setLoading(false)
-    return setError("An error occurred. Please try again later.")
+    return setView(1)
   }
 
   return (

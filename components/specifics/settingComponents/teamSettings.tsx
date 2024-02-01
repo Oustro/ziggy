@@ -5,7 +5,6 @@ import { Fragment, useState } from 'react'
 
 import { teamSavedInfo } from "@/lib/types"
 
-import BlackButton from "@/components/generics/blackButton"
 import GeneralSettings from '@/components/specifics/settingComponents/team/generalSettings'
 
 export default function TeamSettings({ children, initOpen, team } : { children: React.ReactNode, initOpen: boolean, team: teamSavedInfo }) {
@@ -18,6 +17,8 @@ export default function TeamSettings({ children, initOpen, team } : { children: 
   function openModal() {
     setIsOpen(true)
   }
+
+  
 
   return (
     <main>
@@ -55,12 +56,12 @@ export default function TeamSettings({ children, initOpen, team } : { children: 
                   as="h3"
                   className="text-3xl font-medium"
                   >
-                    {team.name} Settings
+                    Settings
                   </Dialog.Title>
                   <div className="mt-8 flex w-full">
-                    <div className='bg-red-400 w-[20%]'>
-                      <p>General</p>
+                    <div className='w-[20%]'>
                       <p>Team</p>
+                      <p>General</p>
                       <p>Billing</p>
                     </div>
                     <GeneralSettings team={team} />
