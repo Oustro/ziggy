@@ -21,7 +21,7 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
         "50 questions / interview",
         "1 team member",
       ],
-      action: <button className="w-full" onClick={handleDowngrade}><BlackButton>Continue with Ziggy Free Plan</BlackButton></button>
+      action: <button className="w-full" onClick={handleDowngrade}><BlackButton>Switch to Ziggy Free Plan</BlackButton></button>
     },
     {
       title: "Ziggy Pro Plan",
@@ -33,7 +33,7 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
         "500 questions / interview",
         "10 team member",
       ],
-      action: <button className="w-full" onClick={handleUpgrade}><BlackButton>Continue with Ziggy Pro Plan</BlackButton></button>
+      action: <button className="w-full" onClick={handleUpgrade}><BlackButton>Upgrade to Ziggy Pro Plan</BlackButton></button>
     },
   ]
 

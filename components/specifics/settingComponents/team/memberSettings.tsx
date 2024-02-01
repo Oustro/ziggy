@@ -12,6 +12,7 @@ import BlackButton from "@/components/generics/blackButton"
 export default function MemberSettings({ team, setRefreshKey } : { team: teamSavedInfo, setRefreshKey: Function}) {
   const [inviteID, setInviteID] = useState<string>(team.inviteID)
   const [loading, setLoading] = useState<boolean>(false)
+  const [invitee, setInvitee] = useState<string>("")
 
   function copyLink() {
     navigator.clipboard.writeText(`${window.location.origin}/invite/${team.inviteID}`)
@@ -22,20 +23,33 @@ export default function MemberSettings({ team, setRefreshKey } : { team: teamSav
 
     setLoading(true)
 
-    const responseTeamRollInviteID = await fetch('/api/teams/roll/inviteID', {
+    const responseTeamRollInviteID = await fetch('/api/teams/invite/roll', {
       method: "PUT",
       body: JSON.stringify({
         teamID: team.id,
         inviteID: inviteID
       })
     })
-
-    if (!responseTeamRollInviteID.ok) {
-      return console.error("An error occurred. Please try again later.")
-    }
     
     const data = await responseTeamRollInviteID.json()
     setInviteID(data.inviteID)
+    return setLoading(false)
+  }
+
+  async function sendInvite(e : React.FormEvent<HTMLFormElement>) {    
+    e.preventDefault()
+
+    setLoading(true)
+
+    await fetch('/api/teams/invite', {
+      method: "POST",
+      body: JSON.stringify({
+        teamID: team.id,
+        invitee: invitee
+      })
+    })
+    
+    setInvitee("")
     return setLoading(false)
   }
 
@@ -54,11 +68,13 @@ export default function MemberSettings({ team, setRefreshKey } : { team: teamSav
       </form>
       <p className="font-medium mt-12">Send invitation</p>
       <p className="text-slate-600 text-xs">Enter the email of who you would like to join and they will have 24 hours to join.</p>
-      <form className="mt-4 flex gap-4">
+      <form className="mt-4 flex gap-4" onSubmit={e => sendInvite(e)}>
         <input
         type="email"
         className="w-full p-2 rounded border border-slate-300 text-xs bg-slate-100"
         placeholder="Enter an email address..."
+        value={invitee}
+        onChange={(e) => setInvitee(e.target.value)}
         required
         />
         <button className="w-[15%] text-xs" type="submit" disabled={loading}>

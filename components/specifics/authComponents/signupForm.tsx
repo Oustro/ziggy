@@ -45,7 +45,7 @@ export default function SignupForm({ setView } : { setView: Function }) {
 
     await signIn('email', {
       email: email,
-      callbackUrl: `${window.location.origin}/dashboard`,
+      callbackUrl: `${window.location.origin}/dashboard/create`,
       redirect: false
     })
 
@@ -86,7 +86,7 @@ export default function SignupForm({ setView } : { setView: Function }) {
           <button disabled={loading} className="w-full" onClick={() => {
             setLoading(true)
             signIn('google', {
-              callbackUrl: `${window.location.origin}/dashboard`
+              callbackUrl: `${window.location.origin}/dashboard/create`
             })
           }}>
             <WhiteButton><p className="flex items-center gap-2 justify-center"><FcGoogle />Continue with Google</p></WhiteButton>
@@ -94,7 +94,7 @@ export default function SignupForm({ setView } : { setView: Function }) {
           <button disabled={loading} className="w-full mt-6" onClick={() => {
             setLoading(true)
             signIn('github', {
-              callbackUrl: `${window.location.origin}/dashboard`
+              callbackUrl: `${window.location.origin}/dashboard/create`
             })
           }}>
             <WhiteButton><p className="flex items-center gap-2 justify-center"><FaGithub />Continue with GitHub</p></WhiteButton>
