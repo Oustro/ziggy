@@ -6,6 +6,7 @@ import { Fragment, useState } from 'react'
 import { teamSavedInfo } from "@/lib/types"
 
 import BlackButton from "@/components/generics/blackButton"
+import GeneralSettings from '@/components/specifics/settingComponents/team/generalSettings'
 
 export default function TeamSettings({ children, initOpen, team } : { children: React.ReactNode, initOpen: boolean, team: teamSavedInfo }) {
   const [isOpen, setIsOpen] = useState(initOpen)
@@ -49,25 +50,20 @@ export default function TeamSettings({ children, initOpen, team } : { children: 
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="transform overflow-hidden rounded w-[40%] bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                   as="h3"
-                  className="text-lg font-medium"
+                  className="text-3xl font-medium"
                   >
-                    {team.id}
+                    {team.name} Settings
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-slate-600">
-                      This is where you can change your account settings.
-                    </p>
-                  </div>
-                  <div className="mt-4 text-sm">
-                    <button
-                    type="button"
-                    onClick={closeModal}
-                    >
-                      <BlackButton>Save Changes</BlackButton>
-                    </button>
+                  <div className="mt-8 flex w-full">
+                    <div className='bg-red-400 w-[20%]'>
+                      <p>General</p>
+                      <p>Team</p>
+                      <p>Billing</p>
+                    </div>
+                    <GeneralSettings team={team} />
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
