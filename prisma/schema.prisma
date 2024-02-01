@@ -60,6 +60,7 @@ model UserInfo {
   name      String?
   email     String?  @unique
   stripeID  String?  @unique
+  color     String?
   teams     Team[]
 }
 
@@ -71,6 +72,7 @@ model Team {
   context        String
   members        UserInfo[]
   stripeID       String?  @unique
+  inviteID       String?  @unique
   folders        Folder[]
   createdAt      DateTime @default(now())
 }

@@ -11,6 +11,8 @@ import EmailProvider from "next-auth/providers/email"
 import Stripe from "stripe"
 import { Redis } from '@upstash/redis'
 
+import generateTailwindGradient from "@/utils/colorGenerator"
+
 export const authOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
@@ -46,6 +48,7 @@ export const authOptions = {
         name: sessionUser?.name || null,
         email: session?.user?.email || null,
         customerId: sessionUser?.stripeID || null,
+        color: sessionUser?.color || null,
         ...session
       }
     }
@@ -79,6 +82,7 @@ export const authOptions = {
           data: {
             name: uname,
             email: user.email,
+            color: generateTailwindGradient(),
             stripeID: customer.id
           }
         })

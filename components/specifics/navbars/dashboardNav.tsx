@@ -34,7 +34,7 @@ export default async function DashboardNav() {
       </div>
       <div className="bottom-8 absolute right-0 left-0 px-4">
         <div className="flex items-center gap-3">
-          <div className="bg-gradient-to-r from-indigo-500 to-indigo-300 rounded-full h-8 w-8"></div>
+          {session?.color && <div className={`bg-gradient-to-r ${session.color} rounded-full h-8 w-8`}></div>}
           <div className="flex-1 min-w-0">
             <h2 className="font-medium truncate">{session?.name}</h2>
             <p className="text-xs text-slate-600 truncate">{session?.email}</p>

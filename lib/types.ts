@@ -1,7 +1,8 @@
 export interface userInfo {
   name: string
   email: string
-  customerId: string
+  customerId: string,
+  color: string
 }
 
 export interface teamInfo {
@@ -17,7 +18,8 @@ export interface teamSavedInfo {
   interviewer: string,
   context: string,
   stripeID: string,
-  createdAt: Date
+  createdAt: Date,
+  inviteID: string,
   members: Array<userSavedInfo>
 }
 
@@ -25,6 +27,7 @@ export interface userSavedInfo {
   id: string,
   name: string,
   email: string,
+  color: string,
   stripeID: string
 }
 

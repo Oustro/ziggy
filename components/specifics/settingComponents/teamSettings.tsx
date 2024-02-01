@@ -13,7 +13,7 @@ import HoverWords from '@/components/generics/hoverWords'
 
 export default function TeamSettings({ children, initOpen, team, setRefreshKey } : { children: React.ReactNode, initOpen: boolean, team: teamSavedInfo, setRefreshKey: Function }) {
   const [isOpen, setIsOpen] = useState(initOpen)
-  const [view, setView] = useState(1)
+  const [view, setView] = useState(0)
 
   function closeModal() {
     setIsOpen(false)
