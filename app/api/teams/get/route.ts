@@ -31,6 +31,9 @@ export async function GET(request: NextRequest) {
     if (!teams) {
       status = 207
     }
+    else {
+      teams.teams.sort((a, b) => Number(b.createdAt) - Number(a.createdAt))
+    }
   
     return NextResponse.json({ "message": "success", teams: teams?.teams }, { status: status })
   } catch (error) {

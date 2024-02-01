@@ -26,7 +26,7 @@ export default function TeamForm({ teamInfo, setTeamInfo, setView, setTeamId } :
       })
     })
 
-    if (responseTeamCreate.ok) {
+    if (!responseTeamCreate.ok) {
       setLoading(false)
       return setError("An error occurred. Please try again later.")
     }
