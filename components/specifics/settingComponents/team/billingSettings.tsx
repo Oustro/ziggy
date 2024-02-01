@@ -4,7 +4,6 @@ import Badge from "@/components/generics/badge"
 import BlackButton from "@/components/generics/blackButton"
 
 import { useRouter } from "next/navigation"
-import Link from "next/link"
 
 import { FaCheck } from "react-icons/fa";
 
@@ -22,7 +21,7 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
         "50 questions / interview",
         "1 team member",
       ],
-      action: <Link href={`/dashboard?team=${team.id}`}><BlackButton>Continue with Free Plan</BlackButton></Link>
+      action: <button className="w-full" onClick={handleDowngrade}><BlackButton>Continue with Ziggy Free Plan</BlackButton></button>
     },
     {
       title: "Ziggy Pro Plan",
@@ -52,6 +51,23 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
 
     const data = await responseBillingUpgrade.json()
     return router.push(data.sessionUrl)
+  } 
+
+  async function handleDowngrade() {
+    const responseBillingUpgrade = await fetch('/api/billing/downgrade', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ 
+        teamId: team.id,
+        location: window.location.origin
+      })
+    })
+
+    if (responseBillingUpgrade.ok) {
+      return router.refresh()
+    }
   } 
 
   return (
