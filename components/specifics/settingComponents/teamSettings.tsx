@@ -31,7 +31,7 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
     },
     {
       name: 'Update Info',
-      component: <GeneralSettings team={team} setRefreshKey={setRefreshKey} />,
+      component: <GeneralSettings team={team} setRefreshKey={setRefreshKey} setIsOpen={setIsOpen} />,
       view: 1
     },
     {
@@ -73,15 +73,15 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="transform overflow-scroll rounded w-[60%] h-[30rem] bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title
-                  as="h1"
-                  className="text-3xl font-medium"
-                  >
-                    Settings
-                  </Dialog.Title>
-                  <div className='flex mt-8'>
+                <Dialog.Panel className="transform overflow-scroll rounded w-[60%] h-[40rem] bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <div className='flex'>
                     <div className='sticky top-0 h-24 w-[30%]'>
+                      <Dialog.Title
+                      as="h1"
+                      className="text-3xl font-medium mb-4"
+                      >
+                        Settings
+                      </Dialog.Title>
                       {menu.map((item, index) => (
                         <div key={index}>
                           <button key={index} onClick={() => setView(index)} className='mb-3'><HoverWords>{item.name}</HoverWords></button>

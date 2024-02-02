@@ -1,8 +1,10 @@
-export default async function Dashboard() {
+import FileCards from "@/components/specifics/fileComponents/cards/fileCards"
+
+export default async function Fileboard() {
 
   return (
     <main>
-      <h1 className="text-4xl font-semibold mt-16 ml-12">Current Teams</h1>
+      <FileCards />
     </main>
   )
 }

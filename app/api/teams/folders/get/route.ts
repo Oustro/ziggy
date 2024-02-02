@@ -12,29 +12,27 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ "message": "not authenicated" }, { status: 401 })
   }
 
+  const teamId = request.nextUrl.searchParams.get('teamid');
+
   try {
 
-    const teams = await prisma.userInfo.findUnique({
+    const folders = await prisma.folder.findMany({
       where: {
-        email: session.user?.email || ""
-      },
-      include: {
-        teams: {
-          include: {
-            members: true,
-          }
-        }
+        teamId: teamId || ""
       }
     })
 
-    if (teams?.teams.length === 0) {
+    const team = await prisma.team.findFirst({
+      where: {
+        id: teamId || ""
+      }
+    })
+
+    if (folders.length === 0) {
       return NextResponse.json({ "message": "success" }, { status: 207 })
     }
-    else {
-      teams?.teams.sort((a, b) => Number(b.createdAt) - Number(a.createdAt))
-    }
   
-    return NextResponse.json({ "message": "success", teams: teams?.teams }, { status: 200 })
+    return NextResponse.json({ "message": "success", "folders": folders, "team": team }, { status: 200 })
   } catch (error) {
     console.log(error)
     return NextResponse.json({ "message": "error" }, { status: 500 })

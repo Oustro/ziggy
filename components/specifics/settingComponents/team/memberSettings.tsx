@@ -58,13 +58,14 @@ export default function MemberSettings({ team, setRefreshKey } : { team: teamSav
     <main>
       <p className="font-medium">Invite link</p>
       <p className="text-slate-600 text-xs">Invite new members to this team by sharing this link with them. Anyone with this link will be able to join.</p>
-      <form className="mt-4 flex gap-4" onSubmit={e => rollInvite(e)}>
+      <form className="mt-4 flex gap-2" onSubmit={e => rollInvite(e)}>
         <button onClick={copyLink} type="button" className="border py-1 px-2 flex rounded hover:border-inherit transition-all text-xs border-slate-600 items-center gap-2">
           <FaCopy />
           <p>{window.location.origin}/invite/{inviteID}</p>
         </button>
-        <button className="text-sm" type="submit" disabled={loading}>
+        <button className="text-sm group flex items-center gap-1" type="submit" disabled={loading}>
           <BlackButton><CgRedo className="mx-auto"/></BlackButton>
+          <p className="hidden group-hover:block">Generate new share link.</p>
         </button>
       </form>
       <p className="font-medium mt-12">Send invitation</p>
