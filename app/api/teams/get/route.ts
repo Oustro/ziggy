@@ -22,6 +22,7 @@ export async function GET(request: NextRequest) {
         teams: {
           include: {
             members: true,
+            interviews: true
           }
         }
       }

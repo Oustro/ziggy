@@ -21,7 +21,7 @@ export default function Card({ team, open, setRefreshKey } : { team: teamSavedIn
       <Link href={`/dashboard/${team.id}`}>
         <p className="text-xl font-medium">{team.name}</p>
         <div className="flex justify-between mt-8 text-sm">
-          <p className="flex items-center gap-1"><TbMicrophone2 />{team.interviewer}</p>
+          <p className="flex items-center gap-1">{team.interviews.length} Interviews</p>
           <p className="flex items-center gap-1">{team.members.length} Members</p>
         </div>
       </Link>

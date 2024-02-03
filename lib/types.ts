@@ -20,6 +20,7 @@ export interface teamSavedInfo {
   createdAt: Date,
   inviteID: string,
   members: Array<userSavedInfo>
+  interviews: Array<interviewInfo>
 }
 
 export interface userSavedInfo {
@@ -34,4 +35,14 @@ export interface teamUpdateInfo {
   name: string,
   interviewerName: string,
   context: string
+}
+
+export interface interviewInfo {
+  id: string,
+  name: string,
+  responses: number,
+  namespace: string,
+  collect: boolean,
+  guide: string,
+  teamID: string
 }

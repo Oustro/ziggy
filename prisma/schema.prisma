@@ -72,16 +72,8 @@ model Team {
   members        UserInfo[]
   stripeID       String?  @unique
   inviteID       String?  @unique
-  folders        Folder[]
+  interviews     Interview[]
   createdAt      DateTime @default(now())
-}
-
-model Folder {
-  id      String    @id @default(cuid())
-  name    String
-  team    Team      @relation(fields: [teamId], references: [id])
-  teamId  String
-  interviews Interview[]
 }
 
 model Interview {
@@ -91,8 +83,8 @@ model Interview {
   namespace String  @unique
   collect   Boolean
   guide     String
-  folder    Folder  @relation(fields: [folderId], references: [id])
-  folderId  String
+  team      Team     @relation(fields: [teamId], references: [id])
+  teamId    String
 }
 
 
