@@ -40,7 +40,7 @@ export default function GeneralSettings({ team, setRefreshKey, setIsOpen } : { t
 
   return (
     <main>
-      <form className="grid gap-12 font-medium" onSubmit={handleSubmit}>
+      <form className="grid gap-8 font-medium" onSubmit={handleSubmit}>
         <div className="rounded border p-4">
           <p className="font-medium"><span className="text-red-600">*</span> Update Team Name</p>
           <input

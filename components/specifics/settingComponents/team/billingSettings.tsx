@@ -70,27 +70,25 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
 
   return (
     <main>
-      <div className="px-8">
-        {plans.map((plan, index) => (
-          <div key={index} className={team.plan === plan.plan ? "p-4 mb-8 rounded border border-slate-600" : "px-4 mb-8"}>
-            <div className="flex items-center gap-2">
-              <h2 className="text-2xl font-semibold ">{plan.title}</h2>
-              <Badge>{plan.price} / month</Badge>
-            </div>
-            <p className="text-slate-600 text-sm mt-4">{plan.description}</p>
-            <ul className="grid gap-3 mt-8">
-              {plan.features.map((feature, index) => (
-                <li key={index} className="flex items-center font-medium gap-3"><FaCheck />{feature}</li>
-              ))}
-            </ul>
-            {team.plan !== plan.plan && (
-              <div className="mt-12 text-center">
-                {plan.action}
-              </div>
-            )}
+      {plans.map((plan, index) => (
+        <div key={index} className={team.plan === plan.plan ? "p-4 mb-8 rounded border border-slate-600" : "px-4 mb-8"}>
+          <div className="flex items-center gap-2">
+            <h2 className="text-2xl font-semibold ">{plan.title}</h2>
+            <Badge>{plan.price} / month</Badge>
           </div>
-        ))}
-      </div>
+          <p className="text-slate-600 text-sm mt-4">{plan.description}</p>
+          <ul className="grid gap-3 mt-8">
+            {plan.features.map((feature, index) => (
+              <li key={index} className="flex items-center font-medium gap-3"><FaCheck />{feature}</li>
+            ))}
+          </ul>
+          {team.plan !== plan.plan && (
+            <div className="mt-12 text-center">
+              {plan.action}
+            </div>
+          )}
+        </div>
+      ))}
     </main>
   )
 }

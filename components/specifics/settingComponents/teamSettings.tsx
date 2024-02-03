@@ -10,6 +10,7 @@ import BillingSettings from '@/components/specifics/settingComponents/team/billi
 import MemberSettings from '@/components/specifics/settingComponents/team/memberSettings'
 
 import HoverWords from '@/components/generics/hoverWords'
+import Badge from '@/components/generics/badge'
 
 export default function TeamSettings({ children, initOpen, team, setRefreshKey } : { children: React.ReactNode, initOpen: boolean, team: teamSavedInfo, setRefreshKey: Function }) {
   const [isOpen, setIsOpen] = useState(initOpen)
@@ -39,6 +40,12 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
       component: <BillingSettings team={team} setRefreshKey={setRefreshKey} />,
       view: 2
     }
+  ]
+
+  const pricing = [
+    "Free",
+    "Pro",
+    "Enterprise",
   ]
   
 
@@ -73,22 +80,20 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="transform overflow-scroll rounded w-[60%] h-[40rem] bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="transform overflow-scroll rounded w-[60%] h-[32rem] bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <div className='flex'>
-                    <div className='sticky top-0 h-24 w-[30%]'>
-                      <Dialog.Title
-                      as="h1"
-                      className="text-3xl font-medium mb-4"
-                      >
-                        Settings
-                      </Dialog.Title>
+                    <div className='sticky top-0 h-full w-[30%] p-4'>
+                    <div className='inline-block text-xs'>
+                        <Badge>{pricing[team.plan]}</Badge>
+                      </div>
+                      <h1 className="text-lg mt-2 font-medium mb-4 pb-2 border-b border-slate-600">{team.name}</h1>
                       {menu.map((item, index) => (
                         <div key={index}>
                           <button key={index} onClick={() => setView(index)} className='mb-3'><HoverWords>{item.name}</HoverWords></button>
                         </div>
                       ))}
                     </div>
-                    <div className='w-full'>
+                    <div className='w-full px-4'>
                       {menu[view].component}
                     </div>
                   </div>
