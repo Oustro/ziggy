@@ -73,7 +73,7 @@ export default function MemberSettings({ team, setRefreshKey } : { team: teamSav
       <form className="mt-4 flex gap-4" onSubmit={e => sendInvite(e)}>
         <input
         type="email"
-        className="w-full p-2 rounded border border-slate-300 text-xs bg-slate-100"
+        className="w-full mt-1 border-b border-slate-600 pb-2 focus:outline-none"
         placeholder="Enter an email address..."
         value={invitee}
         onChange={(e) => setInvitee(e.target.value)}

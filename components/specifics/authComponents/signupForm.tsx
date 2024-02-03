@@ -63,7 +63,7 @@ export default function SignupForm({ setView } : { setView: Function }) {
           </div>
           <input
           type="text"
-          className="w-full p-2 rounded border border-slate-300 text-sm bg-slate-100"
+          className="w-full mt-1 border-b border-slate-600 pb-2 text-base focus:outline-none"
           placeholder="Enter your name..."
           onChange={(e) => setName(e.target.value)}
           required
@@ -73,7 +73,7 @@ export default function SignupForm({ setView } : { setView: Function }) {
           </div>
           <input
           type="email"
-          className="w-full p-2 rounded border border-slate-300 text-sm bg-slate-100"
+          className="w-full mt-1 border-b border-slate-600 pb-2 text-base focus:outline-none"
           placeholder="Enter your email address..."
           onChange={(e) => setEmail(e.target.value)}
           required
