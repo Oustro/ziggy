@@ -37,6 +37,7 @@ export default function TeamDashboard() {
 
   useEffect(() => {
     fetchInterviews()
+    
   }, [])
 
   return (
@@ -58,7 +59,7 @@ export default function TeamDashboard() {
           new Array(3)).fill(0).map((_, i) => 
           <LoadingCard key={i} />
         ) : (interviews.map((team) => (
-          <Card key={team.id} interview={team} open={false} setRefreshKey={fetchInterviews} />
+          <Card key={team.id} interview={team} />
         )))}
       </div>
     </main>

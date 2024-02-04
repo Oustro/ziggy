@@ -21,7 +21,7 @@ export default function TeamCards() {
     const responseTeamsGet = await fetch("/api/teams/get")
 
     if (responseTeamsGet.status === 207) {
-      router.push("/dashboard/create")
+      return router.push("/dashboard/create")
     }
 
     const data = await responseTeamsGet.json()

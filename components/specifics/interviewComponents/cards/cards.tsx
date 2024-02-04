@@ -2,22 +2,20 @@ import { interviewSavedInfo } from "@/lib/types"
 
 import Link from "next/link"
 
-import Badge from "@/components/generics/badge"
-import TeamSettings from "@/components/specifics/settingComponents/teamSettings"
-import BlackButton from "@/components/generics/blackButton"
-
-export default function Card({ interview, open, setRefreshKey } : { interview: interviewSavedInfo, open: boolean, setRefreshKey: Function }) {
+export default function Card({ interview } : { interview: interviewSavedInfo }) {
 
   return (
-    <div className="border hover:border-slate-600 p-4 transition rounded shadow-sm">
-      <div className="flex text-xs justify-between items-start">
-
-        <p className="text-xl font-medium">{interview.name}</p>
-        <div className="flex justify-between mt-8 text-sm">
-          <p>{interview.guide.length} Questions</p>
-          <p className="flex items-center gap-1">{interview.responses} Responses</p>
+    <Link href={`/dashboard/${interview.teamId}/${interview.id}`}>
+      <div className="border hover:border-slate-600 p-4 transition rounded shadow-sm">
+        <div className="text-xs">
+          <p className="text-xl font-medium">{interview.name}</p>
+          <p className="mt-2">{interview.purpose}</p>
+          <div className="flex justify-between mt-8 text-sm">
+            <p>{interview.transcript.length} Conducted</p>
+            <p>{interview.guide.length} Questions</p>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }

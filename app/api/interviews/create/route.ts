@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
     const interview = await prisma.interview.create({
       data: {
         name: interviewInfo.name,
+        purpose: interviewInfo.purpose,
         responses: 0,
         collect: false,
         teamId: interviewInfo.teamid,
@@ -33,6 +34,8 @@ export async function POST(request: NextRequest) {
         }
       })
     }
+
+    console.log(interviewInfo)
 
     return NextResponse.json({ "message": "success" }, { status: 200 })
   } catch (error) {

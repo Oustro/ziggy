@@ -48,6 +48,7 @@ export interface interviewInfo {
   id: string,
   name: string,
   responses: number,
+  purpose: string,
   namespace: string,
   collect: boolean,
   guide: Array<guideQuestions>,
@@ -58,13 +59,27 @@ export interface interviewSavedInfo {
   id: string,
   name: string,
   responses: number,
+  purpose: string,
   collect: boolean,
   teamId: string,
   guide: Array<guideQuestions>
+  transcript: Array<transcript>
 }
 
 export interface guideQuestions {
   id: string,
   question: string,
   interviewId: string
+}
+
+export interface transcript {
+  id: string,
+  convo: Array<convo>,
+  time: Date
+}
+
+export interface convo {
+  id: string,
+  text: string,
+  speaker: string
 }

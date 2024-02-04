@@ -28,10 +28,9 @@ export async function GET(request: NextRequest) {
       },
       include: {
         guide: true,
+        transcript: true
       }
     })
-
-    console.log(interviews)
 
     if (interviews.length === 0) {
       return NextResponse.json({ "message": "success" }, { status: 207 })

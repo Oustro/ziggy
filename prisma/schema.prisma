@@ -79,9 +79,11 @@ model Team {
 model Interview {
   id             String   @id @default(cuid())
   name           String
+  purpose        String
   responses      Int
   collect        Boolean
   guide          GuideQuestions[]
+  transcript     Transcript[]
   team           Team     @relation(fields: [teamId], references: [id])
   teamId         String
 }
@@ -89,6 +91,14 @@ model Interview {
 model GuideQuestions {
   id             String   @id @default(cuid())
   question       String
+  interview      Interview @relation(fields: [interviewId], references: [id])
+  interviewId    String
+}
+
+model Transcript {
+  id             String   @id @default(cuid())
+  convo          Json
+  conducted      DateTime
   interview      Interview @relation(fields: [interviewId], references: [id])
   interviewId    String
 }
