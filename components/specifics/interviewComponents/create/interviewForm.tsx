@@ -3,7 +3,7 @@ import HoverWords from "@/components/generics/hoverWords"
 
 import Link from "next/link"
 
-export default function InterviewForm({ interviewInfo, setInterviewInfo, setView } : { interviewInfo: { name: string, purpose: string, questions: Array<string> }, setInterviewInfo: Function, setView: Function }) {
+export default function InterviewForm({ interviewInfo, setInterviewInfo, setView } : { interviewInfo: { name: string, purpose: string, collect: boolean, questions: Array<string> }, setInterviewInfo: Function, setView: Function }) {
 
   return (
     <main>
@@ -35,6 +35,19 @@ export default function InterviewForm({ interviewInfo, setInterviewInfo, setView
           onChange={(e) => setInterviewInfo({...interviewInfo, purpose: e.target.value})}
           required
           />
+        </div>
+        <div>
+          <label><span className="text-red-600">*</span> Collect partcipant information</label>
+          <p className="text-xs text-slate-600 mt-1 font-normal">You can collect the emails of partcipants of this interview.</p>
+          <div className="flex items-center gap-2 mt-4">
+          <input 
+          type="checkbox" 
+          id="collect" 
+          onChange={() => setInterviewInfo({...interviewInfo, collect: !interviewInfo.collect})} 
+          checked={interviewInfo.collect} 
+          />
+          <label className="font-normal text-sm">Yes, I would like to collect partcipant emails.</label>
+          </div>
         </div>
         <div className="flex gap-4 items-center">
           <button type="submit">

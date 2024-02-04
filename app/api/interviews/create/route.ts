@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
         name: interviewInfo.name,
         purpose: interviewInfo.purpose,
         responses: 0,
-        collect: false,
+        collect: interviewInfo.collect,
         teamId: interviewInfo.teamid,
       }
     })
@@ -34,8 +34,6 @@ export async function POST(request: NextRequest) {
         }
       })
     }
-
-    console.log(interviewInfo)
 
     return NextResponse.json({ "message": "success" }, { status: 200 })
   } catch (error) {

@@ -9,10 +9,9 @@ import { useRouter, useParams } from "next/navigation"
 
 import { MdCancel } from "react-icons/md"
 
-export default function CreateQuestions({ interviewInfo, setInterviewInfo, setView } : { interviewInfo: { name: string, purpose: string, questions: Array<string> }, setInterviewInfo: Function, setView: Function }) {
+export default function CreateQuestions({ interviewInfo, setInterviewInfo, setView } : { interviewInfo: { name: string, purpose: string, collect: boolean, questions: Array<string> }, setInterviewInfo: Function, setView: Function }) {
   const [questions, setQuestions] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
-  const [ready, setReady] = useState<boolean>(false)
   const [error, setError] = useState<string>("")
 
   const router = useRouter()
@@ -20,7 +19,6 @@ export default function CreateQuestions({ interviewInfo, setInterviewInfo, setVi
 
   function addQuestion(e : React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setReady(true)
     setInterviewInfo({...interviewInfo, questions: [...interviewInfo.questions, questions]})
     setQuestions("")
   }
@@ -37,11 +35,17 @@ export default function CreateQuestions({ interviewInfo, setInterviewInfo, setVi
     setLoading(true)
     setError("")
 
+    if (interviewInfo.questions.length === 0) {
+      setLoading(false)
+      return setError("Please add at least one question.")
+    }
+
     const responseInterviewCreate = await fetch("/api/interviews/create", {
       method: "POST",
       body: JSON.stringify({
         name: interviewInfo.name,
         purpose: interviewInfo.purpose,
+        collect: interviewInfo.collect,
         questions: interviewInfo.questions,
         teamid: teamid
       })
@@ -81,6 +85,7 @@ export default function CreateQuestions({ interviewInfo, setInterviewInfo, setVi
         <div>
           <p className="text-base">Current questions</p>
           <div className="mt-4 text-sm">
+            {interviewInfo.questions.length === 0 && <p className="text-slate-600 font-normal">No required questions added yet.</p>}
             {interviewInfo.questions.map((question, index) => (
               <div key={index} className="flex group items-center w-96 gap-2 mb-3 font-normal" onClick={removeQuestion(index)}>
                 <button type="button" className="border p-2 w-96 rounded border-slate-600 group-hover:border-red-500 text-left transition-all">
@@ -92,8 +97,8 @@ export default function CreateQuestions({ interviewInfo, setInterviewInfo, setVi
           </div>
         </div>
         <form className="flex gap-4 items-center" onSubmit={handleSubmit}>
-          <button disabled={!ready || loading} type="submit">
-            <BlackButton>{ready ? "Continue" : "Waiting for questions..."}</BlackButton>
+          <button disabled={loading} type="submit">
+            <BlackButton>Continue</BlackButton>
           </button>
           <button type="button" disabled={loading} onClick={() => setView(0)}>
             <HoverWords>Back</HoverWords>

@@ -9,6 +9,7 @@ export default function Flow() {
   const [interviewInfo, setInterviewInfo] = useState({
     name: "",
     purpose: "",
+    collect: false,
     questions: []
   })
 
