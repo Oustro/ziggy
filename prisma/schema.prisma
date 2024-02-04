@@ -77,14 +77,21 @@ model Team {
 }
 
 model Interview {
-  id        String   @id @default(cuid())
-  name      String
-  responses Int
-  namespace String  @unique
-  collect   Boolean
-  guide     String
-  team      Team     @relation(fields: [teamId], references: [id])
-  teamId    String
+  id             String   @id @default(cuid())
+  name           String
+  responses      Int
+  namespace      String  @unique
+  collect        Boolean
+  guide          GuideQuestions[]
+  team           Team     @relation(fields: [teamId], references: [id])
+  teamId         String
+}
+
+model GuideQuestions {
+  id             String   @id @default(cuid())
+  question       String
+  interview      Interview @relation(fields: [interviewId], references: [id])
+  interviewId    String
 }
 
 

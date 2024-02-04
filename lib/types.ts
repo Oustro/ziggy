@@ -43,6 +43,12 @@ export interface interviewInfo {
   responses: number,
   namespace: string,
   collect: boolean,
-  guide: string,
+  guide: Array<guideQuestions>,
   teamID: string
+}
+
+export interface guideQuestions {
+  id: string,
+  question: string,
+  interviewId: string
 }
