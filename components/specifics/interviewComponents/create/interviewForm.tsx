@@ -29,7 +29,7 @@ export default function InterviewForm({ interviewInfo, setInterviewInfo, setView
           <input
           type="text"
           className="w-[60%] mt-4 border-b border-slate-600 pb-2 text-base focus:outline-none"
-          placeholder="Enter your interview name..."
+          placeholder="Enter your interview purpose..."
           maxLength={100}
           value={interviewInfo.purpose}
           onChange={(e) => setInterviewInfo({...interviewInfo, purpose: e.target.value})}

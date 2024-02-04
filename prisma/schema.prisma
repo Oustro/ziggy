@@ -80,7 +80,6 @@ model Interview {
   id             String   @id @default(cuid())
   name           String
   responses      Int
-  namespace      String  @unique
   collect        Boolean
   guide          GuideQuestions[]
   team           Team     @relation(fields: [teamId], references: [id])

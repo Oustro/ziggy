@@ -25,17 +25,17 @@ export async function GET(request: NextRequest) {
     const interviews = await prisma.interview.findMany({
       where: {
         teamId: teamid || ""
+      },
+      include: {
+        guide: true,
       }
     })
-
-    console.log(team)
 
     console.log(interviews)
 
     if (interviews.length === 0) {
       return NextResponse.json({ "message": "success" }, { status: 207 })
     }
-
   
     return NextResponse.json({ "message": "success", team: team, interviews: interviews }, { status: 200 })
   } catch (error) {

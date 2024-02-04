@@ -6,21 +6,33 @@ import { useRouter, useParams } from "next/navigation"
 
 import Link from "next/link"
 import BlackButton from "@/components/generics/blackButton"
+import LoadingCard from "@/components/specifics/teamComponents/cards/loadingCard"
+import Card from "@/components/specifics/interviewComponents/cards/cards"
+
 import { IoAdd } from "react-icons/io5"
+
+import { teamSavedInfo, interviewSavedInfo } from "@/lib/types"
 
 export default function TeamDashboard() {
   const teamid = useParams().teamid
   const router = useRouter()
+
+  const [teamInfo, setTeamInfo] = useState<teamSavedInfo>()
+  const [interviews, setInterviews] = useState<Array<interviewSavedInfo>>([])
+  const [loading, setLoading] = useState<boolean>(true)
   
   async function fetchInterviews() {
     const responseInterviewsGet = await fetch("/api/interviews/get?id=" + teamid)
 
     if (responseInterviewsGet.status === 207) {
-      router.push("/dashboard/"+teamid+"/create")
+      return router.push("/dashboard/"+teamid+"/create")
     }
 
     const data = await responseInterviewsGet.json()
 
+    setTeamInfo(data.team)
+    setInterviews(data.interviews)
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -28,14 +40,26 @@ export default function TeamDashboard() {
   }, [])
 
   return (
-    <main>
-      <div className="flex items-center justify-between mt-6 px-12">
-        <h1 className="text-4xl font-semibold">Te</h1>
+    <main className="px-12">
+      <div className="flex items-center justify-between mt-6">
+        {loading ? 
+          <h1 className="text-4xl font-semibold animate-pulse w-64 rounded h-8 bg-slate-200"></h1>
+        :
+          <h1 className="text-4xl font-semibold">{teamInfo?.name}</h1>
+        }
         <div className="flex items-center gap-6 text-sm">
-          <Link href="/dashboard/create" className="flex items-center gap-2">
-            <BlackButton><span className="flex items-center gap-1"><IoAdd /> Create Team</span></BlackButton>
+          <Link href={`/dashboard/${teamid}/create`} className="flex items-center gap-2">
+            <BlackButton><span className="flex items-center gap-1"><IoAdd /> Create Interview</span></BlackButton>
           </Link>
         </div>
+      </div>
+      <div className="mt-8 grid grid-cols-3 gap-6">
+        {loading ? (
+          new Array(3)).fill(0).map((_, i) => 
+          <LoadingCard key={i} />
+        ) : (interviews.map((team) => (
+          <Card key={team.id} interview={team} open={false} setRefreshKey={fetchInterviews} />
+        )))}
       </div>
     </main>
   )

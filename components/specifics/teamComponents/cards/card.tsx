@@ -1,7 +1,5 @@
 import { teamSavedInfo } from "@/lib/types"
 
-import { TbMicrophone2 } from "react-icons/tb"
-
 import Link from "next/link"
 
 import Badge from "@/components/generics/badge"

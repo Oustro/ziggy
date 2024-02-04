@@ -10,6 +10,13 @@ export interface teamInfo {
   context: string
 }
 
+export interface interviewInfo {
+  name: string,
+  purpose: string,
+  questions: Array<string>,
+  teamid: string
+}
+
 export interface teamSavedInfo {
   id: string,
   name: string,
@@ -45,6 +52,15 @@ export interface interviewInfo {
   collect: boolean,
   guide: Array<guideQuestions>,
   teamID: string
+}
+
+export interface interviewSavedInfo {
+  id: string,
+  name: string,
+  responses: number,
+  collect: boolean,
+  teamId: string,
+  guide: Array<guideQuestions>
 }
 
 export interface guideQuestions {
