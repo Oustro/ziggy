@@ -48,28 +48,28 @@ export default function MainList() {
           </BlackButton>
         </Link>
       ) : (teams.map((team) => (
-        <div key={team.id} className="truncate w-full">
+        <div key={team.id} className="truncate">
           <Link href={`/dashboard/${team.id}`}>
             <HoverWords>
-              <p className="truncate font-medium flex items-center gap-1"><IoIosArrowDown />{team.name}</p>
+              <h2 className="font-medium truncate">{team.name}</h2>
             </HoverWords>
           </Link>
-          <main className="truncate w-full">
+          <div className="truncate ml-2 mt-1">
             {team.interviews.length === 0 && 
-              <Link href={`/dashboard/${team.id}/create`}>
+              <Link href={`/dashboard/${team.id}`}>
                 <HoverWords>
-                  <p className="truncate flex ml-4 mt-1 flex items-center gap-1"><IoAdd />Create interview</p>
+                  <h2 className="font-normal truncate">+ Create</h2>
                 </HoverWords>
               </Link>
             }
             {team.interviews.map((interview) => (
               <Link href={`/dashboard/${team.id}/${interview.id}`} key={interview.id}>
                 <HoverWords>
-                  <p className="truncate flex ml-4 mt-1 flex items-center gap-1"><IoIosArrowForward />{interview.name}</p>
+                  <h2 className="font-normal truncate mt-1">{interview.name}</h2>
                 </HoverWords>
               </Link>
             ))}
-          </main>
+          </div>
         </div>
       )))}
     </main>
