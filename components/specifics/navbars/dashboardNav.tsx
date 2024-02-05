@@ -11,6 +11,8 @@ import Profile from "@/components/generics/profile"
 import UserSettings from "@/components/specifics/settingComponents/userSettings"
 import LogoutButton from "@/components/specifics/authComponents/logoutButton"
 
+import MainList from "@/components/specifics/navbars/teamList/mainList"
+
 import { IoSettingsOutline, IoFlashOutline, IoChatboxEllipsesOutline, IoHelpOutline, IoAdd } from "react-icons/io5";
 
 export default async function DashboardNav() {
@@ -27,14 +29,17 @@ export default async function DashboardNav() {
         />
         <h4 className="text-lg font-semibold">Ziggy</h4>
       </Link>
-      <div className="mt-16 flex items-center border-b pb-1 justify-between">
+      <div className="mt-12 flex items-center border-b pb-1 justify-between">
         <p className="text-sm font-medium">Team</p>
         <Link href="/dashboard/create">
           <HoverIcon><IoAdd /></HoverIcon>
         </Link>
       </div>
+      <div className="h-96 mt-2 overflow-scroll">
+        <MainList />
+      </div>
       <div className="bottom-8 absolute right-0 left-0 px-4">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 truncate">
           <Profile color={true} />
           <div className="flex-1 min-w-0">
             <h2 className="font-medium truncate">{session?.name}</h2>

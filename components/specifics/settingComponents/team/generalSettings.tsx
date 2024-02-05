@@ -7,9 +7,8 @@ import { teamSavedInfo } from "@/lib/types"
 import Link from "next/link"
 
 import BlackButton from "@/components/generics/blackButton"
-import HoverWords from "@/components/generics/hoverWords"
 
-export default function GeneralSettings({ team, setRefreshKey, setIsOpen } : { team: teamSavedInfo, setRefreshKey: Function, setIsOpen: Function }) {
+export default function GeneralSettings({ team, setRefreshKey } : { team: teamSavedInfo, setRefreshKey: Function }) {
 
   const [teamInfo, setTeamInfo] = useState({
     name: team.name,
