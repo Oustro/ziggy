@@ -5,21 +5,17 @@ import HoverWords from "@/components/generics/hoverWords"
 export default async function InterviewNav() {
 
   return (
-    <nav className="sticky text-sm top-0 z-50 w-full backdrop-blur from-white-50 h-16 border-b px-6 flex items-center justify-start">
-      <div className="flex items-center gap-6">
-        <Link href="/info/features">
-            <HoverWords>Features</HoverWords>
-        </Link>
-        <Link href="/info/blog">
-            <HoverWords>Blog</HoverWords>
-        </Link>
-        <Link href="/info/changelog">
-            <HoverWords>Changelog</HoverWords>
-        </Link>
-        <Link href="/info/pricing">
-            <HoverWords>Pricing</HoverWords>
-        </Link>
-      </div>
+    <nav className="sticky text-sm top-0 z-10 w-full bg-white h-16 border-b px-6 flex items-center justify-between">
+        <div className="flex gap-6">
+          <HoverWords>Overview</HoverWords>
+          <HoverWords>Ask Ziggy</HoverWords>
+          <HoverWords>Search</HoverWords>
+          <HoverWords>Transcripts</HoverWords>
+        </div>
+        <div className="flex gap-6">
+          <HoverWords>Distribute</HoverWords>
+          <HoverWords>Settings</HoverWords>
+        </div>
     </nav>
   )
 }

@@ -15,13 +15,14 @@ export async function POST(request: NextRequest) {
     if (event.type === 'customer.subscription.created') {
       const subscriptionId = event.data.object.id
       const teamId = event.data.object.metadata.teamId
+      const plan = event.data.object.metadata.plan
       
       await prisma.team.update({
         where: {
           id: teamId
         },
         data: {
-          plan: 1,
+          plan: parseInt(plan),
           stripeID: subscriptionId
         }
       })

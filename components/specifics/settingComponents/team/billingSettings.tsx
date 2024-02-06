@@ -29,11 +29,23 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
       plan: 1,
       description: "The Ziggy Pro plan is perfect for small teams who want to get started with Ziggy.",
       features: [
-        "50 included interviews",
-        "500 questions / interview",
-        "10 team member",
+        "25 included interviews",
+        "150 responses / interview",
+        "5 team members",
       ],
-      action: <button className="w-full" onClick={handleUpgrade}><BlackButton>Upgrade to Ziggy Pro Plan</BlackButton></button>
+      action: <button className="w-full" onClick={handleUpgrade}><BlackButton>Upgrade to Pro</BlackButton></button>
+    },
+    {
+      title: "Ziggy Business Plan",
+      price: "$39",
+      plan: 2,
+      description: "The Ziggy Business plan is perfect for larger teams who care about their users.",
+      features: [
+        "75 included interviews",
+        "250 responses / interview",
+        "15 team members",
+      ],
+      action: <button className="w-full" onClick={handleUpgrade}><BlackButton>Upgrade to Business</BlackButton></button>
     },
   ]
 

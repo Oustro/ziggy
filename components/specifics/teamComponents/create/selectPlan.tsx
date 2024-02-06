@@ -19,34 +19,47 @@ export default function SelectPlan({ teamId } : { teamId: string }) {
       border: "p-4",
       description: "The Free plan is made for teams who want to get try Ziggy without commitment.",
       features: [
-        "1 included interview",
-        "50 questions / interview",
+        "1 interview template",
+        "15 AI interviews / template",
         "1 team member",
       ],
-      action: <Link href={`/dashboard?team=${teamId}`}><BlackButton>Continue with Free Plan</BlackButton></Link>
+      action: <Link href={`/dashboard?team=${teamId}`}><BlackButton>Continue with Free</BlackButton></Link>
     },
     {
-      title: "Ziggy Pro Plan",
+      title: "Pro Plan",
       price: "$29",
       border: "p-4 rounded border border-slate-600",
       description: "The Ziggy Pro plan is perfect for small teams who want to get started with Ziggy.",
       features: [
-        "50 included interviews",
-        "500 questions / interview",
-        "10 team member",
+        "25 interview templates",
+        "100 AI interviews / template",
+        "5 team members",
       ],
-      action: <button className="w-full" onClick={handleSubmit}><BlackButton>Continue with Ziggy Pro Plan</BlackButton></button>
+      action: <button className="w-full" onClick={() => handleSubmit(1)}><BlackButton>Continue with Pro</BlackButton></button>
+    },
+    {
+      title: "Business Plan",
+      price: "$39",
+      border: "p-4",
+      description: "The Ziggy Business plan is perfect for larger teams who care about their users.",
+      features: [
+        "50 interview templates",
+        "200 AI interviews / template",
+        "15 team members",
+      ],
+      action: <button className="w-full" onClick={() => handleSubmit(2)}><BlackButton>Continue with Business</BlackButton></button>
     },
   ]
 
-  async function handleSubmit() {
-    const responseBillingUpgrade = await fetch('/api/billing/upgrade', {
+  async function handleSubmit(plan: number) {
+    const responseBillingUpgrade = await fetch('/api/billing/create', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ 
         teamId: teamId,
+        plan: plan,
         location: window.location.origin
       })
     })
@@ -59,17 +72,19 @@ export default function SelectPlan({ teamId } : { teamId: string }) {
     <main>
       <h1 className="text-4xl mt-4 font-semibold">Select a Plan</h1>
       <p className="text-slate-600 mt-6 w-[90%]">Learn more and compare Ziggy's pricing plans and features <Link target="_blank" href="/info/pricing" className="underline">here.</Link></p>
-      <div className="flex gap-12 mt-16">
+      <div className="full flex justify-between mt-16 gap-4">
         {plans.map((plan, index) => (
           <div key={index} className={plan.border}>
-            <div className="flex items-center gap-2">
-              <h2 className="text-2xl font-semibold ">{plan.title}</h2>
-              <Badge>{plan.price} / month</Badge>
+            <div>
+              <h2 className="text-2xl font-semibold w-full">{plan.title}</h2>
+              <div className="inline-block mt-2">
+                <Badge>{plan.price} / month</Badge>
+              </div>
             </div>
             <p className="text-slate-600 text-sm mt-4">{plan.description}</p>
             <ul className="grid gap-3 mt-8">
               {plan.features.map((feature, index) => (
-                <li key={index} className="flex items-center font-medium gap-3"><FaCheck />{feature}</li>
+                <li key={index} className="flex items-center text-sm font-medium gap-3"><FaCheck />{feature}</li>
               ))}
             </ul>
             <div className="mt-12 text-center">
@@ -79,7 +94,7 @@ export default function SelectPlan({ teamId } : { teamId: string }) {
         ))}
       </div>
       <div className="text-sm mt-12 text-center font-medium">
-        <Link href="mailto:sales@useziggy.com">
+        <Link href="mailto:sales@useziggy.com" className="inline-block">
           <HoverWords>
             Looking for enterprise? Contact us
           </HoverWords>
