@@ -9,11 +9,9 @@ import Link from "next/link"
 import HoverWords from "@/components/generics/hoverWords"
 import BlackButton from "@/components/generics/blackButton"
 
-import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io"
+import { pusherClient } from "@/utils/pusher/client"
 
-import { IoAdd } from "react-icons/io5"
-
-export default function MainList() {
+export default function MainList({userEmail} : {userEmail: string}) {
   const [teams, setTeams] = useState([] as teamSavedInfo[])
   const [loading, setLoading] = useState(true)
   const [empty, setEmpty] = useState(false)
@@ -36,6 +34,17 @@ export default function MainList() {
 
   }, [])
 
+  useEffect(() => {
+    const channel = pusherClient.subscribe(userEmail).bind("evt::created", () => {
+      fetchTeams()
+    })
+
+    return () => {
+      channel.unbind();
+    }
+
+  }, [teams]);
+
   return (
     <main className="grid gap-3 text-sm">
       {loading ? (
@@ -56,7 +65,7 @@ export default function MainList() {
           </Link>
           <div className="truncate ml-2 mt-1">
             {team.interviews.length === 0 && 
-              <Link href={`/dashboard/${team.id}`}>
+              <Link href={`/dashboard/${team.id}/create`}>
                 <HoverWords>
                   <h2 className="font-normal truncate">+ Create</h2>
                 </HoverWords>

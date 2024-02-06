@@ -3,6 +3,7 @@ import prisma from '@/utils/db'
 import { teamInfo } from '@/lib/types'
 import { Redis } from '@upstash/redis'
 import * as crypto from "crypto"
+import { getPusherInstance } from '@/utils/pusher/server'
 
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/auth'
@@ -51,6 +52,10 @@ export async function POST(request: NextRequest) {
       data: {
         inviteID: id
       }
+    })
+
+    await getPusherInstance().trigger(session.email as string,  "evt::created", {
+      message: "team-created"
     })
   
     return NextResponse.json({ "message": "success", "teamId": responsePrismaCreateTeam.id }, { status: 200 })
