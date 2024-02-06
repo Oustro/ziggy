@@ -17,56 +17,75 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
       plan: 0,
       description: "The Free plan is made for teams who want to get try Ziggy without commitment.",
       features: [
-        "1 included interview",
-        "50 questions / interview",
+        "1 interview template",
+        "15 AI interviews / template",
         "1 team member",
       ],
-      action: <button className="w-full" onClick={handleDowngrade}><BlackButton>Switch to Ziggy Free Plan</BlackButton></button>
+      action: <button className="w-full" onClick={handleCancel}><BlackButton>Switch to Ziggy Free Plan</BlackButton></button>
     },
     {
       title: "Ziggy Pro Plan",
-      price: "$29",
+      price: "$24",
       plan: 1,
       description: "The Ziggy Pro plan is perfect for small teams who want to get started with Ziggy.",
       features: [
-        "25 included interviews",
-        "150 responses / interview",
+        "25 interview templates",
+        "100 AI interviews / template",
         "5 team members",
       ],
-      action: <button className="w-full" onClick={handleUpgrade}><BlackButton>Upgrade to Pro</BlackButton></button>
+      action: <button className="w-full" onClick={() => handleUpgrade(1)}><BlackButton>Upgrade to Pro</BlackButton></button>
     },
     {
       title: "Ziggy Business Plan",
-      price: "$39",
+      price: "$49",
       plan: 2,
       description: "The Ziggy Business plan is perfect for larger teams who care about their users.",
       features: [
-        "75 included interviews",
-        "250 responses / interview",
+        "50 interview templates",
+        "200 AI interviews / template",
         "15 team members",
       ],
-      action: <button className="w-full" onClick={handleUpgrade}><BlackButton>Upgrade to Business</BlackButton></button>
+      action: <button className="w-full" onClick={() => handleUpgrade(2)}><BlackButton>Upgrade to Business</BlackButton></button>
     },
   ]
 
-  async function handleUpgrade() {
-    const responseBillingUpgrade = await fetch('/api/billing/upgrade', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ 
-        teamId: team.id,
-        location: window.location.origin
+  async function handleUpgrade(plan: number) {
+    if (team.plan === 0) {
+      const responseBillingCreate = await fetch('/api/billing/create', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 
+          teamId: team.id,
+          plan: plan,
+          location: window.location.origin
+        })
       })
-    })
+  
+      const data = await responseBillingCreate.json()
+      return router.push(data.sessionUrl)
+    }
+    else {
+      await fetch('/api/billing/switch', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 
+          teamId: team.id,
+          subscription: team.stripeID,
+          plan: plan,
+          location: window.location.origin
+        })
+      })
 
-    const data = await responseBillingUpgrade.json()
-    return router.push(data.sessionUrl)
+      return setRefreshKey((prevKey: number) => prevKey + 1)
+    }
   } 
 
-  async function handleDowngrade() {
-    await fetch('/api/billing/downgrade', {
+  async function handleCancel() {
+    await fetch('/api/billing/cancel', {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

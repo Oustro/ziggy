@@ -27,7 +27,7 @@ export default function SelectPlan({ teamId } : { teamId: string }) {
     },
     {
       title: "Pro Plan",
-      price: "$29",
+      price: "$24",
       border: "p-4 rounded border border-slate-600",
       description: "The Ziggy Pro plan is perfect for small teams who want to get started with Ziggy.",
       features: [
@@ -39,7 +39,7 @@ export default function SelectPlan({ teamId } : { teamId: string }) {
     },
     {
       title: "Business Plan",
-      price: "$39",
+      price: "$49",
       border: "p-4",
       description: "The Ziggy Business plan is perfect for larger teams who care about their users.",
       features: [
@@ -52,7 +52,7 @@ export default function SelectPlan({ teamId } : { teamId: string }) {
   ]
 
   async function handleSubmit(plan: number) {
-    const responseBillingUpgrade = await fetch('/api/billing/create', {
+    const responseBillingCreate = await fetch('/api/billing/create', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export default function SelectPlan({ teamId } : { teamId: string }) {
       })
     })
 
-    const data = await responseBillingUpgrade.json()
+    const data = await responseBillingCreate.json()
     return router.push(data.sessionUrl)
   } 
 

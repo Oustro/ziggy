@@ -32,7 +32,7 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
     },
     {
       name: 'Update Info',
-      component: <GeneralSettings team={team} setRefreshKey={setRefreshKey} setIsOpen={setIsOpen} />,
+      component: <GeneralSettings team={team} setRefreshKey={setRefreshKey} />,
       view: 1
     },
     {
@@ -45,7 +45,7 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
   const pricing = [
     "Free",
     "Pro",
-    "Enterprise",
+    "Business",
   ]
   
 
