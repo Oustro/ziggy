@@ -6,7 +6,6 @@ import { getPusherInstance } from '@/utils/pusher/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/auth'
 
-
 export async function POST(request: NextRequest) {
 
   const session = await getServerSession({ req: request, ...authOptions })
