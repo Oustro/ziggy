@@ -35,7 +35,7 @@ export default async function DashboardNav() {
           <HoverIcon><IoAdd /></HoverIcon>
         </Link>
       </div>
-      <div className="mt-2 overflow-scroll pb-2 border-b">
+      <div className="mt-2 overflow-scroll h-96">
         <MainList userEmail={session?.email || ""} />
       </div>
       <div className="bottom-8 absolute right-0 left-0 px-4">

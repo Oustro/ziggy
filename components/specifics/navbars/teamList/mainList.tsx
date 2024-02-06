@@ -53,21 +53,21 @@ export default function MainList({userEmail} : {userEmail: string}) {
       ) : empty ? ( 
         <Link href="/dashboard/create" className="mt-4">
           <BlackButton>
-            <p className="text-center">Create a team</p>
+            <p className="text-center">+ Create a team</p>
           </BlackButton>
         </Link>
       ) : (teams.map((team) => (
         <div key={team.id} className="truncate">
           <Link href={`/dashboard/${team.id}`}>
             <HoverWords>
-              <h2 className="font-medium truncate">{team.name}</h2>
+              <h2 className="font-medium truncate"><span className="text-lg">&rsaquo;</span> {team.name}</h2>
             </HoverWords>
           </Link>
           <div className="truncate ml-2 mt-1">
             {team.interviews.length === 0 && 
               <Link href={`/dashboard/${team.id}/create`}>
                 <HoverWords>
-                  <h2 className="font-normal truncate">+ Create</h2>
+                  <h2 className="font-normal truncate italic">+ Create an interview</h2>
                 </HoverWords>
               </Link>
             }
