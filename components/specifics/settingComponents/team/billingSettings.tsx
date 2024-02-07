@@ -17,8 +17,8 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
       plan: 0,
       description: "The Free plan is made for teams who want to get try Ziggy without commitment.",
       features: [
-        "1 interview template",
-        "15 AI interviews / template",
+        "3 interview template",
+        "50 AI interviews / template",
         "1 team member",
       ],
       action: <button className="w-full" onClick={handleCancel}><BlackButton>Switch to Ziggy Free Plan</BlackButton></button>

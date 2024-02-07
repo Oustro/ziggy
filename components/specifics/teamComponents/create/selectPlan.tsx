@@ -19,8 +19,8 @@ export default function SelectPlan({ teamId } : { teamId: string }) {
       border: "p-4",
       description: "The Free plan is made for teams who want to get try Ziggy without commitment.",
       features: [
-        "1 interview template",
-        "15 AI interviews / template",
+        "3 interview template",
+        "50 AI interviews / template",
         "1 team member",
       ],
       action: <Link href={`/dashboard?team=${teamId}`}><BlackButton>Continue with Free</BlackButton></Link>
@@ -39,7 +39,7 @@ export default function SelectPlan({ teamId } : { teamId: string }) {
     },
     {
       title: "Business Plan",
-      price: "$49",
+      price: "$79",
       border: "p-4",
       description: "The Ziggy Business plan is perfect for larger teams who care about their users.",
       features: [
