@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
         responses: 0,
         collect: interviewInfo.collect,
         teamId: interviewInfo.teamid,
-        externalLink: nanoid(13)
+        externalID: nanoid(13)
       }
     })
 

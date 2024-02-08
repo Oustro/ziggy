@@ -5,7 +5,7 @@ import prisma from '@/utils/db'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/auth'
 
-export async function POST(request: NextRequest) {
+export async function PUT(request: NextRequest) {
 
   const session = await getServerSession({ req: request, ...authOptions })
 

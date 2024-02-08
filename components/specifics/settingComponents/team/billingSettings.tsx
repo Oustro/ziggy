@@ -68,7 +68,7 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
     }
     else {
       await fetch('/api/billing/switch', {
-        method: "POST",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
