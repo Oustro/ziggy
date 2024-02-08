@@ -2,8 +2,8 @@ import { NextResponse, NextRequest } from 'next/server'
 import prisma from '@/utils/db'
 import { teamInfo } from '@/lib/types'
 import { Redis } from '@upstash/redis'
-import * as crypto from "crypto"
 import { getPusherInstance } from '@/utils/pusher/server'
+import { nanoid } from 'nanoid'
 
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/auth'
@@ -38,8 +38,7 @@ export async function POST(request: NextRequest) {
       }
     })
 
-    const randomBytes = crypto.randomBytes(8)
-    const id = Buffer.from(randomBytes).toString("hex")
+    const id = nanoid(36)
     
     await redis.set(id, {
       teamID: responsePrismaCreateTeam.id

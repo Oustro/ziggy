@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { Redis } from '@upstash/redis'
 import * as crypto from "crypto"
+import { nanoid } from 'nanoid'
 
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/auth'
@@ -19,8 +20,7 @@ export async function POST(request: NextRequest) {
   const { teamID, invitee } = await request.json() as { teamID: string, invitee: string }
 
   try {
-    const randomBytes = crypto.randomBytes(8)
-    const inviteid = Buffer.from(randomBytes).toString("hex")
+    const inviteid = nanoid(36)
 
     const redis = new Redis({
       url: process.env.UPSTASH_URL || "",

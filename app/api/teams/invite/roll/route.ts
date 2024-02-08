@@ -2,6 +2,7 @@ import { NextResponse, NextRequest } from 'next/server'
 import prisma from '@/utils/db'
 import { Redis } from '@upstash/redis'
 import * as crypto from "crypto"
+import { nanoid } from 'nanoid'
 
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/auth'
@@ -17,8 +18,7 @@ export async function PUT(request: NextRequest) {
   const { teamID, inviteID } = await request.json() as { teamID: string, inviteID: string }
 
   try {
-    const randomBytes = crypto.randomBytes(8)
-    const newID = Buffer.from(randomBytes).toString("hex")
+    const newID = nanoid(36)
 
     const redis = new Redis({
       url: process.env.UPSTASH_URL || "",

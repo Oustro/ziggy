@@ -65,7 +65,7 @@ export default function MemberSettings({ team, setRefreshKey } : { team: teamSav
         </button>
         <button className="text-sm group flex items-center gap-1" type="submit" disabled={loading}>
           <BlackButton><CgRedo className="mx-auto"/></BlackButton>
-          <p className="hidden group-hover:block">Generate new share link.</p>
+          <p className="hidden group-hover:block absolute mt-20 -ml-12">Generate new link.</p>
         </button>
       </form>
       <p className="font-medium mt-12">Send invitation</p>
