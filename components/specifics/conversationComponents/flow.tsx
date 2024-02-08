@@ -5,6 +5,7 @@ import { useState } from "react"
 import { useParams } from "next/navigation"
 
 import Welcome from "@/components/specifics/conversationComponents/welcome"
+import Footer from "./footer"
 
 export default function Flow() {
   const interviewId = useParams().interviewid
@@ -16,8 +17,9 @@ export default function Flow() {
   ]
 
   return (
-    <main className="w-full h-screen">
+    <main className="w-full h-screen bg-gradient-to-r from-violet-200">
       {views[view]}
+      <Footer />
     </main>
   )
 }
