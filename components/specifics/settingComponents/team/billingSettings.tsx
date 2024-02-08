@@ -21,7 +21,7 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
         "50 AI interviews / template",
         "1 team member",
       ],
-      action: <button className="w-full" onClick={handleCancel}><BlackButton>Switch to Ziggy Free Plan</BlackButton></button>
+      action: <button className="w-full" onClick={handleCancel}><BlackButton>Switch to Free</BlackButton></button>
     },
     {
       title: "Ziggy Pro Plan",
@@ -33,7 +33,7 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
         "100 AI interviews / template",
         "5 team members",
       ],
-      action: <button className="w-full" onClick={() => handleUpgrade(1)}><BlackButton>Upgrade to Pro</BlackButton></button>
+      action: <button className="w-full" onClick={() => handleUpgrade(1)}><BlackButton>Switch to Pro</BlackButton></button>
     },
     {
       title: "Ziggy Business Plan",
@@ -45,7 +45,7 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
         "200 AI interviews / template",
         "15 team members",
       ],
-      action: <button className="w-full" onClick={() => handleUpgrade(2)}><BlackButton>Upgrade to Business</BlackButton></button>
+      action: <button className="w-full" onClick={() => handleUpgrade(2)}><BlackButton>Switch to Business</BlackButton></button>
     },
   ]
 
