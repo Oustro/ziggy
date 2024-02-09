@@ -25,7 +25,7 @@ export default function Footer() {
           <p className="underline">Terms of Service</p>
         </Link>
         <Link href="/info/contact" target="_blank">
-          <p className="underline">Contact Us</p>
+          <p className="underline">Report this interview</p>
         </Link>
       </div>
     </div>
