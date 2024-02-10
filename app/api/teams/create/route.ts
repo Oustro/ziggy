@@ -29,6 +29,8 @@ export async function POST(request: NextRequest) {
         name: teamInfo.name,
         interviewer: teamInfo.interviewerName,
         context: teamInfo.context,
+        logo: "https://useziggy.com/logo.svg",
+        color: "#8B5CF6",
         plan: 0,
         members: {
           connect : {
@@ -53,7 +55,7 @@ export async function POST(request: NextRequest) {
       }
     })
 
-    await getPusherInstance().trigger(session.email as string,  "evt::created", {
+    await getPusherInstance().trigger(session.email as string, "evt::created", {
       message: "team-created"
     })
   

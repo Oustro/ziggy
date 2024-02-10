@@ -24,6 +24,8 @@ export interface teamSavedInfo {
   interviewer: string,
   context: string,
   stripeID: string,
+  color: string,
+  logo: string,
   createdAt: Date,
   inviteID: string,
   members: Array<userSavedInfo>

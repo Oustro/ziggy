@@ -70,6 +70,8 @@ model Team {
   interviewer    String
   context        String
   members        UserInfo[]
+  color          String
+  logo           String
   stripeID       String?  @unique
   inviteID       String?  @unique
   interviews     Interview[]

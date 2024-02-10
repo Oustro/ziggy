@@ -6,7 +6,7 @@ import { teamSavedInfo } from "@/lib/types"
 
 import Link from "next/link"
 
-import HoverWords from "@/components/generics/hoverWords"
+import OuterHoverWords from "@/components/generics/outerHoverWords"
 import BlackButton from "@/components/generics/blackButton"
 
 import { pusherClient } from "@/utils/pusher/client"
@@ -59,23 +59,23 @@ export default function MainList({userEmail} : {userEmail: string}) {
       ) : (teams.map((team) => (
         <div key={team.id} className="truncate">
           <Link href={`/dashboard/${team.id}`}>
-            <HoverWords>
+            <OuterHoverWords>
               <h2 className="font-medium truncate"><span className="text-lg">&rsaquo;</span> {team.name}</h2>
-            </HoverWords>
+            </OuterHoverWords>
           </Link>
           <div className="truncate ml-2 mt-1">
             {team.interviews.length === 0 && 
               <Link href={`/dashboard/${team.id}/create`}>
-                <HoverWords>
+                <OuterHoverWords>
                   <h2 className="font-normal truncate italic">+ Create an interview</h2>
-                </HoverWords>
+                </OuterHoverWords>
               </Link>
             }
             {team.interviews.map((interview) => (
               <Link href={`/dashboard/${team.id}/${interview.id}`} key={interview.id}>
-                <HoverWords>
+                <OuterHoverWords>
                   <h2 className="font-normal truncate mt-1">{interview.name}</h2>
-                </HoverWords>
+                </OuterHoverWords>
               </Link>
             ))}
           </div>

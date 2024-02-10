@@ -8,6 +8,7 @@ import { teamSavedInfo } from "@/lib/types"
 import GeneralSettings from '@/components/specifics/settingComponents/team/generalSettings'
 import BillingSettings from '@/components/specifics/settingComponents/team/billingSettings'
 import MemberSettings from '@/components/specifics/settingComponents/team/memberSettings'
+import CustomSettings from '@/components/specifics/settingComponents/team/customSettings'
 
 import HoverWords from '@/components/generics/hoverWords'
 import Badge from '@/components/generics/badge'
@@ -39,6 +40,11 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
       name: 'Billing',
       component: <BillingSettings team={team} setRefreshKey={setRefreshKey} />,
       view: 2
+    },
+    {
+      name: 'Customize',
+      component: <CustomSettings team={team} setRefreshKey={setRefreshKey} />,
+      view: 3
     }
   ]
 
