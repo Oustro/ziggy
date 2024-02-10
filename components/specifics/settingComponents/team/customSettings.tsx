@@ -1,10 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 
 import { teamSavedInfo } from "@/lib/types"
 
-import Link from "next/link"
+import { upload } from '@vercel/blob/client'
+
 import Image from "next/image"
 
 import BlackButton from "@/components/generics/blackButton"
@@ -16,7 +17,7 @@ export default function CustomSettings({ team, setRefreshKey } : { team: teamSav
     color: team.color
   })
 
-  const [imageFile, setImageFile] = useState<File | null>(null)
+  const inputFileRef = useRef<HTMLInputElement>(null);
 
   const [loading, setLoading] = useState<boolean>(false)
 
@@ -39,23 +40,6 @@ export default function CustomSettings({ team, setRefreshKey } : { team: teamSav
     setLoading(false)
   }
 
-  async function handleImageUpload(e: any) {
-    setLoading(true)
-    
-    const file = e.target.files[0]
-
-    const formData = new FormData()
-    formData.append('file', file)
-
-    console.log(formData)
-
-    const response = await fetch('/api/teams/update/customize/upload', {
-      method: 'POST',
-      body: formData
-    })
-
-  }
-
   return (
     <main>
       <form className="grid gap-8" onSubmit={handleSubmit}>
@@ -72,9 +56,25 @@ export default function CustomSettings({ team, setRefreshKey } : { team: teamSav
           <label className="cursor-pointer w-[30%] text-center">
             <input
               type="file"
-              onChange={handleImageUpload}
+              ref={inputFileRef}
               accept="image/jpeg, image/png, image/jpg"
               className="hidden"
+              onChange={async (event) => {
+                event.preventDefault();
+       
+                if (!inputFileRef.current?.files) {
+                  throw new Error('No file selected');
+                }
+       
+                const file = inputFileRef.current.files[0]
+       
+                const newBlob = await upload(file.name, file, {
+                  access: 'public',
+                  handleUploadUrl: '/api/teams/update/customize/upload',
+                })
+
+                setCustomInfo({ ...customInfo, logo: newBlob.url })
+              }}
             />
             <div>
               <Image
