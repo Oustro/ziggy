@@ -30,7 +30,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ "message": "not found" }, { status: 404 })
     }
 
-  
     return NextResponse.json({ "message": "success", interview: interview }, { status: 200 })
   } catch (error) {
     console.log(error)

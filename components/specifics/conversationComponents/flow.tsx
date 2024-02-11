@@ -4,10 +4,9 @@ import { useState, useEffect } from "react"
 
 import { useParams, useRouter } from "next/navigation"
 
-
-
 import Welcome from "@/components/specifics/conversationComponents/welcome"
 import Footer from "@/components/specifics/conversationComponents/footer"
+import Collect from "@/components/specifics/conversationComponents/collect"
 
 export default function Flow() {
   const externalId = useParams().interviewid
@@ -18,6 +17,8 @@ export default function Flow() {
   const [interview, setInterview] = useState<any>({})
 
   const [loading, setLoading] = useState<boolean>(true)
+
+  const [interviewee, setInterviewee] = useState<string>("Anonymous")
 
   async function fetchInterview() {
     const responseInterviewGet = await fetch("/api/conversation/get?id=" + externalId)
@@ -37,7 +38,9 @@ export default function Flow() {
   }, [])
 
   const views = [
-    <Welcome setView={setView} interviewInfo={interview} />
+    <Welcome setView={setView} interviewInfo={interview} />,
+    <Collect setView={setView} interviewInfo={interview} setInterviewee={setInterviewee} />,
+    <>interview flow</>
   ]
 
   return loading ? (
