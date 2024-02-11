@@ -5,6 +5,8 @@ import { useState, useEffect } from "react"
 import { useRouter, useParams } from "next/navigation"
 
 import Link from "next/link"
+import Image from "next/image"
+
 import BlackButton from "@/components/generics/blackButton"
 import LoadingCard from "@/components/specifics/teamComponents/cards/loadingCard"
 import Card from "@/components/specifics/interviewComponents/cards/cards"
@@ -46,7 +48,17 @@ export default function TeamDashboard() {
         {loading ? 
           <h1 className="text-4xl font-semibold animate-pulse w-64 rounded h-8 bg-slate-200"></h1>
         :
-          <h1 className="text-4xl font-semibold">{teamInfo?.name}</h1>
+          <div className="flex items-center gap-3">
+            <Image
+            src={teamInfo?.logo || ""}
+            alt="Team Logo"
+            width={40}
+            height={40}
+            className="rounded"
+            />
+            <h1>/</h1>
+            <h1 className="text-3xl font-semibold">Interviews</h1>
+          </div>
         }
         <div className="flex items-center gap-6 text-sm">
           <Link href={`/dashboard/${teamid}/create`} className="flex items-center gap-2">
