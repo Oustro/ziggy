@@ -92,9 +92,9 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
                     <div className='inline-block text-xs'>
                         <Badge>{pricing[team.plan]}</Badge>
                       </div>
-                      <h1 className="text-lg mt-2 font-medium mb-4 pb-2 border-b border-slate-600">{team.name}</h1>
+                      <h1 className="text-lg w-full truncate mt-2 font-medium mb-4 pb-2 border-b border-slate-600">{team.name}</h1>
                       {menu.map((item, index) => (
-                        <div key={index}>
+                        <div key={index} className='w-full truncate'>
                           <button key={index} onClick={() => setView(index)} className='mb-3'><HoverWords>{item.name}</HoverWords></button>
                         </div>
                       ))}

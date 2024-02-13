@@ -61,7 +61,7 @@ export default function MemberSettings({ team, setRefreshKey } : { team: teamSav
       <form className="mt-4 flex gap-2" onSubmit={e => rollInvite(e)}>
         <button onClick={copyLink} type="button" className="border py-1 px-2 flex rounded hover:border-inherit transition-all text-xs border-slate-600 items-center gap-2">
           <FaCopy />
-          <p>{window.location.origin}/invite/{inviteID}</p>
+          <p className="truncate">{window.location.origin}/invite/{inviteID}</p>
         </button>
         <button className="text-sm group flex items-center gap-1" type="submit" disabled={loading}>
           <BlackButton><CgRedo className="mx-auto"/></BlackButton>

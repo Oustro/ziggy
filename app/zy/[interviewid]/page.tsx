@@ -3,11 +3,12 @@ import Flow from "@/components/specifics/conversationComponents/flow"
 import { NextRequest } from 'next/server'
 import { redirect } from "next/navigation"
 
-export default async function ConvoPage(request: NextRequest) {   
+export default async function ConvoPage(request: NextRequest & {params: { interviewid: string }}) {   
   const externalId = request.params.interviewid
 
   const responseInterviewGet = await fetch(process.env.MODE_URL+"/api/conversation/get?id=" + externalId, {
     method: "GET",
+    cache: "no-cache",
     headers: {
       "Content-Type": "application/json"
     }
@@ -19,7 +20,6 @@ export default async function ConvoPage(request: NextRequest) {
 
 
   const data = await responseInterviewGet.json()
-
 
   return (
     <Flow interviewData={data.interview} />
