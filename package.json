@@ -20,6 +20,7 @@
     "next": "14.0.4",
     "next-auth": "^4.24.5",
     "nodemailer": "^6.9.8",
+    "openai": "^4.28.0",
     "postmark": "^4.0.2",
     "pusher": "^5.2.0",
     "pusher-js": "^8.4.0-rc2",
