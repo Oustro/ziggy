@@ -2,52 +2,27 @@
 
 import { useState, useEffect } from "react"
 
-import { useParams, useRouter } from "next/navigation"
 
 import Welcome from "@/components/specifics/conversationComponents/welcome"
 import Footer from "@/components/specifics/conversationComponents/footer"
 import Collect from "@/components/specifics/conversationComponents/collect"
+import MainConversation from "@/components/specifics/conversationComponents/conversation/mainConversation"
 
-export default function Flow() {
-  const externalId = useParams().interviewid
-  const router = useRouter()
-
+export default function Flow({ interviewData } : { interviewData: any }) {
   const [view, setView] = useState<number>(0)
 
-  const [interview, setInterview] = useState<any>({})
-
-  const [loading, setLoading] = useState<boolean>(true)
 
   const [interviewee, setInterviewee] = useState<string>("Anonymous")
 
-  async function fetchInterview() {
-    const responseInterviewGet = await fetch("/api/conversation/get?id=" + externalId)
-
-    if (responseInterviewGet.status === 404) {
-      return router.push("/")
-    }
-
-    const data = await responseInterviewGet.json()
-    setInterview(data.interview)
-    setLoading(false)
-  }
-  
-  useEffect(() => {
-    fetchInterview()
-  
-  }, [])
-
   const views = [
-    <Welcome setView={setView} interviewInfo={interview} />,
-    <Collect setView={setView} interviewInfo={interview} setInterviewee={setInterviewee} />,
-    <>interview flow</>
+    <Welcome setView={setView} interviewInfo={interviewData} />,
+    <Collect setView={setView} interviewInfo={interviewData} setInterviewee={setInterviewee} />,
+    <MainConversation setView={setView} interviewInfo={interviewData} interviewee={interviewee} />
   ]
 
-  return loading ? (
-    <>Loading</>
-  ) : (
+  return (
     <main className="w-full h-screen" style={{
-      background: 'linear-gradient(to top right, #FFFFFF 40%, '+ interview.team.color +' 145%)'
+      background: 'linear-gradient(to top right, #FFFFFF 40%, '+ interviewData.team.color +' 145%)'
     }}>
       {views[view]}
       <Footer />
