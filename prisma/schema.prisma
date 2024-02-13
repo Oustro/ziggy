@@ -104,6 +104,7 @@ model Transcript {
   conducted      DateTime
   interview      Interview @relation(fields: [interviewId], references: [id])
   interviewId    String
+  interviewee     String
 }
 
 
