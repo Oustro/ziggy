@@ -14,7 +14,6 @@ export async function PUT(request: NextRequest) {
       data: {
         convo: transcriptInfo.conversation
       }
-    
     })
 
     return NextResponse.json({ "message": "success", transcriptId: transcript.id }, { status: 200 })

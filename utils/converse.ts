@@ -51,9 +51,6 @@ export async function Open(conversation: Array<{role: string, content: string}>,
 export async function Converse(conversation: Array<{role: string, content: string}>, answer: string, interviewee: string, interviewId: string, transcriptId: string) {
   const prevQuestion = conversation[conversation.length - 1]
 
-  console.log(prevQuestion)
-  console.log(answer)
-
   // get the sentiment of the answer
 
   // get the similiarity of the question to guide questions
