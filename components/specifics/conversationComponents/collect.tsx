@@ -30,7 +30,7 @@ export default function Collect({ setView, interviewInfo, setInterviewee } : { s
           <input
           type="email"
           onChange={(e) => setInterviewee(e.target.value)}
-          className="w-full mt-6 border-b border-slate-600 bg-transparent pb-2 text-base focus:outline-none"
+          className="w-full mt-24 border-b border-slate-600 bg-transparent pb-2 text-base focus:outline-none"
           placeholder="Enter your email..."
           required
           />

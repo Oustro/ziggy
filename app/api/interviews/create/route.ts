@@ -22,7 +22,6 @@ export async function POST(request: NextRequest) {
       data: {
         name: interviewInfo.name,
         purpose: interviewInfo.purpose,
-        responses: 0,
         collect: interviewInfo.collect,
         teamId: interviewInfo.teamid,
         externalID: nanoid(13)

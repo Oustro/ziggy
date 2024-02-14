@@ -49,7 +49,6 @@ export interface teamUpdateInfo {
 export interface interviewInfo {
   id: string,
   name: string,
-  responses: number,
   purpose: string,
   namespace: string,
   collect: boolean,
@@ -60,7 +59,6 @@ export interface interviewInfo {
 export interface interviewSavedInfo {
   id: string,
   name: string,
-  responses: number,
   purpose: string,
   collect: boolean,
   teamId: string,
