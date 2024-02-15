@@ -9,6 +9,8 @@ import OpenAI from "openai"
 
 import prisma from '@/utils/db'
 
+import { nanoid } from 'nanoid'
+
 export async function POST(request: NextRequest) {
 
   const redis = new Redis({
@@ -25,7 +27,7 @@ export async function POST(request: NextRequest) {
   const { success } = await ratelimit.limit(identifier)
    
   if (!success) {
-    return NextResponse.json({ "message": "error" }, { status: 429 })
+    return NextResponse.json({ "message": "Rate limit exceeded" }, { status: 429 })
   }
 
   const conversationInfo = await request.json() as { conversation: Array<{role: string, content: string}>, question: string, answer: string, interviewee: string, interviewId: string, transcriptId: string, answerSentiment: Array<{label: string, score: number}>, mostSimilarQuestion: string }
@@ -44,8 +46,10 @@ export async function POST(request: NextRequest) {
 
     const index = pc.index("ziggy")
 
+    const id = nanoid(36)
+
     await index.namespace(conversationInfo.interviewId).upsert([{
-      id: conversationInfo.transcriptId,
+      id: id,
       values: emdedding.data[0].embedding,
       metadata: {
         question: conversationInfo.question,
