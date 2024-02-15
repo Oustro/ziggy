@@ -1,6 +1,10 @@
 "use server"
 
+import { Pinecone } from '@pinecone-database/pinecone'
+
 export async function Open(conversation: Array<{role: string, content: string}>, interviewee: string, interviewId: string) {
+  // check if team plan allows for this interview to happen
+  
   const responseConversationRecordTranscriptCreate = await fetch(process.env.MODE_URL+"/api/conversation/record/transcript/create", {
     method: "POST",
     cache: "no-cache",
@@ -48,35 +52,70 @@ export async function Open(conversation: Array<{role: string, content: string}>,
   }
 }
 
-export async function Converse(conversation: Array<{role: string, content: string}>, answer: string, interviewee: string, interviewId: string, transcriptId: string) {
+async function Analytics(conversation: Array<{role: string, content: string}>, question: string, answer: string, interviewee: string, interviewId: string, transcriptId: string, questions: Array<any>) {
+  let questionList = []
+  for (let i = 0; i < questions.length; i++) {
+    questionList.push(questions[i].question)
+  }
+
+  const responseAnalyticsUrl = await fetch(process.env.ANALYTICS_URL as string, {
+    method: "POST",
+    cache: "no-cache",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      questions: questionList,
+      new_question: question,
+      answer: answer,
+    })
+  })
+
+  const data = await responseAnalyticsUrl.json()
+
+  await fetch(process.env.MODE_URL+"/api/conversation/record/analytics", {
+    method: "POST",
+    cache: "no-cache",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      question: question,
+      answer: answer,
+      answerSentiment: data.sentiment,
+      mostSimilarQuestion: data.most_similar_question,
+      interviewee: interviewee,
+      interviewId: interviewId,
+      transcriptId: transcriptId,
+      conversation: conversation
+    })
+  })
+}
+
+export async function Converse(conversation: Array<{role: string, content: string}>, answer: string, interviewee: string, interviewId: string, transcriptId: string, questions: Array<any>) {
   const prevQuestion = conversation[conversation.length - 1]
 
-  // get the sentiment of the answer
+  conversation.push({
+    role: "user", 
+    content: answer
+  })
 
-  // get the similiarity of the question to guide questions
+  const responseConversationRecord = await fetch(process.env.MODE_URL+"/api/conversation/record", {
+    method: "POST",
+    cache: "no-cache",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      conversation: conversation
+    })
+  })
 
-  // get the emdedding of the question
+  const updatedConvo = await responseConversationRecord.json()
 
-  // upsert into question vectors to pinecone index of with the interviewId as the name with the following metadata:
-  // - question
-  // - answer
-  // - answer sentiment
-  // - most similiar question
-  // - interviewee
+  conversation.push(updatedConvo.question)
 
-  // update the conversation with the following:
-  // - the answer
-
-  // get the next question from openAI with the updated transcript
-
-  // update the transcript with the following:
-  // - the next question
-  // - the updated conversation
-  // - the sentiment of the answer from prevQuestion
-
-  // add the question to the conversation
-  
-  // return the updated conversation
+  Analytics(conversation, prevQuestion.content, answer, interviewee, interviewId, transcriptId, questions)
   
   return conversation
 }

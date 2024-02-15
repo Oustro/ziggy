@@ -1,5 +1,4 @@
 import { NextResponse, NextRequest } from 'next/server'
-import prisma from '@/utils/db'
 
 import OpenAI from "openai"
 

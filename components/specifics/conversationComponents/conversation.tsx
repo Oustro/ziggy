@@ -56,7 +56,7 @@ export default function Conversation({ setView, interviewInfo, interviewee } : {
 
     setLoading(true)
 
-    const updatedConvo = await Converse(conversation, answer, interviewee, interviewInfo.id, transcriptId)
+    const updatedConvo = await Converse(conversation, answer, interviewee, interviewInfo.id, transcriptId, interviewInfo.guide)
 
     setConversation(updatedConvo)
 

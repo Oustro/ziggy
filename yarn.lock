@@ -450,10 +450,31 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
+"@upstash/core-analytics@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@upstash/core-analytics/-/core-analytics-0.0.7.tgz#ef50b8d44a32fcd6cf6bc6d7bf50870266b308d7"
+  integrity sha512-lC2j5efqb1haX/fpTGaPUx1rue1WUkOZBVHDzCB7eMIVsRdFFp4xiHtyH/G9omiR1zj39fU5SCTWFiKJH3KOpw==
+  dependencies:
+    "@upstash/redis" "^1.28.3"
+
+"@upstash/ratelimit@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@upstash/ratelimit/-/ratelimit-1.0.1.tgz#4dcbd5955f903511b2537e218d4d5258878ec63d"
+  integrity sha512-G9LZ7idhlkuYknbUngCB3qzd7QnkK1xDkFG5jRtEJZuOUS5UKJ0UTKbhalCtp39eX2wu2Ubv8W7HCeaJQOWM0A==
+  dependencies:
+    "@upstash/core-analytics" "^0.0.7"
+
 "@upstash/redis@^1.28.2":
   version "1.28.2"
   resolved "https://registry.yarnpkg.com/@upstash/redis/-/redis-1.28.2.tgz#40e8b39e96d20c7309810559089e762fc3e2305f"
   integrity sha512-e4HmmCji6kE6UnriU92sAVGLQcRYAB4fXSPXls08cjW7zdE/wFaDfhAGi1/T4/wUN50bAy/lpHwW4bMkI2EAcw==
+  dependencies:
+    crypto-js "^4.2.0"
+
+"@upstash/redis@^1.28.3":
+  version "1.28.3"
+  resolved "https://registry.yarnpkg.com/@upstash/redis/-/redis-1.28.3.tgz#a93f661a3ee0d51f249df2fed312d7c0256f0708"
+  integrity sha512-IduU0zrxVKO0z4D+usJUP/VZRYkbbbSoAdj4WYwgijjhc1nxhRZEtktZ8ueTyXT4dAatJ+gDKIIbVSVIiB1xBw==
   dependencies:
     crypto-js "^4.2.0"
 
