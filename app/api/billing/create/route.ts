@@ -26,10 +26,15 @@ export async function POST(request: NextRequest) {
     }
 
     const stripeSession = await stripe.checkout.sessions.create({
-      line_items: [{
-        price: priceId,
-        quantity: 1
-      }],
+      line_items: [
+        {
+          price: priceId,
+          quantity: 1
+        },
+        {
+          price: "price_1OkZ4MD1chxrMDsawg9BlGI5",
+        }
+      ],
       customer: session.customerId as string,
       mode: 'subscription',
       success_url: upgradeInfo.location+"/dashboard?team="+upgradeInfo.teamId,

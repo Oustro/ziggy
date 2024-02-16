@@ -37,7 +37,7 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
     },
     {
       title: "Ziggy Business Plan",
-      price: "$49",
+      price: "$79",
       plan: 2,
       description: "The Ziggy Business plan is perfect for larger teams who care about their users.",
       features: [

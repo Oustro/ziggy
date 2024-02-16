@@ -26,17 +26,7 @@ export default async function ConvoPage(request: NextRequest & {params: { interv
       return redirect("/zy/sorry")
     }
   }
-  else if (data.interview.team.plan === 1) {
-    if (data.interview.transcript.length > 100) {
-      return redirect("/zy/sorry")
-    }
-  }
-  else if (data.interview.team.plan === 2) {
-    if (data.interview.transcript.length > 200) {
-      return redirect("/zy/sorry")
-    }
-  }
-  
+
   return (
     <Flow interviewData={data.interview} />
   )

@@ -42,7 +42,7 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
       view: 2
     },
     {
-      name: 'Customize',
+      name: 'Branding',
       component: <CustomSettings team={team} setRefreshKey={setRefreshKey} />,
       view: 3
     }

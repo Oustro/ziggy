@@ -1,9 +1,22 @@
 "use server"
 
-import { Pinecone } from '@pinecone-database/pinecone'
+import Stripe from "stripe"
 
-export async function Open(conversation: Array<{role: string, content: string}>, interviewee: string, interviewId: string) {
-  // check if team plan allows for this interview to happen
+export async function Open(conversation: Array<{role: string, content: string}>, interviewee: string, interviewId: string, teamStripeId: string) {
+  if (teamStripeId) {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string)
+
+    const stripeSubscription = await stripe.subscriptions.retrieve(teamStripeId)
+
+    const siId = stripeSubscription.items.data[1].id
+
+    await stripe.subscriptionItems.createUsageRecord(
+      siId,
+      {
+        quantity: 1,
+      }
+    )
+  }
   
   const responseConversationRecordTranscriptCreate = await fetch(process.env.MODE_URL+"/api/conversation/record/transcript/create", {
     method: "POST",

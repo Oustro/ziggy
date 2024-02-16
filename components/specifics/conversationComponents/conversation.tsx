@@ -36,7 +36,7 @@ export default function Conversation({ setView, interviewInfo, interviewee } : {
       }
     ]
 
-    const newtId = await Open(opening, interviewee, interviewInfo.id)
+    const newtId = await Open(opening, interviewee, interviewInfo.id, interviewInfo.team.stripeID)
 
     setTranscriptId(newtId.tid)
 
