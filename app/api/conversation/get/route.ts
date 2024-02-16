@@ -14,6 +14,7 @@ export async function GET(request: NextRequest) {
       include: {
         team: true,
         guide: true,
+        transcript: true
       }
     })
 
