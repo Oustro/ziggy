@@ -24,7 +24,7 @@ export default function Card({ team, open, setRefreshKey } : { team: teamSavedIn
           alt="Team Logo"
           width={40}
           height={40}
-          className="rounded"
+          className="rounded w-[40px] h-[40px]"
           />
           <p className="text-xl font-medium">{team.name}</p>
         </div>

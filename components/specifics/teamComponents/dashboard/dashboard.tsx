@@ -54,7 +54,7 @@ export default function TeamDashboard() {
             alt="Team Logo"
             width={40}
             height={40}
-            className="rounded"
+            className="rounded w-[40px] h-[40px]"
             />
             <h1>/</h1>
             <h1 className="text-3xl font-semibold">Interviews</h1>

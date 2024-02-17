@@ -82,7 +82,7 @@ export default function CustomSettings({ team, setRefreshKey } : { team: teamSav
               alt="Team Logo"
               width={100}
               height={100}
-              className="mx-auto rounded"
+              className="mx-auto rounded w-[100px] h-[100px]"
               />
               <p className="text-xs mt-4 text-slate-600">Click to change logo</p>
             </div>
