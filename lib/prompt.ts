@@ -22,6 +22,8 @@ export default function Prompt(interviewerName: string, teamName: string, teamPu
   Ask questions as if you were with a friend, ask questions like this:
     
   You: So first question is, [QUESTION]
+
+  Be sure to ask follow up questions, ${teamName} want to gather as much information as possible, but do not be overbearing or stay on one line of questioning for too long.
     
   When conducting an interview, it's important that you maintain a high level of professionalism, even when the interviewee is not.
     
