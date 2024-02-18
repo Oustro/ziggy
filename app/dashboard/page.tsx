@@ -1,11 +1,32 @@
 import TeamCards from "@/components/specifics/teamComponents/cards/teamCards"
 import BlackButton from "@/components/generics/blackButton"
 
-import { IoAdd } from "react-icons/io5";
+import { IoAdd } from "react-icons/io5"
 
 import Link from "next/link"
 
+import { redirect } from "next/navigation"
+import prisma from "@/utils/db"
+
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/utils/auth"
+
 export default async function Dashboard() {   
+  const session = await getServerSession(authOptions)
+
+  const teams = await prisma.team.findMany({
+    where: {
+      members: {
+        some: {
+          email: session?.user?.email
+        }
+      }
+    }
+  })
+
+  if (teams.length === 0) {
+    redirect("/dashboard/create")
+  }
 
   return (
     <main>
