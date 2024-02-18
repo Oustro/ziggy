@@ -2,14 +2,16 @@
 
 import { useState } from "react"
 
-import { interviewSavedInfo } from "@/lib/types";
+import { interviewSavedInfo } from "@/lib/types"
+
 import InterviewNav from "@/components/specifics/navbars/interviewNav"
+import Overview from "@/components/specifics/interviewComponents/dashboard/overview"
 
 export default function InterviewDashboard({ interview } : { interview: interviewSavedInfo }) {
-  const [view, setView] = useState(1)
+  const [view, setView] = useState(0)
 
   const views = [
-    <div>Overview</div>,
+    <Overview interview={interview} />,
     <div>Ask Ziggy</div>,
     <div>Search</div>,
     <div>Transcripts</div>,
@@ -18,9 +20,11 @@ export default function InterviewDashboard({ interview } : { interview: intervie
   ]
 
   return (
-    <div>
-      <InterviewNav setView={setView} />
-      {views[view]}
+    <div className="h-screen">
+      <InterviewNav setView={setView} interviewName={interview.name} />
+      <div className="p-4">
+        {views[view]}
+      </div>
     </div>
   )
 }
