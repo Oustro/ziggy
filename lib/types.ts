@@ -1,3 +1,5 @@
+import { Prisma } from "@prisma/client"
+
 export interface userInfo {
   name: string
   email: string
@@ -74,12 +76,9 @@ export interface guideQuestions {
 
 export interface transcript {
   id: string,
-  convo: Array<convo>,
-  time: Date
-}
-
-export interface convo {
-  id: string,
-  text: string,
-  speaker: string
+  convo: Prisma.JsonValue,
+  conducted: Date,
+  interviewId: string,
+  interviewee: string,
+  sentiment: number
 }

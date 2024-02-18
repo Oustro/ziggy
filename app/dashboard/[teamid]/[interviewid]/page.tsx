@@ -6,7 +6,7 @@ import prisma from '@/utils/db'
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/utils/auth"
 
-import Flow from '@/components/specifics/interviewComponents/dashboard/flow'
+import InterviewDashboard from '@/components/specifics/interviewComponents/dashboard/dashboard'
 
 export default async function InterviewPage(request: NextRequest & {params: { interviewid: string }}) {
   const session = await getServerSession(authOptions)
@@ -24,9 +24,8 @@ export default async function InterviewPage(request: NextRequest & {params: { in
       }
     },
     include: {
-      team: true,
-      transcript: true,
-      guide: true
+      guide: true,
+      transcript: true
     }
   })
 
@@ -36,15 +35,7 @@ export default async function InterviewPage(request: NextRequest & {params: { in
 
   return (
     <main>
-      <div className="h-96 bg-blue-500">
-        <Flow>hi</Flow>
-      </div>
-      <div className="h-96 bg-blue-500">
-        <h1>Interview Page</h1>
-      </div>
-      <div className="h-96 bg-blue-500">
-        <h1>Interview Page</h1>
-      </div>
+      <InterviewDashboard interview={interview} />
     </main>
   )
 }
