@@ -29,7 +29,7 @@ export default async function Dashboard() {
   }
 
   return (
-    <main>
+    <main className="mb-16">
       <div className="flex items-center justify-between mt-6 px-12">
         <h1 className="text-4xl font-semibold">Your teams</h1>
         <div className="flex items-center gap-6 text-sm">

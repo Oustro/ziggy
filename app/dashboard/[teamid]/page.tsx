@@ -20,7 +20,7 @@ export default async function Interviews(request: NextRequest & {params: { teami
   }
 
   return (
-    <main>
+    <main className="mb-16">
       <TeamDashboard />
     </main>
   )

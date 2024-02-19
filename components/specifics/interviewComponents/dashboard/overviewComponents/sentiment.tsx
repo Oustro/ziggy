@@ -19,32 +19,36 @@ export default function Sentiment({ data } : { data: number[] }) {
         </div>
       </div>
       <div className="mt-8 w-full text-center">
-        <Doughnut
-        data={{
-          labels: ['Positive', 'Neutral', 'Negative'],
-          datasets: [{
-            data: data,
-            backgroundColor: ['#bbf7d0', '#e2e8f0', '#fecaca'],
-            borderRadius: 5,
-            borderWidth: 2,
-            spacing: 15,
-            animation: false,
-            hoverBackgroundColor: ['#bbf7d0', '#e2e8f0', '#fecaca'],
-            hoverBorderWidth: 2,
-            hoverBorderColor: ['#22c55e', '#475569', '#f43f5e'],
-            borderColor: ['#22c55e', '#475569', '#f43f5e'],
-          }]
-        }}
-        options={{
-          responsive: true,
-          plugins: {
-            legend: {
-              display: false
+        {data[0] === 0 && data[1] === 0 && data[2] === 0 ?
+          <p className="mt-24 text-2xl">No data available</p>
+        : 
+          <Doughnut
+          data={{
+            labels: ['Positive', 'Neutral', 'Negative'],
+            datasets: [{
+              data: data,
+              backgroundColor: ['#bbf7d0', '#e2e8f0', '#fecaca'],
+              borderRadius: 5,
+              borderWidth: 2,
+              spacing: 10,
+              animation: false,
+              hoverBackgroundColor: ['#bbf7d0', '#e2e8f0', '#fecaca'],
+              hoverBorderWidth: 2,
+              hoverBorderColor: ['#22c55e', '#475569', '#f43f5e'],
+              borderColor: ['#22c55e', '#475569', '#f43f5e'],
+            }]
+          }}
+          options={{
+            responsive: true,
+            plugins: {
+              legend: {
+                display: false
+              }
             }
-          }
-        }}
-        className="mx-auto"
-        />
+          }}
+          className="mx-auto"
+          />
+        }
       </div>
     </div> 
   )

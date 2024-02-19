@@ -73,6 +73,10 @@ export default function Overview({ interview } : { interview: interviewSavedInfo
         </div>
         <Sentiment data={data} />
       </div>
+      <div className="mt-8 flex gap-8">
+        <Sentiment data={data} />
+        <Sentiment data={data} />
+      </div>
     </div>
   )
 }

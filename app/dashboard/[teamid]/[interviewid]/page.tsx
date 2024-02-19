@@ -34,7 +34,7 @@ export default async function InterviewPage(request: NextRequest & {params: { in
   }
 
   return (
-    <main>
+    <main className="mb-16">
       <InterviewDashboard interview={interview} />
     </main>
   )

@@ -20,7 +20,7 @@ export default function InterviewDashboard({ interview } : { interview: intervie
   ]
 
   return (
-    <div className="h-screen">
+    <div>
       <InterviewNav setView={setView} interviewName={interview.name} />
       <div className="px-12 py-6">
         {views[view]}
