@@ -4,9 +4,9 @@ Chart.register(ArcElement)
 
 export default function Sentiment({ data } : { data: number[] }) {
   return (
-    <div className="w-[50%] rounded p-4">
+    <div className="w-[50%] rounded p-6 border border-slate-600">
       <h3 className="text-2xl font-medium">Sentiment Analysis</h3>
-      <p className="mt-2 text-sm">This metric shows the general sentiment interviewees answers have while responding to questions.</p>
+      <p className="mt-2">This metric shows the general sentiment interviewees answers have while responding to questions.</p>
       <div className="flex mt-8 justify-center text-sm gap-6 font-medium">
         <div className="rounded-full px-2 border border-green-500 bg-green-200">
           <p>{data[0]} Positive</p>
@@ -28,6 +28,7 @@ export default function Sentiment({ data } : { data: number[] }) {
             borderRadius: 5,
             borderWidth: 2,
             spacing: 15,
+            animation: false,
             hoverBackgroundColor: ['#bbf7d0', '#e2e8f0', '#fecaca'],
             hoverBorderWidth: 2,
             hoverBorderColor: ['#22c55e', '#475569', '#f43f5e'],
