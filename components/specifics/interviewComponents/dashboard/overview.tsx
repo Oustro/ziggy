@@ -4,6 +4,9 @@ import { useState, useEffect } from "react"
 import { interviewSavedInfo } from "@/lib/types"
 
 import Sentiment from "@/components/specifics/interviewComponents/dashboard/overviewComponents/sentiment"
+import Spread from "@/components/specifics/interviewComponents/dashboard/overviewComponents/spread"
+import Trends from "@/components/specifics/interviewComponents/dashboard/overviewComponents/trends"
+import Activity from "@/components/specifics/interviewComponents/dashboard/overviewComponents/activity"
 
 import BlackButton from "@/components/generics/blackButton"
 import WhiteButton from "@/components/generics/whiteButton"
@@ -74,8 +77,11 @@ export default function Overview({ interview } : { interview: interviewSavedInfo
         <Sentiment data={data} />
       </div>
       <div className="mt-8 flex gap-8">
-        <Sentiment data={data} />
-        <Sentiment data={data} />
+        <Spread data={data} />
+        <Trends data={data} />
+      </div>
+      <div className="mt-8">
+        <Activity data={interview.id} />
       </div>
     </div>
   )
