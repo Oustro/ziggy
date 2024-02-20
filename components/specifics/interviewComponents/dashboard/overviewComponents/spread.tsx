@@ -1,55 +1,107 @@
-import { Doughnut } from "react-chartjs-2"
-import { Chart, ArcElement } from 'chart.js'
-Chart.register(ArcElement)
 
-export default function Spread({ data } : { data: number[] }) {
+import { useEffect, useState } from "react"
+import { Bar } from "react-chartjs-2"
+import { Chart, BarElement } from 'chart.js'
+Chart.register(BarElement)
+
+export default function Spread({ data } : { data: any }) {
+  const [sentiments, setSentiments] = useState({
+    bgColor: [],
+    borderColor: []
+  })
+  const [questions, setQuestions] = useState([])
+  const [counts, setCounts] = useState([])
+
+  const [loading, setLoading] = useState(true)
+
+
+  async function fetchInterviewSpread() {
+    const responseAnalyticsSpread = await fetch('/api/analytics/spread?id='+data)
+
+    if (responseAnalyticsSpread.status === 404) {
+      return
+    }
+
+    const response = await responseAnalyticsSpread.json()
+
+    setSentiments(response.sentiments)
+    setQuestions(response.questions)
+    setCounts(response.counts)
+
+    return setLoading(false)
+  }
+
+  useEffect(() => {
+    fetchInterviewSpread()
+  }, [])
+
   return (
     <div className="w-[50%] rounded p-6 border border-slate-600">
       <h3 className="text-2xl font-medium">Question Spread</h3>
       <p className="mt-2">This metric shows the general sentiment interviewees answers have while responding to questions.</p>
       <div className="flex mt-8 justify-center text-sm gap-6 font-medium">
         <div className="rounded-full px-2 border border-green-500 bg-green-200">
-          <p>{data[0]} Positive</p>
+          <p>Positive Responses</p>
         </div>
         <div className="rounded-full px-2 border bg-slate-200 border-slate-600">
-          <p>{data[1]} Neutral</p>
+          <p>Neutral Responses</p>
         </div>
         <div className="rounded-full px-2 border border-red-400 bg-red-200">
-          <p>{data[2]} Negative</p>
+          <p>Negative Responses</p>
         </div>
       </div>
-      <div className="mt-8 w-full text-center">
-        {data[0] === 0 && data[1] === 0 && data[2] === 0 ?
-          <p className="mt-24 text-2xl">No data available</p>
-        : 
-          <Doughnut
+      {loading ?
+        <p className="mt-24 mb-16 text-2xl text-center">Waiting for data...</p>
+      :
+        <div className="mt-8 h-72">
+          <Bar
           data={{
-            labels: ['Positive', 'Neutral', 'Negative'],
+            labels: questions,
             datasets: [{
-              data: data,
-              backgroundColor: ['#bbf7d0', '#e2e8f0', '#fecaca'],
-              borderRadius: 5,
+              label: 'Positive',
+              data: counts,
+              backgroundColor: sentiments.bgColor,
+              borderColor: sentiments.borderColor,
               borderWidth: 2,
-              spacing: 10,
               animation: false,
-              hoverBackgroundColor: ['#bbf7d0', '#e2e8f0', '#fecaca'],
-              hoverBorderWidth: 2,
-              hoverBorderColor: ['#22c55e', '#475569', '#f43f5e'],
-              borderColor: ['#22c55e', '#475569', '#f43f5e'],
+              borderRadius: 3,
+              hoverBackgroundColor: sentiments.bgColor,
+              hoverBorderColor: sentiments.borderColor
             }]
           }}
           options={{
+            indexAxis: 'y',
             responsive: true,
-            plugins: {
-              legend: {
-                display: false
+            maintainAspectRatio: false,
+            elements: {
+              point: {
+                radius: 0
               }
+            },
+            scales: {
+              x: {
+                display: true,
+                grid: {
+                  display: false
+                },
+              },
+              y: {
+                display: true,
+                grid: {
+                  display: false
+                },
+                ticks: {
+                  callback: function(value, index, values) {
+                    const question = questions[index] as string
+                    return question.substring(0, 15) + '...'
+                  },
+                }
+              },
             }
           }}
-          className="mx-auto"
           />
-        }
-      </div>
+        </div>
+      }
     </div> 
   )
 }

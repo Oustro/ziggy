@@ -20,7 +20,7 @@ export default function Sentiment({ data } : { data: number[] }) {
       </div>
       <div className="mt-8 w-full text-center">
         {data[0] === 0 && data[1] === 0 && data[2] === 0 ?
-          <p className="mt-24 text-2xl">No data available</p>
+          <p className="mt-24 text-2xl">Waiting for data...</p>
         : 
           <Doughnut
           data={{

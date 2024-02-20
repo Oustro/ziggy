@@ -23,7 +23,6 @@ export default function Activity({ data } : { data: any }) {
     }
 
     const response = await responseAnalyticsActivity.json()
-    console.log(response)
 
     setLabels(response.dates)
     setInterviews(response.interviews)
@@ -50,6 +49,7 @@ export default function Activity({ data } : { data: any }) {
               label: 'My First Dataset',
               data: interviews,
               fill: true,
+              animation: false,
               borderWidth: 2,
               borderColor: '#475569',
               tension: 0.09
