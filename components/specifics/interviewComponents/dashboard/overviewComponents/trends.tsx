@@ -34,7 +34,7 @@ export default function Trends({ data } : { data: any }) {
         <div className="mt-8 h-72 overflow-scroll">
           {trends.map((trend: any, index: number) => (
             <div key={index} className="flex justify-between items-center text-sm pb-4">
-            <p className="truncate w-[70%] text-lg">{trend}</p>
+            <p className="truncate w-[70%] text-base">{trend}</p>
             <div className="flex gap-6">
               <BlackButton>Explore Topic</BlackButton>
             </div>

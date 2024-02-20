@@ -61,7 +61,7 @@ export default function Overview({ interview } : { interview: interviewSavedInfo
             <div className="mt-4 h-[75%] overflow-scroll">
               {questions.map((question, index) => (
                 <div key={index} className="flex justify-between items-center text-sm pb-4">
-                  <p className="truncate w-[50%]">{question}</p>
+                  <p className="truncate w-[50%] text-base">{question}</p>
                   <div className="flex gap-6">
                     <WhiteButton>Ask Ziggy</WhiteButton>
                     <BlackButton>View Answers</BlackButton>
