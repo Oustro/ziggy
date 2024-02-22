@@ -33,9 +33,14 @@ export default async function InterviewPage(request: NextRequest & {params: { in
     return redirect("/dashboard")
   }
 
+  let checkReponseView = 0
+  if (interview.transcript.length === 0) {
+    checkReponseView = 4
+  }
+
   return (
     <main className="mb-16">
-      <InterviewDashboard interview={interview} />
+      <InterviewDashboard interview={interview} checkReponseView={checkReponseView} />
     </main>
   )
 }

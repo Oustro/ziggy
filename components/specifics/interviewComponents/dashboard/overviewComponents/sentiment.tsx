@@ -8,13 +8,13 @@ export default function Sentiment({ data } : { data: number[] }) {
       <h3 className="text-2xl font-medium">Sentiment Analysis</h3>
       <p className="mt-2">This metric shows the general sentiment interviewees answers have while responding to questions.</p>
       <div className="flex mt-8 justify-center text-sm gap-6 font-medium">
-        <div className="rounded-full px-2 border border-green-500 bg-green-200">
+        <div className="rounded-full px-2 border text-center border-green-500 bg-green-200">
           <p>{data[0]} Positive</p>
         </div>
-        <div className="rounded-full px-2 border bg-slate-200 border-slate-600">
+        <div className="rounded-full px-2 border text-center bg-slate-200 border-slate-600">
           <p>{data[1]} Neutral</p>
         </div>
-        <div className="rounded-full px-2 border border-red-400 bg-red-200">
+        <div className="rounded-full px-2 border text-center border-red-400 bg-red-200">
           <p>{data[2]} Negative</p>
         </div>
       </div>
