@@ -52,14 +52,14 @@ export default function Overview({ interview } : { interview: interviewSavedInfo
       <h1 className="text-4xl font-semibold">Overview</h1>
       <p className="mt-2">Go through the data Ziggy has collected from interviews.</p>
       <div className="mt-8 flex gap-8 w-full">
-        <div className="w-[50%]">
+        <div className="w-[50%] flex flex-col">
           <div className="p-6 border border-slate-600 rounded">
             <h3 className="text-2xl font-medium">Purpose</h3>
             <p className="mt-2">{interview.purpose}</p>
           </div>
-          <div className="p-6 h-96 mt-8 border border-slate-600 rounded">
+          <div className="flex-grow p-6 mt-8 border border-slate-600 rounded">
             <h3 className="text-2xl font-medium">Questions</h3>
-            <div className="mt-4 h-[75%] overflow-scroll">
+            <div className="mt-4 h-full overflow-scroll">
               {questions.map((question, index) => (
                 <div key={index} className="flex justify-between items-center text-sm pb-4">
                   <p className="truncate w-[40%] text-base">{question}</p>
@@ -69,9 +69,6 @@ export default function Overview({ interview } : { interview: interviewSavedInfo
                   </div>
                 </div>
               ))}
-            </div>
-            <div className="mt-4 flex justify-end">
-              <HoverWords>Update interview questions</HoverWords>
             </div>
           </div>
         </div>
