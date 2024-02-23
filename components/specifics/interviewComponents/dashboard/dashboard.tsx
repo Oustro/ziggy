@@ -15,7 +15,7 @@ export default function InterviewDashboard({ interview, checkReponseView } : { i
 
   const views = [
     <Overview interview={interview} />,
-    <Ask />,
+    <Ask interviewid={interview.id} />,
     <Search />,
     <Transcripts />,
     <div>Distribute</div>,
