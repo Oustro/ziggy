@@ -1,26 +1,40 @@
 import { useState, useEffect } from "react"
 
-import { useSearchParams, useRouter } from "next/navigation"
+import { useSearchParams, usePathname, useRouter } from "next/navigation"
+
+import SourceBox from "@/components/generics/sourceBox"
 
 export default function Ask({ interviewid } : { interviewid: string }) {
   const searchParams = useSearchParams()
+  const quickAsk = searchParams.get("q")
   const router = useRouter()
+  const pathname = usePathname()
 
   const [question, setQuestion] = useState("")
 
   const [answer, setAnswer] = useState("")
   const [loading, setLoading] = useState(false)
-  const [source, setSource] = useState<Array<{score: number, metadata: {answer: string, answerSentiment: string, interviwee: string, mostSimiliarQuestion: string, question: string}}>>([])
+  const [source, setSource] = useState<Array<{score: number, metadata: {answer: string, answerSentiment: string, interviewee: string, mostSimiliarQuestion: string, question: string}}>>([])
 
   async function askZiggy(e: React.FormEvent<HTMLFormElement>) {
-    // Fetch the answer from Ziggy
     e.preventDefault()
+    setLoading(true)
+    const responseAnalyticsAsk = await fetch('/api/analytics/ask?id='+interviewid+'&q='+question)
 
+    if (!responseAnalyticsAsk.ok) {
+      return setAnswer("Error fetching data")
+    }
+
+    const data = await responseAnalyticsAsk.json()
+
+    setAnswer(data.answer)
+    setSource(data.source)
+    return setLoading(false)
   }
 
   async function askZiggyQuick(query: string) {
-    // Fetch the answer from Ziggy
     setLoading(true)
+    setQuestion(query)
     const responseAnalyticsAsk = await fetch('/api/analytics/ask?id='+interviewid+'&q='+query)
 
     if (!responseAnalyticsAsk.ok) {
@@ -29,22 +43,19 @@ export default function Ask({ interviewid } : { interviewid: string }) {
 
     const data = await responseAnalyticsAsk.json()
 
-    console.log(data)
-
     setAnswer(data.answer)
     setSource(data.source)
-    router.push(window.location.pathname)
+    router.push(pathname)
 
     return setLoading(false)
   }
 
   useEffect(() => {
-    if (searchParams.get("q")) {
-      setQuestion(searchParams.get("q") || "")
-      askZiggyQuick(searchParams.get("q") || "")
+    if (quickAsk) {
+      askZiggyQuick(quickAsk)
     }
 
-  }, [])
+  }, [quickAsk])
 
   return (
     <div>
@@ -64,10 +75,7 @@ export default function Ask({ interviewid } : { interviewid: string }) {
       {answer}
 
       {source.map((s, i) => (
-        <div key={i} className="mt-4">
-          <p>{(100 * s.score).toFixed(0)}% Similiarity</p>
-          <p>{s.metadata.answer}</p>
-        </div>
+        <SourceBox key={i} score={s.score} metadata={s.metadata} />
       ))}
     </div>
   )

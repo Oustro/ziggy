@@ -14,7 +14,7 @@ export default function InterviewDashboard({ interview, checkReponseView } : { i
   const [view, setView] = useState(checkReponseView)
 
   const views = [
-    <Overview interview={interview} />,
+    <Overview interview={interview} setView={setView} />,
     <Ask interviewid={interview.id} />,
     <Search />,
     <Transcripts />,

@@ -10,12 +10,16 @@ import Activity from "@/components/specifics/interviewComponents/dashboard/overv
 
 import BlackButton from "@/components/generics/blackButton"
 import WhiteButton from "@/components/generics/whiteButton"
-import HoverWords from "@/components/generics/hoverWords"
 
-export default function Overview({ interview } : { interview: interviewSavedInfo }) {
+import { useRouter, usePathname } from "next/navigation"
+
+export default function Overview({ interview, setView } : { interview: interviewSavedInfo, setView: Function }) {
   const [data, setData] = useState([10, 10, 10])
 
   const [questions, setQuestions] = useState<string[]>([])
+
+  const router = useRouter()
+  const pathname = usePathname()
 
   function getSentimentData() {
     let positiive = 0
@@ -43,6 +47,11 @@ export default function Overview({ interview } : { interview: interviewSavedInfo
     setData([positiive, neutral, negative])
   }
 
+  const quickAsk = async (question: string) => {
+    router.push(pathname+"?q="+question)
+    setView(1)
+  }
+
   useEffect(() => {
     getSentimentData()
   }, [])
@@ -64,7 +73,9 @@ export default function Overview({ interview } : { interview: interviewSavedInfo
                 <div key={index} className="flex justify-between items-center text-sm pb-4">
                   <p className="truncate w-[40%] text-base">{question}</p>
                   <div className="flex gap-6 text-center">
-                    <WhiteButton>Ask Ziggy</WhiteButton>
+                    <button onClick={() => quickAsk(question)}>
+                      <WhiteButton>Ask Ziggy</WhiteButton>  
+                    </button>
                     <BlackButton>View Answers</BlackButton>
                   </div>
                 </div>
