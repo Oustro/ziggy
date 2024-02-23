@@ -22,6 +22,10 @@ export default function Spread({ data } : { data: any }) {
       return
     }
 
+    if (responseAnalyticsSpread.status === 500) {
+      return
+    }
+
     const response = await responseAnalyticsSpread.json()
 
     setSentiments(response.sentiments)

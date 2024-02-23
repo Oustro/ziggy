@@ -22,6 +22,10 @@ export default function Activity({ data } : { data: any }) {
       return
     }
 
+    if (responseAnalyticsActivity.status === 500) {
+      return
+    }
+
     const response = await responseAnalyticsActivity.json()
 
     setLabels(response.dates)

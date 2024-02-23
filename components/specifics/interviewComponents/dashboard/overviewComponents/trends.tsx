@@ -13,6 +13,10 @@ export default function Trends({ data } : { data: any }) {
       return
     }
 
+    if (responseAnalyticsTrends.status === 500) {
+      return
+    }
+
     const response = await responseAnalyticsTrends.json()
 
     setTrends(response.analysis)

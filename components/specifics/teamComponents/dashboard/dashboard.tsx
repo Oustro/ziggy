@@ -65,7 +65,7 @@ export default function TeamDashboard() {
         {loading ? (
           new Array(3)).fill(0).map((_, i) => 
           <LoadingCard key={i} />
-        ) : (interviews.map((team) => (
+        ) : (interviews.reverse().map((team) => (
           <Card key={team.id} interview={team} />
         )))}
       </div>

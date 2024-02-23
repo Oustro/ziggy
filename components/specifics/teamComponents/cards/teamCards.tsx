@@ -35,7 +35,7 @@ export default function TeamCards() {
       {loading ? (
         new Array(3)).fill(0).map((_, i) => 
         <LoadingCard key={i} />
-      ) : (teams.map((team) => (
+      ) : (teams.reverse().map((team) => (
         <Card team={team} key={team.id} open={team.id === searchParams.get("team") ? true : false} setRefreshKey={setRefreshKey} />
       )))}
     </main>
