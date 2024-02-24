@@ -14,22 +14,19 @@ export default function InterviewNav({ setView, interviewName, checkReponseView 
               <HoverWords>Overview</HoverWords>
             </button>
             <button onClick={() => setView(1)}>
-              <HoverWords>Ask Ziggy</HoverWords>
+              <HoverWords>Results</HoverWords>
             </button>
             <button onClick={() => setView(2)}>
-              <HoverWords>Search</HoverWords>
-            </button>
-            <button onClick={() => setView(3)}>
               <HoverWords>Transcripts</HoverWords>
             </button>
           </div>
         </div>
       )}
       <div className="flex gap-6">
-        <button onClick={() => setView(4)}>
+        <button onClick={() => setView(3)}>
           <HoverWords>Distribute</HoverWords>
         </button>
-        <button onClick={() => setView(5)}>
+        <button onClick={() => setView(4)}>
           <BlackButton>Edit Interview</BlackButton>
         </button>
       </div>

@@ -7,7 +7,6 @@ import { interviewSavedInfo } from "@/lib/types"
 import InterviewNav from "@/components/specifics/navbars/interviewNav"
 import Overview from "@/components/specifics/interviewComponents/dashboard/overview"
 import Ask from "@/components/specifics/interviewComponents/dashboard/ask"
-import Search from "@/components/specifics/interviewComponents/dashboard/search"
 import Transcripts from "@/components/specifics/interviewComponents/dashboard/transcripts"
 
 export default function InterviewDashboard({ interview, checkReponseView } : { interview: interviewSavedInfo, checkReponseView: number }) {
@@ -16,7 +15,6 @@ export default function InterviewDashboard({ interview, checkReponseView } : { i
   const views = [
     <Overview interview={interview} setView={setView} />,
     <Ask interviewid={interview.id} />,
-    <Search />,
     <Transcripts />,
     <div>Distribute</div>,
     <div>Edit Interview</div>

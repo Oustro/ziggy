@@ -60,6 +60,9 @@ export default function Overview({ interview, setView } : { interview: interview
     <div>
       <h1 className="text-4xl font-semibold">Overview</h1>
       <p className="mt-2">Go through the data Ziggy has collected from interviews.</p>
+      <div className="mt-8">
+        <Trends data={interview.id} />
+      </div>
       <div className="mt-8 flex gap-8 w-full">
         <div className="w-[50%] flex flex-col">
           <div className="p-6 border border-slate-600 rounded">
@@ -71,12 +74,11 @@ export default function Overview({ interview, setView } : { interview: interview
             <div className="mt-4 h-full overflow-scroll">
               {questions.map((question, index) => (
                 <div key={index} className="flex justify-between items-center text-sm pb-4">
-                  <p className="truncate w-[40%] text-base">{question}</p>
+                  <p className="truncate w-[55%] text-base">{question}</p>
                   <div className="flex gap-6 text-center">
                     <button onClick={() => quickAsk(question)}>
-                      <WhiteButton>Ask Ziggy</WhiteButton>  
+                      <WhiteButton>Summarize Answers</WhiteButton>  
                     </button>
-                    <BlackButton>View Answers</BlackButton>
                   </div>
                 </div>
               ))}
@@ -87,9 +89,6 @@ export default function Overview({ interview, setView } : { interview: interview
       </div>
       <div className="mt-8 flex gap-8">
         <Spread data={interview.id} />
-        <Trends data={interview.id} />
-      </div>
-      <div className="mt-8">
         <Activity data={interview.id} />
       </div>
     </div>

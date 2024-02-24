@@ -29,20 +29,18 @@ export default function Trends({ data } : { data: any }) {
 
 
   return (
-    <div className="w-[50%] rounded p-6 border border-slate-600">
-      <h3 className="text-2xl font-medium">Key Trends</h3>
+    <div className="w-full rounded p-6 border border-slate-600">
+      <h3 className="text-2xl font-medium">Key Trends in this interview</h3>
       <p className="mt-2">This metric shows what people are talking about the most and returns the keywords mentioned in the interview.</p>
       {loading ?
         <p className="mt-24 mb-16 text-2xl text-center">Waiting for data...</p>
       :
-        <div className="mt-8 h-72 overflow-scroll">
+        <div className="mt-8 grid grid-cols-4 gap-4">
           {trends.map((trend: any, index: number) => (
-            <div key={index} className="flex justify-between items-center text-sm pb-4">
-            <p className="truncate w-[70%] text-base">{trend}</p>
-            <div className="flex gap-6">
-              <BlackButton>Explore Topic</BlackButton>
+            <div key={index} className="group border rounded p-4 hover:border-slate-600 transition-all">
+              <p className="text-base">{trend}</p>
+              <p className="group-hover:translate-x-1 transition text-xs mt-4">Explore &rsaquo;</p>
             </div>
-          </div>
           ))}
         </div>
       }
