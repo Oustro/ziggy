@@ -9,7 +9,6 @@ import Trends from "@/components/specifics/interviewComponents/dashboard/overvie
 import Activity from "@/components/specifics/interviewComponents/dashboard/overviewComponents/activity"
 
 import BlackButton from "@/components/generics/blackButton"
-import WhiteButton from "@/components/generics/whiteButton"
 
 import { useRouter, usePathname } from "next/navigation"
 
@@ -59,7 +58,6 @@ export default function Overview({ interview, setView } : { interview: interview
   return (
     <div>
       <h1 className="text-4xl font-semibold">Overview</h1>
-      <p className="mt-2">Go through the data Ziggy has collected from interviews.</p>
       <div className="mt-8">
         <Trends data={interview.id} />
       </div>
@@ -77,7 +75,7 @@ export default function Overview({ interview, setView } : { interview: interview
                   <p className="truncate w-[55%] text-base">{question}</p>
                   <div className="flex gap-6 text-center">
                     <button onClick={() => quickAsk(question)}>
-                      <WhiteButton>Summarize Answers</WhiteButton>  
+                      <BlackButton>View results</BlackButton>  
                     </button>
                   </div>
                 </div>

@@ -31,7 +31,7 @@ export default function Trends({ data } : { data: any }) {
   return (
     <div className="w-full rounded p-6 border border-slate-600">
       <h3 className="text-2xl font-medium">Key Trends in this interview</h3>
-      <p className="mt-2">This metric shows what people are talking about the most and returns the keywords mentioned in the interview.</p>
+      <p className="mt-2">Here are some interesting things from your interview you might want to explore.</p>
       {loading ?
         <p className="mt-24 mb-16 text-2xl text-center">Waiting for data...</p>
       :

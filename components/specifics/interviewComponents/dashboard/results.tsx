@@ -4,7 +4,9 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation"
 
 import SourceBox from "@/components/generics/sourceBox"
 
-export default function Ask({ interviewid } : { interviewid: string }) {
+import Image from "next/image"
+
+export default function Results({ interviewid } : { interviewid: string }) {
   const searchParams = useSearchParams()
   const quickAsk = searchParams.get("q")
   const router = useRouter()
@@ -19,7 +21,7 @@ export default function Ask({ interviewid } : { interviewid: string }) {
   async function askZiggy(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setLoading(true)
-    const responseAnalyticsAsk = await fetch('/api/analytics/ask?id='+interviewid+'&q='+question)
+    const responseAnalyticsAsk = await fetch('/api/analytics/results?id='+interviewid+'&q='+question)
 
     if (!responseAnalyticsAsk.ok) {
       return setAnswer("Error fetching data")
@@ -35,7 +37,7 @@ export default function Ask({ interviewid } : { interviewid: string }) {
   async function askZiggyQuick(query: string) {
     setLoading(true)
     setQuestion(query)
-    const responseAnalyticsAsk = await fetch('/api/analytics/ask?id='+interviewid+'&q='+query)
+    const responseAnalyticsAsk = await fetch('/api/analytics/results?id='+interviewid+'&q='+query)
 
     if (!responseAnalyticsAsk.ok) {
       return setAnswer("Error fetching data")
@@ -71,9 +73,23 @@ export default function Ask({ interviewid } : { interviewid: string }) {
         required
         />
       </form>
-
-      {answer}
-
+      <div className="mt-8 p-4 rounded border border-slate-600">
+        <div className="flex items-center gap-1">
+          <Image
+          src="/ziggy-logo.svg"
+          alt="Logo"
+          width={40}
+          height={40}
+          />
+          <h4 className="text-xl font-semibold">Ziggy</h4>
+        </div>
+        {loading ?
+          <p className="mt-4">Loading...</p>
+        :
+          <p className="mt-4">{answer}</p>
+        }
+      </div>
+      <h2 className="mt-16 text-xl font-medium">Sources:</h2>
       {source.map((s, i) => (
         <SourceBox key={i} score={s.score} metadata={s.metadata} />
       ))}
