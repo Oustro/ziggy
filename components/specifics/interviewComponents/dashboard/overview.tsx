@@ -59,7 +59,7 @@ export default function Overview({ interview, setView } : { interview: interview
     <div>
       <h1 className="text-4xl font-semibold">Overview</h1>
       <div className="mt-8">
-        <Trends data={interview.id} />
+        <Trends data={interview.id} setView={setView} />
       </div>
       <div className="mt-8 flex gap-8 w-full">
         <div className="w-[50%] flex flex-col">
