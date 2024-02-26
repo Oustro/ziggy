@@ -1,4 +1,7 @@
 import { Doughnut } from "react-chartjs-2"
+
+import Spinner from "@/components/generics/spinner"
+
 import { Chart, ArcElement } from 'chart.js'
 Chart.register(ArcElement)
 
@@ -20,7 +23,9 @@ export default function Sentiment({ data } : { data: number[] }) {
       </div>
       <div className="mt-8 w-full text-center">
         {data[0] === 0 && data[1] === 0 && data[2] === 0 ?
-          <p className="mt-24 text-2xl">Waiting for data...</p>
+          <div className="mt-24 flex justify-center">
+            <Spinner size={40} />
+          </div>
         : 
           <Doughnut
           data={{

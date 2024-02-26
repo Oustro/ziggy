@@ -2,6 +2,9 @@
 import { useEffect, useState } from "react"
 import { Bar } from "react-chartjs-2"
 import { Chart, BarElement } from 'chart.js'
+
+import Spinner from "@/components/generics/spinner"
+
 Chart.register(BarElement)
 
 export default function Spread({ data } : { data: any }) {
@@ -43,7 +46,7 @@ export default function Spread({ data } : { data: any }) {
     <div className="w-[50%] rounded p-6 border border-slate-600">
       <h3 className="text-2xl font-medium">Question Spread</h3>
       <p className="mt-2">This metric shows the general sentiment interviewees answers have while responding to questions.</p>
-      <div className="flex mt-8 justify-center text-sm gap-6 font-medium">
+      <div className="flex mt-8 justify-center text-center text-sm gap-6 font-medium">
         <div className="rounded-full px-2 border border-green-500 bg-green-200">
           <p>Positive Responses</p>
         </div>
@@ -55,7 +58,9 @@ export default function Spread({ data } : { data: any }) {
         </div>
       </div>
       {loading ?
-        <p className="mt-24 mb-16 text-2xl text-center">Waiting for data...</p>
+        <div className="mt-24 flex justify-center">
+          <Spinner size={40} />
+        </div>
       :
         <div className="mt-8 h-72">
           <Bar

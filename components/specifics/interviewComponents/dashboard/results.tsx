@@ -3,6 +3,10 @@ import { useState, useEffect } from "react"
 import { useSearchParams, usePathname, useRouter } from "next/navigation"
 
 import SourceBox from "@/components/generics/sourceBox"
+import Spinner from "@/components/generics/spinner"
+import BlackButton from "@/components/generics/blackButton"
+
+import { FaMagnifyingGlass } from "react-icons/fa6"
 
 import Image from "next/image"
 
@@ -62,37 +66,63 @@ export default function Results({ interviewid } : { interviewid: string }) {
   return (
     <div>
       <h1 className="text-4xl font-semibold">Results</h1>
-      <p className="mt-2">Ziggy has collected data from your interviewees and is ready to answer any questions you may have.</p>
-      <form className="mt-8 w-full" onSubmit={askZiggy}>
-        <input
-        type="text"
-        value={question}
-        onChange={(e) => setQuestion(e.target.value)}
-        className="w-[60%] mt-4 border-b border-slate-600 pb-2 text-base focus:outline-none"
-        placeholder="Enter a question about your interview for Ziggy..."
-        required
-        />
-      </form>
-      <div className="mt-8 p-4 rounded border border-slate-600">
-        <div className="flex items-center gap-1">
-          <Image
-          src="/ziggy-logo.svg"
-          alt="Logo"
-          width={40}
-          height={40}
+      <div className="mt-8 relative">
+        <form onSubmit={askZiggy} className="flex gap-4">
+          <input
+          type="text"
+          placeholder="Ask a question about your interview and get an AI summary, answer, and resources"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          className="pl-10 mt-4 w-full border-b border-slate-600 pb-2 text-base focus:outline-none"
           />
-          <h4 className="text-xl font-semibold">Ziggy</h4>
-        </div>
-        {loading ?
-          <p className="mt-4">Loading...</p>
-        :
-          <p className="mt-4">{answer}</p>
-        }
+          <FaMagnifyingGlass className="absolute left-2 top-5" />
+          <button
+          type="submit"
+          disabled={loading}
+          className="mt-2"
+          >
+            <BlackButton>Search</BlackButton>
+          </button>
+        </form>
       </div>
-      <h2 className="mt-16 text-xl font-medium">Sources:</h2>
-      {source.map((s, i) => (
-        <SourceBox key={i} score={s.score} metadata={s.metadata} />
-      ))}
+      <div className="mt-8">
+        {loading && (
+          <div className="flex items-center gap-4 border p-4 rounded border-slate-600">
+            <Image
+            src="/ziggy-logo.svg"
+            alt="Logo"
+            width={40}
+            height={40}
+            />
+            <div className="w-full">
+              <Spinner size={24}/>
+            </div>
+          </div>
+        )}
+        {answer && !loading && (
+          <>
+            <div className="flex items-center gap-4 border p-4 rounded border-slate-600">
+              <Image
+              src="/ziggy-logo.svg"
+              alt="Logo"
+              width={40}
+              height={40}
+              />
+              <div className="w-full">
+                <p>{answer}</p>
+              </div>
+            </div>
+            <div className="mt-8">
+              <p className="text-lg font-medium">Real responses from interviewees:</p>
+              <div className="mt-4">
+              {source.map((s, i) => (
+                <SourceBox key={i} score={s.score} metadata={s.metadata} />
+              ))}
+              </div>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   )
 }

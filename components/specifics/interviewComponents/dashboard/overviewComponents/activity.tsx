@@ -1,5 +1,7 @@
 
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+
+import Spinner from "@/components/generics/spinner"
 
 import { Line } from "react-chartjs-2"
 import { Chart, CategoryScale, PointElement, LinearScale, LineElement } from 'chart.js'
@@ -43,7 +45,9 @@ export default function Activity({ data } : { data: any }) {
       <h3 className="text-2xl font-medium">Interview Activity</h3>
       <p className="mt-2">This graph shows when interviews take place and how many were conducted on a particular day.</p>
       {loading ? 
-        <p className="mt-24 mb-16 text-2xl text-center">Waiting for data...</p>
+        <div className="mt-24 flex justify-center">
+          <Spinner size={40} />
+        </div>
       :
         <div className="mt-8 h-96">
           <Line

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 
 import { useRouter, usePathname } from "next/navigation"
 
+import Spinner from "@/components/generics/spinner"
+
 export default function Trends({ data, setView } : { data: any, setView: Function }) {
   const [trends, setTrends] = useState<Array<string>>([])
   const [loading, setLoading] = useState(true)
@@ -42,7 +44,9 @@ export default function Trends({ data, setView } : { data: any, setView: Functio
       <h3 className="text-2xl font-medium">Key Trends in this interview</h3>
       <p className="mt-2">Here are some interesting things from your interview you might want to explore.</p>
       {loading ?
-        <p className="mt-24 mb-16 text-2xl text-center">Waiting for data...</p>
+        <div className="mt-24 mb-24 flex justify-center">
+          <Spinner size={40} />
+        </div>
       :
         <div className="mt-8 grid grid-cols-4 gap-4">
           {trends.map((trend: string, index: number) => (
