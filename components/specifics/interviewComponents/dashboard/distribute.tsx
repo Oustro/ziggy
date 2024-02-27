@@ -1,6 +1,11 @@
-import QRCode from "react-qr-code";
+import QRCode from "react-qr-code"
 
-import BlackButton from "@/components/generics/blackButton";
+import BlackButton from "@/components/generics/blackButton"
+import WhiteButton from "@/components/generics/whiteButton";
+
+import { FaXTwitter, FaLinkedinIn, FaFacebook, FaCopy } from "react-icons/fa6"
+
+import Link from "next/link"
 
 export default function Distribute({ externalId, interviewName } : { externalId: string, interviewName: string }) {
 
@@ -25,18 +30,44 @@ export default function Distribute({ externalId, interviewName } : { externalId:
     img.src = `data:image/svg+xml;base64,${btoa(svgData)}`;
   }
 
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.origin+"/zy/"+externalId)
+  }
+
   return (
     <div>
       <h1 className="text-4xl font-semibold">Distribute</h1>
       <div className="mt-8">
+        <h3 className="text-2xl font-medium">Interview link</h3>
+        <button onClick={copyLink} type="button" className="border mt-4 py-1 px-2 flex rounded hover:border-inherit transition-all border-slate-600 items-center gap-2">
+          <FaCopy />
+          <p className="truncate">{window.location.origin}/zy/{externalId}</p>
+        </button>
+      </div>
+      <div className="mt-8">
         <h3 className="text-2xl font-medium">QR Code</h3>
-      <p className="mt-2 text-slate-600">Scan the this QR to take your Ziggy Interview. Great for printing and sharing too.</p>
+        <p className="mt-2 text-slate-600">Scan the this QR to take your Ziggy Interview. Great for printing and sharing too.</p>
         <QRCode id="QRCode" className="rounded p-2 border border-slate-600 mt-6" value={window.location.origin + '/zy/'+externalId} />
         <button className="mt-6" onClick={downloadQR}>
           <BlackButton>
             Download QR Code
           </BlackButton>
         </button>
+      </div>
+      <div className="mt-8">
+        <h3 className="text-2xl font-medium">Share on social</h3>
+        <p className="mt-2 text-slate-600">Post your Ziggy interview link on social media.</p>
+        <div className="flex mt-6 gap-4 text-2xl">
+          <Link href={"https://twitter.com/intent/tweet?text=https://www.useziggy.com/zy/"+externalId} target="_blank">
+            <WhiteButton><FaXTwitter /></WhiteButton>
+          </Link>
+          <Link href={"https://www.linkedin.com/shareArticle?url=https://www.useziggy.com/zy/"+externalId} target="_blank">
+            <WhiteButton><FaLinkedinIn /></WhiteButton> 
+          </Link>
+          <Link href={"https://www.facebook.com/sharer/sharer.php?u=https://www.useziggy.com/zy/"+externalId} target="_blank">
+            <WhiteButton><FaFacebook /></WhiteButton>
+          </Link>
+        </div>
       </div>
     </div>
   )
