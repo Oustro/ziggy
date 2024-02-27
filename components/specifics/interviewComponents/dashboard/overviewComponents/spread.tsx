@@ -45,7 +45,7 @@ export default function Spread({ data } : { data: any }) {
   return (
     <div className="w-[50%] rounded p-6 border border-slate-600">
       <h3 className="text-2xl font-medium">Question Spread</h3>
-      <p className="mt-2">This metric shows the general sentiment interviewees answers have while responding to questions.</p>
+      <p className="mt-2 text-slate-600">This metric shows the general sentiment interviewees answers have while responding to questions.</p>
       <div className="flex mt-8 justify-center text-center text-sm gap-6 font-medium">
         <div className="rounded-full px-2 border border-green-500 bg-green-200">
           <p>Positive Responses</p>

@@ -43,7 +43,7 @@ export default function Activity({ data } : { data: any }) {
   return (
     <div className="w-[50%] rounded p-6 border border-slate-600">
       <h3 className="text-2xl font-medium">Interview Activity</h3>
-      <p className="mt-2">This graph shows when interviews take place and how many were conducted on a particular day.</p>
+      <p className="mt-2 text-slate-600">This graph shows when interviews take place and how many were conducted on a particular day.</p>
       {loading ? 
         <div className="mt-24 flex justify-center">
           <Spinner size={40} />

@@ -10,8 +10,8 @@ export default function Card({ interview } : { interview: interviewSavedInfo }) 
         <div className="border hover:border-slate-600 p-4 transition rounded shadow-sm">
           <div className="text-xs">
             <p className="text-xl font-medium">{interview.name}</p>
-            <p className="mt-2 h-8 line-clamp">{interview.purpose}</p>
-            <div className="flex justify-between mt-8 text-sm">
+            <p className="mt-2 h-8 line-clamp text-slate-600">{interview.purpose}</p>
+            <div className="flex justify-between mt-8 text-sm text-slate-600">
               <p>{interview.transcript.length} Responses</p>
               <p>{interview.guide.length} Questions</p>
             </div>

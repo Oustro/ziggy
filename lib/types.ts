@@ -64,6 +64,7 @@ export interface interviewSavedInfo {
   purpose: string,
   collect: boolean,
   teamId: string,
+  externalID: string,
   guide: Array<guideQuestions>
   transcript: Array<transcript>
 }

@@ -42,7 +42,7 @@ export default function Trends({ data, setView } : { data: any, setView: Functio
   return (
     <div className="w-full rounded p-6 border border-slate-600">
       <h3 className="text-2xl font-medium">Key Trends in this interview</h3>
-      <p className="mt-2">Here are some interesting things from your interview you might want to explore.</p>
+      <p className="mt-2 text-slate-600">Here are some interesting things from your interview you might want to explore.</p>
       {loading ?
         <div className="mt-24 mb-24 flex justify-center">
           <Spinner size={40} />

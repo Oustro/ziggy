@@ -28,7 +28,7 @@ export default function Card({ team, open, setRefreshKey } : { team: teamSavedIn
           />
           <p className="text-xl font-medium">{team.name}</p>
         </div>
-        <div className="flex justify-between mt-8 text-sm">
+        <div className="flex justify-between mt-8 text-sm text-slate-600">
           <p className="flex items-center gap-1">{team.interviews.length} Interviews</p>
           <p className="flex items-center gap-1">{team.members.length} Members</p>
         </div>

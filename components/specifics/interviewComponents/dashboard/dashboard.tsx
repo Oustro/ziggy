@@ -8,6 +8,7 @@ import InterviewNav from "@/components/specifics/navbars/interviewNav"
 import Overview from "@/components/specifics/interviewComponents/dashboard/overview"
 import Results from "@/components/specifics/interviewComponents/dashboard/results"
 import Transcripts from "@/components/specifics/interviewComponents/dashboard/transcripts"
+import Distribute from "@/components/specifics/interviewComponents/dashboard/distribute"
 
 export default function InterviewDashboard({ interview, checkReponseView } : { interview: interviewSavedInfo, checkReponseView: number }) {
   const [view, setView] = useState(checkReponseView)
@@ -16,7 +17,7 @@ export default function InterviewDashboard({ interview, checkReponseView } : { i
     <Overview interview={interview} setView={setView} />,
     <Results interviewid={interview.id} />,
     <Transcripts />,
-    <div>Distribute</div>,
+    <Distribute externalId={interview.externalID} interviewName={interview.name} />,
     <div>Edit Interview</div>
   ]
 
