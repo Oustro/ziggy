@@ -35,7 +35,7 @@ export default async function InterviewPage(request: NextRequest & {params: { in
 
   let checkReponseView = 0
   if (interview.transcript.length === 0) {
-    checkReponseView = 4
+    checkReponseView = 3
   }
 
   return (

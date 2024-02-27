@@ -56,7 +56,8 @@ export async function POST(request: NextRequest) {
         answer: conversationInfo.answer,
         interviewee: conversationInfo.interviewee,
         answerSentiment: conversationInfo.answerSentiment[0].label,
-        mostSimilarQuestion: conversationInfo.mostSimilarQuestion
+        mostSimilarQuestion: conversationInfo.mostSimilarQuestion,
+        transcriptId: conversationInfo.transcriptId
       }
     }])
 

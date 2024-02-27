@@ -4,8 +4,8 @@ import BlackButton from "@/components/generics/blackButton"
 export default function InterviewNav({ setView, interviewName, checkReponseView } : { setView: Function, interviewName: string, checkReponseView: number }) {
 
   return (
-    <nav className={`sticky text-sm top-0 z-10 w-full bg-white h-16 border-b px-6 flex items-center ${checkReponseView === 4 ? 'justify-end' : 'justify-between'}`}>
-      {checkReponseView !== 4 && (
+    <nav className={`sticky text-sm top-0 z-10 w-full bg-white h-16 border-b px-6 flex items-center ${checkReponseView === 3 ? 'justify-end' : 'justify-between'}`}>
+      {checkReponseView !== 3 && (
         <div className="flex items-center gap-4">
           <h1 className="font-medium">{interviewName}</h1>
           <h1 className="font-medium">/</h1>
