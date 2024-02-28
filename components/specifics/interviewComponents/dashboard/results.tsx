@@ -20,7 +20,7 @@ export default function Results({ interviewid } : { interviewid: string }) {
 
   const [answer, setAnswer] = useState("")
   const [loading, setLoading] = useState(false)
-  const [source, setSource] = useState<Array<{score: number, metadata: {answer: string, answerSentiment: string, interviewee: string, mostSimiliarQuestion: string, question: string}}>>([])
+  const [source, setSource] = useState<Array<{score: number, metadata: {answer: string, answerSentiment: string, interviewee: string, mostSimiliarQuestion: string, question: string, transcriptId: string}}>>([])
 
   async function askZiggy(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()

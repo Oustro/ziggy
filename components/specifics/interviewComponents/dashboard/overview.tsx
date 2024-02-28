@@ -46,9 +46,9 @@ export default function Overview({ interview, setView } : { interview: interview
     setData([positiive, neutral, negative])
   }
 
-  const quickAsk = async (question: string) => {
+  const quickAsk = (question: string) => {
     router.push(pathname+"?q="+question)
-    setView(1)
+    return setView(1)
   }
 
   useEffect(() => {

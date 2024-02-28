@@ -32,10 +32,9 @@ export default function Trends({ data, setView } : { data: any, setView: Functio
     fetchTrends()
   }, [])
 
-  const quickAsk = async (question: string) => {
-    console.log(question)
+  const quickAsk = (question: string) => {
     router.push(pathname+"?q="+question)
-    setView(1)
+    return setView(1)
   }
 
 
