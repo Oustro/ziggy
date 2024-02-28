@@ -3,12 +3,13 @@ import BlackButton from "@/components/generics/blackButton"
 
 import { useRouter, usePathname } from "next/navigation"
 
-export default function SourceBox({ score, metadata } : { score: number, metadata: {answer: string, answerSentiment: string, interviewee: string, mostSimiliarQuestion: string, question: string, transcriptId: string} }) {
+export default function SourceBox({ score, metadata, setView } : { score: number, metadata: {answer: string, answerSentiment: string, interviewee: string, mostSimiliarQuestion: string, question: string, transcriptId: string}, setView: Function }) {
   const router = useRouter()
   const pathname = usePathname()
 
   function viewTranscript() {
     router.push(pathname+"?tid="+metadata.transcriptId)
+    return setView(2)
   }
 
   return (

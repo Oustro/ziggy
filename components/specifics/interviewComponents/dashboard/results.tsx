@@ -10,7 +10,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6"
 
 import Image from "next/image"
 
-export default function Results({ interviewid } : { interviewid: string }) {
+export default function Results({ interviewid, setView } : { interviewid: string, setView: Function }) {
   const searchParams = useSearchParams()
   const quickAsk = searchParams.get("q")
   const router = useRouter()
@@ -115,9 +115,9 @@ export default function Results({ interviewid } : { interviewid: string }) {
             <div className="mt-8">
               <p className="text-lg font-medium">Real responses from interviewees:</p>
               <div className="mt-4">
-              {source.map((s, i) => (
-                <SourceBox key={i} score={s.score} metadata={s.metadata} />
-              ))}
+                {source.map((s, i) => (
+                  <SourceBox key={i} score={s.score} metadata={s.metadata} setView={setView} />
+                ))}
               </div>
             </div>
           </>
