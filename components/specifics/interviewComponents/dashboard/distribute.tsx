@@ -39,7 +39,8 @@ export default function Distribute({ externalId, interviewName } : { externalId:
       <h1 className="text-4xl font-semibold">Distribute</h1>
       <div className="mt-8">
         <h3 className="text-2xl font-medium">Interview link</h3>
-        <button onClick={copyLink} type="button" className="border mt-4 py-1 px-2 flex rounded hover:border-inherit transition-all border-slate-600 items-center gap-2">
+        <p className="mt-2 text-slate-600">Share this link with whoever you would like to take your interview.</p>
+        <button onClick={copyLink} type="button" className="border text-sm mt-4 py-1 px-2 flex rounded hover:border-inherit transition-all border-slate-600 items-center gap-2">
           <FaCopy />
           <p className="truncate">{window.location.origin}/zy/{externalId}</p>
         </button>
