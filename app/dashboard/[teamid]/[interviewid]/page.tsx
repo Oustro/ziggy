@@ -25,7 +25,11 @@ export default async function InterviewPage(request: NextRequest & {params: { in
     },
     include: {
       guide: true,
-      transcript: true
+      transcript: {
+        orderBy: {
+          conducted: "desc"
+        }
+      }
     }
   })
 

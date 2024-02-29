@@ -14,7 +14,7 @@ export default function List({ interview, setTid } : { interview: interviewSaved
       <div className="mt-8 grid grid-cols-3 gap-6">
         {interview.transcript.map((transcript, index) => (
           <button className="border rounded p-4 hover:border-slate-600 transition-all w-full text-left" key={index} onClick={() => setTid(index)}>
-            <h2 className="text-2xl font-semibold">{transcript.interviewee}</h2>
+            <h2 className="text-2xl font-semibold truncate">{transcript.interviewee}</h2>
             <div className="flex justify-between items-center mt-4">
               <p className="mt-2">{transcript.conducted.toLocaleDateString()}</p>
               {transcript.sentiment > 0 ? (

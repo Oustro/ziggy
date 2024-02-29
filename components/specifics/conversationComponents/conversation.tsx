@@ -24,11 +24,11 @@ export default function Conversation({ setView, interviewInfo, interviewee } : {
     const opening = [
       {
         role: "system",
-        content: Prompt(interviewInfo.team.interviewerName, interviewInfo.team.name, interviewInfo.team.purpose, interviewInfo.guide)
+        content: Prompt(interviewInfo.team.interviewer, interviewInfo.team.name, interviewInfo.team.purpose, interviewInfo.guide)
       },
       {
         role: "assistant",
-        content: "Hi I'm, " + interviewInfo.team.interviewerName + ", an AI model created by Ziggy used to gather feedback for the " + interviewInfo.team.name + " team. Are you ready to get started?"
+        content: "Hi I'm, " + interviewInfo.team.interviewer + ", an AI model created by Ziggy used to gather feedback for the " + interviewInfo.team.name + " team. Are you ready to get started?"
       },
       {
         role: "user",
