@@ -14,9 +14,9 @@ export default function Flow({ interviewData } : { interviewData: any }) {
   const [interviewee, setInterviewee] = useState<string>("Anonymous")
 
   const views = [
-    <Welcome setView={setView} interviewInfo={interviewData} />,
-    <Collect setView={setView} interviewInfo={interviewData} setInterviewee={setInterviewee} />,
-    <Conversation interviewInfo={interviewData} interviewee={interviewee} />
+    <Welcome key="welcome" setView={setView} interviewInfo={interviewData} />,
+    <Collect key="collect" setView={setView} interviewInfo={interviewData} setInterviewee={setInterviewee} />,
+    <Conversation key="conversation" interviewInfo={interviewData} interviewee={interviewee} />
   ]
 
   return (

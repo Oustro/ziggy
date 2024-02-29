@@ -17,8 +17,8 @@ export default function Transcripts({ interview } : { interview: interviewSavedI
   const [tid, setTid] = useState(-1)
 
   const transcriptViews = [
-    <List interview={interview} setTid={setTid} />,
-    <Convo interview={interview} tid={tid} setTranscriptView={setTranscriptView} />
+    <List key="list" interview={interview} setTid={setTid} />,
+    <Convo key="convo" interview={interview} tid={tid} setTranscriptView={setTranscriptView} />
   ]
 
   useEffect(() => {
