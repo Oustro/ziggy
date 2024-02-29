@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 
-
 import Welcome from "@/components/specifics/conversationComponents/welcome"
 import Footer from "@/components/specifics/conversationComponents/footer"
 import Collect from "@/components/specifics/conversationComponents/collect"
@@ -17,7 +16,7 @@ export default function Flow({ interviewData } : { interviewData: any }) {
   const views = [
     <Welcome setView={setView} interviewInfo={interviewData} />,
     <Collect setView={setView} interviewInfo={interviewData} setInterviewee={setInterviewee} />,
-    <Conversation setView={setView} interviewInfo={interviewData} interviewee={interviewee} />
+    <Conversation interviewInfo={interviewData} interviewee={interviewee} />
   ]
 
   return (

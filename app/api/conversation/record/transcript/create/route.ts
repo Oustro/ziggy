@@ -13,7 +13,8 @@ export async function POST(request: NextRequest) {
         conducted: new Date(),
         interviewee: transcriptInfo.interviewee,
         interviewId: transcriptInfo.interviewId,
-        sentiment: 0
+        sentiment: 0,
+        icon: transcriptInfo.icon
       }
     })
 

@@ -12,7 +12,7 @@ import Image from "next/image"
 import BlackButton from "@/components/generics/blackButton"
 
 
-export default function Conversation({ setView, interviewInfo, interviewee } : { setView: Function, interviewInfo: any, interviewee: string }) {
+export default function Conversation({ interviewInfo, interviewee } : { interviewInfo: any, interviewee: string }) {
   const [conversation, setConversation] = useState<Array<{role: string, content: string}>>([])
   const [transcriptId, setTranscriptId] = useState<string>("")
 
@@ -36,7 +36,7 @@ export default function Conversation({ setView, interviewInfo, interviewee } : {
       }
     ]
 
-    const newtId = await Open(opening, interviewee, interviewInfo.id, interviewInfo.team.stripeID)
+    const newtId = await Open(opening, interviewee, interviewInfo.id, interviewInfo.team.stripeID, interviewInfo.team.logo)
 
     setTranscriptId(newtId.tid)
 

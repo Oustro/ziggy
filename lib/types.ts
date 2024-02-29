@@ -81,5 +81,6 @@ export interface transcript {
   conducted: Date,
   interviewId: string,
   interviewee: string,
-  sentiment: number
+  sentiment: number,
+  icon: string
 }

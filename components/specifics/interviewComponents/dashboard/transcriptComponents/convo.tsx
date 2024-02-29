@@ -26,7 +26,7 @@ export default function Convo({ interview, tid, setTranscriptView } : { intervie
           convo.role === "assistant" ?
             <div key={index} className="flex items-center gap-4 border bg-slate-200 border-slate-600 rounded p-4">
               <Image
-              src="/ziggy-logo.svg"
+              src={interview.transcript[tid].icon}
               alt="Logo"
               width={30}
               height={30}

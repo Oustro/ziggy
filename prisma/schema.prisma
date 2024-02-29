@@ -101,6 +101,7 @@ model Transcript {
   id             String   @id @default(cuid())
   convo          Json
   conducted      DateTime
+  icon           String
   interview      Interview @relation(fields: [interviewId], references: [id])
   interviewId    String
   interviewee    String

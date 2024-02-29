@@ -2,7 +2,7 @@
 
 import Stripe from "stripe"
 
-export async function Open(conversation: Array<{role: string, content: string}>, interviewee: string, interviewId: string, teamStripeId: string) {
+export async function Open(conversation: Array<{role: string, content: string}>, interviewee: string, interviewId: string, teamStripeId: string, icon: string) {
   if (teamStripeId) {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string)
 
@@ -28,6 +28,7 @@ export async function Open(conversation: Array<{role: string, content: string}>,
       conversation: conversation,
       interviewee: interviewee,
       interviewId: interviewId,
+      icon: icon
     })
   })
 
