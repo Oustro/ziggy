@@ -22,9 +22,11 @@ export default function Transcripts({ interview } : { interview: interviewSavedI
   ]
 
   useEffect(() => {
-    if (tid > -1) {
-      setTranscriptView(1)
+    if (tid > -1 && tid < interview.transcript.length) {
+      return setTranscriptView(1)
     }
+
+    return setTranscriptView(0)
   }, [tid])
 
   useEffect(() => {
