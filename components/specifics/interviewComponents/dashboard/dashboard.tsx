@@ -17,8 +17,7 @@ export default function InterviewDashboard({ interview, checkReponseView } : { i
     <Overview interview={interview} setView={setView} />,
     <Results interviewid={interview.id} setView={setView} />,
     <Transcripts interview={interview} />,
-    <Distribute externalId={interview.externalID} interviewName={interview.name} />,
-    <div>Edit Interview</div>
+    <Distribute externalId={interview.externalID} interviewName={interview.name} />
   ]
 
   return (

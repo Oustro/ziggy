@@ -1,7 +1,12 @@
 import HoverWords from "@/components/generics/hoverWords"
 import BlackButton from "@/components/generics/blackButton"
 
+import Link from "next/link"
+
+import { usePathname } from "next/navigation"
+
 export default function InterviewNav({ setView, interviewName, checkReponseView } : { setView: Function, interviewName: string, checkReponseView: number }) {
+  const pathname = usePathname()
 
   return (
     <nav className={`sticky text-sm top-0 z-10 w-full bg-white h-16 border-b px-6 flex items-center ${checkReponseView === 3 ? 'justify-end' : 'justify-between'}`}>
@@ -26,9 +31,9 @@ export default function InterviewNav({ setView, interviewName, checkReponseView 
         <button onClick={() => setView(3)}>
           <HoverWords>Distribute</HoverWords>
         </button>
-        <button onClick={() => setView(4)}>
+        <Link href={pathname+"/edit"}>
           <BlackButton>Edit Interview</BlackButton>
-        </button>
+        </Link>
       </div>
     </nav>
   )

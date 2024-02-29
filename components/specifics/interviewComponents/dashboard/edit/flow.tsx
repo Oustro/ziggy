@@ -1,32 +1,42 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import BlackButton from "@/components/generics/blackButton"
 import HoverWords from "@/components/generics/hoverWords"
 
 import { Reorder } from "framer-motion"
 
-import { MdCancel, MdDragIndicator } from "react-icons/md"
-
 import { useRouter } from "next/navigation"
+
+import { MdCancel, MdDragIndicator } from "react-icons/md"
 
 import Link from "next/link"
 
-export default function Flow({ teamid } : { teamid: string }) {
-  const [error, setError] = useState<string>("")
+export default function Flow({ interview } : { interview: any }) {
+  const [loading, setLoading] = useState<boolean>(false)
   const [interviewInfo, setInterviewInfo] = useState({
-    name: "",
-    purpose: "",
-    collect: false,
+    name: interview.name,
+    purpose: interview.purpose,
+    collect: interview.collect,
   })
 
-  const [questionList, setQuestionList] = useState<string[]>([])
-  const [questions, setQuestions] = useState<string>("")
+  const [error, setError] = useState<string>("")
 
-  const [loading, setLoading] = useState<boolean>(false)
+  const [questions, setQuestions] = useState<string>("")
+  const [questionList, setQuestionList] = useState<string[]>([])
 
   const router = useRouter()
+
+  useEffect(() => {
+    let currQuestions = []
+    for (let i = 0; i < interview.guide.length; ++i) {
+      currQuestions.push(interview.guide[i].question)
+    }
+
+    setQuestionList(currQuestions)
+
+  }, [])
 
   function addQuestion(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -51,14 +61,14 @@ export default function Flow({ teamid } : { teamid: string }) {
       return setLoading(false)
     }
 
-    const responseInterviewCreate = await fetch("/api/interviews/create", {
-      method: "POST",
+    const responseInterviewCreate = await fetch("/api/interviews/update", {
+      method: "PUT",
       body: JSON.stringify({
         name: interviewInfo.name,
         purpose: interviewInfo.purpose,
         collect: interviewInfo.collect,
         questions: questionList,
-        teamid: teamid
+        interviewid: interview.id
       })
     })
 
@@ -67,12 +77,13 @@ export default function Flow({ teamid } : { teamid: string }) {
       return setError("An error occurred. Please try again later.")
     }
 
-    return router.push("/dashboard/"+teamid)
+    return router.push("/dashboard/"+interview.team.id+"/"+interview.id)
   }
+
 
   return (
     <main>
-      <h1 className="text-4xl mt-4 font-semibold">Create an Interview</h1>
+      <h1 className="text-4xl mt-4 font-semibold">Edit Interview</h1>
       <p className="text-slate-600 mt-6 w-[90%]">Configre Ziggy to ask the questions you have and dig deeper than traditional surveys and forms.</p>
       <div className="mt-8 grid gap-12 text-sm font-medium">
         <div>
@@ -152,9 +163,9 @@ export default function Flow({ teamid } : { teamid: string }) {
         </div>
         <form className="flex gap-4 items-center" onSubmit={handleSubmit}>
           <button disabled={loading} type="submit">
-            <BlackButton>Create</BlackButton>
+            <BlackButton>Save changes</BlackButton>
           </button>
-          <Link href={"/dashboard/"+teamid}>
+          <Link href={'/dashboard/'+interview.team.id+'/'+interview.id}>
             <HoverWords>Cancel</HoverWords>
           </Link>
         </form>
