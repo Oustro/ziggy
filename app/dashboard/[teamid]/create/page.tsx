@@ -27,16 +27,6 @@ export default async function CreateInterview(request: NextRequest & {params: { 
       return redirect("/dashboard/"+teamid+"/sorry")
     }
   }
-  else if (team.plan === 1) { 
-    if (team.interviews.length >= 25) {
-      return redirect("/dashboard/"+teamid+"/sorry")
-    }
-  }
-  else if (team.plan === 2) {
-    if (team.interviews.length >= 50) {
-      return redirect("/dashboard/"+teamid+"/sorry")
-    }
-  }
 
   return (
     <main>

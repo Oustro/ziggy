@@ -1,7 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server'
 import prisma from '@/utils/db'
 import { Redis } from '@upstash/redis'
-import * as crypto from "crypto"
 import { nanoid } from 'nanoid'
 
 import { getServerSession } from 'next-auth'

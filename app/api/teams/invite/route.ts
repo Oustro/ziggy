@@ -1,6 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { Redis } from '@upstash/redis'
-import * as crypto from "crypto"
 import { nanoid } from 'nanoid'
 
 import { getServerSession } from 'next-auth'
@@ -41,7 +40,7 @@ export async function POST(request: NextRequest) {
       "To": invitee,
       "Subject": "You've been invited to join a team",
       "TextBody": "Hi,\n\n You've been invited to join a team on Ziggy. Click the link below to accept the invitation.\n\n https://useziggy.com/invite/" + inviteid + "\n\nThanks,\nZiggy Team",
-    });
+    })
 
 
     return NextResponse.json({ "message": "success" }, { status: 200 })
