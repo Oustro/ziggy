@@ -31,7 +31,7 @@ export default function Distribute({ externalId, interviewName } : { externalId:
   }
 
   function copyLink() {
-    navigator.clipboard.writeText(window.location.origin+"/zy/"+externalId)
+    navigator.clipboard.writeText("https://www.useziggy.com/zy/"+externalId)
   }
 
   return (
@@ -42,13 +42,13 @@ export default function Distribute({ externalId, interviewName } : { externalId:
         <p className="mt-2 text-slate-600">Share this link with whoever you would like to take your interview.</p>
         <button onClick={copyLink} type="button" className="border text-sm mt-4 py-1 px-2 flex rounded hover:border-inherit transition-all border-slate-600 items-center gap-2">
           <FaCopy />
-          <p className="truncate">{window.location.origin}/zy/{externalId}</p>
+          <p className="truncate">https://www.useziggy.com/zy/{externalId}</p>
         </button>
       </div>
       <div className="mt-8">
         <h3 className="text-2xl font-medium">QR Code</h3>
         <p className="mt-2 text-slate-600">Scan the this QR to take your Ziggy Interview. Great for printing and sharing too.</p>
-        <QRCode id="QRCode" className="rounded p-2 border border-slate-600 mt-6" value={window.location.origin + '/zy/'+externalId} />
+        <QRCode id="QRCode" className="rounded p-2 border border-slate-600 mt-6" value={'https://www.useziggy.com/zy/'+externalId} />
         <button className="mt-6" onClick={downloadQR}>
           <BlackButton>
             Download QR Code
