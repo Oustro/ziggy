@@ -88,6 +88,7 @@ model Interview {
   externalID     String   @unique
   team           Team     @relation(fields: [teamId], references: [id])
   teamId         String
+  createdAt      DateTime @default(now())
 }
 
 model GuideQuestions {

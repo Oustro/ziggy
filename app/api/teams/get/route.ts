@@ -23,6 +23,9 @@ export async function GET(request: NextRequest) {
           include: {
             members: true,
             interviews: true
+          },
+          orderBy: {
+            createdAt: "asc"
           }
         }
       }
@@ -30,9 +33,6 @@ export async function GET(request: NextRequest) {
 
     if (teams?.teams.length === 0) {
       return NextResponse.json({ "message": "success" }, { status: 207 })
-    }
-    else {
-      teams?.teams.sort((a, b) => Number(b.createdAt) - Number(a.createdAt))
     }
   
     return NextResponse.json({ "message": "success", teams: teams?.teams }, { status: 200 })

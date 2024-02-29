@@ -37,9 +37,12 @@ export default function Card({ interview } : { interview: interviewSavedInfo }) 
             </div>
             <div className={!dropdown ? "hidden" : "" + "flex justify-end text-sm"} ref={ref}>
               <div className="absolute border rounded p-2 mt-1 bg-white grid gap-4 text-right">
-                <button>
-                  <HoverWords>Duplicate Interview</HoverWords>
-                </button>
+              <Link href={`/dashboard/${interview.teamId}/${interview.id}/edit`}>
+                  <HoverWords>Edit interview</HoverWords>
+                </Link>
+                <Link href={`/dashboard/${interview.teamId}/${interview.id}/duplicate`}>
+                  <HoverWords>Duplicate interview</HoverWords>
+                </Link>
               </div>
             </div>
             <Link href={`/dashboard/${interview.teamId}/${interview.id}`}>

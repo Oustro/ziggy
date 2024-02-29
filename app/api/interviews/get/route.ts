@@ -26,6 +26,9 @@ export async function GET(request: NextRequest) {
       where: {
         teamId: teamid || ""
       },
+      orderBy: {
+        createdAt: "desc"
+      },
       include: {
         guide: true,
         transcript: true
