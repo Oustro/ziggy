@@ -29,16 +29,16 @@ export default async function DashboardNav() {
         />
         <h4 className="text-lg font-semibold">Ziggy</h4>
       </Link>
-      <div className="mt-12 flex items-center border-b pb-1 justify-between">
-        <p className="text-sm font-medium">Interviews</p>
+      <div className="mt-12 flex items-center justify-between">
+        <p className="text-sm font-medium">Teams</p>
         <Link href="/dashboard/create">
           <HoverIcon><IoAdd /></HoverIcon>
         </Link>
       </div>
-      <div className="mt-2 overflow-scroll h-96">
+      <div className="mt-2 overflow-scroll h-[50%] pb-2 border-y no-scrollbar">
         <MainList userEmail={session?.email || ""} />
       </div>
-      <div className="bottom-8 absolute right-0 left-0 px-4">
+      <div className="bottom-12 absolute right-0 left-0 bg-white h-[25%] px-4">
         <div className="flex items-center gap-3 truncate">
           <Profile color={true} />
           <div className="flex-1 min-w-0">
