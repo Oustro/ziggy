@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect } from "react"
 
 import Prompt from "@/lib/prompt"
@@ -12,7 +10,7 @@ import Image from "next/image"
 import BlackButton from "@/components/generics/blackButton"
 
 
-export default function Conversation({ interviewInfo, interviewee } : { interviewInfo: any, interviewee: string }) {
+export default function TextStyle({ interviewInfo, interviewee } : { interviewInfo: any, interviewee: string }) {
   const [conversation, setConversation] = useState<Array<{role: string, content: string}>>([])
   const [transcriptId, setTranscriptId] = useState<string>("")
 

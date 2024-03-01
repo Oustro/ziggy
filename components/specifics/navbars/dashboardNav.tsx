@@ -26,6 +26,7 @@ export default async function DashboardNav() {
         alt="Logo"
         width={40}
         height={40}
+        priority
         />
         <h4 className="text-lg font-semibold">Ziggy</h4>
       </Link>

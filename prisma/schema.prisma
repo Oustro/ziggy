@@ -76,6 +76,7 @@ model Team {
   inviteID       String?  @unique
   interviews     Interview[]
   createdAt      DateTime @default(now())
+  style          Int     @default(0)  
 }
 
 model Interview {

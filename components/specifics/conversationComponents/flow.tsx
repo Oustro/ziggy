@@ -5,7 +5,8 @@ import { useState } from "react"
 import Welcome from "@/components/specifics/conversationComponents/welcome"
 import Footer from "@/components/specifics/conversationComponents/footer"
 import Collect from "@/components/specifics/conversationComponents/collect"
-import Conversation from "@/components/specifics/conversationComponents/conversation"
+import FormStyle from "@/components/specifics/conversationComponents/formStyle"
+import TextStyle from "@/components/specifics/conversationComponents/textStyle"
 
 export default function Flow({ interviewData } : { interviewData: any }) {
   const [view, setView] = useState<number>(0)
@@ -16,7 +17,8 @@ export default function Flow({ interviewData } : { interviewData: any }) {
   const views = [
     <Welcome key="welcome" setView={setView} interviewInfo={interviewData} />,
     <Collect key="collect" setView={setView} interviewInfo={interviewData} setInterviewee={setInterviewee} />,
-    <Conversation key="conversation" interviewInfo={interviewData} interviewee={interviewee} />
+    <FormStyle key="formStyle" interviewInfo={interviewData} interviewee={interviewee} />,
+    <TextStyle key="textStle" interviewInfo={interviewData} interviewee={interviewee} />
   ]
 
   return (
