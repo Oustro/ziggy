@@ -31,18 +31,18 @@ export default function Card({ interview } : { interview: interviewSavedInfo }) 
           <div className="text-xs">
             <div className="flex justify-between items-center">
               <p className="text-xl font-medium truncate w-[80%]">{interview.name}</p>
-              <button onClick={() => setDropdown(prev => !prev)}>
-                <BlackButton>•••</BlackButton>
-              </button>
-            </div>
-            <div className={!dropdown ? "hidden" : "" + "flex justify-end text-sm"} ref={ref}>
-              <div className="absolute border rounded p-2 mt-1 bg-white grid gap-4 text-right">
-              <Link href={`/dashboard/${interview.teamId}/${interview.id}/edit`}>
-                  <HoverWords>Edit interview</HoverWords>
-                </Link>
-                <Link href={`/dashboard/${interview.teamId}/${interview.id}/duplicate`}>
-                  <HoverWords>Duplicate interview</HoverWords>
-                </Link>
+              <div>
+                <button onClick={() => setDropdown(prev => !prev)}>
+                  <BlackButton>•••</BlackButton>
+                </button>
+                <div className={!dropdown ? "hidden" : "" + "absolute border rounded text-sm p-2 mt-2 bg-white grid gap-4"} ref={ref}>
+                  <Link href={`/dashboard/${interview.teamId}/${interview.id}/edit`}>
+                    <HoverWords>Edit interview</HoverWords>
+                  </Link>
+                  <Link href={`/dashboard/${interview.teamId}/${interview.id}/duplicate`}>
+                    <HoverWords>Duplicate interview</HoverWords>
+                  </Link>
+                </div>
               </div>
             </div>
             <Link href={`/dashboard/${interview.teamId}/${interview.id}`}>
