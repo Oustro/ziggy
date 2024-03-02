@@ -22,7 +22,8 @@ export async function PUT(request: NextRequest) {
       },
       data: {
         logo: customizeInfo.logo,
-        color: customizeInfo.color
+        color: customizeInfo.color,
+        style: customizeInfo.style
       }
     })
 

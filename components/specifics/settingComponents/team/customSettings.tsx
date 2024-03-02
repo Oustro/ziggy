@@ -14,7 +14,8 @@ export default function CustomSettings({ team, setRefreshKey } : { team: teamSav
 
   const [customInfo, setCustomInfo] = useState({
     logo: team.logo,
-    color: team.color
+    color: team.color,
+    style: team.style
   })
 
   const inputFileRef = useRef<HTMLInputElement>(null);
@@ -31,7 +32,8 @@ export default function CustomSettings({ team, setRefreshKey } : { team: teamSav
       body: JSON.stringify({
         id: team.id,
         logo: customInfo.logo,
-        color: customInfo.color
+        color: customInfo.color,
+        style: customInfo.style
       })
     })
 
@@ -106,6 +108,33 @@ export default function CustomSettings({ team, setRefreshKey } : { team: teamSav
             className="w-16 h-16 rounded-lg bg-white cursor-pointer" 
             />
             <p className="text-xs mt-4 text-slate-600">Click to change color</p>
+          </div>
+        </div>
+        <div className="rounded border p-4">
+          <div className="w-full">
+            <p className="font-medium text-lg">Choose a Interview Style</p>
+            <p className="text-xs text-slate-600">This is how your interview will look to users taking it.</p>
+          </div>
+          <div className="flex justify-between gap-4 mt-4">
+            <div className={`border p-2 w-full rounded ${customInfo.style === 0 && "border-slate-600"}`} onClick={() => setCustomInfo({...customInfo, style: 0})}>
+              <p className="text-sm text-left font-medium">Conversational</p>
+              <div className="w-[80%] rounded mt-4 h-4 bg-slate-200 border border-slate-300"></div>
+              <div className="w-[10%] mt-2 rounded h-4 border ml-auto"></div>
+              <div className="w-[30%] mt-2 rounded h-4 bg-slate-200 border border-slate-300"></div>
+              <div className="w-[50%] mt-2 rounded h-4 border ml-auto"></div>
+              <div className="w-[35%] mt-2 h-4 rounded bg-slate-200 border border-slate-300"></div>
+            </div>
+            <div className={`border p-2 w-full rounded ${customInfo.style === 1 && "border-slate-600"}`} onClick={() => setCustomInfo({...customInfo, style: 1})}>
+              <p className="text-sm font-medium text-left">Form like</p>
+              <div className="w-[10%] mt-4 rounded h-4 bg-slate-200 border border-slate-300"></div>
+              <div className="w-[60%] rounded mt-2 h-4 bg-slate-200 border border-slate-300"></div>
+              <div className="w-[80%] mt-6 rounded h-4 border"></div>
+            </div>
+          </div>
+          <div className="text-sm mt-6">
+            <button type="submit" disabled={loading}>
+              <BlackButton>Update style</BlackButton>
+            </button>
           </div>
         </div>
       </form>

@@ -28,6 +28,7 @@ export interface teamSavedInfo {
   stripeID: string,
   color: string,
   logo: string,
+  style: number,
   createdAt: Date,
   inviteID: string,
   members: Array<userSavedInfo>
