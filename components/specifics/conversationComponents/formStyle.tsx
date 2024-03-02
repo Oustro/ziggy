@@ -9,6 +9,7 @@ import Image from "next/image"
 
 import BlackButton from "@/components/generics/blackButton"
 
+import { FiSend } from "react-icons/fi"
 
 export default function FormStyle({ interviewInfo, interviewee } : { interviewInfo: any, interviewee: string }) {
   const [conversation, setConversation] = useState<Array<{role: string, content: string}>>([])
@@ -129,7 +130,7 @@ export default function FormStyle({ interviewInfo, interviewee } : { interviewIn
             />
             <button className="mt-16 text-lg" type="submit">
               <BlackButton>
-                Continue
+                <span className="flex items-center gap-2"><FiSend /> Continue</span>
               </BlackButton>
             </button>
           </form>

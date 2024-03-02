@@ -26,7 +26,7 @@ export default function Collect({ setView, interviewInfo, setInterviewee } : { s
         <h1 className="text-3xl mt-8">
           Before we begin, can you please provide your email?
         </h1>
-        <form onSubmit={() => setView(2)}>
+        <form onSubmit={() => setView(interviewInfo.team.style === 0 ? 2 : 3)}>
           <input
           type="email"
           onChange={(e) => setInterviewee(e.target.value)}

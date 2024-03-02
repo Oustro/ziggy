@@ -17,8 +17,8 @@ export default function Flow({ interviewData } : { interviewData: any }) {
   const views = [
     <Welcome key="welcome" setView={setView} interviewInfo={interviewData} />,
     <Collect key="collect" setView={setView} interviewInfo={interviewData} setInterviewee={setInterviewee} />,
-    <FormStyle key="formStyle" interviewInfo={interviewData} interviewee={interviewee} />,
-    <TextStyle key="textStle" interviewInfo={interviewData} interviewee={interviewee} />
+    <TextStyle key="textStle" interviewInfo={interviewData} interviewee={interviewee} />,
+    <FormStyle key="formStyle" interviewInfo={interviewData} interviewee={interviewee} />
   ]
 
   return (
