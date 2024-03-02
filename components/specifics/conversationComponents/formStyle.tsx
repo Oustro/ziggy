@@ -11,6 +11,8 @@ import BlackButton from "@/components/generics/blackButton"
 
 import { FiSend } from "react-icons/fi"
 
+import Spinner from "@/components/generics/spinner"
+
 export default function FormStyle({ interviewInfo, interviewee } : { interviewInfo: any, interviewee: string }) {
   const [conversation, setConversation] = useState<Array<{role: string, content: string}>>([])
   const [transcriptId, setTranscriptId] = useState<string>("")
@@ -82,9 +84,9 @@ export default function FormStyle({ interviewInfo, interviewee } : { interviewIn
           <h1 className="text-2xl mt-4 font-semibold">
             {interviewInfo.team.interviewer}
           </h1>
-          <h1 className="text-3xl mt-8">
-            Loading...
-          </h1>
+          <div className="mt-8">
+            <Spinner size={30} />
+          </div>
           <div className="w-full">
             <input
             type="text"

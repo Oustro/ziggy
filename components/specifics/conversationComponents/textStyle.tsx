@@ -10,6 +10,7 @@ import BlackButton from "@/components/generics/blackButton"
 import { FiSend } from "react-icons/fi"
 import { IoPersonCircleOutline } from "react-icons/io5"
 
+import Spinner from "@/components/generics/spinner"
 
 export default function TextStyle({ interviewInfo, interviewee } : { interviewInfo: any, interviewee: string }) {
   const [conversation, setConversation] = useState<Array<{role: string, content: string}>>([])
@@ -81,8 +82,8 @@ export default function TextStyle({ interviewInfo, interviewee } : { interviewIn
 
   return (
     <div className="w-full h-full items-center">
-      <div className="px-16 h-[75%] overflow-scroll py-8" ref={chatContainerRef}>
-        {chatLog.slice(0).map((convo, index) => (
+      <div className="px-16 h-[75%] overflow-scroll py-8" ref={chatContainerRef} style={{ scrollBehavior: 'smooth' }}>
+        {chatLog.slice(3).map((convo, index) => (
           convo.role === "assistant" ?
             <div key={index} className="flex items-center mt-4 gap-4 border bg-slate-200 border-slate-600 rounded p-4">
               <Image
@@ -107,7 +108,7 @@ export default function TextStyle({ interviewInfo, interviewee } : { interviewIn
             width={30}
             height={30}
             />
-            <h2>Loading...</h2>
+            <Spinner size={25} />
           </div>
         )}
       </div>
