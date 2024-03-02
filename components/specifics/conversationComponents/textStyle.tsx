@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 import Prompt from "@/lib/prompt"
 import { Open, Converse } from "@/utils/converse"
@@ -19,6 +19,8 @@ export default function TextStyle({ interviewInfo, interviewee } : { interviewIn
   const [loading, setLoading] = useState<boolean>(true)
 
   const [answer, setAnswer] = useState<string>("")
+
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   async function setUpConversation() {  
     const opening = [
@@ -52,6 +54,13 @@ export default function TextStyle({ interviewInfo, interviewee } : { interviewIn
 
   }, [])
 
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      const { scrollHeight, clientHeight } = chatContainerRef.current
+      chatContainerRef.current.scrollTo(0, scrollHeight - clientHeight)
+    }
+  }, [chatLog])
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
@@ -72,8 +81,8 @@ export default function TextStyle({ interviewInfo, interviewee } : { interviewIn
 
   return (
     <div className="w-full h-full items-center">
-      <div className="px-16 h-[75%] overflow-scroll py-8">
-        {chatLog.slice(3).map((convo, index) => (
+      <div className="px-16 h-[75%] overflow-scroll py-8" ref={chatContainerRef}>
+        {chatLog.slice(0).map((convo, index) => (
           convo.role === "assistant" ?
             <div key={index} className="flex items-center mt-4 gap-4 border bg-slate-200 border-slate-600 rounded p-4">
               <Image
