@@ -27,7 +27,8 @@ export async function POST(request: NextRequest) {
     })
 
     await redis.set(inviteid, {
-      teamID: teamID
+      teamID: teamID,
+      invitee: invitee
     },
     {
       ex: 60 * 60 * 24,
