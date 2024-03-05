@@ -31,7 +31,8 @@ export default function SignupForm({ setView } : { setView: Function }) {
       },
       body: JSON.stringify({ 
         email: email.trim(),
-        name: name.trim()
+        name: name.trim(),
+        type: "signup"
       })
     })
 

@@ -4,9 +4,20 @@ import prisma from '@/utils/db'
 
 export async function POST(request: NextRequest) {
 
-  const { name, email } = await request.json()
+  const { name, email, type } = await request.json()
 
   try {
+    if (type === "login") {
+      if (!email) {
+        return NextResponse.json({ "message": "missing data" }, { status: 400 })
+      }
+    }
+    else if (type === "signup") {
+      if (!name || !email) {
+        return NextResponse.json({ "message": "missing data" }, { status: 400 })
+      }
+    }
+
     const validEmail = await prisma.user.findFirst({
       where: {
         email: {

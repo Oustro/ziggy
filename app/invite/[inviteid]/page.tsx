@@ -6,10 +6,10 @@ import { Redis } from '@upstash/redis'
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/utils/auth"
 
-export default async function Invite(request: NextRequest & {params: { inviteid: string }}) {  
-  // user is logged in
-  const session = await getServerSession(authOptions)
+import prisma from '@/utils/db'
 
+export default async function Invite(request: NextRequest & {params: { inviteid: string }}) {  
+  const session = await getServerSession(authOptions)
 
   const redis = new Redis({
     url: process.env.UPSTASH_URL || "",
@@ -22,17 +22,59 @@ export default async function Invite(request: NextRequest & {params: { inviteid:
     return redirect("/invite/sorry")
   }
 
-  console.log(inviteData)
-
   if (session) {
     if (inviteData.invitee) {
       if (session.email === inviteData.invitee) {
-        // add to team
-        return redirect("/dashboard")
+        const user = await prisma.userInfo.findUnique({
+          where: {
+            email: inviteData.invitee
+          }
+        })
+
+        if (!user) {
+          return redirect("/register/login")
+        }
+
+        await prisma.team.update({
+          where: {
+            id: inviteData.teamID
+          },
+          data: {
+            members: {
+              connect: {
+                id: user.id
+              }
+            }
+          }
+        })
       }
+
+      return redirect("/dashboard")
     }
     else {
-      // add to team
+      const user = await prisma.userInfo.findUnique({
+        where: {
+          email: session.email || ""
+        }
+      })
+
+      if (!user) {
+        return redirect("/register/login")
+      }
+
+      await prisma.team.update({
+        where: {
+          id: inviteData.teamID
+        },
+        data: {
+          members: {
+            connect: {
+              id: user.id
+            }
+          }
+        }
+      })
+
       return redirect("/dashboard")
     }
   }

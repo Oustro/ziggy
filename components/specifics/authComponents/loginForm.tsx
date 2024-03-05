@@ -29,7 +29,8 @@ export default function LoginForm({ setView } : { setView: Function }) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ 
-        email: email.trim()
+        email: email.trim(),
+        type: "login"
       })
     })
 
