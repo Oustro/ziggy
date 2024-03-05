@@ -28,7 +28,8 @@ export async function DELETE(request: NextRequest) {
         }
       },
       include: {
-        members: true
+        members: true,
+        interviews: true
       }
     })
 
@@ -37,6 +38,26 @@ export async function DELETE(request: NextRequest) {
     }
 
     if (team.members.length === 1) {
+      for (let i = 0; i < team.interviews.length; ++i) {
+        await prisma.guideQuestions.deleteMany({
+          where: {
+            interviewId: team.interviews[i].id
+          }
+        })
+
+        await prisma.transcript.deleteMany({
+          where: {
+            interviewId: team.interviews[i].id
+          }
+        })
+
+        await prisma.interview.delete({
+          where: {
+            id: team.interviews[i].id
+          }
+        })
+      }
+
       await prisma.team.delete({
         where: {
           id: teamID

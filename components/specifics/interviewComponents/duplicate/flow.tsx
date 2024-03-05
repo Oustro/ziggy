@@ -163,7 +163,7 @@ export default function Flow({ interview } : { interview: any }) {
         </div>
         <form className="flex gap-4 items-center" onSubmit={handleSubmit}>
           <button disabled={loading} type="submit">
-            <BlackButton>Duplicate Interview</BlackButton>
+            <BlackButton>Create</BlackButton>
           </button>
           <Link href={'/dashboard/'+interview.team.id}>
             <HoverWords>Cancel</HoverWords>

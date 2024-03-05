@@ -13,6 +13,8 @@ import { MdCancel, MdDragIndicator } from "react-icons/md"
 
 import Link from "next/link"
 
+import DeleteConfirmation from "./deleteConfirmation"
+
 export default function Flow({ interview } : { interview: any }) {
   const [loading, setLoading] = useState<boolean>(false)
   const [interviewInfo, setInterviewInfo] = useState({
@@ -83,9 +85,10 @@ export default function Flow({ interview } : { interview: any }) {
 
   return (
     <main>
-      <h1 className="text-4xl mt-4 font-semibold">Edit Interview</h1>
+      <h1 className="text-4xl mt-4 font-semibold">Settings</h1>
       <p className="text-slate-600 mt-6 w-[90%]">Configre Ziggy to ask the questions you have and dig deeper than traditional surveys and forms.</p>
-      <div className="mt-8 grid gap-12 text-sm font-medium">
+      <p className="mt-8 pb-2 border-b text-xl font-semibold">Interview Settings</p>
+      <div className="grid gap-12 mt-4 text-sm font-medium">
         <div>
           <label><span className="text-red-600">*</span> Interview name</label>
           <p className="text-xs text-slate-600 mt-1 font-normal">This is the name of your interview. It will be visible to both the public and your team.</p>
@@ -170,6 +173,16 @@ export default function Flow({ interview } : { interview: any }) {
           </Link>
         </form>
         <p className="text-sm text-red-500">{error}</p>
+      </div>
+      <div>
+        <p className="mt-8 pb-2 border-b text-xl font-semibold">Danger Zone</p>
+        <p className="mt-4 font-medium text-sm">Delete this interview</p>
+        <p className="text-xs text-slate-600 mt-1 font-normal">This action cannot be undone.</p>
+        <button className="bg-red-400 rounded text-sm mt-6">
+          <DeleteConfirmation teamid={interview.team.id} interviewid={interview.id}>
+            <BlackButton>Delete this interview</BlackButton>
+          </DeleteConfirmation>
+        </button>
       </div>
     </main>
   )

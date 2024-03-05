@@ -3,6 +3,8 @@ import BlackButton from "@/components/generics/blackButton"
 
 import Link from "next/link"
 
+import { IoSettingsOutline } from "react-icons/io5"
+
 import { usePathname } from "next/navigation"
 
 export default function InterviewNav({ setView, interviewName, checkReponseView } : { setView: Function, interviewName: string, checkReponseView: number }) {
@@ -32,7 +34,7 @@ export default function InterviewNav({ setView, interviewName, checkReponseView 
           <HoverWords>Distribute</HoverWords>
         </button>
         <Link href={pathname+"/edit"}>
-          <BlackButton>Edit Interview</BlackButton>
+          <BlackButton><span className="flex items-center gap-2"><IoSettingsOutline /> Settings</span></BlackButton>
         </Link>
       </div>
     </nav>

@@ -110,7 +110,7 @@ export default function MemberSettings({ team, setRefreshKey } : { team: teamSav
           <p className="text-xs text-slate-600">Member</p>
         </div>
       ))}
-      <p className="font-medium text-lg mt-12 pt-4 border-t">Danger Zone</p>
+      <p className="font-medium text-lg mt-12 pb-2 border-b">Danger Zone</p>
       <div className="mt-6 border border-red-600 rounded p-4 flex justify-between">
         <div>
           <p className="text-red-500 font-medium">Leave Team</p>

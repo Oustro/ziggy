@@ -7,6 +7,8 @@ import Link from "next/link"
 import BlackButton from "@/components/generics/blackButton"
 import HoverWords from "@/components/generics/hoverWords"
 
+import { IoSettingsOutline, IoFlashOutline } from "react-icons/io5"
+
 export default function Card({ interview } : { interview: interviewSavedInfo }) {
   const [dropdown, setDropdown] = useState(false)
 
@@ -35,12 +37,12 @@ export default function Card({ interview } : { interview: interviewSavedInfo }) 
                 <button onClick={() => setDropdown(prev => !prev)}>
                   <BlackButton>•••</BlackButton>
                 </button>
-                <div className={!dropdown ? "hidden" : "" + "absolute border rounded text-sm p-2 mt-2 bg-white grid gap-4"} ref={ref}>
+                <div className={!dropdown ? "hidden" : "" + "absolute border rounded text-sm p-2 mt-2 bg-white grid gap-3"} ref={ref}>
                   <Link href={`/dashboard/${interview.teamId}/${interview.id}/edit`}>
-                    <HoverWords>Edit interview</HoverWords>
+                    <HoverWords><span className="flex items-center gap-2"><IoSettingsOutline />Settings</span></HoverWords>
                   </Link>
                   <Link href={`/dashboard/${interview.teamId}/${interview.id}/duplicate`}>
-                    <HoverWords>Duplicate interview</HoverWords>
+                    <HoverWords><span className="flex items-center gap-2"><IoFlashOutline />Duplicate interview</span></HoverWords>
                   </Link>
                 </div>
               </div>
