@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 
 import { teamSavedInfo } from "@/lib/types"
 
-import { useSearchParams } from "next/navigation"
+import { useSearchParams, useRouter } from "next/navigation"
 
 import LoadingCard from "@/components/specifics/teamComponents/cards/loadingCard"
 import Card from "@/components/specifics/teamComponents/cards/card"
@@ -12,12 +12,18 @@ import Card from "@/components/specifics/teamComponents/cards/card"
 export default function TeamCards() {
   const searchParams = useSearchParams()
 
+  const router = useRouter()
+
   const [teams, setTeams] = useState([] as teamSavedInfo[])
   const [loading, setLoading] = useState(true)
   const [refreshKey, setRefreshKey] = useState(0)
   
   async function fetchTeams() {
     const responseTeamsGet = await fetch("/api/teams/get")
+
+    if (responseTeamsGet.status === 207) {
+      return router.push("/dashboard/create")
+    }
 
     const data = await responseTeamsGet.json()
     setTeams(data.teams)

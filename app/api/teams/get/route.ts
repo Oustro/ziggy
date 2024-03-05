@@ -31,8 +31,8 @@ export async function GET(request: NextRequest) {
       }
     })
 
-    if (teams?.teams.length === 0) {
-      return NextResponse.json({ "message": "success" }, { status: 207 })
+    if (teams?.teams.length === 0 || !teams) {
+      return NextResponse.json({ "message": "success", teams: [] }, { status: 207 })
     }
   
     return NextResponse.json({ "message": "success", teams: teams?.teams }, { status: 200 })

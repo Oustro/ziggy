@@ -34,7 +34,7 @@ export default function GeneralSettings({ team, setRefreshKey } : { team: teamSa
     })
 
     setRefreshKey((prevKey: number) => prevKey + 1)
-    setLoading(false)
+    return setLoading(false)
   }
 
   return (
@@ -94,15 +94,6 @@ export default function GeneralSettings({ team, setRefreshKey } : { team: teamSa
           </div>
         </div>
       </form>
-      <div className="mt-12 border border-red-600 rounded p-4 flex justify-between">
-        <div>
-          <p className="text-red-500 font-medium">Delete Team</p>
-          <p className="text-slate-600 text-xs font-normal">This action cannot be undone.</p>
-        </div>
-        <button className="bg-red-500 rounded" type="button">
-          <BlackButton>Delete this team</BlackButton>
-        </button>
-      </div>
     </main>
   )
 }
