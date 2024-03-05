@@ -43,7 +43,7 @@ export default function MainList({userEmail} : {userEmail: string}) {
       channel.unbind();
     }
 
-  }, [teams]);
+  }, []);
 
   return (
     <main className="grid gap-3 text-sm">
