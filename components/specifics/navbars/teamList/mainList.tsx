@@ -11,13 +11,15 @@ import BlackButton from "@/components/generics/blackButton"
 
 import { pusherClient } from "@/utils/pusher/client"
 
-export default function MainList({userEmail} : {userEmail: string}) {
+export default function MainList({ userEmail } : {userEmail: string}) {
   const [teams, setTeams] = useState([] as teamSavedInfo[])
   const [loading, setLoading] = useState(true)
   const [empty, setEmpty] = useState(false)
   
   async function fetchTeams() {
     const responseTeamsGet = await fetch("/api/teams/get")
+    setLoading(true)
+    setEmpty(false)
 
     if (responseTeamsGet.status === 207) {
       setEmpty(true)
