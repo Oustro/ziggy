@@ -29,7 +29,7 @@ export default function TeamDashboard() {
 
     setTeamInfo(data.team)
     setInterviews(data.interviews)
-    setLoading(false)
+    return setLoading(false)
   }
 
   useEffect(() => {

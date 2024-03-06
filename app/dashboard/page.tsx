@@ -18,13 +18,13 @@ export default async function Dashboard() {
     where: {
       members: {
         some: {
-          email: session?.user?.email
+          email: session?.email
         }
       }
     }
   })
 
-  if (teams.length === 0) {
+  if (teams.length === 0 || !teams) {
     redirect("/dashboard/create")
   }
 

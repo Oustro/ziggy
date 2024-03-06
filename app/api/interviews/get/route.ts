@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
     })
 
     if (interviews.length === 0) {
-      return NextResponse.json({ "message": "success" }, { status: 207 })
+      return NextResponse.json({ "message": "success", team: team, interviews: [] }, { status: 207 })
     }
   
     return NextResponse.json({ "message": "success", team: team, interviews: interviews }, { status: 200 })
