@@ -57,7 +57,7 @@ export default async function DashboardNav() {
           <Link target="_blank" href="https://www.github.com/oustro/ziggy/issues">
             <HoverWords><span className="flex items-center gap-3"><IoHelpOutline /> Help</span></HoverWords>
           </Link>
-          <UserSettings><HoverWords><span className="flex items-center gap-3"><IoSettingsOutline /> Settings</span></HoverWords></UserSettings>
+          <UserSettings name={session?.user?.name || ""} email={session?.email || ""}><HoverWords><span className="flex items-center gap-3"><IoSettingsOutline /> Settings</span></HoverWords></UserSettings>
           <div className="mt-4">
             <LogoutButton />
           </div>

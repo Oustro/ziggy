@@ -5,7 +5,7 @@ import { Fragment, useState } from 'react'
 
 import BlackButton from "@/components/generics/blackButton"
 
-export default function UserSettings({ children } : { children: React.ReactNode }) {
+export default function UserSettings({ children, name, email } : { children: React.ReactNode, name: string, email: string }) {
   const [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -52,21 +52,47 @@ export default function UserSettings({ children } : { children: React.ReactNode 
                   as="h3"
                   className="text-lg font-medium"
                   >
-                    Settings
+                    User Settings
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-slate-600">
-                      This is where you can change your account settings.
-                    </p>
-                  </div>
-                  <div className="mt-4 text-sm">
+                  <form className='mt-8 grid gap-8'>
+                    <div className="flex items-center gap-3 mx-auto truncate">
+                      <div className="rounded-full h-24 w-24 bg-gradient-to-r mx-auto from-gray-900 to-indigo-400" />
+                      <div className="flex-1 min-w-0">
+                        <h2 className="font-medium text-4xl truncate">{name}</h2>
+                        <p className="text-lg text-slate-600 truncate">{email}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-medium"><span className="text-red-600">*</span> Name</p>
+                      <input
+                      type="text"
+                      className="w-full mt-4 text-sm border-b border-slate-600 pb-2 focus:outline-none"
+                      placeholder="Enter your name..."
+                      maxLength={40}
+                      disabled={true}
+                      value={name}
+                      required
+                      />
+                    </div>
+                    <div>
+                      <p className="font-medium"><span className="text-red-600">*</span> Email</p>
+                      <input
+                      type="text"
+                      className="w-full mt-4 text-sm border-b border-slate-600 pb-2 focus:outline-none"
+                      placeholder="Enter your name..."
+                      value={email}
+                      maxLength={40}
+                      disabled={true}
+                      required
+                      />
+                    </div>
                     <button
                     type="button"
                     onClick={closeModal}
                     >
-                      <BlackButton>Save Changes</BlackButton>
+                      <BlackButton>Close</BlackButton>
                     </button>
-                  </div>
+                  </form>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
