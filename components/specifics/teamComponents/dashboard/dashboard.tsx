@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 
 import Link from "next/link"
 import Image from "next/image"
@@ -17,6 +17,7 @@ import { teamSavedInfo, interviewSavedInfo } from "@/lib/types"
 
 export default function TeamDashboard() {
   const teamid = useParams().teamid
+  const router = useRouter()
 
   const [teamInfo, setTeamInfo] = useState<teamSavedInfo>()
   const [interviews, setInterviews] = useState<Array<interviewSavedInfo>>([])
@@ -24,6 +25,10 @@ export default function TeamDashboard() {
   
   async function fetchInterviews() {
     const responseInterviewsGet = await fetch("/api/interviews/get?id=" + teamid)
+
+    if (responseInterviewsGet.status === 207) {
+      return router.push("/dashboard/" + teamid + "/create")
+    }
 
     const data = await responseInterviewsGet.json()
 
