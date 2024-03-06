@@ -1,4 +1,4 @@
-export default function Prompt(interviewerName: string, teamName: string, teamPurpose: string, questions: Array<any>) {
+export default function Prompt(interviewerName: string, teamName: string, teamPurpose: string, questions: Array<any>, purpose: string) {
   let questionList = ""
   for (let i = 0; i < questions.length; i++) {
     questionList += `${i + 1}. ${questions[i].question}\n`
@@ -13,7 +13,7 @@ export default function Prompt(interviewerName: string, teamName: string, teamPu
 
   ${teamName} wants you to gather feedback for them for this purpose:
 
-  Find out what people thought of the ${teamName} homepage.
+  ${purpose}
     
   ${teamName} has also outlined the questions they would like for you to ask:
 

@@ -25,7 +25,7 @@ export default function FormStyle({ interviewInfo, interviewee } : { interviewIn
     const opening = [
       {
         role: "system",
-        content: Prompt(interviewInfo.team.interviewer, interviewInfo.team.name, interviewInfo.team.purpose, interviewInfo.guide)
+        content: Prompt(interviewInfo.team.interviewer, interviewInfo.team.name, interviewInfo.team.purpose, interviewInfo.guide, interviewInfo.purpose)
       },
       {
         role: "assistant",
