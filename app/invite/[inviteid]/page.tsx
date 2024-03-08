@@ -19,7 +19,26 @@ export default async function Invite(request: NextRequest & {params: { inviteid:
   const inviteData = await redis.get(request.params.inviteid) as {teamID: string, invitee: string}
 
   if (!inviteData) {
-    return redirect("/invite/sorry")
+    return redirect("/invite/sorry?errortype=1")
+  }
+
+  const team = await prisma.team.findUnique({
+    where: {
+      id: inviteData.teamID
+    },
+    include: {
+      members: true
+    }
+  })
+
+  if (team?.plan === 0) {
+    return redirect("/invite/sorry?errortype=2")
+  }
+  else if (team?.plan === 1 && team?.members.length >= 5) {
+    return redirect("/invite/sorry?errortype=2")
+  }
+  else if (team?.plan === 2 && team?.members.length >= 10) {
+    return redirect("/invite/sorry?errortype=2")
   }
 
   if (session) {
