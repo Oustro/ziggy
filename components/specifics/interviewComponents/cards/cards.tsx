@@ -7,7 +7,7 @@ import Link from "next/link"
 import BlackButton from "@/components/generics/blackButton"
 import HoverWords from "@/components/generics/hoverWords"
 
-import { IoSettingsOutline, IoFlashOutline } from "react-icons/io5"
+import { IoSettingsOutline, IoFlashOutline, IoLink } from "react-icons/io5"
 
 export default function Card({ interview } : { interview: interviewSavedInfo }) {
   const [dropdown, setDropdown] = useState(false)
@@ -44,6 +44,9 @@ export default function Card({ interview } : { interview: interviewSavedInfo }) 
                 <Link href={`/dashboard/${interview.teamId}/${interview.id}/duplicate`}>
                   <HoverWords><span className="flex items-center gap-2"><IoFlashOutline />Duplicate interview</span></HoverWords>
                 </Link>
+                <button onClick={() => navigator.clipboard.writeText(window.location.origin + "/zy/" + interview.externalID)}>
+                  <HoverWords><span className="flex items-center gap-2"><IoLink />Copy link</span></HoverWords>
+                </button>
               </div>
             </div>
           </div>
