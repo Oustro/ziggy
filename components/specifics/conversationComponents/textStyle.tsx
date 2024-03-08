@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react"
 
 import Prompt from "@/lib/prompt"
 import { Open, Converse } from "@/utils/converse"
+import { end } from "@/utils/utility"
 
 import Image from "next/image"
 
@@ -12,7 +13,7 @@ import { IoPersonCircleOutline } from "react-icons/io5"
 
 import Spinner from "@/components/generics/spinner"
 
-export default function TextStyle({ interviewInfo, interviewee, setMostRecentQuestion } : { interviewInfo: any, interviewee: string, setMostRecentQuestion: Function }) {
+export default function TextStyle({ interviewInfo, interviewee, setMostRecentQuestion, finishedInterview, setFinishedInterview } : { interviewInfo: any, interviewee: string, setMostRecentQuestion: Function, finishedInterview: boolean, setFinishedInterview: Function }) {
   const [conversation, setConversation] = useState<Array<{role: string, content: string}>>([])
   const [chatLog, setChatLog] = useState<Array<{role: string, content: string}>>([])
   const [transcriptId, setTranscriptId] = useState<string>("")
@@ -76,11 +77,17 @@ export default function TextStyle({ interviewInfo, interviewee, setMostRecentQue
 
     const updatedConvo = await Converse(conversation, answer, interviewee, interviewInfo.id, transcriptId, interviewInfo.guide)
 
+    const isFinished = await end(updatedConvo[updatedConvo.length - 1].content)
+
     setConversation(updatedConvo)
     
     setChatLog(updatedConvo)
 
     setMostRecentQuestion(updatedConvo[updatedConvo.length - 1].content)
+
+    if (isFinished === "True") {
+      setFinishedInterview(true)
+    }
 
     return setLoading(false)
   }
@@ -126,10 +133,11 @@ export default function TextStyle({ interviewInfo, interviewee, setMostRecentQue
           value={answer}
           className="w-full border-b border-slate-600 bg-transparent pb-2 text-base focus:outline-none"
           placeholder="Enter your answer..."
+          disabled={finishedInterview}
           required
           >
           </input>
-          <button className="text-sm" type="submit">
+          <button className="text-sm" type="submit" disabled={finishedInterview}>
             <BlackButton>
               <span className="flex items-center gap-2"><FiSend /> Continue</span>
             </BlackButton>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 
 import Prompt from "@/lib/prompt"
 import { Open, Converse } from "@/utils/converse"
+import { end } from "@/utils/utility"
 
 import { motion } from "framer-motion"
 
@@ -13,7 +14,7 @@ import { FiSend } from "react-icons/fi"
 
 import Spinner from "@/components/generics/spinner"
 
-export default function FormStyle({ interviewInfo, interviewee, setMostRecentQuestion } : { interviewInfo: any, interviewee: string, setMostRecentQuestion: Function }) {
+export default function FormStyle({ interviewInfo, interviewee, setMostRecentQuestion, finishedInterview, setFinishedInterview } : { interviewInfo: any, interviewee: string, setMostRecentQuestion: Function, finishedInterview: boolean, setFinishedInterview: Function }) {
   const [conversation, setConversation] = useState<Array<{role: string, content: string}>>([])
   const [transcriptId, setTranscriptId] = useState<string>("")
 
@@ -61,9 +62,15 @@ export default function FormStyle({ interviewInfo, interviewee, setMostRecentQue
 
     const updatedConvo = await Converse(conversation, answer, interviewee, interviewInfo.id, transcriptId, interviewInfo.guide)
 
+    const isFinished = await end(updatedConvo[updatedConvo.length - 1].content)
+
     setConversation(updatedConvo)
 
     setMostRecentQuestion(updatedConvo[updatedConvo.length - 1].content)
+
+    if (isFinished === "True") {
+      setFinishedInterview(true)
+    }
 
     return setLoading(false)
   }
@@ -132,9 +139,10 @@ export default function FormStyle({ interviewInfo, interviewee, setMostRecentQue
             onChange={(e) => setAnswer(e.target.value)}
             className="w-full mt-24 border-b border-slate-600 bg-transparent pb-2 text-base focus:outline-none"
             placeholder="Enter your answer..."
+            disabled={finishedInterview}
             required
             />
-            <button className="mt-16 text-lg" type="submit">
+            <button className="mt-16 text-lg" type="submit" disabled={finishedInterview}>
               <BlackButton>
                 <span className="flex items-center gap-2"><FiSend /> Continue</span>
               </BlackButton>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 import { progress } from "@/utils/utility"
 
-export default function ProgressBar({ interviewInfo, mostRecentQuestion } : { interviewInfo: any, mostRecentQuestion: string }) {
+export default function ProgressBar({ interviewInfo, mostRecentQuestion, finishedInterview } : { interviewInfo: any, mostRecentQuestion: string, finishedInterview: boolean }) {
   const [progressBarWidth, setProgressBarWidth] = useState<string>("10%")
 
 
@@ -19,11 +19,15 @@ export default function ProgressBar({ interviewInfo, mostRecentQuestion } : { in
   }
 
   useEffect(() => {
+    if (finishedInterview) {
+      return setProgressBarWidth("100%")
+    }
+
     if (mostRecentQuestion === "") {
       return setProgressBarWidth("10%")
     }
     calculateProgress() 
-  }, [mostRecentQuestion])
+  }, [mostRecentQuestion, finishedInterview])
 
   return (
     <div className="absolute top-0 h-4 text-center rounded transition-all duration-300 ease-in-out"
