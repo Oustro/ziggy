@@ -13,7 +13,7 @@ import { FiSend } from "react-icons/fi"
 
 import Spinner from "@/components/generics/spinner"
 
-export default function FormStyle({ interviewInfo, interviewee } : { interviewInfo: any, interviewee: string }) {
+export default function FormStyle({ interviewInfo, interviewee, setMostRecentQuestion } : { interviewInfo: any, interviewee: string, setMostRecentQuestion: Function }) {
   const [conversation, setConversation] = useState<Array<{role: string, content: string}>>([])
   const [transcriptId, setTranscriptId] = useState<string>("")
 
@@ -43,6 +43,8 @@ export default function FormStyle({ interviewInfo, interviewee } : { interviewIn
 
     setConversation(newtId.updatedConvo)
 
+    setMostRecentQuestion(newtId.updatedConvo[newtId.updatedConvo.length - 1].content)
+
     return setLoading(false)
   }
   
@@ -60,6 +62,8 @@ export default function FormStyle({ interviewInfo, interviewee } : { interviewIn
     const updatedConvo = await Converse(conversation, answer, interviewee, interviewInfo.id, transcriptId, interviewInfo.guide)
 
     setConversation(updatedConvo)
+
+    setMostRecentQuestion(updatedConvo[updatedConvo.length - 1].content)
 
     return setLoading(false)
   }

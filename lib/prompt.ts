@@ -48,3 +48,51 @@ export default function Prompt(interviewerName: string, teamName: string, teamPu
   Now, begin the interview.
   `
 }
+
+export function MostSimQuick(questions: Array<any>, question: string) {
+  let questionList = ""
+  for (let i = 0; i < questions.length; i++) {
+    questionList += `${i + 1}. ${questions[i].question}\n`
+  }
+
+  return `
+  I have a list of questions that look like this:
+
+  ${questionList}
+
+  Provide me the index of the questions this question:
+
+  ${question}
+
+  is most similar to. 
+  
+  Provide just the number of the index of the question as your answer.
+  `
+}
+
+export function DetermineEnd() {
+  return (`
+  Tell me only true or false whether a message provided indicates the end of a conversation. For example
+  \n
+  \n
+  user: I loved the new Batman movie!
+  \n
+  assistant: False
+  \n
+  \n
+  here is another example:
+  \n
+  \n
+  user: Thank you for being in this interview I really appreciate it. Have a good day!
+  \n
+  assistant: True
+  \n
+  \n
+  Here is one more example:
+  \n
+  \n
+  user: Yes, we are done with the interview. Thank you for your participation! If you have any further feedback or questions in the future, don't hesitate to reach out. Have a great day!
+  \n
+  assistant: True
+  `)
+}

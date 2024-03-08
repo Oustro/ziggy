@@ -12,7 +12,7 @@ import { IoPersonCircleOutline } from "react-icons/io5"
 
 import Spinner from "@/components/generics/spinner"
 
-export default function TextStyle({ interviewInfo, interviewee } : { interviewInfo: any, interviewee: string }) {
+export default function TextStyle({ interviewInfo, interviewee, setMostRecentQuestion } : { interviewInfo: any, interviewee: string, setMostRecentQuestion: Function }) {
   const [conversation, setConversation] = useState<Array<{role: string, content: string}>>([])
   const [chatLog, setChatLog] = useState<Array<{role: string, content: string}>>([])
   const [transcriptId, setTranscriptId] = useState<string>("")
@@ -44,7 +44,10 @@ export default function TextStyle({ interviewInfo, interviewee } : { interviewIn
     setTranscriptId(newtId.tid)
 
     setConversation(newtId.updatedConvo)
+
     setChatLog(newtId.updatedConvo)
+
+    setMostRecentQuestion(newtId.updatedConvo[newtId.updatedConvo.length - 1].content)
 
     return setLoading(false)
   }
@@ -74,7 +77,10 @@ export default function TextStyle({ interviewInfo, interviewee } : { interviewIn
     const updatedConvo = await Converse(conversation, answer, interviewee, interviewInfo.id, transcriptId, interviewInfo.guide)
 
     setConversation(updatedConvo)
+    
     setChatLog(updatedConvo)
+
+    setMostRecentQuestion(updatedConvo[updatedConvo.length - 1].content)
 
     return setLoading(false)
   }
