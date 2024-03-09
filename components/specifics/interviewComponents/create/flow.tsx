@@ -130,7 +130,7 @@ export default function Flow({ teamid } : { teamid: string }) {
               <Reorder.Item key={question} value={question} className="flex justify-between">
                 <div className="flex flex-grow gap-2 items-center pr-4">
                   <MdDragIndicator className="cursor-ns-resize min-w-4"/>
-                  <p className="font-normal">{index === 0 ? <span className="font-medium rounded-full border border-slate-600 px-2 text-xs">Top priority</span> : index === questionList.length - 1 ? <span className="font-medium rounded-full border border-slate-600 px-2 text-xs">Lowest priority</span> : ''} {question}</p>
+                  <p className="font-normal">{index === 0 && <span className="font-medium rounded-full border border-slate-600 px-2 text-xs">Top priority</span>} {question}</p>
                 </div>
                 <button onClick={() => setQuestionList(questionList.filter((_, i) => i !== index))}><HoverWords><MdCancel /></HoverWords></button>
               </Reorder.Item>

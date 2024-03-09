@@ -48,7 +48,6 @@ export default async function ConvoPage(request: NextRequest & {params: { interv
   const data = await responseInterviewGet.json()
 
   if (data.interview.team.plan === 0) {
-    // ** Change > 2 back to > 25 
     if (data.interview.transcript.length > 25) {
       return redirect("/zy/sorry")
     }
