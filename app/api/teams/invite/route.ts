@@ -7,7 +7,6 @@ import { authOptions } from '@/utils/auth'
 
 import { Client } from "postmark"
 
-
 export async function POST(request: NextRequest) {
 
   const session = await getServerSession({ req: request, ...authOptions })
