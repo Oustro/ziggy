@@ -4,52 +4,29 @@ import Link from "next/link"
 
 import BlackButton from "@/components/generics/blackButton"
 import HoverWords from "@/components/generics/hoverWords"
-import Badge from "@/components/generics/badge"
 
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"
 
-import { FaCheck } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa"
+
+import { plans } from "@/lib/pricing"
 
 export default function SelectPlan({ teamId } : { teamId: string }) {
   const router = useRouter()
-  
-  const plans = [
+
+  const planInfo = [
     {
-      title: "Free Plan",
-      price: "$0",
-      border: "p-4",
-      description: "The Free plan is made for teams who want to get try Ziggy without commitment.",
-      features: [
-        "3 interview template",
-        "50 AI interviews / template",
-        "1 team member",
-      ],
+      border: "border p-6 rounded",
       action: <Link href={`/dashboard?team=${teamId}`}><BlackButton>Continue with Free</BlackButton></Link>
     },
     {
-      title: "Pro Plan",
-      price: "$24",
-      border: "p-4 rounded border border-slate-600",
-      description: "The Ziggy Pro plan is perfect for small teams who want to get started with Ziggy.",
-      features: [
-        "25 interview templates",
-        "100 AI interviews / template",
-        "5 team members",
-      ],
+      border: "border border-slate-600 p-6 rounded",
       action: <button className="w-full" onClick={() => handleSubmit(1)}><BlackButton>Continue with Pro</BlackButton></button>
     },
     {
-      title: "Business Plan",
-      price: "$79",
-      border: "p-4",
-      description: "The Ziggy Business plan is perfect for larger teams who care about their users.",
-      features: [
-        "50 interview templates",
-        "200 AI interviews / template",
-        "15 team members",
-      ],
+      border: "border p-6 rounded",
       action: <button className="w-full" onClick={() => handleSubmit(2)}><BlackButton>Continue with Business</BlackButton></button>
-    },
+    }
   ]
 
   async function handleSubmit(plan: number) {
@@ -75,12 +52,10 @@ export default function SelectPlan({ teamId } : { teamId: string }) {
       <p className="text-slate-600 mt-6 w-[90%]">Learn more and compare Ziggy's pricing plans and features <Link target="_blank" href="/info/pricing" className="underline">here.</Link></p>
       <div className="full flex justify-between mt-16 gap-4">
         {plans.map((plan, index) => (
-          <div key={index} className={plan.border}>
+          <div key={index} className={planInfo[index].border}>
             <div>
               <h2 className="text-2xl font-semibold w-full">{plan.title}</h2>
-              <div className="inline-block mt-2">
-                <Badge>{plan.price} / month</Badge>
-              </div>
+              <h1 className="text-3xl mt-4 font-medium">{plan.price} / month</h1>
             </div>
             <p className="text-slate-600 text-sm mt-4">{plan.description}</p>
             <ul className="grid gap-3 mt-8">
@@ -89,7 +64,7 @@ export default function SelectPlan({ teamId } : { teamId: string }) {
               ))}
             </ul>
             <div className="mt-12 text-center">
-              {plan.action}
+              {planInfo[index].action}
             </div>
           </div>
         ))}
