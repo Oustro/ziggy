@@ -1,52 +1,29 @@
 import { teamSavedInfo } from "@/lib/types"
 
-import Badge from "@/components/generics/badge"
 import BlackButton from "@/components/generics/blackButton"
 
 import { useRouter } from "next/navigation"
 
 import { FaCheck } from "react-icons/fa"
 
+import { plans } from "@/lib/pricing"
+
 export default function BillingSettings({ team, setRefreshKey } : { team: teamSavedInfo, setRefreshKey: Function}) {
   const router = useRouter()
 
-  const plans = [
+  const planInfo = [
     {
-      title: "Free Plan",
-      price: "$0",
-      plan: 0,
-      description: "The Free plan is made for teams who want to get try Ziggy without commitment.",
-      features: [
-        "3 interview templates",
-        "50 AI interviews / template",
-        "1 team member",
-      ],
+      planNumber: 0, 
       action: <button className="w-full" onClick={handleCancel}><BlackButton>Switch to Free</BlackButton></button>
     },
     {
-      title: "Ziggy Pro Plan",
-      price: "$24",
-      plan: 1,
-      description: "The Ziggy Pro plan is perfect for small teams who want to get started with Ziggy.",
-      features: [
-        "25 interview templates",
-        "100 AI interviews / template",
-        "5 team members",
-      ],
+      planNumber: 1, 
       action: <button className="w-full" onClick={() => handleUpgrade(1)}><BlackButton>Switch to Pro</BlackButton></button>
     },
     {
-      title: "Ziggy Business Plan",
-      price: "$79",
-      plan: 2,
-      description: "The Ziggy Business plan is perfect for larger teams who care about their users.",
-      features: [
-        "50 interview templates",
-        "200 AI interviews / template",
-        "15 team members",
-      ],
+      planNumber: 2, 
       action: <button className="w-full" onClick={() => handleUpgrade(2)}><BlackButton>Switch to Business</BlackButton></button>
-    },
+    }
   ]
 
   async function handleUpgrade(plan: number) {
@@ -100,22 +77,20 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
   } 
 
   return (
-    <main>
+    <main className="grid grid-cols-1 gap-8">
       {plans.map((plan, index) => (
-        <div key={index} className={team.plan === plan.plan ? "p-4 mb-8 rounded border border-slate-600" : "px-4 mb-8"}>
-          <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-semibold ">{plan.title}</h2>
-            <Badge>{plan.price} / month</Badge>
-          </div>
-          <p className="text-slate-600 text-sm mt-4">{plan.description}</p>
-          <ul className="grid gap-3 mt-8">
+        <div key={index} className={team.plan === planInfo[index].planNumber ? "border p-6 rounded border-slate-600" : "border p-6 rounded"}>
+          <h2 className="text-2xl font-semibold">{plan.title}</h2>
+          <h1 className="text-3xl mt-4 font-medium">{plan.price} / month</h1>
+          <p className="text-slate-600 mt-4 pb-4 border-b">{plan.description}</p>
+          <ul className="grid gap-3 mt-8 mb-8">
             {plan.features.map((feature, index) => (
               <li key={index} className="flex items-center font-medium gap-3"><FaCheck />{feature}</li>
             ))}
           </ul>
-          {team.plan !== plan.plan && (
+          {team.plan !== planInfo[index].planNumber && (
             <div className="mt-12 text-center">
-              {plan.action}
+              {planInfo[index].action}
             </div>
           )}
         </div>
