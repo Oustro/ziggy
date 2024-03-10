@@ -2,9 +2,10 @@ import Image from "next/image"
 import Link from "next/link"
 
 import HoverWords from "@/components/generics/hoverWords"
-import BlackButton from "@/components/generics/blackButton"
+import WhiteButton from "@/components/generics/whiteButton"
 
-import { VscLinkExternal } from "react-icons/vsc"
+import { MdOutlineEmail } from "react-icons/md"
+
 
 export default async function Footer() {
 
@@ -67,7 +68,7 @@ export default async function Footer() {
   ]
 
   return (
-    <nav className="bottom-0 z-0 text-sm bottom-0 mt-16 w-full backdrop-blur from-white-50 border-t pt-10 px-24 flex items-start justify-between">
+    <nav className="bottom-0 z-0 text-sm bottom-0 mt-48 w-full backdrop-blur from-white-50 border-t pt-10 px-24 flex items-start justify-between">
       <div>
         <Link className="flex items-center gap-1" href="/">
           <Image
@@ -80,9 +81,11 @@ export default async function Footer() {
         </Link>
         <div className="mt-8 text-slate-600">
           <p className="font-medium">© 2024 Oustro, LLC</p>
-          <p className="mb-4">Made with 🤠 in Texas</p>
-          <Link href="mailto:hello@useziggy.com">
-            hello@useziggy.com
+          <p className="mb-4">Made with a 🤠 in Austin, TX</p>
+          <Link href="mailto:howdy@useziggy.com">
+            <WhiteButton>
+              <span className="flex items-center gap-1"><MdOutlineEmail /> howdy@useziggy.com</span>
+            </WhiteButton>
           </Link>
         </div>
       </div>
