@@ -4,7 +4,7 @@ import { Client } from "postmark"
 
 
 export async function POST(request: NextRequest) {
-  const contactInfo = await request.json() as { name: string, email: string, reason: string }
+  const contactInfo = await request.json() as { name: string, email: string, reason: string, comments: string }
 
   try {
 
@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       "From": process.env.EMAIL_FROM as string,
       "To": "support@useziggy.com",
       "Subject": "Contact Us: " + contactInfo.reason,
-      "TextBody": "Name: " + contactInfo.name + "\nEmail: " + contactInfo.email + "\nReason: " + contactInfo.reason
+      "TextBody": "Name: " + contactInfo.name + "\nEmail: " + contactInfo.email + "\nReason: " + contactInfo.reason+ "\nComments: " + contactInfo.comments
     })
 
 
