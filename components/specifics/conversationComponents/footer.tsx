@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 
-export default function Footer() {
+export default function Footer({external} : {external: string}) {
 
   return (
     <div className="absolute bottom-0 h-24 text-center w-full">
@@ -24,7 +24,7 @@ export default function Footer() {
         <Link href="/info/legal/tos" target="_blank">
           <p className="underline">Terms of Service</p>
         </Link>
-        <Link href="/info/contact" target="_blank">
+        <Link href={"/info/contact?reason=Report an interview ID: "+external} target="_blank">
           <p className="underline">Report this interview</p>
         </Link>
       </div>

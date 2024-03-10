@@ -70,7 +70,7 @@ export default function SelectPlan({ teamId } : { teamId: string }) {
         ))}
       </div>
       <div className="text-sm mt-12 text-center font-medium">
-        <Link href="mailto:sales@useziggy.com" className="inline-block">
+        <Link href="/info/contact?reason=Inquire About Enterprise Plan" target="_blank" className="mt-8 inline-block">
           <HoverWords>
             Looking for enterprise? Contact us
           </HoverWords>

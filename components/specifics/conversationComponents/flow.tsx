@@ -29,7 +29,7 @@ export default function Flow({ interviewData } : { interviewData: any }) {
     }}>
       <ProgressBar interviewInfo={interviewData} mostRecentQuestion={mostRecentQuestion} finishedInterview={finishedInterview} />
       {views[view]}
-      <Footer />
+      <Footer external={interviewData.externalID} />
     </main>
   )
 }
