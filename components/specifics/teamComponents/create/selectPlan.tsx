@@ -12,6 +12,7 @@ import { FaCheck } from "react-icons/fa";
 
 export default function SelectPlan({ teamId } : { teamId: string }) {
   const router = useRouter()
+  
   const plans = [
     {
       title: "Free Plan",

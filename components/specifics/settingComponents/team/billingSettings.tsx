@@ -5,7 +5,7 @@ import BlackButton from "@/components/generics/blackButton"
 
 import { useRouter } from "next/navigation"
 
-import { FaCheck } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa"
 
 export default function BillingSettings({ team, setRefreshKey } : { team: teamSavedInfo, setRefreshKey: Function}) {
   const router = useRouter()
@@ -17,7 +17,7 @@ export default function BillingSettings({ team, setRefreshKey } : { team: teamSa
       plan: 0,
       description: "The Free plan is made for teams who want to get try Ziggy without commitment.",
       features: [
-        "3 interview template",
+        "3 interview templates",
         "50 AI interviews / template",
         "1 team member",
       ],
