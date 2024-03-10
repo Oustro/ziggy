@@ -18,10 +18,10 @@ export default function Footer() {
         </Link>
       </div>
       <div className="flex items-center justify-center gap-6 mt-4 text-xs">
-        <Link href="/info/legal" target="_blank">
+        <Link href="/info/legal/privacy" target="_blank">
           <p className="underline">Privacy Policy</p>
         </Link>
-        <Link href="/info/legal" target="_blank">
+        <Link href="/info/legal/tos" target="_blank">
           <p className="underline">Terms of Service</p>
         </Link>
         <Link href="/info/contact" target="_blank">

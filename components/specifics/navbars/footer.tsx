@@ -56,11 +56,11 @@ export default async function Footer() {
       links: [
         {
           name: "Privacy",
-          href: "/info/legal"
+          href: "/info/legal/privacy"
         },
         {
           name: "Terms",
-          href: "/info/legal"
+          href: "/info/legal/tos"
         }
       ]
     }
