@@ -1,6 +1,8 @@
 import { NextResponse, NextRequest } from 'next/server'
 import prisma from '@/utils/db'
 
+import Stripe from "stripe"
+
 import { getPusherInstance } from '@/utils/pusher/server'
 
 import { getServerSession } from 'next-auth'
@@ -56,6 +58,12 @@ export async function DELETE(request: NextRequest) {
             id: team.interviews[i].id
           }
         })
+      }
+
+      if (team.plan !== 0) {
+        const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string)
+
+        await stripe.subscriptions.cancel(team.stripeID as string)
       }
 
       await prisma.team.delete({
