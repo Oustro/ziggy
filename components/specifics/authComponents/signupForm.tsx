@@ -69,7 +69,7 @@ export default function SignupForm({ setView } : { setView: Function }) {
           onChange={(e) => setName(e.target.value)}
           required
           />
-          <div className="text-left font-medium text-sm pb-1 mt-6">
+          <div className="text-left font-medium text-sm pb-1 mt-12">
             <label><span className="text-red-600">*</span> Work Email</label>
           </div>
           <input

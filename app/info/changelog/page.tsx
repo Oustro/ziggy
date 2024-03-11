@@ -1,8 +1,10 @@
 import Link from "next/link"
 
 export default async function Changelog() {
-  const responseGitHubReleases = await fetch("https://api.github.com/repos/oustro/ziggy/releases", {
-    cache: "no-store"
+  const responseGitHubReleases = await fetch("https://api.github.com/repos/oustro/portfoliwoah/releases", {
+    next: {
+      revalidate: 3600
+    }
   })
 
   const data = await responseGitHubReleases.json()

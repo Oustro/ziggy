@@ -51,7 +51,7 @@ export default function Contact() {
         onChange={(e) => setEmail(e.target.value)}
         required
         />
-        <div className="text-left font-medium text-sm pb-1 mt-6">
+        <div className="text-left font-medium text-sm pb-1 mt-12">
           <label><span className="text-red-600">*</span> Name</label>
         </div>
         <input
@@ -62,7 +62,7 @@ export default function Contact() {
         onChange={(e) => setName(e.target.value)}
         required
         />
-        <div className="text-left font-medium text-sm pb-1 mt-6">
+        <div className="text-left font-medium text-sm pb-1 mt-12">
           <label><span className="text-red-600">*</span> Reason</label>
         </div>
         <input
@@ -73,7 +73,7 @@ export default function Contact() {
         onChange={(e) => setReason(e.target.value)}
         required
         />
-         <div className="text-left font-medium text-sm pb-1 mt-6">
+         <div className="text-left font-medium text-sm pb-1 mt-12">
           <label>Additional Comments</label>
         </div>
         <textarea
