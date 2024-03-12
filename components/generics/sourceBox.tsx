@@ -23,7 +23,7 @@ export default function SourceBox({ score, metadata, setView } : { score: number
         <div className="flex items-center gap-4">
           <p>{metadata.interviewee}</p>
           <button onClick={() => viewTranscript()} type="button">
-            <BlackButton>View Transscript </BlackButton>
+            <BlackButton>View Transcript</BlackButton>
           </button>
         </div>
       </div>

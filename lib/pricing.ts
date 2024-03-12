@@ -5,7 +5,7 @@ export const plans = [
     description: "The Free plan is made for teams who want to get try Ziggy without commitment.",
     features: [
       "No credit card required",
-      "interview templates",
+      "3 interview templates",
       "25 AI interviews / template",
       "1 team member",
       "Community support"

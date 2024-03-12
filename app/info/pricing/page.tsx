@@ -18,7 +18,7 @@ export default function Pricing() {
     <main>
       <h1 className="text-4xl sm:text-5xl font-semibold text-center mt-12">Pricing Plans</h1>
       <p className="text-slate-600 mt-6 text-center">An affordable, simple pricing model to help you get the most out of your feedback with Ziggy.</p>
-      <div className="w-full px-12 grid gap-8 grid-cols-3 mt-12">
+      <div className="w-[80%] mx-auto px-12 grid gap-8 grid-cols-3 mt-12">
         {plans.map((plan, index) => (
           <div key={index} className={borders[index]}>
             <h2 className="text-2xl font-semibold">{plan.title}</h2>
