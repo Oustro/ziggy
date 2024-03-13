@@ -17,7 +17,7 @@ export default function Hero() {
   const convo = [
     {
       question: "Can you tell me about your experience with Ziggy?",
-      answer: "I love Ziggy! It's so easy to use and I get better and clearer feedback from my users.",
+      answer: "Ziggy made it easy to get more insightful feedback from my users.",
       button: (
         <button onClick={() => setActiveConvo(1)} className="mt-8 relative">
           <span className="absolute -top-1 -right-1 flex h-3 w-3">
@@ -31,8 +31,8 @@ export default function Hero() {
       )
     },
     {
-      question: "Great to hear, but what 'better and clearer feedback' mean?",
-      answer: "The feedback is feels like conducting interviews with users, but at scale. It's amazing!",
+      question: "Great to hear, but what does 'more insightful feedback' mean?",
+      answer: "The feedback is feels like conducting interviews with users, but at scale!",
       button: (
         <button onClick={() => setActiveConvo(2)} className="mt-8 relative">
           <span className="absolute -top-1 -right-1 flex h-3 w-3">
@@ -67,7 +67,7 @@ export default function Hero() {
   const [activeConvo, setActiveConvo] = useState(0)
 
   return (
-    <div className="relative border flex flex-col justify-center border-slate-600 rounded w-[50%]"
+    <div className="relative border flex flex-col h-[35rem] justify-center border-slate-600 rounded w-[50%]"
     style={{
       background: 'linear-gradient(to top right, #FFFFFF 40%, #8B5CF6 145%)'
     }}
