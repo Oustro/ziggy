@@ -53,12 +53,12 @@ export default async function ConvoPage(request: NextRequest & {params: { interv
     }
   }
   else if (data.interview.team.plan === 1) { 
-    if (data.interview.transcript.length > 75) {
+    if (data.interview.transcript.length > 150) {
       return redirect("/zy/sorry")
     }
   }
   else if (data.interview.team.plan === 2) { 
-    if (data.interview.transcript.length > 150) {
+    if (data.interview.transcript.length > 550) {
       return redirect("/zy/sorry")
     }
   }
