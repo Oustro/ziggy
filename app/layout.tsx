@@ -7,6 +7,10 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Ziggy - Better feedback starts with Ziggy.",
   description: "The AI tool to conduct interviews and get better feedback than traditional survey forms.",
+  keywords: ["Feedback", "AI Feedback", "Better feedback", "Analytics"],
+  openGraph: {
+    images: '/ziggy-og.png',
+  },
 }
 
 export default function RootLayout({
