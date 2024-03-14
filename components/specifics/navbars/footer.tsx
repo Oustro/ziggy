@@ -42,10 +42,10 @@ export default async function Footer() {
           name: "Careers",
           href: "https://www.oustro.xyz"
         },
-        {
-          name: "Blog",
-          href: "/info/blog"
-        },
+        // {
+        //   name: "Blog",
+        //   href: "/info/blog"
+        // },
         {
           name: "Contact",
           href: "/info/contact"
@@ -81,7 +81,7 @@ export default async function Footer() {
         </Link>
         <div className="mt-8 text-slate-600">
           <p className="font-medium">© 2024 Oustro, LLC</p>
-          <p className="mb-4">Made with a 🤠 in Austin, TX</p>
+          <p className="mb-4">Made with a 🤠 in Texas</p>
           <Link href="mailto:howdy@useziggy.com">
             <WhiteButton>
               <span className="flex items-center gap-1"><MdOutlineEmail /> howdy@useziggy.com</span>

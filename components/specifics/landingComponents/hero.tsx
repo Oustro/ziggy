@@ -81,7 +81,7 @@ export default function Hero() {
       background: 'linear-gradient(to top right, #FFFFFF 40%, #8B5CF6 145%)'
     }}
     >
-      <div className="bg-slate-100 absolute w-full top-0 h-6 border-b border-slate-600 rounded-t flex gap-1 items-center px-2">
+      <div className="bg-slate-100 absolute w-full top-0 h-6 border-b border-slate-600 rounded-t flex justify-end gap-1 items-center px-2">
         <div className="bg-red-300 rounded-full h-2 w-2" />  
         <div className="bg-yellow-300 rounded-full h-2 w-2" />  
         <div className="bg-green-300 rounded-full h-2 w-2" />  
@@ -110,20 +110,39 @@ export default function Hero() {
         </AnimatePresence>
         {convo[activeConvo].button}
       </div>
-      <div className="absolute top-20 rotate-[19deg] -right-48 w-[30rem] border border-slate-600 bg-white rounded p-4">
+      <motion.div 
+      variants={{
+        hidden: { opacity: 0, y: 10, rotate: 19 },
+        visible: { opacity: 1, y: 0, rotate: 19 }
+      }}
+      viewport={{ once: true }}
+      initial="hidden"
+      animate="visible"
+      transition={{ duration: 0.5, delay: 0.3 }}
+      className="absolute top-20 -right-48 w-[30rem] border border-slate-600 bg-white rounded p-4">
         <p className="text-lg font-medium">Key Trends</p>
         <div className="grid grid-cols-2 gap-2 mt-4">
           <div className="border rounded p-4">
             <p className="text-base font-medium">Better Feedback</p>
-            <p className="text-xs mt-3 font-medium">Explore &rsaquo;</p>
+            <p className="text-xs mt-3 text-slate-600 font-medium">Explore &rsaquo;</p>
           </div>
           <div className="border rounded p-4">
             <p className="text-base font-medium">At Scale</p>
-            <p className="text-xs mt-3 font-medium">Explore &rsaquo;</p>
+            <p className="text-xs mt-3 text-slate-600 font-medium">Explore &rsaquo;</p>
           </div>
         </div>
-      </div>
-      <div className="absolute -top-8 -rotate-[20deg] -left-36 w-96 border border-slate-600 bg-white rounded p-4">
+      </motion.div>
+      <motion.div 
+      variants={{
+        hidden: { opacity: 0, y: 10, rotate: -20 },
+        visible: { opacity: 1, y: 0, rotate: -20 }
+      }}
+      viewport={{ once: true }}
+      initial="hidden"
+      animate="visible"
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="absolute -top-8 -left-36 w-96 border border-slate-600 bg-white rounded p-4"
+      >
         <p className="text-lg font-medium">AI Q&A</p>
         <div className="border-b border-slate-600 pb-1 flex items-center gap-2 mt-4">
           <FaMagnifyingGlass />
@@ -139,8 +158,18 @@ export default function Hero() {
           />
           <p>Based on reponses, businesses love Ziggy for a number of reasons...</p>
         </div>
-      </div>
-      <div className="absolute -bottom-24 -rotate-[8deg] h-48 right-72 w-96 border border-slate-600 bg-white rounded p-4">
+      </motion.div>
+      <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 10, rotate: -8 },
+        visible: { opacity: 1, y: 0, rotate: -8 }
+      }} 
+      viewport={{ once: true }}
+      initial="hidden"
+      animate="visible"
+      transition={{ duration: 0.5, delay: 0.4 }}
+      className="absolute -bottom-24 h-48 right-72 w-96 border border-slate-600 bg-white rounded p-4"
+      >
         <p className="text-lg font-medium">Interview Activity</p>
         <div className="mt-4 h-[80%] pb-4">
           <Line
@@ -183,7 +212,7 @@ export default function Hero() {
           }}
           />
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
