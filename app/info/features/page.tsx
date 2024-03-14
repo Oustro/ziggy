@@ -18,7 +18,7 @@ export default function Features() {
       content: (
         <div className="mt-12 w-[80%] text-center mx-auto">
           <h2 className="text-2xl font-medium">Ditch forms, have conversations with AI</h2>
-          <div className="flex mt-8 items-center">
+          <div className="flex justify-between mt-8 items-center">
             <div className="text-left pr-12">
               <h2 className="text-2xl font-medium">Wonderful insights at scale</h2>
               <h4 className="mt-4">Use AI to have conversational interviews with users and collect insightful and more natural responses than static forms ever could.</h4>
@@ -28,7 +28,7 @@ export default function Features() {
                 </Link>
               </div>
             </div>
-            <video autoPlay loop muted preload="auto" className="w-[60%] rounded mx-auto" key="interviews">
+            <video autoPlay loop muted preload="auto" className="w-[60%] rounded">
               <source src="/features/form_style.mp4" type="video/mp4" />
             </video>
           </div>
@@ -40,7 +40,7 @@ export default function Features() {
       content: (
         <div className="mt-12 w-[80%] text-center mx-auto">
           <h2 className="text-2xl font-medium">Work togther, do amazing things</h2>
-          <div className="flex mt-8 items-center">
+          <div className="flex justify-between mt-8 items-center">
             <div className="text-left pr-12">
               <h2 className="text-2xl font-medium">Built for every team</h2>
               <h4 className="mt-4">Ziggy's commitment to collaboratation and creativity helps teams work together to get the best results.</h4>
@@ -50,7 +50,7 @@ export default function Features() {
                 </Link>
               </div>
             </div>
-            <video autoPlay loop muted preload="auto" className="w-[60%] rounded mx-auto" key="team">
+            <video autoPlay loop muted preload="auto" className="w-[60%] rounded">
               <source src="/features/team.mp4" type="video/mp4" />
             </video>
           </div>
@@ -62,7 +62,7 @@ export default function Features() {
       content: (
         <div className="mt-12 w-[80%] text-center mx-auto">
           <h2 className="text-2xl font-medium">Ask questions, get better answers</h2>
-          <div className="flex mt-8 items-center">
+          <div className="flex justify-between mt-8 items-center">
             <div className="text-left pr-12">
               <h2 className="text-2xl font-medium">Powerful tools for better insights</h2>
               <h4 className="mt-4">Ziggy's powerful analytical tools help ensure you understand your users' wants and needs.</h4>
@@ -72,7 +72,7 @@ export default function Features() {
                 </Link>
               </div>
             </div>
-            <video autoPlay playsInline loop muted preload="auto" className="w-[60%] rounded mx-auto">
+            <video autoPlay playsInline loop muted preload="auto" className="w-[60%] rounded">
               <source src="/features/analytics.mp4" type="video/mp4" />
             </video>
           </div>
@@ -84,7 +84,7 @@ export default function Features() {
       content: (
         <div className="mt-12 w-[80%] text-center mx-auto">
           <h2 className="text-2xl font-medium">Search far, all in one place</h2>
-          <div className="flex mt-8 items-center">
+          <div className="flex justify-between mt-8 items-center">
             <div className="text-left pr-12">
               <h2 className="text-2xl font-medium">Find what you want to find</h2>
               <h4 className="mt-4">Use natural language to search for responses from your users and get AI to summarize the results in a meaningful way.</h4>
@@ -94,7 +94,7 @@ export default function Features() {
                 </Link>
               </div>
             </div>
-            <video autoPlay playsInline loop muted preload="auto" className="w-[60%] rounded mx-auto">
+            <video autoPlay playsInline loop muted preload="auto" className="w-[60%] rounded">
               <source src="/features/search.mp4" type="video/mp4" />
             </video>
           </div>
@@ -106,7 +106,7 @@ export default function Features() {
       content: (
         <div className="mt-12 w-[80%] text-center mx-auto">
           <h2 className="text-2xl font-medium">Find the truth, go straight to the source</h2>
-          <div className="flex mt-8 items-center">
+          <div className="flex justify-between mt-8 items-center">
             <div className="text-left">
               <h2 className="text-2xl font-medium">No more guesswork</h2>
               <h4 className="mt-4">Ziggy makes it easy for you to look directly at what your users are saying so you can have learn more.</h4>
@@ -116,7 +116,7 @@ export default function Features() {
                 </Link>
               </div>
             </div>
-            <video autoPlay playsInline loop muted preload="auto" className="w-[60%] rounded mx-auto">
+            <video autoPlay playsInline loop muted preload="auto" className="w-[60%] rounded">
               <source src="/features/source.mp4" type="video/mp4" />
             </video>
           </div>

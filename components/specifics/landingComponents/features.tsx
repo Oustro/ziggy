@@ -109,9 +109,20 @@ export default function Features() {
     >
       <h2 className="sticky top-24 text-4xl text-center font-medium">Upgrade the way you get, and analyze user feedback</h2>
       {features.map((feature, index) => (
-        <div key={index} className="top-48 mt-16 bg-white sticky">
+        <motion.div 
+        variants={{
+          hidden: { opacity: 0, y: 20 },
+          visible: { opacity: 1, y: 0 }
+        }}
+        viewport={{ once: true }}
+        initial="hidden"
+        whileInView="visible"
+        transition={{ duration: 0.1, delay: 0.1 }}
+        key={index} 
+        className="top-48 mt-16 bg-white sticky"
+        >
           {feature.content}
-        </div>
+        </motion.div>
       ))}
     </motion.div>
   )

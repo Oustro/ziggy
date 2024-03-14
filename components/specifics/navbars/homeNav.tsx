@@ -28,9 +28,9 @@ export default async function HomeNav() {
           <Link href="/info/features">
               <HoverWords>Features</HoverWords>
           </Link>
-          {/* <Link href="/info/blog">
+          <Link href="/info/blog">
               <HoverWords>Blog</HoverWords>
-          </Link> */}
+          </Link>
           <Link href="/info/changelog">
               <HoverWords>Changelog</HoverWords>
           </Link>

@@ -42,10 +42,10 @@ export default async function Footer() {
           name: "Careers",
           href: "https://www.oustro.xyz"
         },
-        // {
-        //   name: "Blog",
-        //   href: "/info/blog"
-        // },
+        {
+          name: "Blog",
+          href: "/info/blog"
+        },
         {
           name: "Contact",
           href: "/info/contact"
@@ -68,7 +68,7 @@ export default async function Footer() {
   ]
 
   return (
-    <nav className="bottom-0 z-0 text-sm bottom-0 mt-48 w-full backdrop-blur from-white-50 border-t pt-10 px-24 flex items-start justify-between">
+    <nav className="bottom-0 z-0 text-sm bottom-0 mt-36 w-full backdrop-blur from-white-50 border-t pt-10 px-24 flex items-start justify-between">
       <div>
         <Link className="flex items-center gap-1" href="/">
           <Image

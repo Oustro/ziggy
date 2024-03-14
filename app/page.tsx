@@ -18,7 +18,7 @@ export default function Home() {
       <HomeNav />
       <div className="w-full mt-12 text-center">
         <div className="w-full rounded">
-          <h2 className="text-7xl font-medium">Better Feedback</h2>
+          <h2 className="text-7xl font-medium">Better feedback</h2>
           <h1 className="text-8xl mt-4 font-bold">Starts with Ziggy.</h1>
           <p className="mt-8 w-[50%] mx-auto text-xl text-slate-600">Use AI to conduct interviews so you can get better information than traditional survey forms and do it faster than sitting down and having 1:1 conversations.</p>
           <div className="mt-12 flex justify-center gap-4">
@@ -36,7 +36,7 @@ export default function Home() {
         <Stats />
         <Features />
         <div className="mt-24 w-full text-center">
-          <h2 className="text-7xl font-medium">Better Feedback</h2>
+          <h2 className="text-7xl font-medium">Better feedback</h2>
           <h1 className="text-8xl mt-4 font-bold">Starts here.</h1>
           <p className="mt-8 w-[50%] mx-auto text-xl text-slate-600">Give your team super powers to make faster and smarter product decisions.</p>
           <div className="mt-12 flex justify-center gap-4">
