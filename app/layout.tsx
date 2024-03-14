@@ -5,7 +5,7 @@ import "@/styles/globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Ziggy",
+  title: "Ziggy - Better feedback starts with Ziggy.",
   description: "The AI tool to conduct interviews and get better feedback than traditional survey forms.",
 }
 

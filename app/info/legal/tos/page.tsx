@@ -1,3 +1,9 @@
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Terms of Service | Ziggy",
+}
+
 export default function Legal() {
 
   const tos = [

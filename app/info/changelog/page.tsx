@@ -1,5 +1,12 @@
 import Link from "next/link"
 
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Changelog | Ziggy",
+}
+
+
 export default async function Changelog() {
   const responseGitHubReleases = await fetch("https://api.github.com/repos/oustro/portfoliwoah/releases", {
     next: {

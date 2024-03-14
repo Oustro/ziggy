@@ -6,6 +6,12 @@ import Link from "next/link"
 
 import { plans } from "@/lib/pricing"
 
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Pricing | Ziggy",
+}
+
 export default function Pricing() {
 
   const borders = [

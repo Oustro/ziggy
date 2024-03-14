@@ -1,3 +1,9 @@
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Priacy Policy | Ziggy",
+}
+
 export default function Legal() {
 
   const privacy = [
