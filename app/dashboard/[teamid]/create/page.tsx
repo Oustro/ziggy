@@ -5,6 +5,13 @@ import prisma from '@/utils/db'
 
 import Flow from "@/components/specifics/interviewComponents/create/flow"
 
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Create Interview | Ziggy",
+  description: "The AI tool to conduct interviews and get better feedback than traditional survey forms.",
+}
+
 export default async function CreateInterview(request: NextRequest & {params: { teamid: string }}) {
 
   const teamid = request.params.teamid

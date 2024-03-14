@@ -8,6 +8,13 @@ import { authOptions } from "@/utils/auth"
 
 import Flow from "@/components/specifics/interviewComponents/duplicate/flow"
 
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Duplicate Interview | Ziggy",
+  description: "The AI tool to conduct interviews and get better feedback than traditional survey forms.",
+}
+
 export default async function Duplicate(request: NextRequest & {params: { interviewid: string }}) {
   const session = await getServerSession(authOptions)
   

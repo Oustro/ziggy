@@ -11,6 +11,13 @@ import prisma from "@/utils/db"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/utils/auth"
 
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Dashboard | Ziggy",
+  description: "The AI tool to conduct interviews and get better feedback than traditional survey forms.",
+}
+
 export default async function Dashboard() {   
   const session = await getServerSession(authOptions)
 
