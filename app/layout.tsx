@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: '/ziggy-og.png',
   },
+  metadataBase: new URL("https://www.useziggy.com"),
 }
 
 export default function RootLayout({

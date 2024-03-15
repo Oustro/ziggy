@@ -2,7 +2,27 @@ import { NextResponse, NextRequest } from 'next/server'
 import Stripe from "stripe"
 import prisma from '@/utils/db'
 
+import { Ratelimit } from "@upstash/ratelimit"
+import { Redis } from "@upstash/redis"
+
 export async function POST(request: NextRequest) {
+
+  const redis = new Redis({
+    url: process.env.UPSTASH_URL || "",
+    token: process.env.UPSTASH_TOKEN || "",
+  })
+
+  const ratelimit = new Ratelimit({
+    redis: redis,
+    limiter: Ratelimit.slidingWindow(10, "10 s"),
+  })
+
+  const identifier = "Stripe Webhook API"
+  const { success } = await ratelimit.limit(identifier)
+   
+  if (!success) {
+    return NextResponse.json({ "message": "Rate limit exceeded" }, { status: 429 })
+  }
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string)
   const sig = request.headers.get('stripe-signature') as string

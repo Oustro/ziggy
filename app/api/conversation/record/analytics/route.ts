@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     limiter: Ratelimit.slidingWindow(10, "10 s"),
   })
 
-  const identifier = "analytics API"
+  const identifier = "Analytics API"
   const { success } = await ratelimit.limit(identifier)
    
   if (!success) {

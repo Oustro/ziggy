@@ -1,8 +1,18 @@
 import { handleUpload, type HandleUploadBody } from '@vercel/blob/client';
 import { NextResponse } from 'next/server';
+
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/utils/auth'
  
 export async function POST(request: Request): Promise<NextResponse> {
-  const body = (await request.json()) as HandleUploadBody;
+  
+  const session = await getServerSession({ req: request, ...authOptions })
+  
+  if (!session) {
+    return NextResponse.json({ "message": "not authenicated" }, { status: 401 })
+  }
+  
+  const body = (await request.json()) as HandleUploadBody
  
   try {
     const jsonResponse = await handleUpload({

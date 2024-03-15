@@ -2,8 +2,28 @@ import { NextResponse, NextRequest } from 'next/server'
 
 import { Client } from "postmark"
 
+import { Ratelimit } from "@upstash/ratelimit"
+import { Redis } from "@upstash/redis"
 
 export async function POST(request: NextRequest) {
+
+  const redis = new Redis({
+    url: process.env.UPSTASH_URL || "",
+    token: process.env.UPSTASH_TOKEN || "",
+  })
+
+  const ratelimit = new Ratelimit({
+    redis: redis,
+    limiter: Ratelimit.slidingWindow(10, "10 s"),
+  })
+
+  const identifier = "Contact API"
+  const { success } = await ratelimit.limit(identifier)
+   
+  if (!success) {
+    return NextResponse.json({ "message": "Rate limit exceeded" }, { status: 429 })
+  }
+
   const contactInfo = await request.json() as { name: string, email: string, reason: string, comments: string }
 
   try {
