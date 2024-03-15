@@ -13,9 +13,9 @@ export default function Stats() {
     initial="hidden"
     whileInView="visible"
     transition={{ duration: 0.5, delay: 0.3 }}
-    className="mt-48 text-left px-24"
+    className="sm:mt-48 text-left px-24"
     >
-      <div className="text-center grid grid-cols-3 mt-16 w-[80%] mx-auto">
+      <div className="text-center grid grid-cols-1 gap-12 sm:grid-cols-3 mt-16 w-[80%] mx-auto">
         <div>
           <h1 className="text-6xl font-semibold">500+</h1>
           <p className="mt-4 text-center text-slate-600">AI Interviews Conducted</p>

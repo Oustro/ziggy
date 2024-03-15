@@ -68,7 +68,7 @@ export default async function Footer() {
   ]
 
   return (
-    <nav className="bottom-0 z-0 text-sm bottom-0 mt-36 w-full backdrop-blur from-white-50 border-t pt-10 px-24 flex items-start justify-between">
+    <nav className="bottom-0 z-0 text-sm bottom-0 mt-36 w-full backdrop-blur from-white-50 border-t pt-10 px-4 sm:px-24 sm:flex items-start justify-between">
       <div>
         <Link className="flex items-center gap-1" href="/">
           <Image
@@ -82,14 +82,14 @@ export default async function Footer() {
         <div className="mt-8 text-slate-600">
           <p className="font-medium">© 2024 Oustro, LLC</p>
           <p className="mb-4">Made with a 🤠 in Texas</p>
-          <Link href="mailto:howdy@useziggy.com">
+          <Link href="mailto:howdy@useziggy.com" className="inline-block">
             <WhiteButton>
               <span className="flex items-center gap-1"><MdOutlineEmail /> howdy@useziggy.com</span>
             </WhiteButton>
           </Link>
         </div>
       </div>
-      <div className="flex items-start gap-12 text-slate-600">
+      <div className="mt-8 sm:mt-0 flex items-start gap-12 text-slate-600">
         {info.map((section, index) => (
           <div key={index} className="flex flex-col gap-2">
             <h4 className="font-semibold">{section.title}</h4>

@@ -24,7 +24,7 @@ export default async function HomeNav() {
           />
           <h4 className="text-lg font-semibold">Ziggy</h4>
         </Link>
-        <div className="flex items-center gap-6">
+        <div className="hidden sm:flex items-center gap-6">
           <Link href="/info/features">
               <HoverWords>Features</HoverWords>
           </Link>
@@ -42,7 +42,7 @@ export default async function HomeNav() {
           </Link>
         </div>
       </div>
-      <div className="flex items-center gap-6">
+      <div className="hidden sm:flex items-center gap-6">
         {session ? (
           <Link href="/dashboard">
             <BlackButton>Dashboard</BlackButton>
