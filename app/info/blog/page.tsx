@@ -10,7 +10,7 @@ export default function Blog() {
   return (
     <main>
       <h1 className="text-4xl sm:text-5xl font-semibold text-center mt-12">Blog</h1>
-      <p className="text-slate-600 mt-6 text-center">We're currently working on this page. It'll be done soon! In the mean time enjoy this picture.</p>
+      <p className="text-slate-600 mt-6 text-center w-[80%] mx-auto">We're currently working on this page. It'll be done soon! In the mean time enjoy this picture.</p>
       <Image
       src="/ziggy-real.png"
       alt="Ziggy the dog"

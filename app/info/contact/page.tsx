@@ -38,8 +38,8 @@ export default function Contact() {
   return (
     <main>
       <h1 className="text-4xl sm:text-5xl font-semibold text-center mt-12">Contact us</h1>
-      <p className="text-slate-600 mt-6 text-center">Get in touch with our sales, support, and safety teams (yes, we read everything).</p>
-      <form onSubmit={handleSubmit} className="w-[40%] mx-auto mt-8">
+      <p className="text-slate-600 mt-6 text-center  w-[80%] mx-auto">Get in touch with our sales, support, and safety teams (yes, we read everything).</p>
+      <form onSubmit={handleSubmit} className="w-[80%] sm:w-[40%] mx-auto mt-8">
         <div className="text-left font-medium text-sm pb-1">
           <label><span className="text-red-600">*</span> Email</label>
         </div>

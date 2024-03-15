@@ -17,7 +17,7 @@ export default function Features() {
   return (
     <main>
       <h1 className="text-4xl sm:text-5xl font-semibold text-center mt-12">Features</h1>
-      <p className="text-slate-600 mt-6 text-center">We've worked hard to build the best product we can with the features you want.</p>
+      <p className="text-slate-600 mt-6 text-center w-[80%] mx-auto">We've worked hard to build the best product we can with the features you want.</p>
       <div className="grid grid-cols-1 sm:flex text-sm gap-4 justify-center whitespace-nowrap w-[90%] p-2 mx-auto mt-12 rounded">
         {features.map((feature, index) => (
           <button key={index} onClick={() => setActiveFeature(index)}>

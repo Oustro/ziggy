@@ -80,7 +80,7 @@ export default function Legal() {
   ]
 
   return (
-    <main className="px-24">
+    <main className="px-8 sm:px-24">
       <h1 className="text-4xl sm:text-5xl font-semibold text-center mt-12">Privacy Policy</h1>
       <p className="text-slate-600 mt-6 text-center">Effective date: 3/8/2024</p>
       {privacy.map((section, index) => (
