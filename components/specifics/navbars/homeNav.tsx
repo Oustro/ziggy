@@ -4,6 +4,8 @@ import Link from "next/link"
 import HoverWords from "@/components/generics/hoverWords"
 import BlackButton from "@/components/generics/blackButton"
 
+import HomeList from "@/components/specifics/navbars/utility/homeList"
+
 import { VscLinkExternal } from "react-icons/vsc"
 
 import { getServerSession } from "next-auth"
@@ -41,6 +43,15 @@ export default async function HomeNav() {
             <HoverWords><span className="flex items-center gap-1">GitHub <VscLinkExternal /></span></HoverWords>
           </Link>
         </div>
+      </div>
+      <div className="sm:hidden">
+        {session ? (
+          <Link href="/dashboard">
+            <BlackButton>Dashboard</BlackButton>
+          </Link>
+        ) : (
+          <HomeList />
+        )}
       </div>
       <div className="hidden sm:flex items-center gap-6">
         {session ? (

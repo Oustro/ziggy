@@ -11,7 +11,7 @@ import Profile from "@/components/generics/profile"
 import UserSettings from "@/components/specifics/settingComponents/userSettings"
 import LogoutButton from "@/components/specifics/authComponents/logoutButton"
 
-import MainList from "@/components/specifics/navbars/teamList/mainList"
+import MainList from "@/components/specifics/navbars/utility/mainList"
 
 import { IoSettingsOutline, IoFlashOutline, IoChatboxEllipsesOutline, IoHelpOutline, IoAdd } from "react-icons/io5";
 
