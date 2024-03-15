@@ -7,6 +7,7 @@ import prisma from "@/utils/db"
 import Github from "next-auth/providers/github"
 import Google from "next-auth/providers/google"
 import EmailProvider from "next-auth/providers/email"
+import { customSendVerificationRequest } from "@/utils/custom"
 
 import Stripe from "stripe"
 import { Redis } from '@upstash/redis'
@@ -31,7 +32,10 @@ export const authOptions = {
           pass: process.env.EMAIL_SERVER_PASSWORD
         }
       },
-      from: process.env.EMAIL_FROM
+      from: process.env.EMAIL_FROM,
+      sendVerificationRequest({ identifier, url, provider }) {
+        customSendVerificationRequest({ identifier, url, provider })
+      },
     })
   ],
   callbacks: {
