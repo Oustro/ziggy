@@ -18,12 +18,12 @@ export async function PUT(request: NextRequest) {
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string)
 
-    let priceId = "price_1OgrCgD1chxrMDsaRMCnwRZt"
+    let priceId = process.env.STRIPE_PRO_ID as string
     if (upgradeInfo.plan === 1) {
-      priceId = "price_1OgrCgD1chxrMDsaRMCnwRZt"
+      priceId = process.env.STRIPE_PRO_ID as string
     }
     else if (upgradeInfo.plan === 2) {
-      priceId = "price_1OgrE0D1chxrMDsa31sq6CeO"
+      priceId = process.env.STRIPE_BUSINESS_ID as string
     }
 
     const stripeSubscription = await stripe.subscriptions.retrieve(upgradeInfo.subscription)
