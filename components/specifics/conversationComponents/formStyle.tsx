@@ -77,7 +77,7 @@ export default function FormStyle({ interviewInfo, interviewee, setMostRecentQue
 
 
   return (
-    <div className="flex w-full px-48 h-full items-center">
+    <div className="flex w-full justify-center px-8 sm:px-48 h-full items-center">
       {loading ? (
         <motion.div 
         className="text-left w-full"

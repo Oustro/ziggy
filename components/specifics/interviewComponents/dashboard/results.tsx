@@ -67,7 +67,7 @@ export default function Results({ interviewid, setView } : { interviewid: string
     <div>
       <h1 className="text-4xl font-semibold">Results</h1>
       <div className="mt-8 relative">
-        <form onSubmit={askZiggy} className="flex gap-4">
+        <form onSubmit={askZiggy} className="sm:flex gap-4">
           <input
           type="text"
           placeholder="Ask a question about your interview and get an AI summary, answer, and resources"
@@ -79,7 +79,7 @@ export default function Results({ interviewid, setView } : { interviewid: string
           <button
           type="submit"
           disabled={loading}
-          className="mt-2"
+          className="mt-2 sm:w-[10%] w-full"
           >
             <BlackButton>Search</BlackButton>
           </button>

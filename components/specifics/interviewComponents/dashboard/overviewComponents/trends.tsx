@@ -47,7 +47,7 @@ export default function Trends({ data, setView } : { data: any, setView: Functio
           <Spinner size={40} />
         </div>
       :
-        <div className="mt-8 grid grid-cols-4 gap-4">
+        <div className="mt-8 grid sm:grid-cols-4 gap-4">
           {trends.map((trend: string, index: number) => (
             <button key={index} onClick={() => quickAsk(`Explain what "${trend}" means in the context of this interview?`)}>
               <div key={index} className="group border rounded p-4 hover:border-slate-600 transition-all text-left">

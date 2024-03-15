@@ -37,7 +37,7 @@ export default function TeamCards() {
   }, [refreshKey])
 
   return (
-    <main className="px-12 mt-8 grid grid-cols-3 gap-6">
+    <main className="px-12 mt-8 grid sm:grid-cols-3 gap-6">
       {loading ? (
         new Array(3)).fill(0).map((_, i) => 
         <LoadingCard key={i} />

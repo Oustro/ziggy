@@ -95,7 +95,7 @@ export default function TextStyle({ interviewInfo, interviewee, setMostRecentQue
 
   return (
     <div className="w-full h-full items-center">
-      <div className="px-16 h-[75%] overflow-scroll py-8" ref={chatContainerRef} style={{ scrollBehavior: 'smooth' }}>
+      <div className="px-4 sm:px-16 h-[75%] overflow-scroll py-8" ref={chatContainerRef} style={{ scrollBehavior: 'smooth' }}>
         {chatLog.slice(3).map((convo, index) => (
           convo.role === "assistant" ?
             <div key={index} className="flex items-center mt-4 gap-4 border bg-slate-200 border-slate-600 rounded p-4">
@@ -125,7 +125,7 @@ export default function TextStyle({ interviewInfo, interviewee, setMostRecentQue
           </div>
         )}
       </div>
-      <form onSubmit={handleSubmit} className="w-full absolute bottom-0 pt-4 px-16">
+      <form onSubmit={handleSubmit} className="w-full absolute bottom-0 pt-4 px-4 sm:px-16">
         <div className="flex items-center mb-36 gap-4">
           <input
           type="text"

@@ -57,7 +57,7 @@ export default function TeamDashboard() {
             className="rounded w-[40px] h-[40px]"
             />
             <h1>/</h1>
-            <h1 className="text-3xl font-semibold">Interviews</h1>
+            <h1 className="text-lg sm:text-3xl font-semibold">Interviews</h1>
           </div>
         }
         <div className="flex items-center gap-6 text-sm">
@@ -66,7 +66,7 @@ export default function TeamDashboard() {
           </Link>
         </div>
       </div>
-      <div className="mt-8 grid grid-cols-3 gap-6">
+      <div className="mt-8 grid sm:grid-cols-3 gap-6">
         {loading ? (
           new Array(3)).fill(0).map((_, i) => 
           <LoadingCard key={i} />

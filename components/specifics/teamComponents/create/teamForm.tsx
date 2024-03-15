@@ -47,7 +47,7 @@ export default function TeamForm({ teamInfo, setTeamInfo, setView, setTeamId } :
           <p className="text-xs text-slate-600 mt-1 font-normal">This is the name of your team.</p>
           <input
           type="text"
-          className="w-[60%] mt-4 border-b border-slate-600 pb-2 text-base focus:outline-none"
+          className="w-full sm:w-[60%] mt-4 border-b border-slate-600 pb-2 text-base focus:outline-none"
           placeholder="Enter your team name..."
           maxLength={40}
           value={teamInfo.name}
@@ -60,7 +60,7 @@ export default function TeamForm({ teamInfo, setTeamInfo, setView, setTeamId } :
           <p className="text-xs text-slate-600 mt-1 font-normal">Customize the name the Al takes when conducting interviews.</p>
           <input
           type="text"
-          className="w-[60%] mt-4 border-b border-slate-600 pb-2 text-base focus:outline-none"
+          className="w-full sm:w-[60%] mt-4 border-b border-slate-600 pb-2 text-base focus:outline-none"
           placeholder="Enter the interviewer's name..."
           maxLength={40}
           value={teamInfo.interviewerName}
@@ -72,7 +72,7 @@ export default function TeamForm({ teamInfo, setTeamInfo, setView, setTeamId } :
           <label><span className="text-red-600">*</span> Team context</label>
           <p className="text-xs text-slate-600 mt-1 font-normal">Providing context about your team allows Ziggy to tailor interviews to suit your exact requirements and needs.</p>
           <textarea
-          className="w-[60%] mt-4 resize-y border border-slate-600 rounded p-2 text-base focus:outline-none"
+          className="w-full sm:w-[60%] mt-4 resize-y border border-slate-600 rounded p-2 text-base focus:outline-none"
           placeholder="Enter context for this team..."
           rows={4}
           value={teamInfo.context}

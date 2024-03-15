@@ -61,8 +61,8 @@ export default function Overview({ interview, setView } : { interview: interview
       <div className="mt-8">
         <Trends data={interview.id} setView={setView} />
       </div>
-      <div className="mt-8 flex gap-8 w-full">
-        <div className="w-[50%] flex flex-col">
+      <div className="mt-8 sm:flex gap-8 w-full">
+        <div className="sm:w-[50%] flex flex-col">
           <div className="p-6 border border-slate-600 rounded">
             <h3 className="text-2xl font-medium">Purpose</h3>
             <p className="mt-2">{interview.purpose}</p>
@@ -85,7 +85,7 @@ export default function Overview({ interview, setView } : { interview: interview
         </div>
         <Sentiment data={data} />
       </div>
-      <div className="mt-8 flex gap-8">
+      <div className="mt-8 sm:flex gap-8">
         <Spread data={interview.id} />
         <Activity data={interview.id} />
       </div>

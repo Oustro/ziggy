@@ -50,7 +50,7 @@ export default function SelectPlan({ teamId } : { teamId: string }) {
     <main>
       <h1 className="text-4xl mt-4 font-semibold">Select a Plan</h1>
       <p className="text-slate-600 mt-6 w-[90%]">Learn more and compare Ziggy's pricing plans and features <Link target="_blank" href="/info/pricing" className="underline">here.</Link></p>
-      <div className="full flex justify-between mt-16 gap-4">
+      <div className="grid sm:grid-cols-3 mt-16 gap-4">
         {plans.map((plan, index) => (
           <div key={index} className={planInfo[index].border}>
             <div>

@@ -37,7 +37,7 @@ export default function Card({ interview } : { interview: interviewSavedInfo }) 
               <button onClick={() => setDropdown(prev => !prev)}>
                 <BlackButton>•••</BlackButton>
               </button>
-              <div className={!dropdown ? "hidden" : "" + "absolute border rounded text-sm p-2 mt-2 bg-white grid gap-3"} ref={ref}>
+              <div className={!dropdown ? "hidden" : "" + "absolute border rounded text-sm -ml-24 sm:ml-0 p-2 mt-2 bg-white grid gap-3"} ref={ref}>
                 <Link href={`/dashboard/${interview.teamId}/${interview.id}/edit`}>
                   <HoverWords><span className="flex items-center gap-2"><IoSettingsOutline />Settings</span></HoverWords>
                 </Link>

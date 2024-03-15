@@ -73,7 +73,7 @@ export default function MemberSettings({ team, setRefreshKey } : { team: teamSav
       <p className="font-medium">Invite link</p>
       <p className="text-slate-600 text-xs">Invite new members to this team by sharing this link with them. Anyone with this link will be able to join.</p>
       <form className="mt-4 flex gap-2" onSubmit={e => rollInvite(e)}>
-        <button onClick={copyLink} type="button" className="border py-1 px-2 flex rounded hover:border-inherit transition-all text-xs border-slate-600 items-center gap-2">
+        <button onClick={copyLink} type="button" className="border truncate py-1 px-2 flex rounded hover:border-inherit transition-all text-xs border-slate-600 items-center gap-2">
           <FaCopy />
           <p className="truncate">{window.location.origin}/invite/{inviteID}</p>
         </button>
@@ -111,12 +111,12 @@ export default function MemberSettings({ team, setRefreshKey } : { team: teamSav
         </div>
       ))}
       <p className="font-medium text-lg mt-12 pb-2 border-b">Danger Zone</p>
-      <div className="mt-6 border border-red-600 rounded p-4 flex justify-between">
+      <div className="mt-6 border border-red-600 rounded p-4 sm:flex justify-between">
         <div>
           <p className="text-red-500 font-medium">Leave Team</p>
           <p className="text-slate-600 text-xs font-normal">You can rejoin, but if you are the only member this team will be deleted.</p>
         </div>
-        <button className="bg-red-400 rounded" onClick={leaveTeam} type="button">
+        <button className="bg-red-400 rounded mt-4 sm:mt-0" onClick={leaveTeam} type="button">
           <BlackButton>Leave</BlackButton>
         </button>
       </div>

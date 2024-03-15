@@ -17,7 +17,7 @@ export default async function RootLayout({
   
   return (
     <main>
-      <div className="flex">
+      <div className="sm:flex">
         <DashboardNav />
         <div className="w-full">
           {children}

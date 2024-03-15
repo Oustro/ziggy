@@ -45,11 +45,11 @@ export default function CustomSettings({ team, setRefreshKey } : { team: teamSav
   return (
     <main>
       <form className="grid gap-8" onSubmit={handleSubmit}>
-        <div className="rounded border p-4 flex justify-between items-center" >
+        <div className="rounded border p-4 sm:flex justify-between items-center" >
           <div className="w-full">
             <p className="font-medium text-lg">Choose a Team Logo</p>
             <p className="text-xs text-slate-600">This is the current logo and what is shown to people taking your interviews.</p>
-            <div className="text-sm mt-4">
+            <div className="text-sm mt-4 mb-10 sm:mb-0">
               <button type="submit" disabled={loading}>
                 <BlackButton>Update logo</BlackButton>
               </button>
@@ -90,17 +90,17 @@ export default function CustomSettings({ team, setRefreshKey } : { team: teamSav
             </div>
           </label>
         </div>
-        <div className="rounded border p-4 flex justify-between items-center">
+        <div className="rounded border p-4 sm:flex justify-between items-center">
           <div className="w-full">
             <p className="font-medium text-lg">Choose a Team Color</p>
             <p className="text-xs text-slate-600">This is the current color and is part of the background of your interviews.</p>
-            <div className="text-sm mt-4">
+            <div className="text-sm mt-4 mb-10 sm:mb-0">
               <button type="submit" disabled={loading}>
                 <BlackButton>Update color</BlackButton>
               </button>
             </div>
           </div>
-          <div className="cursor-pointer w-[30%] text-center">
+          <div className="cursor-pointer sm:w-[30%] text-center">
             <input
             type="color"
             value={customInfo.color}
@@ -115,7 +115,7 @@ export default function CustomSettings({ team, setRefreshKey } : { team: teamSav
             <p className="font-medium text-lg">Choose a Interview Style</p>
             <p className="text-xs text-slate-600">This is how your interview will look to users taking it.</p>
           </div>
-          <div className="flex justify-between gap-4 mt-4">
+          <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4">
             <div className={`border p-2 w-full rounded ${customInfo.style === 0 && "border-slate-600"}`} onClick={() => setCustomInfo({...customInfo, style: 0})}>
               <p className="text-sm text-left font-medium">Conversational</p>
               <div className="w-[80%] rounded mt-4 h-4 bg-slate-200 border border-slate-300"></div>

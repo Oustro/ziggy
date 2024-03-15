@@ -91,7 +91,7 @@ export default function Flow({ interview } : { interview: any }) {
           <p className="text-xs text-slate-600 mt-1 font-normal">This is the name of your interview. It will be visible to both the public and your team.</p>
           <input
           type="text"
-          className="w-[60%] mt-4 border-b border-slate-600 pb-2 text-base focus:outline-none"
+          className="w-full sm:w-[60%] mt-4 border-b border-slate-600 pb-2 text-base focus:outline-none"
           placeholder="Enter your interview name..."
           maxLength={40}
           value={interviewInfo.name}
@@ -105,7 +105,7 @@ export default function Flow({ interview } : { interview: any }) {
           <p className="text-xs text-slate-600 mt-1 font-normal">Explain what the purpose of this interview is.</p>
           <input
           type="text"
-          className="w-[60%] mt-4 border-b border-slate-600 pb-2 text-base focus:outline-none"
+          className="w-full sm:w-[60%] mt-4 border-b border-slate-600 pb-2 text-base focus:outline-none"
           placeholder="Enter your interview purpose..."
           maxLength={100}
           disabled={loading}
@@ -120,7 +120,7 @@ export default function Flow({ interview } : { interview: any }) {
           <div className="flex gap-4 items-end">
             <input
             type="text"
-            className="w-[60%] mt-8 border-b border-slate-600 pb-2 text-base focus:outline-none"
+            className="w-full sm:w-[60%] mt-8 border-b border-slate-600 pb-2 text-base focus:outline-none"
             placeholder="Enter your questions..."
             value={questions}
             disabled={loading}
@@ -134,9 +134,9 @@ export default function Flow({ interview } : { interview: any }) {
         </form>
         <div>
           <p>Current questions</p>
-          <p className="pb-2 border-b text-xs text-slate-600 mt-1 font-normal mb-4 w-[60%]">These are the questions currently configured for this interview, questions are asked first while questions at the bottom are asked last.</p>
+          <p className="pb-2 border-b text-xs text-slate-600 mt-1 font-normal mb-4 sm:w-[60%]">These are the questions currently configured for this interview, questions are asked first while questions at the bottom are asked last.</p>
           {questionList.length === 0 && <p>No questions added yet.</p>}
-          <Reorder.Group axis="y" values={questionList} onReorder={setQuestionList} className="grid gap-4 w-[60%]">
+          <Reorder.Group axis="y" values={questionList} onReorder={setQuestionList} className="grid gap-4 sm:w-[60%]">
             {questionList.map((question, index) => (
               <Reorder.Item key={question} value={question} className="flex justify-between">
                 <div className="flex flex-grow gap-2 items-center pr-4">

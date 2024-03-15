@@ -6,7 +6,7 @@ import Image from "next/image"
 export default function Welcome({ setView, interviewInfo } : { setView: Function, interviewInfo: any }) {
 
   return (
-    <div className="flex w-full px-48 h-full items-center">
+    <div className="flex w-full px-8 sm:px-48 h-full items-center">
       <motion.div 
       className="text-left"
       initial={{ opacity: 0, y: 100 }}

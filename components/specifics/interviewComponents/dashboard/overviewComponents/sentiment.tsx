@@ -7,10 +7,10 @@ Chart.register(ArcElement)
 
 export default function Sentiment({ data } : { data: number[] }) {
   return (
-    <div className="w-[50%] rounded p-6 border border-slate-600">
+    <div className="mt-8 sm:mt-0 sm:w-[50%] rounded p-6 border border-slate-600">
       <h3 className="text-2xl font-medium">Sentiment Analysis</h3>
       <p className="mt-2 text-slate-600">This metric shows the general sentiment interviewees answers have while responding to questions.</p>
-      <div className="flex mt-8 justify-center text-sm gap-6 font-medium">
+      <div className="flex mt-8 justify-center text-sm gap-2 sm:gap-6 font-medium">
         <div className="rounded-full px-2 border text-center border-green-500 bg-green-200">
           <p>{data[0]} Positive</p>
         </div>

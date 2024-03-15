@@ -51,8 +51,8 @@ export default function GeneralSettings({ team, setRefreshKey } : { team: teamSa
           onChange={(e) => setTeamInfo({...teamInfo, name: e.target.value})}
           required
           />
-          <div className="flex items-center justify-between mt-6 text-sm">
-            <p className="text-slate-600 text-xs font-normal">Learn more about <Link target="_blank" className="underline" href="/info/blog">teams on Ziggy</Link></p>
+          <div className="sm:flex items-center justify-between mt-6 text-sm">
+            <p className="mb-4 sm:mb-0 text-slate-600 text-xs font-normal">Learn more about <Link target="_blank" className="underline" href="/info/blog">teams on Ziggy</Link></p>
             <button type="submit" disabled={loading}>
               <BlackButton>Update team name</BlackButton>
             </button>
@@ -69,8 +69,8 @@ export default function GeneralSettings({ team, setRefreshKey } : { team: teamSa
           onChange={(e) => setTeamInfo({...teamInfo, interviewerName: e.target.value})}
           required
           />
-          <div className="flex items-center justify-between mt-6 text-sm">
-            <p className="text-slate-600 text-xs font-normal">Learn more about <Link target="_blank" className="underline" href="/info/blog">interviewer names</Link></p>
+          <div className="sm:flex items-center justify-between mt-6 text-sm">
+            <p className="mb-4 sm:mb-0 text-slate-600 text-xs font-normal">Learn more about <Link target="_blank" className="underline" href="/info/blog">interviewer names</Link></p>
             <button type="submit" disabled={loading}>
               <BlackButton>Update interviewer name</BlackButton>
             </button>
@@ -86,8 +86,8 @@ export default function GeneralSettings({ team, setRefreshKey } : { team: teamSa
           onChange={(e) => setTeamInfo({...teamInfo, context: e.target.value})}
           required
           />
-          <div className="flex items-center justify-between mt-6 text-sm">
-            <p className="text-slate-600 text-xs font-normal">Learn more about <Link target="_blank" className="underline" href="/info/blog">team context</Link></p>
+          <div className="sm:flex items-center justify-between mt-6 text-sm">
+            <p className="mb-4 sm:mb-0 text-slate-600 text-xs font-normal">Learn more about <Link target="_blank" className="underline" href="/info/blog">team context</Link></p>
             <button type="submit" disabled={loading}>
               <BlackButton>Update team context</BlackButton>
             </button>

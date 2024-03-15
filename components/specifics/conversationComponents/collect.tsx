@@ -6,7 +6,7 @@ import Image from "next/image"
 export default function Collect({ setView, interviewInfo, setInterviewee } : { setView: Function, interviewInfo: any, setInterviewee: Function }) {
 
   return (
-    <div className="flex w-full px-48 h-full items-center">
+    <div className="flex w-full justify-center px-8 sm:px-48 h-full items-center">
       <motion.div 
       className="text-left"
       initial={{ opacity: 0, y: 100 }}

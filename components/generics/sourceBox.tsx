@@ -19,7 +19,9 @@ export default function SourceBox({ score, metadata, setView } : { score: number
         <p className="mt-4">{metadata.answer}</p>
       </div>
       <div className="flex items-center p-4 justify-between text-sm">
-        <Badge>{(100 * score).toFixed(0)}% Question match</Badge>
+        <div className="hidden sm:flex">
+          <Badge>{(100 * score).toFixed(0)}% Question match</Badge>
+        </div>
         <div className="flex items-center gap-4">
           <p>{metadata.interviewee}</p>
           <button onClick={() => viewTranscript()} type="button">

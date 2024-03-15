@@ -32,7 +32,7 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
       view: 0
     },
     {
-      name: 'Update Info',
+      name: 'Info',
       component: <GeneralSettings team={team} setRefreshKey={setRefreshKey} />,
       view: 1
     },
@@ -86,18 +86,27 @@ export default function TeamSettings({ children, initOpen, team, setRefreshKey }
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="transform overflow-scroll rounded w-[60%] h-[32rem] bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <div className='flex'>
-                    <div className='sticky top-0 h-full w-[30%] p-4'>
-                    <div className='inline-block text-xs'>
+                <Dialog.Panel className="transform overflow-scroll rounded w-[90%] sm:w-[60%] h-[32rem] bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <div className='sm:flex'>
+                    <div className='sm:sticky top-0 h-full sm:w-[30%] p-4'>
+                      <div className='inline-block text-xs'>
                         <Badge>{pricing[team.plan]}</Badge>
                       </div>
                       <h1 className="text-lg w-full truncate mt-2 font-medium mb-4 pb-2 border-b border-slate-600">{team.name}</h1>
-                      {menu.map((item, index) => (
-                        <div key={index} className='w-full truncate'>
-                          <button key={index} onClick={() => setView(index)} className='mb-3'><HoverWords>{item.name}</HoverWords></button>
-                        </div>
-                      ))}
+                      <div className='hidden sm:block'>
+                        {menu.map((item, index) => (
+                          <div key={index} className='w-full truncate'>
+                            <button key={index} onClick={() => setView(index)} className='mb-3'><HoverWords>{item.name}</HoverWords></button>
+                          </div>
+                        ))}
+                      </div>
+                      <div className='w-full sm:hidden flex justify-between'>
+                        {menu.map((item, index) => (
+                          <div key={index} className='w-full truncate'>
+                            <button key={index} onClick={() => setView(index)} className='mb-3'><HoverWords>{item.name}</HoverWords></button>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                     <div className='w-full px-4'>
                       {menu[view].component}
