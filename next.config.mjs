@@ -7,6 +7,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: '**.vercel-storage.com',
         port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.useziggy.com',
+        port: '',
       }
     ]
   }

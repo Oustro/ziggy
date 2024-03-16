@@ -1,7 +1,9 @@
 import QRCode from "react-qr-code"
 
 import BlackButton from "@/components/generics/blackButton"
-import WhiteButton from "@/components/generics/whiteButton";
+import WhiteButton from "@/components/generics/whiteButton"
+
+import OgImage from "@/components/generics/ogImage"
 
 import { FaXTwitter, FaLinkedinIn, FaFacebook, FaCopy } from "react-icons/fa6"
 
@@ -44,6 +46,13 @@ export default function Distribute({ externalId, interviewName } : { externalId:
           <FaCopy />
           <p className="truncate">https://www.useziggy.com/zy/{externalId}</p>
         </button>
+        <div className="mt-6 w-[40%]">
+          <OgImage id={externalId} />
+          <div className="border border-slate-600 rounded-b p-4">
+            <p className="font-semibold">{interviewName} | Ziggy</p>
+            <p className="mt-2 text-slate-600 text-sm">https://www.useziggy.com</p>
+          </div>
+        </div>
       </div>
       <div className="mt-8">
         <h3 className="text-2xl font-medium">QR Code</h3>
