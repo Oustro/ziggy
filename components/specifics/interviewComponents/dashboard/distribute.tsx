@@ -46,7 +46,7 @@ export default function Distribute({ externalId, interviewName } : { externalId:
           <FaCopy />
           <p className="truncate">https://www.useziggy.com/zy/{externalId}</p>
         </button>
-        <div className="mt-6 w-[40%]">
+        <div className="mt-6 sm:w-[40%]">
           <OgImage id={externalId} />
           <div className="border border-slate-600 rounded-b p-4">
             <p className="font-semibold">{interviewName} | Ziggy</p>
