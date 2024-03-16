@@ -1,6 +1,4 @@
 import { ImageResponse } from 'next/og'
-
-import prisma from '@/utils/db'
  
 export const runtime = 'edge'
  
@@ -13,16 +11,11 @@ export const size = {
 export const contentType = 'image/png'
  
 export default async function Image({ params }: { params: { interviewid: string }}) {
+  
+  const data = await fetch('https://www.useziggy.com/api/teams/get/interview?id='+params.interviewid)
 
-  const interview = await prisma.interview.findUnique({
-    where: {
-      externalID: params.interviewid
-    },
-    include: {
-      team: true
-    }
-  })
- 
+  const teamData = await data.json()
+
   return new ImageResponse(
     (
       <div
@@ -34,9 +27,17 @@ export default async function Image({ params }: { params: { interviewid: string 
         justifyContent: 'center',
         flexDirection: 'column',
         padding: '100px',
-        background: 'linear-gradient(to top right, #FFFFFF 40%, '+ interview?.team?.color +' 145%)'
+        background: 'linear-gradient(to top right, #FFFFFF 40%, '+ teamData.color +' 145%)'
       }}
       >
+        <img 
+        src={teamData.logo} 
+        alt={"Logo"} 
+        style={{
+          width: '150px',
+          height: '150px',
+        }}
+        />
         <p style={{
           fontWeight: 600,
           fontFamily: 'Arial, sans-serif',
@@ -44,7 +45,7 @@ export default async function Image({ params }: { params: { interviewid: string 
           marginTop: 80,
         }}
         >
-          Hi I'm {interview?.team.interviewer}, do you mind if I get some feedback from you?
+          Hi I'm {teamData.interviewer}, do you mind if I get some feedback from you?
         </p>
       </div>
     )
