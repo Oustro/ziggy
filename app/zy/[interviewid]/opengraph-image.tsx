@@ -37,12 +37,6 @@ export default async function Image({ params }: { params: { interviewid: string 
         background: 'linear-gradient(to top right, #FFFFFF 40%, '+ interview?.team?.color +' 145%)'
       }}
       >
-        <img src={interview?.team.logo} alt={alt} 
-        style={{
-          width: '150px',
-          height: '150px',
-        }}
-        />
         <p style={{
           fontWeight: 600,
           fontFamily: 'Arial, sans-serif',
@@ -50,7 +44,7 @@ export default async function Image({ params }: { params: { interviewid: string 
           marginTop: 80,
         }}
         >
-          I'm {interview?.team.interviewer}, do you think you I could ask you some questions?
+          Hi I'm {interview?.team.interviewer}, do you mind if I get some feedback from you?
         </p>
       </div>
     )
