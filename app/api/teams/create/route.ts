@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
         name: teamInfo.name,
         interviewer: teamInfo.interviewerName,
         context: teamInfo.context,
-        logo: "https://useziggy.com/logo.svg",
+        logo: "https://useziggy.com/ziggy-logo.svg",
         color: "#8B5CF6",
         plan: 0,
         members: {
