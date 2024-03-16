@@ -11,6 +11,20 @@ export const metadata: Metadata = {
   openGraph: {
     images: '/ziggy-og.png',
   },
+  icons: {
+    icon: [
+      {
+        media: '(prefers-color-scheme: light)',
+        url: '/favicon-light.ico',
+        href: '/favicon-light.ico',
+      },
+      {
+        media: '(prefers-color-scheme: dark)',
+        url: '/favicon-dark.ico',
+        href: '/favicon-dark.ico',
+      },
+    ],
+  },
   metadataBase: new URL("https://www.useziggy.com"),
 }
 
