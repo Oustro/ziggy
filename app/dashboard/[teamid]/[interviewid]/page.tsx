@@ -32,9 +32,9 @@ export async function generateMetadata({ params, searchParams }: Props, parent: 
   }
 }
 
-export default async function InterviewPage(request: NextRequest & {params: { interviewid: string }}) {
+export default async function InterviewPage({ params, searchParams } : Props ) {
   const session = await getServerSession(authOptions)
-  const interviewid = request.params.interviewid
+  const interviewid = params.interviewid
 
   const interview = await prisma.interview.findUnique({
     where: {

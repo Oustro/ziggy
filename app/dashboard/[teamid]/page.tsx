@@ -30,9 +30,9 @@ export async function generateMetadata({ params, searchParams }: Props, parent: 
   }
 }
 
-export default async function Interviews(request: NextRequest & {params: { teamid: string }}) {
+export default async function Interviews({ params, searchParams } : Props ) {
   const session = await getServerSession(authOptions)
-  const teamid = request.params.teamid
+  const teamid = params.teamid
 
   const interviews = await prisma.interview.findMany({
     where: {

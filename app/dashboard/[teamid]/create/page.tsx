@@ -12,9 +12,14 @@ export const metadata: Metadata = {
   description: "The AI tool to conduct interviews and get better feedback than traditional survey forms.",
 }
 
-export default async function CreateInterview(request: NextRequest & {params: { teamid: string }}) {
+type Props = {
+  params: { teamid: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
-  const teamid = request.params.teamid
+export default async function CreateInterview({ params, searchParams } : Props ) {
+
+  const teamid = params.teamid
 
   const team = await prisma.team.findUnique({
     where: {

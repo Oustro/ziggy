@@ -30,8 +30,8 @@ export async function generateMetadata({ params, searchParams }: Props, parent: 
   }
 }
 
-export default async function ConvoPage(request: NextRequest & {params: { interviewid: string }}) {   
-  const externalId = request.params.interviewid
+export default async function ConvoPage({ params, searchParams } : Props ) {   
+  const externalId = params.interviewid
 
   const responseInterviewGet = await fetch(process.env.MODE_URL+"/api/conversation/get?id=" + externalId, {
     method: "GET",

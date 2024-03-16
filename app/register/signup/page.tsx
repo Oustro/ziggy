@@ -1,7 +1,5 @@
 import Flow from "@/components/specifics/authComponents/flow"
 
-import Link from "next/link"
-
 export default function Signup() {
   return (
     <main>

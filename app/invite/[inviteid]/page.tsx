@@ -8,7 +8,12 @@ import { authOptions } from "@/utils/auth"
 
 import prisma from '@/utils/db'
 
-export default async function Invite(request: NextRequest & {params: { inviteid: string }}) {  
+type Props = {
+  params: { inviteid: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export default async function Invite({ params, searchParams } : Props ) {  
   const session = await getServerSession(authOptions)
 
   const redis = new Redis({
@@ -16,10 +21,10 @@ export default async function Invite(request: NextRequest & {params: { inviteid:
     token: process.env.UPSTASH_TOKEN || "",
   })
 
-  const inviteData = await redis.get(request.params.inviteid) as {teamID: string, invitee: string}
+  const inviteData = await redis.get(params.inviteid) as {teamID: string, invitee: string}
 
   if (!inviteData) {
-    return redirect("/invite/sorry?errortype=1")
+    return redirect("/invite/sorry?errortype=invalid")
   }
 
   const team = await prisma.team.findUnique({
@@ -32,13 +37,13 @@ export default async function Invite(request: NextRequest & {params: { inviteid:
   })
 
   if (team?.plan === 0) {
-    return redirect("/invite/sorry?errortype=2")
+    return redirect("/invite/sorry?errortype=max")
   }
   else if (team?.plan === 1 && team?.members.length >= 5) {
-    return redirect("/invite/sorry?errortype=2")
+    return redirect("/invite/sorry?errortype=max")
   }
   else if (team?.plan === 2 && team?.members.length >= 10) {
-    return redirect("/invite/sorry?errortype=2")
+    return redirect("/invite/sorry?errortype=max")
   }
 
   if (session) {
