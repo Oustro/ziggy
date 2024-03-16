@@ -10,6 +10,7 @@
     "lint": "next lint",
     "count": "git ls-files | xargs wc -l",
     "preinstall": "npx only-allow pnpm",
+    "postinstall": "prisma generate",
     "prepare": "husky"
   },
   "dependencies": {
