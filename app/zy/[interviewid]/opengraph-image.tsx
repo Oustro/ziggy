@@ -35,6 +35,7 @@ export default async function Image({ params }: { params: { interviewid: string 
         alt={"Logo"} 
         style={{
           width: '150px',
+          borderRadius: '5px',
           height: '150px',
         }}
         />

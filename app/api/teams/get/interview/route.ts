@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
     limiter: Ratelimit.slidingWindow(10, "10 s"),
   })
 
-  const identifier = "Auth Check API"
+  const identifier = "OG Image Generation"
   const { success } = await ratelimit.limit(identifier)
    
   if (!success) {
