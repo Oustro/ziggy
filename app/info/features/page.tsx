@@ -40,11 +40,11 @@ export default function Features() {
         transition={{ duration: 0.2 }}
         >
           <div className="mt-12 w-[80%] text-center mx-auto">
-            <h2 className="text-2xl font-medium">{features[activeFeature].title}</h2>
+            <h2 className="text-3xl font-medium">{features[activeFeature].title}</h2>
             <div className="block sm:flex justify-between w-full mt-8 items-center">
               <div className="text-center sm:text-left">
                 <h2 className="hidden sm:block text-2xl font-medium">{features[activeFeature].secondTitle}</h2>
-                <h4 className="mt-4">{features[activeFeature].description}</h4>
+                <h4 className="mt-4 pr-12">{features[activeFeature].description}</h4>
                 <div className="inline-block mt-8">
                   <Link href="/register/login">
                     <BlackButton>{features[activeFeature].button}</BlackButton> 

@@ -73,11 +73,11 @@ export default function Flow({ teamid } : { teamid: string }) {
   return (
     <main>
       <h1 className="text-4xl mt-4 font-semibold">Create an Interview</h1>
-      <p className="text-slate-600 mt-6 w-[90%]">Configre Ziggy to ask the questions you have and dig deeper than traditional surveys and forms.</p>
+      <p className="text-slate-600 mt-6 w-[90%]">Configure Ziggy to ask the questions you have and dig deeper than traditional surveys and forms.</p>
       <div className="mt-8 grid gap-12 text-sm font-medium">
         <div>
           <label><span className="text-red-600">*</span> Interview name</label>
-          <p className="text-xs text-slate-600 mt-1 font-normal">This is the name of your interview. It will be visible to both the public and your team.</p>
+          <p className="text-xs text-slate-600 mt-1 font-normal">This is the name of your interview.</p>
           <input
           type="text"
           className="w-full sm:w-[60%] mt-4 border-b border-slate-600 pb-2 text-base focus:outline-none"

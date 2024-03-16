@@ -43,7 +43,7 @@ export default function Pricing() {
       </div>
       <div className="text-center mt-24">
         <h2 className="text-3xl font-semibold">Looking for enterprise?</h2>
-        <p className="text-slate-600 mt-4 w-[80%] mx-auto">Contact us about our Enterprise plans and we can talk about how to best get Ziggy integrated in your workflow.</p>
+        <p className="text-slate-600 mt-4 w-[80%] mx-auto">Contact us about our Enterprise plans so we can discuss how to best get Ziggy integrated in your workflow.</p>
         <Link href="/info/contact?reason=Inquire About Enterprise Plan" className="mt-8 inline-block">
           <BlackButton>Contact us</BlackButton>
         </Link>

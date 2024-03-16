@@ -1,19 +1,7 @@
 import { createTransport } from "nodemailer"
-import { Client } from "postmark"
 
 export async function customSendVerificationRequest(params: any) {
   const { identifier, url, provider } = params
-  const { host } = new URL(url)
-
-  // const postmarkClient = new Client(process.env.EMAIL_SERVER_PASSWORD as string)
-
-  // await postmarkClient.sendEmail({
-  //   "From": process.env.EMAIL_FROM as string,
-  //   "To": identifier,
-  //   "Subject": "Ziggy Magic Link",
-  //   "HtmlBody": html({ url }),
-  //   "TextBody": text({ url })
-  // })
 
   const transport = createTransport(provider.server)
   const result = await transport.sendMail({

@@ -8,7 +8,7 @@ export default function Sorry(request: NextRequest & { searchParams: { errortype
       <div className="absolute">
         <RegisterNav />
       </div>
-      <main className="h-screen flex justify-center items-center text-center">
+      <main className="h-screen px-4 flex justify-center items-center text-center">
         <div>
           <h1 className="text-4xl font-medium">{request.searchParams.errortype === 1 ?
             "Sorry, an error occurred adding you to this team." :
