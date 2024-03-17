@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ "message": "Rate limit exceeded" }, { status: 429 })
   }
 
-  const transcriptInfo = await request.json() as { conversation: Array<{role: string, content: string}>, interviewee: string, interviewId: string, icon: string }
+  const transcriptInfo = await request.json()
 
   try {
 
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ "message": "success", transcriptId: transcript.id }, { status: 200 })
   } catch (error) {
-    console.error(error)
+    console.log(error)
     return NextResponse.json({ "message": "error" }, { status: 500 })
   }
 }

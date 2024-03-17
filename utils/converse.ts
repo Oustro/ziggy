@@ -1,6 +1,7 @@
 "use server"
 
 import Stripe from "stripe"
+import prisma from '@/utils/db'
 
 export async function Open(conversation: Array<{role: string, content: string}>, interviewee: string, interviewId: string, teamStripeId: string, icon: string) {
   if (teamStripeId) {
@@ -18,23 +19,20 @@ export async function Open(conversation: Array<{role: string, content: string}>,
     )
   }
   
-  const responseConversationRecordTranscriptCreate = await fetch(process.env.MODE_URL+"/api/conversation/record/transcript/create", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      conversation: conversation,
+  const transcript = await prisma.transcript.create({
+    data: {
+      convo: conversation,
+      conducted: new Date(),
       interviewee: interviewee,
       interviewId: interviewId,
+      sentiment: 0,
       icon: icon
-    })
+    }
   })
-
-  const data = await responseConversationRecordTranscriptCreate.json()
 
   const responseConversationRecord = await fetch(process.env.MODE_URL+"/api/conversation/record", {
     method: "POST",
+    cache: "no-cache",
     headers: {
       "Content-Type": "application/json"
     },
@@ -48,17 +46,18 @@ export async function Open(conversation: Array<{role: string, content: string}>,
 
   await fetch(process.env.MODE_URL+"/api/conversation/record/transcript/update", {
     method: "PUT",
+    cache: "no-cache",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      transcriptId: data.transcriptId,
+      transcriptId: transcript.id,
       conversation: conversation
     })
   })
   
   return {
-    tid: data.transcriptId, 
+    tid: transcript.id, 
     updatedConvo: conversation
   }
 }
@@ -71,6 +70,7 @@ async function Analytics(conversation: Array<{role: string, content: string}>, q
 
   const responseAnalyticsUrl = await fetch(process.env.ANALYTICS_URL as string, {
     method: "POST",
+    cache: "no-cache",
     headers: {
       "Content-Type": "application/json"
     },
@@ -85,6 +85,7 @@ async function Analytics(conversation: Array<{role: string, content: string}>, q
 
   await fetch(process.env.MODE_URL+"/api/conversation/record/analytics", {
     method: "POST",
+    cache: "no-cache",
     headers: {
       "Content-Type": "application/json"
     },
@@ -111,6 +112,7 @@ export async function Converse(conversation: Array<{role: string, content: strin
 
   const responseConversationRecord = await fetch(process.env.MODE_URL+"/api/conversation/record", {
     method: "POST",
+    cache: "no-cache",
     headers: {
       "Content-Type": "application/json"
     },
