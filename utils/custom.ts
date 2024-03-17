@@ -66,11 +66,13 @@ function html(params: { url: string }) {
           display: block;
           margin: 0 auto;
           width: 100px;
+          margin-bottom: 50px;
         }
       </style>
     </head>
     <body>
       <div class="container">
+        <img src="https://www.useziggy.com/ziggy-logo.svg" alt="User Icon" class="user-icon">
         <h2>And we meet again,</h2>
         <p><a href="${url}" class="button">Click here to log in</a></p>
         <p>Or, copy and paste this temporary login code:</p>
