@@ -2,6 +2,8 @@
 
 import Stripe from "stripe"
 import prisma from '@/utils/db'
+import OpenAI from "openai"
+
 
 export async function Open(conversation: Array<{role: string, content: string}>, interviewee: string, interviewId: string, teamStripeId: string, icon: string) {
   if (teamStripeId) {
@@ -30,30 +32,22 @@ export async function Open(conversation: Array<{role: string, content: string}>,
     }
   })
 
-  const responseConversationRecord = await fetch(process.env.MODE_URL+"/api/conversation/record", {
-    method: "POST",
-    cache: "no-cache",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      conversation: conversation
-    })
+  const openai = new OpenAI()
+
+  const completion = await openai.chat.completions.create({
+    messages: conversation as any,
+    model: "gpt-3.5-turbo",
   })
 
-  const updatedConvo = await responseConversationRecord.json()
-  conversation.push(updatedConvo.question)
+  conversation.push(completion.choices[0].message as any)
 
-  await fetch(process.env.MODE_URL+"/api/conversation/record/transcript/update", {
-    method: "PUT",
-    cache: "no-cache",
-    headers: {
-      "Content-Type": "application/json"
+  await prisma.transcript.update({
+    where: {
+      id: transcript.id
     },
-    body: JSON.stringify({
-      transcriptId: transcript.id,
-      conversation: conversation
-    })
+    data: {
+      convo: conversation
+    }
   })
   
   return {
