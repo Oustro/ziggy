@@ -20,7 +20,6 @@ export async function Open(conversation: Array<{role: string, content: string}>,
   
   const responseConversationRecordTranscriptCreate = await fetch(process.env.MODE_URL+"/api/conversation/record/transcript/create", {
     method: "POST",
-    cache: "no-cache",
     headers: {
       "Content-Type": "application/json"
     },
@@ -36,7 +35,6 @@ export async function Open(conversation: Array<{role: string, content: string}>,
 
   const responseConversationRecord = await fetch(process.env.MODE_URL+"/api/conversation/record", {
     method: "POST",
-    cache: "no-cache",
     headers: {
       "Content-Type": "application/json"
     },
@@ -50,7 +48,6 @@ export async function Open(conversation: Array<{role: string, content: string}>,
 
   await fetch(process.env.MODE_URL+"/api/conversation/record/transcript/update", {
     method: "PUT",
-    cache: "no-cache",
     headers: {
       "Content-Type": "application/json"
     },
@@ -74,7 +71,6 @@ async function Analytics(conversation: Array<{role: string, content: string}>, q
 
   const responseAnalyticsUrl = await fetch(process.env.ANALYTICS_URL as string, {
     method: "POST",
-    cache: "no-cache",
     headers: {
       "Content-Type": "application/json"
     },
@@ -89,7 +85,6 @@ async function Analytics(conversation: Array<{role: string, content: string}>, q
 
   await fetch(process.env.MODE_URL+"/api/conversation/record/analytics", {
     method: "POST",
-    cache: "no-cache",
     headers: {
       "Content-Type": "application/json"
     },
@@ -116,7 +111,6 @@ export async function Converse(conversation: Array<{role: string, content: strin
 
   const responseConversationRecord = await fetch(process.env.MODE_URL+"/api/conversation/record", {
     method: "POST",
-    cache: "no-cache",
     headers: {
       "Content-Type": "application/json"
     },
