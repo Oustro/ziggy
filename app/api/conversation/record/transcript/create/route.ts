@@ -27,6 +27,8 @@ export async function POST(request: NextRequest) {
 
   try {
 
+    console.log(transcriptInfo.interviewee)
+
     const transcript = await prisma.transcript.create({
       data: {
         convo: transcriptInfo.conversation,
@@ -38,9 +40,11 @@ export async function POST(request: NextRequest) {
       }
     })
 
+    console.log(transcript.id)
+
     return NextResponse.json({ "message": "success", transcriptId: transcript.id }, { status: 200 })
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return NextResponse.json({ "message": "error" }, { status: 500 })
   }
 }
