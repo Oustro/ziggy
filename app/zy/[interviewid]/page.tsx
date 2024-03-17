@@ -4,6 +4,15 @@ import { NextRequest } from 'next/server'
 import { redirect } from "next/navigation"
 
 import type { Metadata, ResolvingMetadata } from 'next'
+import type { Viewport } from 'next'
+ 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+}
 
 import prisma from "@/utils/db"
 
