@@ -33,7 +33,7 @@ export default function Features() {
         whileInView="visible"
         transition={{ duration: 0.1, delay: 0.1 }}
         key={index} 
-        className="top-48 mt-16 bg-white sticky"
+        className="top-56 sm:top-48 mt-16 bg-white sticky"
         >
           <div className="block sm:flex justify-between w-full mt-8 items-center border p-4 sm:p-16 border-slate-600 rounded">
             <div className="text-left sm:pr-12">
