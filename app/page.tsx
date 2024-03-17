@@ -25,7 +25,7 @@ export default function Home() {
             <Link href="/register/signup">
               <BlackButton>Get started for free</BlackButton>
             </Link>
-            <Link href="/info/contact?reason=Demo of Ziggy">
+            <Link href="https://cal.com/ziggy">
               <WhiteButton>Get a demo</WhiteButton>
             </Link>
           </div>
@@ -43,7 +43,7 @@ export default function Home() {
             <Link href="/register/signup">
               <BlackButton>Get started for free</BlackButton>
             </Link>
-            <Link href="/info/contact?reason=Demo of Ziggy">
+            <Link href="https://cal.com/ziggy">
               <WhiteButton>Get a demo</WhiteButton>
             </Link>
           </div>
