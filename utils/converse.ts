@@ -3,7 +3,8 @@
 import Stripe from "stripe"
 import prisma from '@/utils/db'
 import OpenAI from "openai"
-
+import { Pinecone } from '@pinecone-database/pinecone'
+import { nanoid } from 'nanoid'
 
 export async function Open(conversation: Array<{role: string, content: string}>, interviewee: string, interviewId: string, teamStripeId: string, icon: string) {
   if (teamStripeId) {
@@ -77,22 +78,44 @@ async function Analytics(conversation: Array<{role: string, content: string}>, q
 
   const data = await responseAnalyticsUrl.json()
 
-  await fetch(process.env.MODE_URL+"/api/conversation/record/analytics", {
-    method: "POST",
-    cache: "no-cache",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
+  const openai = new OpenAI()
+
+  const emdedding = await openai.embeddings.create({
+    model: "text-embedding-ada-002",
+    input: question,
+  })
+  
+  const pc = new Pinecone({
+    apiKey: process.env.PINECONE_API_KEY as string,
+  })
+
+  const index = pc.index("ziggy")
+
+  const id = nanoid(36)
+
+  await index.namespace(interviewId).upsert([{
+    id: id,
+    values: emdedding.data[0].embedding,
+    metadata: {
       question: question,
       answer: answer,
-      answerSentiment: data.sentiment,
-      mostSimilarQuestion: data.most_similar_question,
       interviewee: interviewee,
-      interviewId: interviewId,
-      transcriptId: transcriptId,
-      conversation: conversation
-    })
+      answerSentiment: data.sentiment[0].label,
+      mostSimilarQuestion: data.most_similar_question,
+      transcriptId: transcriptId
+    }
+  }])
+
+  await prisma.transcript.update({
+    where: {
+      id: transcriptId
+    },
+    data: {
+      sentiment: {
+        increment: data.sentiment[0].label === "POSITIVE" ?  1 : -1
+      },
+      convo: conversation
+    }
   })
 }
 
@@ -104,20 +127,14 @@ export async function Converse(conversation: Array<{role: string, content: strin
     content: answer
   })
 
-  const responseConversationRecord = await fetch(process.env.MODE_URL+"/api/conversation/record", {
-    method: "POST",
-    cache: "no-cache",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      conversation: conversation
-    })
+  const openai = new OpenAI()
+
+  const completion = await openai.chat.completions.create({
+    messages: conversation as any,
+    model: "gpt-3.5-turbo",
   })
 
-  const updatedConvo = await responseConversationRecord.json()
-
-  conversation.push(updatedConvo.question)
+  conversation.push(completion.choices[0].message as any)
 
   Analytics(conversation, prevQuestion.content, answer, interviewee, interviewId, transcriptId, questions)
   
