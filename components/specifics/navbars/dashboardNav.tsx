@@ -52,7 +52,7 @@ export default async function DashboardNav() {
             <Link target="_blank" href="https://www.github.com/oustro/ziggy">
               <HoverWords><span className="flex items-center gap-3"><IoFlashOutline /> Contribute</span></HoverWords>
             </Link>
-            <Link target="_blank" href="https://www.useziggy.com">
+            <Link target="_blank" href="https://www.useziggy.com/zy/MtAp-d7ebzylr">
               <HoverWords><span className="flex items-center gap-3"><IoChatboxEllipsesOutline /> Feedback</span></HoverWords>
             </Link>
             <Link target="_blank" href="/info/contact?reason=Help request">
