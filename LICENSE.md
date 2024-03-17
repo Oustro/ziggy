@@ -627,7 +627,7 @@ attach them to the start of each source file to most effectively state
 the exclusion of warranty; and each file should have at least the
 "copyright" line and a pointer to where the full notice is found.
 
-        Portfoliwoah is a platform for people to showcase their work and share it.
+        Ziggy is a platform that uses AI to gather and analyze user feedback.
         Copyright (C) 2024 Oustro, LLC
 
         This program is free software: you can redistribute it and/or modify
