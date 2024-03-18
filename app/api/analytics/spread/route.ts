@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
 
     for (let i = 0; i < responses.matches.length; i++) {
       const question = responses.matches[i]?.metadata?.mostSimilarQuestion as string
-      const sentiment = responses.matches[i]?.metadata?.sentiment as string
+      const sentiment = responses.matches[i]?.metadata?.answerSentiment as string
 
       if (questions.includes(question)) {
         const index = questions.indexOf(question)
