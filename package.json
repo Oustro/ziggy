@@ -20,6 +20,7 @@
     "@prisma/client": "^5.8.1",
     "@upstash/ratelimit": "^1.0.1",
     "@upstash/redis": "^1.28.2",
+    "@vercel/analytics": "^1.2.2",
     "@vercel/blob": "^0.21.0",
     "chart.js": "^4.4.1",
     "framer-motion": "^11.0.3",
