@@ -30,7 +30,7 @@ export default function ProgressBar({ interviewInfo, mostRecentQuestion, finishe
   }, [mostRecentQuestion, finishedInterview])
 
   return (
-    <div className="absolute top-0 h-4 text-center rounded transition-all duration-300 ease-in-out"
+    <div className="absolute top-0 h-3 text-center transition-all rounded-r duration-300 ease-in-out"
     style={{
       width: progressBarWidth,
       background: interviewInfo.team.color

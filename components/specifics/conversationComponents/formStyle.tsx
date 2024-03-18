@@ -60,6 +60,8 @@ export default function FormStyle({ interviewInfo, interviewee, setMostRecentQue
 
     setLoading(true)
 
+    setAnswer("")
+
     const updatedConvo = await Converse(conversation, answer, interviewee, interviewInfo.id, transcriptId, interviewInfo.guide)
 
     const isFinished = await end(updatedConvo[updatedConvo.length - 1].content)
@@ -78,78 +80,50 @@ export default function FormStyle({ interviewInfo, interviewee, setMostRecentQue
 
   return (
     <div className="flex w-full justify-center px-8 sm:px-48 h-full items-center">
-      {loading ? (
-        <motion.div 
-        className="text-left w-full"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        >
+      <motion.div 
+      className="text-left w-full"
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      >
+        <div className="flex items-center gap-2">
           <Image
           src={interviewInfo.team.logo}
           alt="Team Logo"
           width={50}
           height={50}
-          className="rounded"
+          className="rounded w-10 sm:w-12 sm:h-12"
           />
-          <h1 className="text-2xl mt-4 font-semibold">
+          <h1 className="text-lg sm:text-2xl mt-4 font-semibold">
             {interviewInfo.team.interviewer}
           </h1>
-          <div className="mt-8">
+        </div>
+        <h1 className="text-xl sm:text-3xl mt-8">
+          {loading ? (
             <Spinner size={30} />
-          </div>
-          <div className="w-full">
-            <input
-            type="text"
-            className="w-full mt-24 border-b border-slate-600 bg-transparent pb-2 text-base focus:outline-none"
-            placeholder="Enter your answer..."
-            disabled={true}
-            required
-            />
-            <button className="mt-16 text-lg" type="submit" disabled={true}>
-              <BlackButton>
-                Continue
-              </BlackButton>
-            </button>
-          </div>
-        </motion.div>
-      ) : (
-        <motion.div 
-        className="text-left w-full"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        >
-          <Image
-          src={interviewInfo.team.logo}
-          alt="Team Logo"
-          width={50}
-          height={50}
-          className="rounded"
+          ) : (
+            <>
+              {conversation[conversation.length - 1].content}
+            </>
+          )}
+        </h1>
+        <form onSubmit={handleSubmit} className="w-full">
+          <input
+          type="text"
+          value={answer}
+          onChange={(e) => setAnswer(e.target.value)}
+          className="w-full mt-24 border-b border-slate-600 bg-transparent pb-2 text-base focus:outline-none"
+          placeholder="Enter your answer..."
+          disabled={finishedInterview || loading}
+          required
           />
-          <h1 className="text-2xl mt-4 font-semibold">
-            {interviewInfo.team.interviewer}
-          </h1>
-          <h1 className="text-3xl mt-8">
-            {conversation[conversation.length - 1].content}
-          </h1>
-          <form onSubmit={handleSubmit} className="w-full">
-            <input
-            type="text"
-            onChange={(e) => setAnswer(e.target.value)}
-            className="w-full mt-24 border-b border-slate-600 bg-transparent pb-2 text-base focus:outline-none"
-            placeholder="Enter your answer..."
-            disabled={finishedInterview}
-            required
-            />
-            <button className="mt-16 text-lg" type="submit" disabled={finishedInterview}>
-              <BlackButton>
-                <span className="flex items-center gap-2"><FiSend /> Continue</span>
-              </BlackButton>
-            </button>
-          </form>
-        </motion.div>
-      )}
+          <button className="mt-16 text-sm sm:text-lg" type="submit" disabled={finishedInterview || loading}>
+            <BlackButton>
+              <span className="flex items-center gap-2"><FiSend /> Continue</span>
+            </BlackButton>
+          </button>
+        </form>
+      </motion.div>
     </div>
   )
 }

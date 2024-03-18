@@ -20,13 +20,13 @@ export default function Welcome({ setView, interviewInfo } : { setView: Function
         height={80}
         className="rounded"
         />
-        <h1 className="text-5xl mt-16 font-semibold">
+        <h1 className="text-3xl sm:text-5xl mt-8 sm:mt-16 font-semibold">
           Hello I'm {interviewInfo.team.interviewer},
         </h1>
-        <h1 className="text-2xl mt-8">
+        <h1 className="text-lg sm:text-2xl mt-8">
           Thank you for being here, I'm going to ask you some questions for {interviewInfo.team.name}. Are you ready to get started?
         </h1>
-        <button className="mt-16 text-lg" onClick={() => setView(interviewInfo.collect ? 1 : interviewInfo.team.style === 0 ? 2 : 3)}>
+        <button className="mt-16 text-base sm:text-lg" onClick={() => setView(interviewInfo.collect ? 1 : interviewInfo.team.style === 0 ? 2 : 3)}>
           <BlackButton>
             Yes I am, let's start
           </BlackButton>

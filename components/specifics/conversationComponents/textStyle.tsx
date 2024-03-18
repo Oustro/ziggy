@@ -95,7 +95,7 @@ export default function TextStyle({ interviewInfo, interviewee, setMostRecentQue
 
   return (
     <div className="w-full h-full items-center">
-      <div className="px-4 sm:px-16 h-[75%] overflow-scroll py-8" ref={chatContainerRef} style={{ scrollBehavior: 'smooth' }}>
+      <div className="px-4 sm:px-16 text-sm sm:text-base h-[75%] overflow-scroll py-8" ref={chatContainerRef} style={{ scrollBehavior: 'smooth' }}>
         {chatLog.slice(3).map((convo, index) => (
           convo.role === "assistant" ?
             <div key={index} className="flex items-center mt-4 gap-4 border bg-slate-200 border-slate-600 rounded p-4">
@@ -133,13 +133,13 @@ export default function TextStyle({ interviewInfo, interviewee, setMostRecentQue
           value={answer}
           className="w-full border-b border-slate-600 bg-transparent pb-2 text-base focus:outline-none"
           placeholder="Enter your answer..."
-          disabled={finishedInterview}
+          disabled={finishedInterview || loading}
           required
           >
           </input>
-          <button className="text-sm" type="submit" disabled={finishedInterview}>
+          <button className="text-sm" type="submit" disabled={finishedInterview || loading}>
             <BlackButton>
-              <span className="flex items-center gap-2"><FiSend /> Continue</span>
+              <span className="flex items-center gap-2"><FiSend /></span>
             </BlackButton>
           </button>
         </div>
