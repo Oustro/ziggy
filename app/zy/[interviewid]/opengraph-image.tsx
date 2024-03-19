@@ -52,7 +52,7 @@ export default async function Image({ params }: { params: { interviewid: string 
           marginTop: 80,
         }}
         >
-          Hi I'm {teamData.interviewer}, do you mind if I get some feedback from you?
+          Hi I'm {teamData.interviewer}, do you mind if I ask you some questions?
         </p>
       </div>
     )
