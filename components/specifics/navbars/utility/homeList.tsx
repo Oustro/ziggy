@@ -45,6 +45,9 @@ export default function HomeList() {
             <Link target="_blank" href="https://www.github.com/oustro/ziggy">
               <HoverWords><span className="flex items-center gap-1">GitHub <VscLinkExternal /></span></HoverWords>
             </Link>
+            <Link href="https://cal.com/ziggy/15min">
+              <HoverWords><span className="flex items-center gap-1">Demo <VscLinkExternal /></span></HoverWords>
+            </Link>
             <Link href="/register/login" className="text-center">
               <WhiteButton>Login</WhiteButton>
             </Link>

@@ -42,6 +42,9 @@ export default async function HomeNav() {
           <Link target="_blank" href="https://www.github.com/oustro/ziggy">
             <HoverWords><span className="flex items-center gap-1">GitHub <VscLinkExternal /></span></HoverWords>
           </Link>
+          <Link href="https://cal.com/ziggy/15min">
+            <HoverWords><span className="flex items-center gap-1">Demo <VscLinkExternal /></span></HoverWords>
+          </Link>
         </div>
       </div>
       <div className="sm:hidden">

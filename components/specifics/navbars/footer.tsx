@@ -28,6 +28,10 @@ export default async function Footer() {
         {
           name: "Open Source",
           href: "https://www.github.com/oustro/ziggy"
+        },
+        {
+          name: "Book a demo",
+          href: "https://cal.com/ziggy/15min"
         }
       ]
     },
