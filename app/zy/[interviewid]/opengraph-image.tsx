@@ -12,7 +12,13 @@ export const contentType = 'image/png'
  
 export default async function Image({ params }: { params: { interviewid: string }}) {
   
-  const data = await fetch('https://www.useziggy.com/api/teams/get/interview?id='+params.interviewid)
+  const data = await fetch('https://www.useziggy.com/api/teams/get/interview?id='+params.interviewid, {
+    method: "GET",
+    cache: "no-cache",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
 
   const teamData = await data.json()
 
