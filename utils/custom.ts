@@ -1,20 +1,16 @@
-import { createTransport } from "nodemailer"
+import { Client } from "postmark"
 
 export async function customSendVerificationRequest(params: any) {
   const { identifier, url, provider } = params
 
-  const transport = createTransport(provider.server)
-  const result = await transport.sendMail({
-    to: identifier,
-    from: provider.from,
-    subject: 'Ziggy Magic Link',
-    text: text({ url }),
-    html: html({ url }),
+  const postmarkClient = new Client(process.env.EMAIL_SERVER_PASSWORD as string)
+  await postmarkClient.sendEmail({
+    "From": process.env.EMAIL_FROM as string,
+    "To": identifier,
+    "Subject": "Ziggy Magic Link",
+    "TextBody": text({ url }),
+    "HtmlBody": html({ url })
   })
-  const failed = result.rejected.concat(result.pending).filter(Boolean)
-  if (failed.length) {
-    throw new Error(`Email(s) (${failed.join(", ")}) could not be sent`)
-  }
 }
 
 function html(params: { url: string }) {
@@ -72,7 +68,6 @@ function html(params: { url: string }) {
     </head>
     <body>
       <div class="container">
-        <img src="https://www.useziggy.com/ziggy-logo.svg" alt="User Icon" class="user-icon">
         <h2>And we meet again,</h2>
         <p><a href="${url}" class="button">Click here to log in</a></p>
         <p>Or, copy and paste this temporary login code:</p>
