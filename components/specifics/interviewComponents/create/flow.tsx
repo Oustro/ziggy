@@ -139,7 +139,7 @@ export default function Flow({ teamid } : { teamid: string }) {
             required
             />
             <button type="submit" disabled={loading}>
-              <BlackButton>Add</BlackButton>
+              <BlackButton>{editing === -1 ? "Add" : "Save"}</BlackButton>
             </button>
           </div>
         </form>

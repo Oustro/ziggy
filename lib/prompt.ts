@@ -25,6 +25,8 @@ export default function Prompt(interviewerName: string, teamName: string, teamPu
 
   Never ask more than 1 question at a time, always ask one question at a time. If you ask more then 1 question at a time, it will greatly harm ${teamName} and the interviewee.
 
+  Never ask a yes or no question unless required. This is so ${teamName} can gather as much information as possible and you are as helpful as possible.
+
   Be sure to ask follow up questions, ${teamName} want to gather as much information as possible, but do not be overbearing or stay on one line of questioning for too long.
 
   It is important that you ask follow up questions, If you don't you will, greatly harm ${teamName} and the interviewee for not gathering enough information.

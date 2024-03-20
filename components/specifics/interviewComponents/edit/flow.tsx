@@ -152,7 +152,7 @@ export default function Flow({ interview } : { interview: any }) {
             required
             />
             <button type="submit" disabled={loading}>
-              <BlackButton>Add</BlackButton>
+              <BlackButton>{editing === -1 ? "Add" : "Save"}</BlackButton>
             </button>
           </div>
         </form>
