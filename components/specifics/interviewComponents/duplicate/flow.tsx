@@ -9,7 +9,7 @@ import { Reorder } from "framer-motion"
 
 import { useRouter } from "next/navigation"
 
-import { MdCancel, MdDragIndicator } from "react-icons/md"
+import { MdCancel, MdDragIndicator, MdEdit } from "react-icons/md"
 
 import Link from "next/link"
 
@@ -22,6 +22,8 @@ export default function Flow({ interview } : { interview: any }) {
   })
 
   const [error, setError] = useState<string>("")
+
+  const [editing, setEditing] = useState<number>(-1)
 
   const [questions, setQuestions] = useState<string>("")
   const [questionList, setQuestionList] = useState<string[]>([])
@@ -40,9 +42,29 @@ export default function Flow({ interview } : { interview: any }) {
 
   function addQuestion(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    if (editing === -1) {
+      setQuestionList([...questionList, questions])
+      return setQuestions("")
+    }
+    else {
+      let newQuestions: string[] = []
+      for (let i = 0; i < questionList.length; ++i) {
+        if (i === editing) {
+          newQuestions.push(questions)
+        }
+        else {
+          newQuestions.push(questionList[i])
+        }
+      }
+      setQuestionList(newQuestions)
+      setEditing(-1)
+      return setQuestions("")
+    }
+  }
 
-    setQuestionList([...questionList, questions])
-    return setQuestions("")
+  function editQuestion(question: string, index: number) {
+    setQuestions(question)
+    return setEditing(index)
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -142,8 +164,10 @@ export default function Flow({ interview } : { interview: any }) {
                   <MdDragIndicator className="cursor-ns-resize min-w-4"/>
                   <p className="font-normal">{index === 0 && <span className="font-medium rounded-full border border-slate-600 px-2 text-xs">Top priority</span>} {question}</p>
                 </div>
-                <button onClick={() => setQuestionList(questionList.filter((_, i) => i !== index))}><HoverWords><MdCancel /></HoverWords></button>
-              </Reorder.Item>
+                <div className="flex itmes-center gap-2">
+                  <button onClick={() => editQuestion(question, index)}><HoverWords><MdEdit /></HoverWords></button>
+                  <button onClick={() => setQuestionList(questionList.filter((_, i) => i !== index))}><HoverWords><MdCancel /></HoverWords></button>
+                </div>              </Reorder.Item>
             ))}
           </Reorder.Group>
         </div>
