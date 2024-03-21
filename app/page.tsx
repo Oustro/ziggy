@@ -19,10 +19,9 @@ export default function Home() {
     <main className="mb-16">
       <HomeNav />
       <div className="w-full mt-12 text-center">
-        <div className="w-full rounded">
-          <h2 className="text-4xl sm:text-7xl font-medium">Better feedback</h2>
-          <h1 className="text-5xl sm:text-8xl mt-4 font-bold">Starts with Ziggy.</h1>
-          <p className="mt-8 w-[80%] sm:w-[50%] mx-auto text-base sm:text-xl text-slate-600">Use AI to conduct in-depth user interviews and collect feedback with real-time analytics at scale so you can get back to what's important.</p>
+        <div className="w-full rounded leading-loose">
+          <h2 className="text-3xl sm:text-5xl sm:w-[70%] mx-auto font-semibold">Automate in-depth customer surveys with real-time analytics</h2>
+          <p className="mt-8 w-[90%] sm:w-[70%] mx-auto text-base sm:text-xl text-slate-600">Ziggy conducts feedback and discovery surveys, mimicking one-on-one interviews, saving you time and money to focus on building and improving your products and services.</p>
           <div className="mt-12 flex justify-center gap-4">
             <Link href="/register/signup">
               <BlackButton>Get started for free</BlackButton>
