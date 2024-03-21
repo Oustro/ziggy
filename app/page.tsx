@@ -27,7 +27,7 @@ export default function Home() {
             <Link href="/register/signup">
               <BlackButton>Get started for free</BlackButton>
             </Link>
-            <ScheduleDemo />
+            <ScheduleDemo version={0} />
           </div>
         </div>
         <div className="sm:mt-28 sm:px-24 relative text-left">
@@ -44,7 +44,7 @@ export default function Home() {
             <Link href="/register/signup">
               <BlackButton>Get started for free</BlackButton>
             </Link>
-            <ScheduleDemo />
+            <ScheduleDemo version={0} />
           </div>
           <Image
           src="/ziggy-real.png"

@@ -4,10 +4,11 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 
 import WhiteButton from '@/components/generics/whiteButton'
+import HoverWords from '@/components/generics/hoverWords'
 
 import Cal from "@calcom/embed-react";
 
-export default function ScheduleDemo() {
+export default function ScheduleDemo({ version } : { version: number }) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   function closeModal() {
@@ -22,7 +23,11 @@ export default function ScheduleDemo() {
     <main>
       <div>
         <button type="button" onClick={openModal}>
-          <WhiteButton>Get a demo</WhiteButton>
+          {version === 0 ? 
+            <WhiteButton>Get a demo</WhiteButton>
+          : 
+            <HoverWords>Demo</HoverWords>
+          }
         </button>
       </div>
       <Transition appear show={isOpen} as={Fragment}>

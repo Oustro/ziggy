@@ -6,6 +6,8 @@ import BlackButton from "@/components/generics/blackButton"
 
 import HomeList from "@/components/specifics/navbars/utility/homeList"
 
+import ScheduleDemo from "@/components/specifics/landingComponents/scheduleDemo"
+
 import { VscLinkExternal } from "react-icons/vsc"
 
 import { getServerSession } from "next-auth"
@@ -42,9 +44,7 @@ export default async function HomeNav() {
           <Link target="_blank" href="https://www.github.com/oustro/ziggy">
             <HoverWords><span className="flex items-center gap-1">GitHub <VscLinkExternal /></span></HoverWords>
           </Link>
-          <Link href="https://cal.com/ziggy/15min">
-            <HoverWords><span className="flex items-center gap-1">Demo <VscLinkExternal /></span></HoverWords>
-          </Link>
+          <ScheduleDemo version={1} />
         </div>
       </div>
       <div className="sm:hidden">
