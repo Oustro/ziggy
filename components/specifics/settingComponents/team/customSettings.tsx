@@ -10,13 +10,16 @@ import Image from "next/image"
 
 import BlackButton from "@/components/generics/blackButton"
 
+import { HexColorPicker, HexColorInput } from "react-colorful"
+
 export default function CustomSettings({ team, setRefreshKey } : { team: teamSavedInfo, setRefreshKey: Function }) {
 
   const [customInfo, setCustomInfo] = useState({
     logo: team.logo,
-    color: team.color,
     style: team.style
   })
+
+  const [teamColor, setTeamColor] = useState<string>(team.color)
 
   const inputFileRef = useRef<HTMLInputElement>(null);
 
@@ -32,7 +35,7 @@ export default function CustomSettings({ team, setRefreshKey } : { team: teamSav
       body: JSON.stringify({
         id: team.id,
         logo: customInfo.logo,
-        color: customInfo.color,
+        color: teamColor,
         style: customInfo.style
       })
     })
@@ -91,7 +94,7 @@ export default function CustomSettings({ team, setRefreshKey } : { team: teamSav
           </label>
         </div>
         <div className="rounded border p-4 sm:flex justify-between items-center">
-          <div className="w-full">
+          <div className="w-full w-[60%]">
             <p className="font-medium text-lg">Choose a Team Color</p>
             <p className="text-xs text-slate-600">This is the current color and is part of the background of your interviews.</p>
             <div className="text-sm mt-4 mb-10 sm:mb-0">
@@ -100,14 +103,22 @@ export default function CustomSettings({ team, setRefreshKey } : { team: teamSav
               </button>
             </div>
           </div>
-          <div className="cursor-pointer sm:w-[30%] text-center">
-            <input
-            type="color"
-            value={customInfo.color}
-            onChange={(e) => setCustomInfo({ ...customInfo, color: e.target.value })}
-            className="w-16 h-16 rounded-lg bg-white cursor-pointer" 
+          <div className="cursor-pointer text-center w-[40%]">
+            <HexColorPicker
+            color={teamColor}
+            onChange={setTeamColor}
+            style={{
+              height: "80px",
+              width: "80px",
+              margin: "auto"
+            }}
             />
-            <p className="text-xs mt-4 text-slate-600">Click to change color</p>
+            <HexColorInput
+            className="w-[80px] text-sm border-b mt-4 pb-2 border-slate-600 focus:outline-none"
+            color={teamColor} 
+            onChange={setTeamColor}
+            prefixed
+            />
           </div>
         </div>
         <div className="rounded border p-4">
