@@ -11,6 +11,8 @@ import Features from "@/components/specifics/landingComponents/features"
 import Link from "next/link"
 import Image from "next/image"
 
+import ScheduleDemo from "@/components/specifics/landingComponents/scheduleDemo"
+
 export default function Home() {
 
   return (
@@ -25,9 +27,7 @@ export default function Home() {
             <Link href="/register/signup">
               <BlackButton>Get started for free</BlackButton>
             </Link>
-            <Link href="https://cal.com/ziggy">
-              <WhiteButton>Get a demo</WhiteButton>
-            </Link>
+            <ScheduleDemo />
           </div>
         </div>
         <div className="sm:mt-28 sm:px-24 relative text-left">
@@ -43,9 +43,7 @@ export default function Home() {
             <Link href="/register/signup">
               <BlackButton>Get started for free</BlackButton>
             </Link>
-            <Link href="https://cal.com/ziggy">
-              <WhiteButton>Get a demo</WhiteButton>
-            </Link>
+            <ScheduleDemo />
           </div>
           <Image
           src="/ziggy-real.png"
