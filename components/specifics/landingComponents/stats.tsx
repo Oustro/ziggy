@@ -13,7 +13,7 @@ export default function Stats() {
     initial="hidden"
     whileInView="visible"
     transition={{ duration: 0.5, delay: 0.3 }}
-    className="sm:mt-48 text-left px-24"
+    className="sm:mt-24 text-left px-24"
     >
       <div className="text-center grid grid-cols-1 gap-12 sm:grid-cols-3 mt-16 w-[80%] mx-auto">
         <div>

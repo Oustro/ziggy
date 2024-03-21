@@ -2,16 +2,16 @@ import HomeNav from "@/components/specifics/navbars/homeNav"
 import Footer from "@/components/specifics/navbars/footer"
 
 import BlackButton from "@/components/generics/blackButton"
-import WhiteButton from "@/components/generics/whiteButton"
+
+import ScheduleDemo from "@/components/specifics/landingComponents/scheduleDemo"
 
 import Hero from "@/components/specifics/landingComponents/hero"
 import Stats from "@/components/specifics/landingComponents/stats"
 import Features from "@/components/specifics/landingComponents/features"
+import HowItWorks from "@/components/specifics/landingComponents/howItWorks"
 
 import Link from "next/link"
 import Image from "next/image"
-
-import ScheduleDemo from "@/components/specifics/landingComponents/scheduleDemo"
 
 export default function Home() {
 
@@ -33,8 +33,9 @@ export default function Home() {
         <div className="sm:mt-28 sm:px-24 relative text-left">
           <Hero />
         </div>
-        <Stats />
+        <HowItWorks />
         <Features />
+        <Stats />
         <div className="mt-24 w-full text-center">
           <h2 className="text-4xl sm:text-7xl font-medium">Better feedback</h2>
           <h1 className="text-5xl sm:text-8xl mt-4 font-bold">Starts here.</h1>
