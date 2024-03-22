@@ -20,9 +20,9 @@ export default function Home() {
       <HomeNav />
       <div className="w-full mt-12 text-center">
         <div className="w-full rounded leading-loose">
-          <h2 className="text-4xl sm:text-5xl mx-auto font-medium">Have meaningful 1-on-1 interviews with</h2>
-          <h2 className="text-4xl sm:text-6xl mt-2 mx-auto font-semibold">anyone, anywhere, anytime</h2>
-          <p className="mt-8 w-[90%] sm:w-[70%] mx-auto text-base sm:text-xl text-slate-600">Ziggy uses AI to conduct user insightful feedback and discovery surveys just like you would, except with everyone and delivers real-time analytics to save you time and energy.</p>
+          <h2 className="text-3xl sm:text-5xl mx-auto font-medium">Have meaningful 1-on-1 conversations</h2>
+          <h2 className="text-4xl sm:text-6xl mt-2 mx-auto font-bold">with everyone</h2>
+          <p className="mt-8 w-[90%] sm:w-[70%] mx-auto text-base sm:text-xl text-slate-600">Ziggy saves you the time of scheduling 1-on-1s by using AI to conduct them just like you would, except with anyone at any time, and stay in the loop with real-time analytics.</p>
           <div className="mt-12 flex justify-center gap-4">
             <Link href="/register/signup">
               <BlackButton>Get started for free</BlackButton>
