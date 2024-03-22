@@ -42,7 +42,7 @@ export default async function HomeNav() {
               <HoverWords>Pricing</HoverWords>
           </Link>
           <Link target="_blank" href="https://www.github.com/oustro/ziggy">
-            <HoverWords><span className="flex items-center gap-1">GitHub <VscLinkExternal /></span></HoverWords>
+            <HoverWords><span className="flex items-center gap-1">❤️ Open Source <VscLinkExternal /></span></HoverWords>
           </Link>
           <ScheduleDemo version={1} />
         </div>

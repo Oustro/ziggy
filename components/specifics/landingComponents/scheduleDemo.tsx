@@ -24,7 +24,7 @@ export default function ScheduleDemo({ version } : { version: number }) {
       <div>
         <button type="button" onClick={openModal}>
           {version === 0 ? 
-            <WhiteButton>Get a demo</WhiteButton>
+            <WhiteButton>Schedule a demo</WhiteButton>
           : 
             <HoverWords>Demo</HoverWords>
           }
