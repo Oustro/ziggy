@@ -25,7 +25,7 @@ export default function Home() {
           <p className="mt-8 w-[90%] sm:w-[70%] mx-auto text-base sm:text-xl text-slate-600">Ziggy saves you the time of scheduling 1-on-1s by using AI to conduct them just like you would, except with anyone at any time, and stay in the loop with real-time analytics.</p>
           <div className="mt-12 flex justify-center gap-4">
             <Link href="/register/signup">
-              <BlackButton>Get started for free</BlackButton>
+              <BlackButton>Get early access</BlackButton>
             </Link>
             <ScheduleDemo version={0} />
           </div>
@@ -42,7 +42,7 @@ export default function Home() {
           <p className="mt-8 w-[50%] mx-auto text-xl text-slate-600">Give your team super powers and start making faster and smarter product decisions.</p>
           <div className="mt-12 flex justify-center gap-4">
             <Link href="/register/signup">
-              <BlackButton>Get started for free</BlackButton>
+              <BlackButton>Get early access</BlackButton>
             </Link>
             <ScheduleDemo version={0} />
           </div>

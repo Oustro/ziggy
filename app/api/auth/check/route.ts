@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     const validEmail = await prisma.user.findFirst({
       where: {
         email: {
-          equals: email || "",
+          equals: email,
           mode: 'insensitive'
         }
       }
