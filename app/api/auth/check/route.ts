@@ -57,6 +57,12 @@ export async function POST(request: NextRequest) {
       nx: true
     })
 
+    const redisSet = await redis.get(email) as { name: string }
+
+    if (!redisSet.name) {
+      return NextResponse.json({ "message": "error" }, { status: 500 })
+    }
+
     return NextResponse.json({ "message": "success" }, { status: 200 })
   
   } catch (error) {
