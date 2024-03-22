@@ -11,7 +11,6 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Interview Settings | Ziggy",
-  description: "The AI tool to conduct interviews and get better feedback than traditional survey forms.",
 }
 
 type Props = {

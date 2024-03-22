@@ -19,7 +19,7 @@ export default async function Changelog() {
   return (
     <main>
       <h1 className="text-4xl sm:text-5xl font-semibold text-center mt-12">Changelog</h1>
-      <p className="text-slate-600 mt-6 text-center w-[80%] mx-auto">All of Ziggy's latest updates and changes. Check out the code <Link href="https://git.new/interview" className="underline">here.</Link></p>
+      <p className="text-slate-600 mt-6 text-center w-[80%] mx-auto">All of Ziggy's latest updates and changes. Check out the code <Link href="https://git.new/ziggy" className="underline">here.</Link></p>
       <div className="w-[80%] grid sm:grid-cols-4 grid-cols-2 gap-4 mx-auto">
         {data.map((release: any, index: number) => (
           <Link href={release.html_url} key={index}>

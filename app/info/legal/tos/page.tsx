@@ -10,7 +10,7 @@ export default function Legal() {
     {
       title: "Introduction and Description of Services",
       content: [
-        'Welcome to Ziggy, a product developed and operated by Oustro, LLC ("Oustro", "we", "us", or "our"). Ziggy is an AI-powered tool designed to facilitate the gathering of feedback through unstructured feedback interviews and provides analytical tools to help teams understand this data.',
+        'Welcome to Ziggy, a product developed and operated by Oustro, LLC ("Oustro", "we", "us", or "our"). Ziggy is an AI-powered tool designed to facilitate the gathering of feedback through unstructured feedback and discovery interviews and provides analytical tools to help teams understand this data.',
         'This Terms of Service agreement ("Agreement") is a legal agreement between you and Oustro, LLC and governs your use of the Ziggy service (the "Service").',
         'Services may be updated or modified from time to time at our discretion.'
       ]

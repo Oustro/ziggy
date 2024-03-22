@@ -11,8 +11,7 @@ import Flow from "@/components/specifics/interviewComponents/duplicate/flow"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Duplicate Interview | Ziggy",
-  description: "The AI tool to conduct interviews and get better feedback than traditional survey forms.",
+  title: "Duplicate Interview | Ziggy"
 }
 
 type Props = {
