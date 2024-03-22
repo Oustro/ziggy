@@ -37,15 +37,14 @@ export default function LoginForm({ setView } : { setView: Function }) {
     if (responseRegisterChecks.status === 500) {
       return setError("An error occurred. Please try again later.")
     }
-    
-    if (responseRegisterChecks.status === 403) {
+    else if (responseRegisterChecks.status === 200) {
       await signIn('email', {
         email: email,
         callbackUrl: `${window.location.origin}/dashboard`,
         redirect: false
       })
     }
-    else {
+    else if (responseRegisterChecks.status === 403) {
       return setError("This email doesn't have a Ziggy account, please create one.")
     }
 
@@ -57,7 +56,7 @@ export default function LoginForm({ setView } : { setView: Function }) {
     <main>
       <p className="text-slate-600 mt-6">Welcome back, we're glad you're here.</p>
       <div className="w-full sm:w-[40%] mx-auto mt-8">
-        {/* <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="text-left font-medium text-sm pb-1">
             <label><span className="text-red-600">*</span> Email</label>
           </div>
@@ -71,7 +70,7 @@ export default function LoginForm({ setView } : { setView: Function }) {
           <button disabled={loading} className="w-full mt-6" type="submit">
             <BlackButton>Continue</BlackButton>
           </button>
-        </form> */}
+        </form>
         <div className="mt-8 pt-6 border-t">
           <button disabled={loading} className="w-full" onClick={() => {
             setLoading(true)
