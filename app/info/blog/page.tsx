@@ -16,7 +16,7 @@ export default function Blog() {
       alt="Ziggy the dog"
       width={300}
       height={300}
-      className="mt-24 rounded-full mx-auto shadow-lg"
+      className="mt-24 rounded mx-auto shadow-lg"
       />
       <p className="italic mt-4 text-slate-600 text-center font-medium">The original Ziggy</p>
     </main>
