@@ -10,7 +10,7 @@ export default function Legal() {
     {
       title: "Introduction",
       content: [
-        'Welcome to Ziggy, a product developed and operated by Oustro, LLC ("Oustro", "we", "us", or "our"). Ziggy is an AI-powered tool designed to facilitate the gathering of feedback through unstructured feedback interviews and provides analytical tools to help teams understand this data.',
+        'Welcome to Ziggy, a product developed and operated by Oustro, LLC ("Oustro", "we", "us", or "our"). Ziggy is an AI-powered tool designed to facilitate the gathering of feedback through unstructured feedback and discovery interviews and provides analytical tools to help teams understand this data.',
         'This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Ziggy service (the "Service"). By using the Service, you consent to the collection and use of information in accordance with this policy.'
       ]
     },

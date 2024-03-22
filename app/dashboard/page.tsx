@@ -15,7 +15,6 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Dashboard | Ziggy",
-  description: "The AI tool to conduct interviews and get better feedback than traditional survey forms.",
 }
 
 export default async function Dashboard() {   
