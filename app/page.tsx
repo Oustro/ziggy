@@ -30,9 +30,7 @@ export default function Home() {
             <ScheduleDemo version={0} />
           </div>
         </div>
-        <div className="sm:mt-28 sm:px-24 relative text-left">
-          <Hero />
-        </div>
+        <Hero />
         <HowItWorks />
         <Features />
         <Stats />
