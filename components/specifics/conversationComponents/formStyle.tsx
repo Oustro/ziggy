@@ -94,7 +94,7 @@ export default function FormStyle({ interviewInfo, interviewee, setMostRecentQue
           height={50}
           className="rounded w-10 sm:w-12 sm:h-12"
           />
-          <h1 className="text-lg sm:text-2xl mt-4 font-semibold">
+          <h1 className="text-lg sm:text-2xl font-semibold">
             {interviewInfo.team.interviewer}
           </h1>
         </div>
