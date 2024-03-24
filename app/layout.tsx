@@ -8,7 +8,7 @@ import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Ziggy - Have meaingful conversations with everyone.",
+  title: "Ziggy - Have meaningful conversations with everyone.",
   description: "Ziggy saves you the time of scheduling 1-on-1s by using AI to conduct them just like you would, except with anyone at any time, and stay in the loop with real-time analytics.",
   keywords: ["Feedback", "AI Feedback", "Better feedback", "Analytics", "one-on-ones", "Scale", "1-on-1s", "1-on-1s", "Ziggy", "Ziggy AI", "Ziggy Feedback", "Ziggy Analytics", "Ziggy 1-on-1s", "Ziggy Scale", "Ziggy one-on-ones"],
   openGraph: {
