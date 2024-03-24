@@ -15,8 +15,8 @@ const config: Config = {
       },
       animation: {
         'infinite-scroll-fast': 'infinite-scroll 30s linear infinite',
-        'infinite-scroll-medium': 'infinite-scroll 40s linear infinite',
-        'infinite-scroll-slow': 'infinite-scroll 50s linear infinite',
+        'infinite-scroll-medium': 'infinite-scroll 45s linear infinite',
+        'infinite-scroll-slow': 'infinite-scroll 55s linear infinite',
       },
       keyframes: {
         'infinite-scroll': {

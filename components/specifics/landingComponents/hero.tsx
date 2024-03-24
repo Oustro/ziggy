@@ -77,15 +77,14 @@ export default function Hero() {
     "Customer Feedback",
     "Product Feedback",
     "Employee Feedback",
-    "User Feedback",
     "Market Research",
-    "User Interviews",
-    "User Testing",
+    "Exit Interviews",
+    "UI/UX Testing",
     "User Research",
-    "User Surveys",
-    "User Interviews",
-    "User Testing",
-    "User Research",
+    "Event Feedback",
+    "1-on-1 Interviews",
+    "Customer Discovery",
+    "Policy feedback"
   ]
 
   const [activeConvo, setActiveConvo] = useState(0)
