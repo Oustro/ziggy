@@ -21,7 +21,7 @@ export default function Features() {
     transition={{ duration: 0.5, delay: 0.3 }}
     className="mt-8 sm:mt-24 text-left px-4 sm:px-24 relative"
     >
-      <h2 className="sticky top-24 text-2xl sm:text-4xl text-center font-medium">Upgrade the way you gather, analyze, and understand user feedback</h2>
+      <h2 className="sticky top-24 text-2xl sm:text-4xl text-center font-medium">Upgrade the way you gather, analyze, and understand your users</h2>
       {features.map((feature, index) => (
         <motion.div 
         variants={{

@@ -17,15 +17,15 @@ export default function Stats() {
     >
       <div className="text-center grid grid-cols-1 gap-12 sm:grid-cols-3 mt-16 w-[80%] mx-auto">
         <div>
-          <h1 className="text-6xl font-semibold">500+</h1>
+          <h1 className="text-6xl font-semibold">800+</h1>
           <p className="mt-4 text-center text-slate-600">AI Interviews Conducted</p>
         </div>
         <div>
-          <h1 className="text-6xl font-semibold">15+</h1>
+          <h1 className="text-6xl font-semibold">25+</h1>
           <p className="mt-4 text-center text-slate-600">Product Teams Empowered</p>
         </div>
         <div>
-          <h1 className="text-6xl font-semibold">35+</h1>
+          <h1 className="text-6xl font-semibold">50+</h1>
           <p className="mt-4 text-center text-slate-600">Product and Services Researched</p>
         </div>
       </div>

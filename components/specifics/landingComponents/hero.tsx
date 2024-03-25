@@ -73,11 +73,87 @@ export default function Hero() {
     }
   ]
 
+  const useCases = [
+    "Customer Feedback",
+    "Product Feedback",
+    "Employee Feedback",
+    "Market Research",
+    "Exit Interviews",
+    "UI/UX Testing",
+    "User Research",
+    "Event Feedback",
+    "1-on-1 Interviews",
+    "Customer Discovery",
+    "Policy feedback"
+  ]
+
   const [activeConvo, setActiveConvo] = useState(0)
 
   return (
-    <>
-      <div className="relative border flex flex-col h-[30rem] sm:h-[35rem] justify-center border-slate-600 rounded w-[85%] sm:w-[55rem] mx-auto mt-8 shadow-2xl"
+    <div className="sm:mt-28 justify-center text-left sm:flex items-center"> 
+      <div className="hidden sm:block w-[90%] mx-auto absolute">
+        <div className="group w-full inline-flex flex-nowrap overflow-hidden sm:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+          <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll-fast " aria-hidden="true">
+            {useCases.map((use, index) => (
+              <li key={index}>
+                <div className="border rounded justify-center h-16 w-48 flex items-center">
+                  <p>{use}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll-fast " aria-hidden="true">
+            {useCases.map((use, index) => (
+              <li key={index}>
+                <div className="border rounded justify-center h-16 w-48 flex items-center">
+                  <p>{use}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="group w-full mt-6 inline-flex flex-nowrap overflow-hidden sm:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+          <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll-slow " aria-hidden="true">
+            {useCases.map((use, index) => (
+              <li key={index}>
+                <div className="border rounded justify-center h-16 w-48 flex items-center">
+                  <p>{use}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll-slow " aria-hidden="true">
+            {useCases.map((use, index) => (
+              <li key={index}>
+                <div className="border rounded justify-center h-16 w-48 flex items-center">
+                  <p>{use}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="group w-full inline-flex mt-6 flex-nowrap overflow-hidden sm:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+          <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll-medium " aria-hidden="true">
+            {useCases.map((use, index) => (
+              <li key={index}>
+                <div className="border rounded justify-center h-16 w-48 flex items-center">
+                  <p>{use}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll-medium " aria-hidden="true">
+            {useCases.map((use, index) => (
+              <li key={index}>
+                <div className="border rounded justify-center h-16 w-48 flex items-center">
+                  <p>{use}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="relative z-20 border flex flex-col h-[30rem] sm:h-[35rem] justify-center border-slate-600 rounded w-[85%] sm:w-[55rem] mx-auto mt-8 shadow-2xl"
       style={{
         background: 'linear-gradient(to top right, #FFFFFF 40%, #8B5CF6 145%)'
       }}
@@ -319,6 +395,6 @@ export default function Hero() {
             />
           </div>
         </motion.div>
-    </>
+    </div>
   )
 }

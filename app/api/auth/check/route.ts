@@ -27,37 +27,58 @@ export async function POST(request: NextRequest) {
   try {
     if (type === "login") {
       if (!email) {
-        return NextResponse.json({ "message": "missing data" }, { status: 400 })
+        return NextResponse.json({ "message": "missing data" }, { status: 500 })
       }
-    }
-    else if (type === "signup") {
-      if (!name || !email) {
-        return NextResponse.json({ "message": "missing data" }, { status: 400 })
-      }
-    }
 
-    const validEmail = await prisma.user.findFirst({
-      where: {
-        email: {
-          equals: email,
-          mode: 'insensitive'
+      const validEmail = await prisma.user.findFirst({
+        where: {
+          email: {
+            equals: email,
+            mode: 'insensitive'
+          }
         }
+      })
+
+      if (validEmail) {
+        return NextResponse.json({ "message": "Account" }, { status: 200 })
       }
-    })
 
-    if (validEmail) {
-      return NextResponse.json({ "message": "Email Exists" }, { status: 403 })
+      return NextResponse.json({ "message": "No Account" }, { status: 403 })
     }
-    
-    await redis.set(email, {
-      name: name
-    },
-    {
-      ex: 60 * 60 * 24,
-      nx: true
-    })
+    else {
+      if (!name || !email) {
+        return NextResponse.json({ "message": "missing data" }, { status: 500 })
+      }
 
-    return NextResponse.json({ "message": "success" }, { status: 200 })
+      const validEmail = await prisma.user.findFirst({
+        where: {
+          email: {
+            equals: email,
+            mode: 'insensitive'
+          }
+        }
+      })
+
+      if (validEmail) {
+        return NextResponse.json({ "message": "Account" }, { status: 403 })
+      }
+
+      await redis.set(email, {
+        name: name
+      },
+      {
+        ex: 60 * 60 * 24,
+        nx: true
+      })
+
+      const redisSet = await redis.get(email) as { name: string }
+
+      if (!redisSet.name) {
+        throw new Error("Error setting data in Redis.")
+      }
+
+      return NextResponse.json({ "message": "success" }, { status: 200 })
+    }
   
   } catch (error) {
     console.log(error)

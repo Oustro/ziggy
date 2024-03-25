@@ -65,8 +65,8 @@ export const authOptions = {
             token: process.env.UPSTASH_TOKEN || '',
           })
           
-          const cacheResponse = await redis.get(user.email || "")
-          uname = (cacheResponse as { name: string })?.name || ""
+          const cacheResponse = await redis.get(user.email as string) as { name: string }
+          uname = cacheResponse.name
 
         }
         else {

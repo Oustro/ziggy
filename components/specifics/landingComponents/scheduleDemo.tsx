@@ -8,7 +8,7 @@ import HoverWords from '@/components/generics/hoverWords'
 
 import Cal from "@calcom/embed-react";
 
-export default function ScheduleDemo({ version } : { version: number }) {
+export default function ScheduleDemo() {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   function closeModal() {
@@ -23,15 +23,11 @@ export default function ScheduleDemo({ version } : { version: number }) {
     <main>
       <div>
         <button type="button" onClick={openModal}>
-          {version === 0 ? 
-            <WhiteButton>Schedule a demo</WhiteButton>
-          : 
-            <HoverWords>Demo</HoverWords>
-          }
+          <WhiteButton>Schedule a demo</WhiteButton>
         </button>
       </div>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Dialog as="div" className="relative z-30" onClose={closeModal}>
           <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"

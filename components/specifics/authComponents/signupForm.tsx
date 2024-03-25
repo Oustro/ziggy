@@ -39,16 +39,16 @@ export default function SignupForm({ setView } : { setView: Function }) {
     if (responseRegisterChecks.status === 403) {
       return setError("This email already has a Ziggy account, please login.")
     }
-
-    if (responseRegisterChecks.status === 500) {
+    else if (responseRegisterChecks.status === 500) {
       return setError("An error occurred. Please try again later.")
     }
-
-    await signIn('email', {
-      email: email,
-      callbackUrl: `${window.location.origin}/dashboard/create`,
-      redirect: false
-    })
+    else if (responseRegisterChecks.status === 200) {
+      await signIn('email', {
+        email: email,
+        callbackUrl: `${window.location.origin}/dashboard/create`,
+        redirect: false
+      })
+    }
 
     setView(2)
     setLoading(false)
