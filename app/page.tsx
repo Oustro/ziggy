@@ -27,7 +27,7 @@ export default function Home() {
             <Link href="/register/signup">
               <BlackButton>Get early access</BlackButton>
             </Link>
-            <ScheduleDemo version={0} />
+            <ScheduleDemo />
           </div>
         </div>
         <Hero />
@@ -42,7 +42,7 @@ export default function Home() {
             <Link href="/register/signup">
               <BlackButton>Get early access</BlackButton>
             </Link>
-            <ScheduleDemo version={0} />
+            <ScheduleDemo />
           </div>
           <Image
           src="/ziggy-real.png"

@@ -44,7 +44,6 @@ export default async function HomeNav() {
           <Link target="_blank" href="https://www.github.com/oustro/ziggy">
             <HoverWords><span className="flex items-center gap-1">❤️ Open Source <VscLinkExternal /></span></HoverWords>
           </Link>
-          <ScheduleDemo version={1} />
         </div>
       </div>
       <div className="sm:hidden">
