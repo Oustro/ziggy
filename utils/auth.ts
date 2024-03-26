@@ -7,10 +7,13 @@ import prisma from "@/utils/db"
 import Github from "next-auth/providers/github"
 import Google from "next-auth/providers/google"
 import EmailProvider from "next-auth/providers/email"
+
 import { customSendVerificationRequest } from "@/utils/custom"
+import { html, text } from "@/lib/templates/welcomeEmail"
 
 import Stripe from "stripe"
 import { Redis } from '@upstash/redis'
+import { Client } from "postmark"
 
 export const authOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
@@ -77,6 +80,15 @@ export const authOptions = {
 
         const customer = await stripe.customers.create({
           email: user.email || "",
+        })
+
+        const postmarkClient = new Client(process.env.EMAIL_SERVER_PASSWORD as string)
+        await postmarkClient.sendEmail({
+          "From": "Jacob from Ziggy <howdy@useziggy.com>",
+          "To": user.email as string,
+          "Subject": "Welcome to Ziggy!",
+          "TextBody": text(),
+          "HtmlBody": html()
         })
 
         await prisma.userInfo.create({
