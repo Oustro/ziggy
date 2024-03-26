@@ -91,7 +91,7 @@ export default function Hero() {
 
   return (
     <div className="sm:mt-28 justify-center text-left sm:flex items-center"> 
-      <div className="hidden sm:block w-[90%] mx-auto absolute">
+      <div className="mt-12 sm:mt-0 w-[90%] mx-auto sm:absolute">
         <div className="group w-full inline-flex flex-nowrap overflow-hidden sm:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
           <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll-fast " aria-hidden="true">
             {useCases.map((use, index) => (
