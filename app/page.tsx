@@ -9,6 +9,7 @@ import Hero from "@/components/specifics/landingComponents/hero"
 import Stats from "@/components/specifics/landingComponents/stats"
 import Features from "@/components/specifics/landingComponents/features"
 import HowItWorks from "@/components/specifics/landingComponents/howItWorks"
+import UseCases from "@/components/specifics/landingComponents/useCases"
 
 import Link from "next/link"
 import Image from "next/image"
@@ -31,6 +32,7 @@ export default function Home() {
           </div>
         </div>
         <Hero />
+        <UseCases />
         <HowItWorks />
         <Features />
         <Stats />

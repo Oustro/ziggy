@@ -15,9 +15,10 @@ export default function HowItWorks() {
     initial="hidden"
     whileInView="visible"
     transition={{ duration: 0.5, delay: 0.3 }}
-    className="sm:mt-48 text-left px-4"
+    className="mt-12 sm:mt-24 px-4"
     >
-      <div className="text-center grid grid-cols-1 gap-12 sm:grid-cols-3 mt-16 mx-auto sm:w-[90%]">
+      <h2 className="text-2xl sm:text-4xl text-center font-medium">Understand real problems and ship solutions in days, not months</h2>
+      <div className="text-center grid grid-cols-1 gap-12 sm:grid-cols-3 mt-8 sm:mt-16 mx-auto sm:w-[90%]">
         <div className="border rounded p-4">
           <h1 className="text-3xl font-semibold">Step 1</h1>
           <p className="mt-4 text-center text-slate-600 h-16">Set up your interview by adding the purpose and questions you want the AI to ask.</p>
