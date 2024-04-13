@@ -8,11 +8,15 @@ import { motion } from "framer-motion"
 
 import Image from "next/image"
 
+import { useRouter } from "next/navigation"
+
 import BlackButton from "@/components/generics/blackButton"
 
 import { FiSend } from "react-icons/fi"
 
 import Spinner from "@/components/generics/spinner"
+
+import { tokens } from "@/utils/utility"
 
 export default function FormStyle({ interviewInfo, interviewee, setMostRecentQuestion, finishedInterview, setFinishedInterview } : { interviewInfo: any, interviewee: string, setMostRecentQuestion: Function, finishedInterview: boolean, setFinishedInterview: Function }) {
   const [conversation, setConversation] = useState<Array<{role: string, content: string}>>([])
@@ -21,6 +25,8 @@ export default function FormStyle({ interviewInfo, interviewee, setMostRecentQue
   const [loading, setLoading] = useState<boolean>(true)
 
   const [answer, setAnswer] = useState<string>("")
+
+  const router = useRouter()
 
   async function setUpConversation() {  
     const opening = [
@@ -72,6 +78,10 @@ export default function FormStyle({ interviewInfo, interviewee, setMostRecentQue
 
     if (isFinished === "True") {
       setFinishedInterview(true)
+      if (interviewInfo.rewardURL) {
+        const token = await tokens()
+        return router.push(interviewInfo.rewardURL + "?token=" + token)
+      }
     }
 
     return setLoading(false)

@@ -57,6 +57,7 @@ export interface interviewInfo {
   collect: boolean;
   guide: Array<guideQuestions>;
   teamID: string;
+  rewardURL: string | null;
 }
 
 export interface interviewSavedInfo {
@@ -68,6 +69,7 @@ export interface interviewSavedInfo {
   externalID: string;
   guide: Array<guideQuestions>;
   transcript: Array<transcript>;
+  rewardURL: string | null;
 }
 
 export interface guideQuestions {
