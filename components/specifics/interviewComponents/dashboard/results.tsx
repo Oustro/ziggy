@@ -5,6 +5,7 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation"
 import SourceBox from "@/components/generics/sourceBox"
 import Spinner from "@/components/generics/spinner"
 import BlackButton from "@/components/generics/blackButton"
+import HoverWords from "@/components/generics/hoverWords"
 
 import { FaMagnifyingGlass } from "react-icons/fa6"
 
@@ -25,6 +26,23 @@ export default function Results({ interviewid, setView } : { interviewid: string
   async function askZiggy(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setLoading(true)
+    const responseAnalyticsAsk = await fetch('/api/analytics/results?id='+interviewid+'&q='+question)
+
+    if (!responseAnalyticsAsk.ok) {
+      return setAnswer("Error fetching data")
+    }
+
+    const data = await responseAnalyticsAsk.json()
+
+    setAnswer(data.answer)
+    setSource(data.source)
+    return setLoading(false)
+  }
+
+  async function askZiggyAlt(query: string) {
+    setLoading(true)
+    setQuestion(query)
+
     const responseAnalyticsAsk = await fetch('/api/analytics/results?id='+interviewid+'&q='+question)
 
     if (!responseAnalyticsAsk.ok) {
@@ -66,6 +84,11 @@ export default function Results({ interviewid, setView } : { interviewid: string
   return (
     <div>
       <h1 className="text-4xl font-semibold">Results</h1>
+      <div className="mt-4 flex-inline hidden sm:flex gap-4">
+        <button onClick={() => askZiggyAlt("What is the general sentiment?")}><HoverWords>What is the general sentiment?</HoverWords></button>
+        <button onClick={() => askZiggyAlt("What is the general sentiment?")}><HoverWords>Where do we need to focus?</HoverWords></button>
+        <button onClick={() => askZiggyAlt("What is the general sentiment?")}><HoverWords>What was interesting?</HoverWords></button>
+      </div>
       <div className="mt-8 relative">
         <form onSubmit={askZiggy} className="sm:flex gap-4">
           <input
