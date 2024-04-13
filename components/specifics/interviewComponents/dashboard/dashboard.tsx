@@ -17,7 +17,7 @@ export default function InterviewDashboard({ interview, checkReponseView } : { i
     <Overview key="overview" interview={interview} setView={setView} />,
     <Results key="results" interviewid={interview.id} setView={setView} />,
     <Transcripts key="transcripts" interview={interview} />,
-    <Distribute key="distribute" externalId={interview.externalID} interviewName={interview.name} />
+    <Distribute key="distribute" externalId={interview.externalID} interviewName={interview.name} checkResponseView={checkReponseView} />
   ]
 
   return (

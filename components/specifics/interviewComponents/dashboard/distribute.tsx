@@ -9,7 +9,7 @@ import { FaXTwitter, FaLinkedinIn, FaFacebook, FaCopy } from "react-icons/fa6"
 
 import Link from "next/link"
 
-export default function Distribute({ externalId, interviewName } : { externalId: string, interviewName: string }) {
+export default function Distribute({ externalId, interviewName, checkResponseView } : { externalId: string, interviewName: string, checkResponseView: number }) {
 
     function downloadQR() {
     const svg = document.getElementById("QRCode");
@@ -39,6 +39,7 @@ export default function Distribute({ externalId, interviewName } : { externalId:
   return (
     <div>
       <h1 className="text-4xl font-semibold">Distribute</h1>
+      {checkResponseView === 3 && <p className="mt-4 text-slate-600">This interview has yet to recieve a response. Once you have at least 1 response we'll show you the analytics.</p>}
       <div className="mt-8">
         <h3 className="text-2xl font-medium">Interview link</h3>
         <p className="mt-2 text-slate-600">Share this link with whoever you would like to take your interview.</p>
