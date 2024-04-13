@@ -19,6 +19,7 @@
     "@headlessui/react": "^1.7.18",
     "@pinecone-database/pinecone": "^2.0.1",
     "@prisma/client": "^5.8.1",
+    "@unkey/api": "^0.19.4",
     "@upstash/ratelimit": "^1.0.1",
     "@upstash/redis": "^1.28.2",
     "@vercel/analytics": "^1.2.2",

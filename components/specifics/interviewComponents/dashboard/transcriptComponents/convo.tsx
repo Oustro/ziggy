@@ -8,19 +8,26 @@ import { IoPersonCircleOutline } from "react-icons/io5"
 
 import { FaRegClock } from "react-icons/fa6"
 
+import TranscriptsSetting from "@/components/specifics/settingComponents/transcriptSettings"
+
+
 export default function Convo({ interview, tid, setTranscriptView } : { interview: interviewSavedInfo, tid: number, setTranscriptView: Function }) {
 
   const transcript: Array<{ role: string; content: string }> = interview.transcript[tid].convo as Array<{ role: string; content: string }>
 
   return (
     <div>
-      <div className="flex justify-between items-center">
-        <button onClick={() => setTranscriptView(0)} className="text-sm">
+      <div className="flex justify-between items-center text-sm">
+        <button onClick={() => setTranscriptView(0)}>
           <BlackButton>All transcripts</BlackButton>
         </button>
-        <p className="font-medium flex items-center gap-1"><FaRegClock /> Conducted: {interview.transcript[tid].conducted.toLocaleDateString()}</p>
+        <TranscriptsSetting interview={interview} tid={tid}>
+          <BlackButton>•••</BlackButton>
+        </TranscriptsSetting>
       </div>
-      <h1 className="text-4xl text-center font-semibold">{interview.transcript[tid].interviewee}</h1>
+      <p className="mt-8 font-medium flex items-center gap-1"><FaRegClock /> Conducted: {interview.transcript[tid].conducted.toLocaleDateString()}</p>
+      <p className="mt-2 font-medium flex items-center gap-1"><IoPersonCircleOutline /> Interviewee: {interview.transcript[tid].interviewee}</p>
+      <h1 className="text-4xl text-center font-semibold">{interview.transcript[tid].name}</h1>
       <div className="mt-8 grid gap-8">
         {transcript.slice(1).map((convo, index) => (
           convo.role === "assistant" ?

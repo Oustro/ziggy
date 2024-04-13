@@ -19,6 +19,7 @@ export default function Flow({ interview } : { interview: any }) {
     name: interview.name + " copy",
     purpose: interview.purpose,
     collect: interview.collect,
+    rewardURL: interview.rewardURL || ""
   })
 
   const [error, setError] = useState<string>("")
@@ -90,7 +91,8 @@ export default function Flow({ interview } : { interview: any }) {
         purpose: interviewInfo.purpose,
         collect: interviewInfo.collect,
         questions: questionList,
-        teamid: interview.team.id
+        teamid: interview.team.id,
+        rewardURL: interviewInfo.rewardURL
       })
     })
 
@@ -154,7 +156,7 @@ export default function Flow({ interview } : { interview: any }) {
           </div>
         </form>
         <div>
-          <p>Current questions</p>
+          <p><span className="text-red-600">*</span> Current questions</p>
           <p className="pb-2 border-b text-xs text-slate-600 mt-1 font-normal mb-4 sm:w-[60%]">These are the questions currently configured for this interview, questions are asked first while questions at the bottom are asked last.</p>
           {questionList.length === 0 && <p>No questions added yet.</p>}
           <Reorder.Group axis="y" values={questionList} onReorder={setQuestionList} className="grid gap-4 sm:w-[60%]">
@@ -184,13 +186,27 @@ export default function Flow({ interview } : { interview: any }) {
           <label className="font-normal text-sm">Yes, I would like to collect partcipant emails.</label>
           </div>
         </div>
-        <form className="flex gap-4 items-center" onSubmit={handleSubmit}>
-          <button disabled={loading} type="submit">
-            <BlackButton>Create</BlackButton>
-          </button>
-          <Link href={'/dashboard/'+interview.team.id}>
-            <HoverWords>Cancel</HoverWords>
-          </Link>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Rewards URL</label>
+            <p className="text-xs text-slate-600 mt-1 font-normal">URL Ziggy should redirect to once an interview is complete to reward a partcipant.</p>
+            <input
+            type="url"
+            value={interviewInfo.rewardURL}
+            className="w-full sm:w-[60%] mt-4 border-b border-slate-600 pb-2 text-base focus:outline-none"
+            placeholder="Enter the rewards URL..."
+            disabled={loading}
+            onChange={(e) => setInterviewInfo({...interviewInfo, rewardURL: e.target.value})}
+            />
+          </div>
+          <div className="flex gap-4 items-center mt-12">
+            <button disabled={loading} type="submit">
+              <BlackButton>Duplicate Interview</BlackButton>
+            </button>
+            <Link href={'/dashboard/'+interview.team.id+'/'+interview.id}>
+              <HoverWords>Cancel</HoverWords>
+            </Link>
+          </div>
         </form>
         <p className="text-sm text-red-500">{error}</p>
       </div>
