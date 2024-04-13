@@ -20,7 +20,7 @@ export default function Convo({ interview, tid, setTranscriptView } : { intervie
         </button>
         <p className="font-medium flex items-center gap-1"><FaRegClock /> Conducted: {interview.transcript[tid].conducted.toLocaleDateString()}</p>
       </div>
-      <h1 className="text-4xl text-center font-semibold">{interview.transcript[tid].interviewee}</h1>
+      <h1 className="text-4xl text-center font-semibold">{interview.transcript[tid].name}</h1>
       <div className="mt-8 grid gap-8">
         {transcript.slice(1).map((convo, index) => (
           convo.role === "assistant" ?

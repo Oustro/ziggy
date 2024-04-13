@@ -108,6 +108,7 @@ model Transcript {
   interviewId    String
   interviewee    String
   sentiment      Float
+  name           String @default("Ziggy Interview")
 }
 
 
