@@ -42,7 +42,7 @@ export async function end(question: string) {
 export async function tokens() {
   const unkey = new Unkey({ rootKey: process.env.UNKEY_API_KEY as string });
   const created = await unkey.keys.create({
-    apiId: "api_64TprAdXYiWwD8hVAwtQeQ6PhSU",
+    apiId: process.env.UNKEY_API_ID as string,
     prefix: "ziggy-",
     byteLength: 32,
     ownerId: "ziggy",
