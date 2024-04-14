@@ -43,7 +43,7 @@ export async function tokens() {
   const unkey = new Unkey({ rootKey: process.env.UNKEY_API_KEY as string });
   const created = await unkey.keys.create({
     apiId: process.env.UNKEY_API_ID as string,
-    prefix: "ziggy-",
+    prefix: "ziggy",
     byteLength: 32,
     remaining: 1,
   });
