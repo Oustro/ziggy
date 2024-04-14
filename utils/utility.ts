@@ -45,10 +45,7 @@ export async function tokens() {
     apiId: process.env.UNKEY_API_ID as string,
     prefix: "ziggy-",
     byteLength: 32,
-    ownerId: "ziggy",
-    expires: 1686941966471,
     remaining: 1,
-    enabled: true,
   });
 
   return created.result?.key as string;
