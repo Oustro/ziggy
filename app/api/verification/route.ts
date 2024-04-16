@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ status: 406 });
     }
 
-    return NextResponse.json({ status: 200 });
+    return NextResponse.json({ status: 200, interviewName: result.meta?.name });
   } catch (error) {
     console.log(error);
     return NextResponse.json({ message: "error" }, { status: 500 });
