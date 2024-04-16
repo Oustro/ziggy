@@ -38,11 +38,14 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ status: 503 });
     }
 
-    if (!result.valid || id !== result.ownerId || result.remaining === 0) {
+    if (!result.valid || result.meta?.team !== id) {
       return NextResponse.json({ status: 406 });
     }
 
-    return NextResponse.json({ status: 200, interviewName: result.meta?.name });
+    return NextResponse.json({
+      status: 200,
+      interviewName: result.meta?.interview,
+    });
   } catch (error) {
     console.log(error);
     return NextResponse.json({ message: "error" }, { status: 500 });

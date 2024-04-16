@@ -44,11 +44,11 @@ export async function tokens(teamid: string, name: string) {
   const created = await unkey.keys.create({
     apiId: process.env.UNKEY_API_ID as string,
     prefix: "ziggy",
-    ownerId: teamid,
     byteLength: 32,
     remaining: 1,
     meta: {
       interview: name,
+      team: teamid,
     },
   });
 
