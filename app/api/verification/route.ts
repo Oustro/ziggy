@@ -27,6 +27,7 @@ export async function POST(request: NextRequest) {
 
   const verificationToken = (await request.json()) as {
     token: string;
+    id: string;
   };
 
   try {
@@ -39,7 +40,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ status: 503 });
     }
 
-    if (!result.valid) {
+    if (
+      !result.valid ||
+      verificationToken.id !== result.ownerId ||
+      result.remaining === 0
+    ) {
       return NextResponse.json({ status: 406 });
     }
 

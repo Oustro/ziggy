@@ -39,13 +39,17 @@ export async function end(question: string) {
   return completion.choices[0].message.content;
 }
 
-export async function tokens() {
+export async function tokens(teamid: string) {
   const unkey = new Unkey({ rootKey: process.env.UNKEY_API_KEY as string });
   const created = await unkey.keys.create({
     apiId: process.env.UNKEY_API_ID as string,
     prefix: "ziggy",
+    ownerId: teamid,
     byteLength: 32,
     remaining: 1,
+    meta: {
+      description: process.env.REWARD_DESCRIPTION as string,
+    },
   });
 
   return created.result?.key as string;

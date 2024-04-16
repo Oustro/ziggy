@@ -94,8 +94,8 @@ export default function TextStyle({ interviewInfo, interviewee, setMostRecentQue
     if (isFinished === "True") {
       setFinishedInterview(true)
       if (interviewInfo.rewardURL) {
-        const token = await tokens()
-        return router.push(interviewInfo.rewardURL + "?token=" + token)
+        const token = await tokens(interviewInfo.team.id)
+        return router.push(interviewInfo.rewardURL + "?token=" + token+ "&id=" + interviewInfo.team.id)
       }
     }
 
