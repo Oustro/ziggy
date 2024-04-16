@@ -4,7 +4,7 @@ import { verifyKey } from "@unkey/api";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
-export async function POST(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const redis = new Redis({
     url: process.env.UPSTASH_URL || "",
     token: process.env.UPSTASH_TOKEN || "",
@@ -25,14 +25,12 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const verificationToken = (await request.json()) as {
-    token: string;
-    id: string;
-  };
+  const token = request.nextUrl.searchParams.get("token") as string;
+  const id = request.nextUrl.searchParams.get("id") as string;
 
   try {
     const { result, error } = await verifyKey({
-      key: verificationToken.token,
+      key: token,
       apiId: process.env.UNKEY_API_ID as string,
     });
 
@@ -40,11 +38,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ status: 503 });
     }
 
-    if (
-      !result.valid ||
-      verificationToken.id !== result.ownerId ||
-      result.remaining === 0
-    ) {
+    if (!result.valid || id !== result.ownerId || result.remaining === 0) {
       return NextResponse.json({ status: 406 });
     }
 
