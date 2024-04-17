@@ -39,18 +39,22 @@ export async function end(question: string) {
   return completion.choices[0].message.content;
 }
 
-export async function tokens(teamid: string, name: string) {
-  const unkey = new Unkey({ rootKey: process.env.UNKEY_API_KEY as string });
-  const created = await unkey.keys.create({
-    apiId: process.env.UNKEY_API_ID as string,
-    prefix: "ziggy",
-    byteLength: 32,
-    remaining: 1,
-    meta: {
-      interview: name,
-      team: teamid,
-    },
-  });
+// export async function tokens(teamid: string, name: string) {
+//   const unkey = new Unkey({ rootKey: process.env.UNKEY_API_KEY as string });
+//   const created = await unkey.keys.create({
+//     apiId: process.env.UNKEY_API_ID as string,
+//     prefix: "ziggy",
+//     byteLength: 32,
+//     remaining: 1,
+//     meta: {
+//       interview: name,
+//       team: teamid,
+//     },
+//   });
 
-  return created.result?.key as string;
-}
+//   console.log(created.result);
+
+//   console.log(created.result?.key);
+
+//   return created.result?.key as string;
+// }

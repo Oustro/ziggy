@@ -15,7 +15,7 @@ import { IoPersonCircleOutline } from "react-icons/io5"
 
 import Spinner from "@/components/generics/spinner"
 
-import { tokens } from "@/utils/utility"
+// import { tokens } from "@/utils/utility"
 
 export default function TextStyle({ interviewInfo, interviewee, setMostRecentQuestion, finishedInterview, setFinishedInterview } : { interviewInfo: any, interviewee: string, setMostRecentQuestion: Function, finishedInterview: boolean, setFinishedInterview: Function }) {
   const [conversation, setConversation] = useState<Array<{role: string, content: string}>>([])
@@ -94,8 +94,22 @@ export default function TextStyle({ interviewInfo, interviewee, setMostRecentQue
     if (isFinished === "True") {
       setFinishedInterview(true)
       if (interviewInfo.rewardURL) {
-        const token = await tokens(interviewInfo.team.id, interviewInfo.name)
-        return router.push(interviewInfo.rewardURL + "?token=" + token+ "&id=" + interviewInfo.team.id)
+
+        const responseVerificationCreate = await fetch("/api/verification/create", {
+          method: "POST",
+          body: JSON.stringify({
+            name: interviewInfo.name,
+            teamid: interviewInfo.team.id
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+
+        if (responseVerificationCreate.ok) {
+          const token = await responseVerificationCreate.json() as { token: string }
+          return router.push(interviewInfo.rewardURL + "?token=" + token.token + "&id=" + interviewInfo.team.id)
+        }
       }
     }
 
