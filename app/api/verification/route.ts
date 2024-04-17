@@ -34,6 +34,8 @@ export async function GET(request: NextRequest) {
       apiId: process.env.UNKEY_API_ID as string,
     });
 
+    console.log(result, error);
+
     if (error) {
       return NextResponse.json({ status: 503 });
     }
